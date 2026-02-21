@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BioBrain - Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .login-container {
+      background: rgba(0,0,0,0.6);
+      padding: 40px;
+      border-radius: 15px;
+      width: 350px;
+      box-shadow: 0 0 20px rgba(0,255,213,0.4);
+    }
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #00ffd5;
+    }
+    .login-container input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+    }
+    .captcha-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .captcha {
+      font-weight: bold;
+      font-size: 20px;
+      color: #00ffd5;
+      letter-spacing: 3px;
+      user-select: none;
+    }
+    .btn {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      background: #00ffd5;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #00c3ff;
+    }
+    .links {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+    .links a {
+      color: #00ffd5;
+      text-decoration: none;
+    }
+    .error {
+      color: #ff4c4c;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+
+    <h2>BioBrain Login</h2>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+
+    <div class="captcha-container">
+      <div class="captcha" id="captcha"></div>
+      <button id="refreshCaptcha" style="background:#00c3ff;color:white;border:none;padding:5px 10px;border-radius:5px;cursor:pointer;">↻</button>
+    </div>
+    <input type="text" id="captchaInput" placeholder="Enter CAPTCHA" />
+
+    <button class="btn" id="loginBtn">Login</button>
+
+    <div class="links">
+      <a href="forgotpwd.html">Forgot Password?</a>
+      <a href="register.html">Register</a>
+      <a href="index.html">Back to Home</a>
+    </div>
+
+    <div class="error" id="errorMsg"></div>
+  </div>
+
+  <script>
+    // Simple CAPTCHA generation
+    function generateCaptcha() {
+      const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+      let captcha = "";
+      for(let i=0;i<5;i++){
+        captcha += chars.charAt(Math.floor(Math.random()*chars.length));
+      }
+      return captcha;
+    }
+
+    let currentCaptcha = generateCaptcha();
+    document.getElementById("captcha").innerText = currentCaptcha;
+
+    document.getElementById("refreshCaptcha").addEventListener("click", ()=>{
+      currentCaptcha = generateCaptcha();
+      document.getElementById("captcha").innerText = currentCaptcha;
+    });
+
+    // Login button click
+    document.getElementById("loginBtn").addEventListener("click", async ()=>{
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const captchaInput = document.getElementById("captchaInput").value;
+      const errorMsg = document.getElementById("errorMsg");
+      errorMsg.innerText = "";
+
+      if(!username || !password || !captchaInput){
+        errorMsg.innerText = "All fields are required!";
+        return;
+      }
+
+      if(captchaInput.toUpperCase() !== currentCaptcha){
+        errorMsg.innerText = "CAPTCHA does not match!";
+        return;
+      }
+
+      // Send login request to backend
+      try {
+        const res = await fetch("/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password })
+        });
+        const data = await res.json();
+        if(data.success){
+          alert("Login successful!");
+          // redirect to quiz page
+          window.location.href = "/quiz.html";
+        } else {
+          errorMsg.innerText = data.message;
+        }
+      } catch(e){
+        errorMsg.innerText = "Server error!";
+      }
+    });
+  </script>
+
+</body>
+</html>
