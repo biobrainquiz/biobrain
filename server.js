@@ -1,10 +1,12 @@
 const express = require("express");
 const app = express();
 
+const PORT = process.env.PORT || 3000;
+
 app.get("/", (req, res) => {
-  res.send("QUIZ COMING!!! 🚀");
+  res.send("BIOBRAIN QUIZ 🚀");
 });
 
-app.listen(1420, () => {
-  console.log("Server running on http://localhost:1420");
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
