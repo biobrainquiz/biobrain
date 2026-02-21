@@ -1,116 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BioBrain - Quiz Platform</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+    <meta charset="UTF-8">
+    <title>BioBrain | Life Sciences Quiz Platform</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    body {
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: white;
-      text-align: center;
-    }
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
 
-    header {
-      padding: 20px 50px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
-    header h1 {
-      font-size: 24px;
-      color: #00ffd5;
-    }
+        body { background-color: #F7F9FC; color: #333; }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: 500;
-    }
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            background-color: #1B5E20;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-    .hero {
-      height: 90vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+        .navbar h1 { font-size: 26px; letter-spacing: 1px; cursor: pointer; }
+        .navbar ul { display: flex; list-style: none; gap: 25px; }
+        .navbar a {
+            color: white; text-decoration: none; font-weight: 500;
+            transition: color 0.3s;
+        }
+        .navbar a:hover { color: #00ACC1; }
 
-    .hero h2 {
-      font-size: 60px;
-      background: linear-gradient(to right, #00ffd5, #00c3ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+        .btn-navbar {
+            padding: 8px 18px;
+            background: #00ACC1;
+            border-radius: 25px;
+            color: white;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-navbar:hover { background: #028394; }
 
-    .hero p {
-      margin-top: 20px;
-      font-size: 18px;
-      max-width: 600px;
-      opacity: 0.8;
-    }
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px;
+            background: linear-gradient(to right, #4CAF50, #00ACC1);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .btn {
-      margin-top: 30px;
-      padding: 12px 30px;
-      background: #00ffd5;
-      color: black;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('images/dna-pattern.png'); /* Transparent DNA image */
+            background-size: cover;
+            background-position: center;
+            opacity: 0.08; 
+            z-index: 0;
+        }
 
-    .btn:hover {
-      background: #00c3ff;
-      transform: scale(1.05);
-    }
+        .hero h2,
+        .hero p,
+        .hero button {
+            position: relative; 
+            z-index: 1;
+        }
 
-    footer {
-      padding: 20px;
-      opacity: 0.6;
-    }
+        .hero h2 { font-size: 48px; margin-bottom: 20px; line-height: 1.2; }
+        .hero p { font-size: 20px; margin-bottom: 30px; max-width: 600px; }
 
-    @media (max-width: 768px) {
-      .hero h2 {
-        font-size: 40px;
-      }
-    }
-  </style>
+        .hero .btn-primary, .hero .btn-secondary {
+            padding: 14px 30px; margin: 8px; border-radius: 30px;
+            font-weight: 600; cursor: pointer; border: none;
+            transition: 0.3s;
+        }
+        .btn-primary { background-color: white; color: #1B5E20; }
+        .btn-primary:hover { opacity: 0.85; }
+        .btn-secondary { background-color: #212121; color: white; }
+        .btn-secondary:hover { opacity: 0.85; }
+
+        /* Quiz Categories Section */
+        .section {
+            padding: 80px 60px;
+            text-align: center;
+        }
+        .section h3 { font-size: 36px; margin-bottom: 50px; color: #1B5E20; }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: linear-gradient(145deg, #ffffff, #f1f5f9);
+            padding: 35px 20px;
+            border-radius: 20px;
+            box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            width: 120%; height: 120%;
+            background-image: url('images/molucule-structure.png'); /* subtle molecule texture */
+            background-size: cover;
+            background-position: center;
+            opacity: 0.05;
+            top: -10%;
+            left: -10%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 35px rgba(0,0,0,0.15);
+        }
+
+        .card h4 { margin-bottom: 15px; font-size: 22px; position: relative; z-index: 1; }
+        .card p { font-size: 16px; color: #555; position: relative; z-index: 1; }
+        .card button {
+            margin-top: 20px;
+            padding: 10px 25px;
+            border: none;
+            background-color: #1B5E20;
+            color: white;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative; z-index: 1;
+        }
+        .card button:hover { background-color: #4CAF50; }
+
+        /* Features Section */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+        }
+        .feature-box {
+            flex: 1 1 200px;
+            background: white;
+            padding: 25px 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            font-weight: 500;
+            font-size: 16px;
+            transition: transform 0.3s;
+        }
+        .feature-box:hover { transform: translateY(-5px); }
+
+        /* Leaderboard Section */
+        .leaderboard {
+            background-color: #00ACC1;
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .leaderboard h3 { font-size: 36px; margin-bottom: 30px; }
+        .leaderboard ul {
+            list-style: none;
+            max-width: 500px;
+            margin: auto;
+        }
+        .leaderboard li {
+            font-size: 18px;
+            margin: 10px 0;
+            padding: 12px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 10px;
+            transition: background 0.3s;
+        }
+        .leaderboard li:hover { background: rgba(255,255,255,0.25); }
+
+        /* Footer */
+        footer {
+            background-color: #1B5E20;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            background-image: url('https://i.ibb.co/x7Zy0Tq/leaf-pattern.png'); /* subtle footer texture */
+            background-size: cover;
+            background-position: center;
+            opacity: 0.95;
+        }
+
+        /* Responsive */
+        @media(max-width: 768px) {
+            .hero h2 { font-size: 32px; }
+            .section { padding: 60px 20px; }
+        }
+
+    </style>
 </head>
+
 <body>
 
-  <header>
-    <h1>🧠 BioBrain</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Quizzes</a>
-      <a href="#">Login</a>
-    </nav>
-  </header>
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1>🧬 BioBrain</h1>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Quizzes</a></li>
+            <li><a href="#">Leaderboard</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#" class="btn-navbar">Login</a></li>
+        </ul>
+    </div>
 
-  <section class="hero">
-    <h2>Challenge Your Brain</h2>
-    <p>
-      Welcome to BioBrain – the ultimate quiz platform to test your knowledge,
-      boost your intelligence, and compete with others.
-    </p>
-    <a href="#" class="btn">Start Quiz</a>
-  </section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <h2>Master Life Sciences with Smart Quizzes</h2>
+        <p>Challenge yourself with quizzes in Zoology, Botany, Genetics, Ecology & More.</p>
+        <div>
+            <button class="btn-primary">Start Quiz</button>
+            <button class="btn-secondary">View Leaderboard</button>
+        </div>
+    </section>
 
-  <footer>
-    © 2026 BioBrain. All Rights Reserved.
-  </footer>
+    <!-- Quiz Categories -->
+    <section class="section">
+        <h3>Quiz Categories</h3>
+        <div class="card-container">
+            <div class="card">
+                <h4>🦁 Zoology</h4>
+                <p>Animal biology & classification</p>
+                <button>Start</button>
+            </div>
+            <div class="card">
+                <h4>🌱 Botany</h4>
+                <p>Plant anatomy & physiology</p>
+                <button>Start</button>
+            </div>
+            <div class="card">
+                <h4>🧬 Genetics</h4>
+                <p>DNA, inheritance & mutations</p>
+                <button>Start</button>
+            </div>
+            <div class="card">
+                <h4>🌎 Ecology</h4>
+                <p>Ecosystems & environment</p>
+                <button>Start</button>
+            </div>
+            <div class="card">
+                <h4>🔬 Cell Biology</h4>
+                <p>Cell structure & organelles</p>
+                <button>Start</button>
+            </div>
+            <div class="card">
+                <h4>🧪 Biochemistry</h4>
+                <p>Metabolism & biomolecules</p>
+                <button>Start</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section">
+        <h3>Why Choose BioBrain?</h3>
+        <div class="features">
+            <div class="feature-box">✔ 1000+ MCQs across topics</div>
+            <div class="feature-box">✔ Instant Results & Explanations</div>
+            <div class="feature-box">✔ Track Your Progress</div>
+            <div class="feature-box">✔ Compete on Leaderboard</div>
+        </div>
+    </section>
+
+    <!-- Leaderboard Section -->
+    <section class="leaderboard">
+        <h3>🏆 Top Biology Minds</h3>
+        <ul>
+            <li>1️⃣ Ananya – 980 Points</li>
+            <li>2️⃣ Rahul – 920 Points</li>
+            <li>3️⃣ Sneha – 890 Points</li>
+            <li>4️⃣ Arjun – 850 Points</li>
+            <li>5️⃣ Meera – 830 Points</li>
+        </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 BioBrain | Life Sciences Quiz Platform</p>
+    </footer>
 
 </body>
 </html>
