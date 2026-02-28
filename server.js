@@ -10,8 +10,8 @@ const { autoSeed } = require("./utils/autoSeeder");
 const requireLogin = require("./middleware/requireLogin");
 const QuizResult = require("./models/QuizResult");
 const Question = require("./models/Question");
-const Unit=require("./models/Unit");
-const Topic=require("./models/Topic");
+const Unit = require("./models/Unit");
+const Topic = require("./models/Topic");
 
 const app = express();
 
@@ -39,7 +39,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   store: MongoStore.create({ mongoUrl: mongoURI }),
-  cookie: { maxAge: sessionExpiryMin  * 60 * 1000 } 
+  cookie: { maxAge: sessionExpiryMin * 60 * 1000 }
 }));
 
 // Make session available in EJS
@@ -120,13 +120,21 @@ app.get("/quizzes", requireLogin, (req, res) => {
 
 // Dynamic quiz start
 app.get("/quiz/:examcode/:subjectcode/:unitcode/:topiccode/start", requireLogin, async (req, res) => {
-  const { examcode, subjectcode,unitcode,topiccode } = req.params;
+  const { examcode, subjectcode, unitcode, topiccode } = req.params;
   const { count, difficulty } = req.query;
   const questions = await Question.aggregate([
-    { $match: { examcode:examcode, subjectcode:subjectcode, unitcode:unitcode,topiccode:topiccode,difficulty_level: difficulty } },
+    { $match: { examcode: examcode, subjectcode: subjectcode, unitcode: unitcode, topiccode: topiccode, difficulty_level: difficulty } },
     { $sample: { size: parseInt(count) } }
   ]);
-  res.render(`pages/${getDevice(req)}/quiz`, { questions, examcode, subjectcode,unitcode,topiccode, user: req.session.user, count, difficulty });
+
+  const topic = await Topic.aggregate([
+    { $match: { examcode: examcode, subjectcode: subjectcode, unitcode: unitcode, topiccode: topiccode} },
+    { $sample: { size: q } }
+  ]);
+
+  console.log(topic.topicname);
+  res.render(`pages/${getDevice(req)}/quiz`, 
+  { questions, examcode, subjectcode, unitcode, topiccode, user: req.session.user, count, difficulty });
 });
 
 // Prepare quiz (past performance)
@@ -151,6 +159,11 @@ app.get("/preparequiz/:examcode/:subjectcode", requireLogin, async (req, res) =>
 
     const totalPages = Math.ceil(Math.min(totalResults, resultsLimit) / pageLimit);
 
+    const topic = await Topic.aggregate([
+      { $match: { examcode: examcode, subjectcode: subjectcode, unitcode: unitcode, topiccode: topiccode } },
+      { $sample: { size: parseInt(count) } }
+    ]);
+
     res.render(`pages/${device}/startquiz`, { examcode, subjectcode, quizResults, currentPage: page, totalPages });
 
   } catch (err) {
@@ -161,8 +174,8 @@ app.get("/preparequiz/:examcode/:subjectcode", requireLogin, async (req, res) =>
 
 // Create order (session-based quiz config)
 app.post("/create-order", requireLogin, (req, res) => {
-  const { examcode, subjectcode, unitcode,topiccode,count, difficulty } = req.body;
-  req.session.quizConfig = { examcode, subjectcode,unitcode,topiccode, count, difficulty };
+  const { examcode, subjectcode, unitcode, topiccode, count, difficulty } = req.body;
+  req.session.quizConfig = { examcode, subjectcode, unitcode, topiccode, count, difficulty };
   res.redirect(`/quiz/${examcode}/${subjectcode}/${unitcode}/${topiccode}/start?count=${count}&difficulty=${difficulty}`);
 });
 
