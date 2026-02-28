@@ -159,11 +159,6 @@ app.get("/preparequiz/:examcode/:subjectcode", requireLogin, async (req, res) =>
 
     const totalPages = Math.ceil(Math.min(totalResults, resultsLimit) / pageLimit);
 
-    const topic = await Topic.aggregate([
-      { $match: { examcode: examcode, subjectcode: subjectcode, unitcode: unitcode, topiccode: topiccode } },
-      { $sample: { size: parseInt(count) } }
-    ]);
-
     res.render(`pages/${device}/startquiz`, { examcode, subjectcode, quizResults, currentPage: page, totalPages });
 
   } catch (err) {
