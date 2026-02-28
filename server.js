@@ -127,7 +127,6 @@ app.get("/quiz/:examcode/:subjectcode/:unitcode/:topiccode/start", requireLogin,
     { $sample: { size: parseInt(count) } }
   ]);
 
-  console.log(topic.topicname);
   res.render(`pages/${getDevice(req)}/quiz`, 
   { questions, examcode, subjectcode, unitcode, topiccode, user: req.session.user, count, difficulty });
 });
