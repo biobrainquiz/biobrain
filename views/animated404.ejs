@@ -1,0 +1,229 @@
+<!----- ANIMATED LOGO 404 PAGE-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 - Page Not Found | BioBrain</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+
+body {
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  background: linear-gradient(-45deg, #e8f5e9, #f1f8e9, #e0f2f1, #f9fbe7);
+  background-size:400% 400%;
+  animation: gradientBG 12s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position:0% 50%; }
+  50% { background-position:100% 50%; }
+  100% { background-position:0% 50%; }
+}
+
+/* Leaf particles */
+.leaf {
+  position:absolute;
+  font-size:18px;
+  animation: fall linear infinite;
+  opacity:0.6;
+}
+
+@keyframes fall {
+  0% { transform: translateY(-10vh) rotate(0deg); }
+  100% { transform: translateY(110vh) rotate(360deg); }
+}
+
+.card {
+  text-align:center;
+  padding:60px;
+  border-radius:24px;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(20px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.1);
+  animation: fadeIn 0.6s ease forwards;
+  position:relative;
+  z-index:2;
+  perspective:1000px;
+}
+
+@keyframes fadeIn {
+  from { opacity:0; transform: scale(0.9); }
+  to { opacity:1; transform: scale(1); }
+}
+
+/* Logo container */
+.logo-container {
+  display:flex;
+  justify-content:center;
+  margin-bottom:20px;
+  position:relative;
+}
+
+.logo {
+  width:100px;
+  animation:
+    floatLogo 3s ease-in-out infinite,
+    rotateSlow 20s linear infinite,
+    glowPulse 3s ease-in-out infinite;
+  transition: transform 0.3s ease;
+  position:relative;
+  z-index:2;
+}
+
+@keyframes floatLogo {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes rotateSlow {
+  from { rotate: 0deg; }
+  to { rotate: 360deg; }
+}
+
+@keyframes glowPulse {
+  0% { filter: drop-shadow(0 0 0px rgba(27,94,32,0.4)); }
+  50% { filter: drop-shadow(0 0 22px rgba(27,94,32,0.7)); }
+  100% { filter: drop-shadow(0 0 0px rgba(27,94,32,0.4)); }
+}
+
+/* Shimmer effect */
+.logo-container::after {
+  content:'';
+  position:absolute;
+  top:0;
+  left:-75%;
+  width:50%;
+  height:100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+  transform: skewX(-20deg);
+  animation: shimmer 4s infinite;
+}
+
+@keyframes shimmer {
+  0% { left:-75%; }
+  100% { left:125%; }
+}
+
+h1 {
+  font-size:110px;
+  color:#1B5E20;
+  margin:10px 0;
+}
+
+p {
+  font-size:18px;
+  color:#444;
+  margin-bottom:20px;
+}
+
+.countdown {
+  font-weight:600;
+  color:#1B5E20;
+}
+
+.btn-home {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:12px 24px;
+  background:#1B5E20;
+  color:#fff;
+  text-decoration:none;
+  border-radius:10px;
+  transition:0.3s ease;
+  font-weight:500;
+}
+
+.btn-home:hover {
+  background:#144d17;
+  transform:translateY(-3px);
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.arrow {
+  transition:transform 0.3s ease;
+}
+
+.btn-home:hover .arrow {
+  transform:translateX(4px);
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364);
+  }
+  .card {
+    background: rgba(0,0,0,0.5);
+    color:#fff;
+  }
+  p { color:#ddd; }
+}
+</style>
+</head>
+<body>
+
+<script>
+/* Leaf particles */
+for(let i=0;i<25;i++){
+  const leaf=document.createElement("div");
+  leaf.className="leaf";
+  leaf.innerHTML="🍃";
+  leaf.style.left=Math.random()*100+"vw";
+  leaf.style.animationDuration=(6+Math.random()*6)+"s";
+  leaf.style.fontSize=(12+Math.random()*12)+"px";
+  document.body.appendChild(leaf);
+}
+
+/* Countdown redirect */
+document.addEventListener("DOMContentLoaded", function () {
+  let seconds = 6;
+  const countdown = document.querySelector(".countdown");
+
+  const timer = setInterval(() => {
+    seconds--;
+    countdown.textContent = seconds;
+
+    if (seconds <= 0) {
+      clearInterval(timer);
+      window.location.href = "/";
+    }
+  }, 1000);
+});
+</script>
+
+<div class="card" id="card">
+  <div class="logo-container">
+    <img src="/images/biobrain-logo.png" alt="BioBrain Logo" class="logo">
+  </div>
+
+  <h1>404</h1>
+  <p>Oops! The page you're looking for doesn’t exist.</p>
+  <p>Redirecting in <span class="countdown">5</span> seconds...</p>
+
+  <a href="/" class="btn-home">
+    Go Back Home
+    <span class="arrow">→</span>
+  </a>
+</div>
+
+<script>
+/* 3D tilt effect */
+const card = document.getElementById("card");
+document.addEventListener("mousemove", (e) => {
+  const x = (window.innerWidth/2 - e.pageX)/25;
+  const y = (window.innerHeight/2 - e.pageY)/25;
+  card.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+});
+</script>
+
+</body>
+</html>

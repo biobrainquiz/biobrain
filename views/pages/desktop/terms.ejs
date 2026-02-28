@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms & Conditions | BioBrain</title>
+  <link rel="stylesheet" href="/css/desktopStyle.css" />
+  <style>
+    /* Collapsible sections style */
+    .collapsible {
+      background-color: #e8f5e9;
+      color: #1B5E20;
+      cursor: pointer;
+      padding: 15px 20px;
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      text-align: left;
+      outline: none;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      transition: background 0.3s;
+    }
+
+    .collapsible:hover {
+      background-color: #dcedc8;
+    }
+
+    .collapsible:after {
+      content: '\25BC'; /* Down arrow */
+      float: right;
+      transition: transform 0.3s;
+    }
+
+    .collapsible.active:after {
+      transform: rotate(180deg);
+    }
+
+    .content {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background-color: rgba(255,255,255,0.6);
+      border-radius: 0 0 10px 10px;
+      margin-bottom: 15px;
+    }
+
+    .content p, .content ul {
+      margin: 15px 0;
+    }
+
+    .btn-home {
+      display:inline-block;
+      margin-top:20px;
+      padding: 12px 24px;
+      background:#1B5E20;
+      color:#fff;
+      text-decoration:none;
+      border-radius:10px;
+      transition: 0.3s ease;
+      font-weight:500;
+    }
+
+    .btn-home:hover {
+      background:#144d17;
+      transform:translateY(-2px);
+      box-shadow:0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    /* Responsive */
+    @media(max-width:768px){
+      .collapsible {
+        font-size: 16px;
+        padding: 12px 15px;
+      }
+      .content {
+        padding: 0 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <%- include('../../partials/desktop/header') %>
+
+  <div class="disclaimer-container">
+    <h1>Terms & Conditions</h1>
+
+    <button class="collapsible">1. Acceptance of Terms</button>
+    <div class="content">
+      <p>By accessing or using BioBrain, you agree to be bound by these Terms & Conditions. If you do not agree, you must not use the platform.</p>
+    </div>
+
+    <button class="collapsible">2. Use of Platform</button>
+    <div class="content">
+      <p>The platform is provided for educational and entertainment purposes only. Users must not misuse the platform or its content.</p>
+    </div>
+
+    <button class="collapsible">3. Account Registration</button>
+    <div class="content">
+      <p>Users may be required to register an account. You are responsible for maintaining confidentiality of login credentials and activity associated with your account.</p>
+    </div>
+
+    <button class="collapsible">4. User Conduct</button>
+    <div class="content">
+      <p>Users must not engage in unlawful, abusive, or disruptive behavior on the platform. Harassment or misuse may lead to suspension or account termination.</p>
+    </div>
+
+    <button class="collapsible">5. Intellectual Property</button>
+    <div class="content">
+      <p>All content, logos, designs, and quizzes on BioBrain are the property of BioBrain and protected under copyright laws. Users must not reproduce or distribute without permission.</p>
+    </div>
+
+    <button class="collapsible">6. Disclaimer of Warranties</button>
+    <div class="content">
+      <p>The platform and content are provided “as is” without warranties of any kind. BioBrain does not guarantee accuracy or reliability of content.</p>
+    </div>
+
+    <button class="collapsible">7. Limitation of Liability</button>
+    <div class="content">
+      <p>BioBrain is not liable for any damages, losses, or consequences arising from use of the platform, quizzes, or content.</p>
+    </div>
+
+    <button class="collapsible">8. Modifications</button>
+    <div class="content">
+      <p>BioBrain may modify the Terms & Conditions at any time. Changes will be posted on this page with an updated effective date.</p>
+    </div>
+
+    <button class="collapsible">9. Governing Law</button>
+    <div class="content">
+      <p>These Terms & Conditions are governed by the laws applicable in India. Disputes shall be subject to the courts in India.</p>
+    </div>
+
+    <a href="/" class="btn-home">Back to Home</a>
+  </div>
+
+  <%- include('../../partials/desktop/footer') %>
+
+  <script>
+    // Collapsible sections toggle
+    const collapsibles = document.querySelectorAll(".collapsible");
+    collapsibles.forEach(btn => {
+      btn.addEventListener("click", () => {
+        btn.classList.toggle("active");
+        const content = btn.nextElementSibling;
+        if (btn.classList.contains("active")) {
+          content.style.maxHeight = content.scrollHeight + "px";
+        } else {
+          content.style.maxHeight = null;
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BioBrain - Login</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <!-- Header Include -->
+  <%- include('../../partials/desktop/header') %>
+
+    <div class="login-container">
+      <h2>Sign In</h2>
+
+      <!--<input type="text" id="username" placeholder="Username" />-->
+      <input type="text" id="identifier" placeholder="Email or Mobile" />
+      <input type="password" id="password" placeholder="Password" />
+
+      <div class="captcha-container">
+        <div class="captcha" id="captcha"></div>
+        <button id="refreshCaptcha">↻</button>
+      </div>
+      <input type="text" id="captchaInput" placeholder="Enter CAPTCHA" />
+
+      <button id="loginBtn">Login</button>
+
+      <div class="links">
+        <a href="/forgot">Forgot Password</a>
+        <a href="/register">Register</a>
+      </div>
+
+      <div class="error" id="errorMsg"></div>
+    </div>
+
+    <script>
+      // Simple CAPTCHA generation
+      function generateCaptcha() {
+        const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+        let captcha = "";
+        for (let i = 0; i < 5; i++) {
+          captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return captcha;
+      }
+
+      let currentCaptcha = generateCaptcha();
+      document.getElementById("captcha").innerText = currentCaptcha;
+
+      document.getElementById("refreshCaptcha").addEventListener("click", () => {
+        currentCaptcha = generateCaptcha();
+        document.getElementById("captcha").innerText = currentCaptcha;
+      });
+
+        // Login button click
+        document.getElementById("loginBtn").addEventListener("click", async () => {
+        const identifier = document.getElementById("identifier").value;
+        const password = document.getElementById("password").value;
+        const captchaInput = document.getElementById("captchaInput").value;
+        const errorMsg = document.getElementById("errorMsg");
+        errorMsg.innerText = "";
+
+        if (!identifier || !password || !captchaInput) {
+          errorMsg.innerText = "All fields are required!";
+          return;
+        }
+
+        if (captchaInput.toUpperCase() !== currentCaptcha) {
+          errorMsg.innerText = "CAPTCHA does not match!";
+          return;
+        }
+        // Send login request to backend
+        try {
+          const res = await fetch("/api/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ identifier, password })
+          });
+          const data = await res.json();
+          if (data.success) {
+            window.location.href = "/quiz";
+          } else {
+            errorMsg.innerText = data.message;
+          }
+        } catch (e) {
+          errorMsg.innerText = "Server error!";
+        }
+      });
+    </script>
+
+    <!-- Footer Include -->
+    <%- include('../../partials/desktop/footer') %>
+</body>
+
+</html>

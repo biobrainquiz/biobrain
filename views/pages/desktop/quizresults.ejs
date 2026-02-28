@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Quiz Results | BioBrain</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body { font-family: 'Segoe UI', sans-serif; background: #f4f6f9; margin: 0; padding: 20px; }
+  header { background: #1B5E20; color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
+  header h1 { margin: 0; font-size: 24px; }
+  .container { max-width: 1000px; margin: 20px auto; }
+  .greeting { font-size: 18px; margin-bottom: 20px; }
+  .stats-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
+  .stats-table th, .stats-table td { padding: 12px; border: 1px solid #ccc; text-align: center; }
+  .stats-table th { background: #1976D2; color: white; }
+  .home-btn { display: inline-block; padding: 10px 18px; background: #1B5E20; color: white; text-decoration: none; border-radius: 6px; margin-bottom: 30px; }
+  .question-box { background: white; padding: 15px; margin-bottom: 15px; border-radius: 6px; }
+  .question-box p { margin: 5px 0; }
+  .correct { color: green; font-weight: bold; }
+  .wrong { color: red; font-weight: bold; }
+  .unattempted { color: gray; font-style: italic; }
+  .question-options li { list-style: none; padding: 5px 0; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>BioBrain - Quiz Results</h1>
+  <a href="/" class="home-btn">🏠 Home</a>
+</header>
+
+<div class="container">
+
+  <div class="greeting">
+    Hello, <strong><%= user ? user.username : 'Guest' %></strong>!
+  </div>
+
+  <table class="stats-table">
+    <tr>
+      <th>Total Questions</th>
+      <th>Attempted</th>
+      <th>Correct</th>
+      <th>Wrong</th>
+      <th>Score</th>
+    </tr>
+    <tr>
+      <td><%= totalQuestions %></td>
+      <td><%= attempted %></td>
+      <td class="correct"><%= correct %></td>
+      <td class="wrong"><%= wrong %></td>
+      <td><%= score %></td>
+    </tr>
+  </table>
+
+  <h2>Question Review</h2>
+
+  <% questions.forEach((q, idx) => { 
+       const userAns = userAnswers[q._id];
+  %>
+    <div class="question-box">
+      <p><strong>Q<%= idx+1 %>:</strong> <%= q.question %></p>
+      <ul class="question-options">
+        <% ['opt1','opt2','opt3','opt4'].forEach((optKey, i) => { 
+             const optionNum = i + 1;
+             let cls = '';
+             if (userAns) {
+               cls = (userAns == optionNum && optionNum == q.answer) ? 'correct' 
+                   : (userAns == optionNum && optionNum != q.answer) ? 'wrong' : '';
+             } else {
+               cls = '';
+             }
+             if (!userAns) cls = 'unattempted';
+        %>
+          <li class="<%= cls %>">
+            <strong><%= String.fromCharCode(65+i) %>.</strong> <%= q[optKey] %>
+          </li>
+        <% }) %>
+      </ul>
+      <p>Correct Answer: <strong><%= ['A','B','C','D'][q.answer-1] %></strong></p>
+      <% if(!userAns){ %>
+        <p class="unattempted">You did not attempt this question.</p>
+      <% } %>
+    </div>
+  <% }) %>
+
+</div>
+
+</body>
+</html>

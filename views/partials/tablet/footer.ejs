@@ -1,0 +1,51 @@
+<footer class="site-footer">
+   <!-- Include desktopStyles.css -->
+  <link rel="stylesheet" href="/css/desktopStyles.css">
+  <div class="footer-container">
+    <p>
+      &copy; <%= new Date().getFullYear() %> BioBrain. All rights reserved.
+    </p>
+    <ul class="footer-links">
+      <li><a href="/disclaimer">Disclaimer</a></li>
+      <li><a href="/privacy">Privacy Policy</a></li>
+      <li><a href="/terms">Terms & Conditions</a></li>
+    </ul>
+  </div>
+</footer>
+
+<style>
+.site-footer {
+  background-color: #1B5E20;
+  color: #fff;
+  padding: 20px 40px;
+  text-align: center;
+  font-size: 14px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.site-footer a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: 0.3s ease;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+  color: #c8e6c9;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 5px 0 0 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin: 0 10px;
+}
+</style>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BioBrain - Prepare Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/desktopStyle.css">
+    <style>
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .full-card {
+            width: 100%;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .card-row {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .half-card {
+            flex: 1;
+            min-width: 300px;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        /* Table responsiveness */
+        .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-top: 10px;
+        }
+
+        table {
+            width: 100%;
+            min-width: 900px;
+            /* ensures all columns visible */
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            border: 1px solid #ccc;
+            text-align: center;
+            white-space: nowrap;
+            /* prevents wrapping */
+        }
+
+        /* Pagination */
+        .pagination {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .pagination a {
+            margin: 0 5px;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            text-decoration: none;
+        }
+
+        .pagination a.active {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <%- include('../../partials/desktop/header') %>
+
+        <!-- Hero Section -->
+        <section class="section">
+            <div class="card-container" style="display:flex; flex-direction:column; gap:20px;">
+
+                <!-- Full-width card for past quiz performance -->
+                <div class="card full-card">
+                    <h4>📊 Your Last 50 Quiz Performances</h4>
+
+                    <% if (quizResults && quizResults.length> 0) { %>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th>Exam Date</th> <!-- NEW COLUMN -->
+                                        <th>Exam</th>
+                                        <th>Subject</th>
+                                        <th>Difficulty</th>
+                                        <th>No. of Questions</th>
+                                        <th>Attempted</th>
+                                        <th>Right</th>
+                                        <th>Wrong</th>
+                                        <th>Accuracy (%)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% quizResults.forEach((q, index)=> { %>
+                                        <tr>
+                                            <td>
+                                                <%= index + 1 + (currentPage - 1) * 10 %>
+                                            </td>
+                                            <td>
+                                                <%= new Date(q.createdAt).toLocaleDateString() %>
+                                            </td> <!-- Exam Date -->
+                                            <td>
+                                                <%= q.exam %>
+                                            </td>
+                                            <td>
+                                                <%= q.subject %>
+                                            </td>
+                                            <td>
+                                                <%= q.difficulty %>
+                                            </td>
+                                            <td>
+                                                <%= q.noq %>
+                                            </td>
+                                            <td>
+                                                <%= q.attempted %>
+                                            </td>
+                                            <td>
+                                                <%= q.right %>
+                                            </td>
+                                            <td>
+                                                <%= q.wrong %>
+                                            </td>
+                                            <td>
+                                                <%= q.accuracy %>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Pagination -->
+                        <div class="pagination">
+                            <% if (currentPage> 1) { %>
+                                <a href="?page=<%= currentPage - 1 %>">&laquo; Previous</a>
+                                <% } %>
+                                    <% for(let i=1; i <=totalPages; i++) { %>
+                                        <a href="?page=<%= i %>" class="<%= currentPage === i ? 'active' : '' %>">
+                                            <%= i %>
+                                        </a>
+                                        <% } %>
+                                            <% if (currentPage < totalPages) { %>
+                                                <a href="?page=<%= currentPage + 1 %>">Next &raquo;</a>
+                                                <% } %>
+                        </div>
+
+                        <% } else { %>
+                            <p>No quiz attempts found.</p>
+                            <% } %>
+                </div>
+                <!-- Row for two smaller cards -->
+                <div class="card-row" style="display:flex; gap:20px; flex-wrap:wrap;">
+
+                    <!-- Quiz Configuration -->
+                    <div class="card half-card">
+                        <h4>⚙ Configure Your Quiz</h4>
+                        <form action="/create-order" method="POST">
+                            <input type="hidden" name="exam" value="<%= exam %>">
+                            <input type="hidden" name="subject" value="<%= subject %>">
+
+                            <label>No. of Questions</label>
+                            <select name="count" required>
+                                <option value="10">10 Questions</option>
+                                <option value="20" selected>20 Questions</option>
+                                <option value="30">30 Questions</option>
+                            </select>
+
+                            <br><br>
+
+                            <label>Difficulty Level</label>
+                            <select name="difficulty" required>
+                                <option value="easy">Easy</option>
+                                <option value="medium">Medium</option>
+                                <option value="hard" selected>Hard</option>
+                            </select>
+
+                            <br><br>
+                            <button type="submit" class="btn-primary">Proceed to Payment</button>
+                        </form>
+                    </div>
+
+                    <!-- Placeholder for future feature -->
+                    <div class="card half-card">
+                        <h4>🔮 Dashboard</h4>
+                        <p>Coming soon...</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <%- include('../../partials/desktop/footer') %>
+
+</body>
+</html>

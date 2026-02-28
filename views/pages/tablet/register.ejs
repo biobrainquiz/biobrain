@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BioBrain - Register</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <%- include('../../partials/desktop/header') %>
+
+    <div class="register-container">
+      <h2>Sign Up</h2>
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" />
+      <input type="password" id="confirmPassword" placeholder="Confirm Password" />
+      <input type="text" id="mobile" placeholder="Mobile Number" />
+      <input type="email" id="email" placeholder="Email" />
+
+
+      <button class="btn-register" id="registerBtn">Register</button>
+
+      <div class="message" id="msg"></div>
+
+      <div class="links">
+        <a href="/login">Already have an account? Login</a>
+        <a href="/forgot">Forgot Password</a>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById('registerBtn').addEventListener('click', async () => {
+        const username = document.getElementById('username').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const mobile = document.getElementById('mobile').value.trim();
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        const msg = document.getElementById('msg');
+        msg.innerText = '';
+        msg.className = 'message';
+
+        // Basic validation
+        if (!username || !email || !mobile || !password || !confirmPassword) {
+          msg.innerText = 'All fields are required!';
+          msg.classList.add('error');
+          return;
+        }
+        // Send registration request to backend
+        try {
+          const res = await fetch('/api/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password, confirmPassword, mobile, email })
+          });
+          const data = await res.json();
+          if (data.success) {
+            msg.innerText = data.message || 'Registration successful!';
+            msg.classList.add('success');
+            setTimeout(() => { window.location.href = '/login'; }, 2000);
+          }
+          else {
+            msg.innerText = data.message || 'Registration failed!';
+            msg.classList.add('error');
+          }
+        }
+        catch (e) {
+          msg.innerText = 'Server error!';
+          msg.classList.add('error');
+        }
+      });
+    </script>
+    <%- include('../../partials/desktop/footer') %>
+</body>
+
+</html>

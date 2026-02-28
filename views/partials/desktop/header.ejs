@@ -1,0 +1,62 @@
+<header>
+  <link rel="stylesheet" href="/css/desktopStyle.css" />
+  <div class="navbar">
+    <img src="/images/biobrain-logo1.png" alt="BioBrain Quiz Logo" id="logo">
+
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/quiz">Quizzes</a></li>
+      <li><a href="/leaderboard">Leaderboard</a></li>
+      <li><a href="/about">About</a></li>
+
+      <% if (session && session.user) { %>
+        <li class="nav-user">
+          <div class="user-menu">
+
+            <div class="user-trigger">
+              <div class="user-avatar">
+                <%= session.user.username.charAt(0).toUpperCase() %>
+              </div>
+              <span class="arrow">&#9662;</span>
+            </div>
+
+            <div class="dropdown">
+              <div class="dropdown-header">
+                <div class="dropdown-avatar">
+                  <%= session.user.username.charAt(0).toUpperCase() %>
+                </div>
+                <div class="dropdown-user-info">
+                  <div class="dropdown-username">
+                    <%= session.user.username %>
+                  </div>
+                  <div class="dropdown-email">
+                    <%= session.user.email %>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dropdown-divider"></div>
+
+              <a href="/profile" class="dropdown-item">
+                👤 Profile
+              </a>
+
+              <a href="/logout" class="dropdown-item logout">
+                🚪 Logout
+              </a>
+            </div>
+
+          </div>
+        </li>
+      <% } else { %>
+        <!-- Make Login link look like a button -->
+        <li>
+          <a href="/login" class="btn-navbar">Login</a>
+        </li>
+      <% } %>
+
+    </ul>
+  </div>
+</header>
+
+<script src="/js/navibar.js"></script>

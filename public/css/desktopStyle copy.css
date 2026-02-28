@@ -1,0 +1,643 @@
+/* =========================================
+   GLOBAL RESET AND FONTS
+========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #F7F9FC;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================
+   NAVBAR
+========================================= */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  background-color: #1B5E20;
+  height: 60px;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  overflow: visible !important;
+}
+
+#logo {
+  height: 90px;
+  width: 190px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  align-items: center;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #00ACC1;
+}
+
+/* Navbar buttons */
+.btn-navbar {
+  padding: 8px 18px;
+  background: #00ACC1;
+  border-radius: 25px;
+  color: white;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-navbar:hover {
+  background: #028394;
+}
+
+/* User dropdown */
+.nav-user {
+  margin-left: auto;
+  list-style: none;
+}
+
+.user-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.user-trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.user-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1B5E20, #43A047);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  font-weight: 600;
+  transition: transform 0.2s ease;
+}
+
+.user-avatar:hover {
+  transform: scale(1.05);
+}
+
+.arrow {
+  font-size: 12px;
+  transition: transform 0.3s ease;
+}
+
+.user-menu.active .arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 60px;
+  width: 260px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+  padding: 18px;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.92) translateY(12px);
+  transition: all 0.28s ease;
+  z-index: 1000;
+}
+
+.user-menu.active .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1) translateY(0);
+}
+
+.dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dropdown-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1B5E20, #43A047);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.dropdown-user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-username {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.dropdown-email {
+  font-size: 12px;
+  opacity: 0.75;
+  word-break: break-word;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.1);
+  margin: 15px 0;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 14px;
+  color: #333;
+  transition: background 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.logout {
+  color: #d32f2f;
+}
+
+.logout:hover {
+  background: rgba(255, 0, 0, 0.1);
+}
+
+/* =========================================
+   HERO SECTION
+========================================= */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 20px;
+  background: linear-gradient(to right, #4CAF50, #00ACC1);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('/images/dna-pattern.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.08; 
+  z-index: 0;
+}
+
+.hero h2, .hero p, .hero button { 
+  position: relative; 
+  z-index: 1; 
+}
+
+.hero h2 { font-size: 48px; margin-bottom: 20px; line-height: 1.2; }
+.hero p { font-size: 20px; margin-bottom: 30px; max-width: 600px; }
+
+.btn-primary, .btn-secondary {
+  padding: 14px 30px;
+  margin: 8px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+}
+
+.btn-primary {
+  background-color: white;
+  color: #1B5E20;
+}
+.btn-primary:hover { opacity: 0.85; }
+
+.btn-secondary {
+  background-color: #212121;
+  color: white;
+}
+.btn-secondary:hover { opacity: 0.85; }
+
+/* =========================================
+   QUIZ CARDS & FEATURES
+========================================= */
+.section {
+  padding: 80px 60px;
+  text-align: center;
+}
+.section h3 {
+  font-size: 36px;
+  margin-bottom: 50px;
+  color: #1B5E20;
+}
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+}
+.card {
+  background: linear-gradient(145deg, #ffffff, #f1f5f9);
+  padding: 35px 20px;
+  border-radius: 20px;
+  box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.card::after {
+  content: "";
+  position: absolute;
+  width: 120%; height: 120%;
+  background-image: url('/images/molucule-structure.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.05;
+  top: -10%;
+  left: -10%;
+}
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 35px rgba(0,0,0,0.15);
+}
+.card h4, .card p, .card button { position: relative; z-index: 1; }
+.card h4 { font-size: 22px; margin-bottom: 15px; }
+.card p { font-size: 16px; color: #555; line-height: 1.6; }
+.card button {
+  margin-top: 20px;
+  padding: 10px 25px;
+  border: none;
+  background-color: #1B5E20;
+  color: white;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.card button:hover { background-color: #4CAF50; }
+
+/* Features */
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+.feature-box {
+  flex: 1 1 200px;
+  background: white;
+  padding: 25px 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  font-weight: 500;
+  font-size: 16px;
+  transition: transform 0.3s;
+}
+.feature-box:hover { transform: translateY(-5px); }
+
+/* =========================================
+   LEADERBOARD
+========================================= */
+.leaderboard {
+  background-color: #00ACC1;
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+.leaderboard h3 { font-size: 36px; margin-bottom: 30px; }
+.leaderboard ul { list-style: none; max-width: 500px; margin: auto; }
+.leaderboard li {
+  font-size: 18px;
+  margin: 10px 0;
+  padding: 12px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+  transition: background 0.3s;
+}
+.leaderboard li:hover { background: rgba(255,255,255,0.25); }
+
+/* =========================================
+   LOGIN / REGISTER / FORGOT PASSWORD
+========================================= */
+.login-container, .register-container, .forgot-container {
+  max-width: 500px;
+  margin: 80px auto;
+  padding: 50px 30px;
+  background: linear-gradient(145deg, #ffffff, #f1f5f9);
+  border-radius: 20px;
+  box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+  text-align: center;
+  position: relative;
+}
+.login-container h2,
+.register-container h2,
+.forgot-container h2 { font-size: 32px; color: #1B5E20; margin-bottom: 30px; }
+
+.login-container input,
+.register-container input,
+.forgot-container input { width: 100%; padding: 14px 18px; margin-bottom: 20px; border-radius: 25px; border:1px solid #ccc; font-size:16px; outline:none; transition:0.3s;}
+.login-container input:focus,
+.register-container input:focus,
+.forgot-container input:focus { border-color:#00ACC1; box-shadow:0 0 8px rgba(0,172,193,0.3); }
+
+#loginBtn {
+  width: 100%;
+  padding: 14px 0;
+  border: none;
+  border-radius: 30px;
+  background: #00ACC1;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#loginBtn:hover { background:#028394; }
+
+.btn-register, .btn-submit {
+  width: 100%;
+  padding: 14px 0;
+  border: none;
+  border-radius: 30px;
+  background: #00ACC1;
+  color:white;
+  font-weight:600;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.3s;
+}
+.btn-register:hover, .btn-submit:hover { background:#028394; }
+
+.links { margin-top:20px; display:flex; justify-content:space-around; font-size:14px; }
+.links a { color:#00ACC1; text-decoration:none; transition:0.3s; }
+.links a:hover { color:#028394; }
+.error { color:red; }
+.success { color:green; }
+
+/* CAPTCHA */
+.captcha-container { display:flex; align-items:center; justify-content:space-between; margin:12px 0; }
+.captcha { font-size:20px; font-weight:bold; letter-spacing:5px; padding:8px 15px; border-radius:8px; background:#f0f0f0; flex:1; text-align:center; user-select:none;}
+#refreshCaptcha { margin-left:10px; padding:5px 10px; border-radius:5px; border:none; background:#00ACC1; color:white; cursor:pointer; transition:0.3s; }
+#refreshCaptcha:hover { background:#028394; }
+
+/* =========================================
+   ABOUT PAGE
+========================================= */
+.about-hero {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:120px 20px;
+  background:linear-gradient(to right,#4CAF50,#00ACC1);
+  color:white;
+  position:relative;
+  overflow:hidden;
+}
+.about-hero::after {
+  content:"";
+  position:absolute;
+  top:0; left:0; right:0; bottom:0;
+  background-image: url('/images/dna-pattern.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.08;
+  z-index:0;
+}
+.about-hero h1 { font-size:48px; font-weight:700; margin-bottom:20px; z-index:1; }
+.about-text, .mission-text { font-size:18px; line-height:1.8; max-width:850px; margin:0 auto; position:relative; z-index:1; text-align:center; font-weight:500; }
+.about-text span, .mission-text span { background: linear-gradient(90deg,#FDD835,#FF5722); -webkit-background-clip:text; -webkit-text-fill-color:transparent; font-weight:600; }
+.about-text strong, .mission-text strong { font-weight:700; color:#1B5E20; }
+.about-text em, .mission-text em { font-style:normal; font-weight:600; color:#00ACC1; }
+.about-cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px; }
+.about-card { background:#ffffff; padding:30px 20px; border-radius:20px; box-shadow:0 15px 25px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; text-align:left; position:relative; overflow:hidden; }
+.about-card::after { content:""; position:absolute; width:120%; height:120%; background-image:url('/images/molucule-structure.png'); background-size:cover; background-position:center; opacity:0.05; top:-10%; left:-10%; }
+.about-card:hover { transform:translateY(-10px); box-shadow:0 25px 35px rgba(0,0,0,0.15); }
+.about-card h3 { font-size:22px; margin-bottom:15px; color:#1B5E20; position:relative; z-index:1; }
+.about-card p { font-size:16px; color:#555; line-height:1.6; position:relative; z-index:1; }
+
+/* =========================================
+   CTA SECTION
+========================================= */
+.cta-section { background:#00ACC1; color:white; padding:80px 20px; text-align:center; }
+.cta-section h2 { font-size:36px; margin-bottom:20px; }
+.cta-section button { padding:14px 30px; border:none; border-radius:30px; background:white; color:#1B5E20; font-weight:600; cursor:pointer; transition:0.3s; }
+.cta-section button:hover { background:#f0f0f0; }
+
+/* =========================================
+   DISCLAIMER PAGE
+========================================= */
+.disclaimer-container {
+  max-width: 900px;
+  margin: 80px auto 40px auto;
+  padding: 40px;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity:0; transform: translateY(20px); }
+  to { opacity:1; transform: translateY(0); }
+}
+
+.disclaimer-container h1 { text-align:center; font-size:40px; color:#1B5E20; margin-bottom:20px; }
+.disclaimer-container p,
+.disclaimer-container ul { font-size:16px; line-height:1.6; color:#333; margin-bottom:15px; }
+.disclaimer-container ul { margin-left:20px; }
+.btn-home {
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 24px;
+  background:#1B5E20;
+  color:#fff;
+  text-decoration:none;
+  border-radius:10px;
+  transition:0.3s ease;
+  font-weight:500;
+}
+.btn-home:hover {
+  background:#144d17;
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+footer { background-color:#1B5E20; color:white; text-align:center; padding:25px; margin-top:auto; }
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+@media(max-width: 768px){
+  .hero h2 { font-size:32px; }
+  .section { padding:60px 20px; }
+  .card-container { grid-template-columns:1fr; gap:20px; }
+  .about-cards { grid-template-columns:1fr; gap:20px; }
+}
+
+/* =========================================
+   DARK MODE
+========================================= */
+@media (prefers-color-scheme: dark) {
+  body { background: linear-gradient(135deg,#0f2027,#203a43,#2c5364); color:#ddd; }
+  .login-container, .register-container, .forgot-container { background: rgba(0,0,0,0.6); color:#ddd; }
+  p, ul { color:#ddd; }
+  .disclaimer-container { background: rgba(0,0,0,0.6); color:#ddd; }
+}
+
+
+
+/* =============================
+   Footer - Professional & Social
+============================= */
+/* =============================
+   Compact Footer
+============================= */
+
+.site-footer {
+  background-color: #1B5E20;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  font-size: 14px;
+}
+
+/* Top bar: social + copyright */
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 40px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-left span {
+  font-weight: 500;
+}
+
+.footer-left a {
+  color: #fff;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 6px;
+  transition: all 0.3s;
+}
+
+.footer-left a:hover {
+  background: #00ACC1;
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.footer-right {
+  text-align: right;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* Bottom bar: legal links */
+.footer-bottom {
+  padding: 8px 40px;
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-links li a:hover {
+  color: #00ACC1;
+  text-decoration: none;
+}
+
+/* Responsive Footer */
+@media(max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .footer-right {
+    text-align: left;
+  }
+
+  .footer-bottom {
+    justify-content: flex-start;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}

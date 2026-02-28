@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | BioBrain</title>
+  <link rel="stylesheet" href="/css/desktopStyle.css" />
+  <style>
+    /* Collapsible sections */
+    .collapsible {
+      background-color: #e8f5e9;
+      color: #1B5E20;
+      cursor: pointer;
+      padding: 15px 20px;
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      text-align: left;
+      outline: none;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      transition: background 0.3s;
+    }
+
+    .collapsible:hover {
+      background-color: #dcedc8;
+    }
+
+    .collapsible:after {
+      content: '\25BC'; /* Down arrow */
+      float: right;
+      transition: transform 0.3s;
+    }
+
+    .collapsible.active:after {
+      transform: rotate(180deg); /* Rotate arrow when open */
+    }
+
+    .content {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background-color: rgba(255,255,255,0.6);
+      border-radius: 0 0 10px 10px;
+      margin-bottom: 15px;
+    }
+
+    .content p, .content ul {
+      margin: 15px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <%- include('../../partials/desktop/header') %>
+
+  <div class="disclaimer-container">
+    <h1>Privacy Policy</h1>
+
+    <!-- Collapsible Section Example -->
+    <button class="collapsible">Introduction</button>
+    <div class="content">
+      <p>At <strong>BioBrain</strong>, we are committed to protecting your personal information and privacy. This Privacy Policy explains the types of information we collect, how we use it, how we share it, and how we protect it when you access or use our platform.</p>
+    </div>
+
+    <button class="collapsible">1. Information We Collect</button>
+    <div class="content">
+      <p>We may collect personal information that you voluntarily provide when you register, participate in quizzes, or contact support. This may include:</p>
+      <ul>
+        <li>Full name</li>
+        <li>Email address</li>
+        <li>Mobile number</li>
+        <li>Quiz results and activity data</li>
+      </ul>
+    </div>
+
+    <button class="collapsible">2. How We Use Your Information</button>
+    <div class="content">
+      <p>We use your information for purposes such as:</p>
+      <ul>
+        <li>Account creation and authentication</li>
+        <li>Delivering quizzes and tracking progress</li>
+        <li>Communicating important updates</li>
+        <li>Improving the user experience and platform features</li>
+      </ul>
+    </div>
+
+    <button class="collapsible">3. How Information Is Shared</button>
+    <div class="content">
+      <p>We do not sell or rent your personal data to third parties for marketing purposes. We may share information:</p>
+      <ul>
+        <li>With trusted service providers who help operate our site</li>
+        <li>To comply with legal requirements</li>
+        <li>With your consent or at your direction</li>
+      </ul>
+    </div>
+
+    <button class="collapsible">4. Cookies & Tracking</button>
+    <div class="content">
+      <p>We and third-party partners may use cookies and similar technologies to collect information about how the platform is used. This helps us personalize content and analyze usage trends.</p>
+    </div>
+
+    <button class="collapsible">5. Data Security</button>
+    <div class="content">
+      <p>We implement reasonable administrative and technical safeguards to protect your information against unauthorized access, alteration, or disclosure. However, no security system is completely impenetrable.</p>
+    </div>
+
+    <button class="collapsible">6. Access & Control</button>
+    <div class="content">
+      <p>You can access, update, or delete your account information by logging into your profile settings or contacting us.</p>
+    </div>
+
+    <button class="collapsible">7. Policy Changes</button>
+    <div class="content">
+      <p>We may update this Privacy Policy from time to time. Any changes will be posted here with a revised effective date.</p>
+    </div>
+
+    <button class="collapsible">8. Contact Information</button>
+    <div class="content">
+      <p>If you have questions or concerns about this policy, please contact us at <strong>support@biobrain.com</strong>.</p>
+    </div>
+
+    <a href="/" class="btn-home">Back to Home</a>
+  </div>
+
+  <%- include('../../partials/desktop/footer') %>
+
+  <script>
+    // Collapsible script
+    const collapsibles = document.querySelectorAll(".collapsible");
+    collapsibles.forEach(btn => {
+      btn.addEventListener("click", () => {
+        btn.classList.toggle("active");
+        const content = btn.nextElementSibling;
+        if (btn.classList.contains("active")) {
+          content.style.maxHeight = content.scrollHeight + "px";
+        } else {
+          content.style.maxHeight = null;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

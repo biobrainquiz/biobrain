@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BioBrain - Forgot Password</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <%- include('../../partials/desktop/header') %>
+
+    <div class="forgot-container">
+      <h2>Forgot Password</h2>
+      <input type="text" id="userInput" placeholder="Email" />
+
+      <button class="btn-submit" id="submitBtn">Send Reset Link</button>
+
+      <div class="message" id="msg"></div>
+
+      <div class="links">
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById('submitBtn').addEventListener('click', async () => {
+        const userInput = document.getElementById('userInput').value.trim();
+        const msg = document.getElementById('msg');
+        msg.innerText = '';
+        msg.className = 'message';
+
+        if (!userInput) {
+          msg.innerText = 'Please enter your Email !';
+          msg.classList.add('error');
+          return;
+        }
+        try {
+          const res = await fetch('/api/forgot', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: userInput })
+          });
+          const data = await res.json();
+          if (data.success) {
+            msg.innerText = data.message || 'Reset link sent successfully!';
+            msg.classList.add('success');
+          } else {
+            msg.innerText = data.message || 'User not found!';
+            msg.classList.add('error');
+          }
+        } catch (e) {
+          msg.innerText = 'Server error!';
+          msg.classList.add('error');
+        }
+      });
+    </script>
+
+    <%- include('../../partials/desktop/footer') %>
+</body>
+
+</html>

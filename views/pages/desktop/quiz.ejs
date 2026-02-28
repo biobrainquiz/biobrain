@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>BioBrain - Examination Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f6f9;
+    }
+
+    header {
+      background: #1B5E20;
+      color: white;
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .container {
+      display: flex;
+      height: calc(100vh - 60px);
+    }
+
+    .left-panel {
+      flex: 3;
+      padding: 30px;
+      background: white;
+      overflow-y: auto;
+    }
+
+    .right-panel {
+      flex: 1;
+      background: #eef1f4;
+      padding: 20px;
+      border-left: 2px solid #ddd;
+    }
+
+    .question-box {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    /* OPTIONS */
+    .option {
+      margin-bottom: 15px;
+    }
+
+    .option input[type="radio"] {
+      display: none;
+    }
+
+    .option label {
+      display: block;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .option input[type="radio"]:checked+label {
+      background: #1B5E20;
+      color: white;
+      border-color: #1B5E20;
+    }
+
+    .option label:hover {
+      background: #e8f5e9;
+    }
+
+    /* BUTTONS */
+    .actions {
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .save-btn {
+      background: #1976D2;
+      color: white;
+    }
+
+    .review-btn {
+      background: orange;
+      color: white;
+    }
+
+    .submit-btn {
+      background: #d32f2f;
+      color: white;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    /* PALETTE */
+    .palette {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+    }
+
+    .palette button {
+      padding: 10px;
+      font-weight: bold;
+      border-radius: 4px;
+      border: none;
+    }
+
+    .not-visited {
+      background: #ccc;
+    }
+
+    .answered {
+      background: #1B5E20;
+      color: white;
+    }
+
+    .review {
+      background: orange;
+      color: white;
+    }
+
+    .timer {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div>
+      Hello, <%= user.username %> 👋 | BioBrain - Examination Portal on
+        <%= exam.toUpperCase() %>
+          <%= subject.charAt(0).toUpperCase() + subject.slice(1) %>
+            • <%= count %> Questions
+              • <%= difficulty.charAt(0).toUpperCase() + difficulty.slice(1) %> Level
+    </div>
+
+    <!--  BioBrain - Examination Portal on [[EXAM]] [[SUBJECT]] for [[NO.OF QUESTIONS]] [[DIFFICULY]]-->
+    <div>Time Left: <span id="timer">00:00</span></div>
+  </header>
+
+  <div class="container">
+
+    <div class="left-panel">
+      <div class="question-box" id="questionText"></div>
+      <div id="optionsBox"></div>
+
+      <div class="actions">
+        <button class="save-btn" id="saveBtn">Save & Next</button>
+        <button class="review-btn" id="reviewBtn">Mark for Review</button>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <div class="timer">Question Palette</div>
+      <div class="palette" id="palette"></div>
+      <button class="submit-btn" id="submitBtn">Submit Quiz</button>
+    </div>
+
+  </div>
+
+  <script id="questionsData" type="application/json">
+  <%- JSON.stringify(questions) %>
+</script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+      //const questions = <% JSON.stringify(questions) %>;
+
+      const questions = JSON.parse(document.getElementById("questionsData").textContent);
+      if (!questions || questions.length === 0) {
+        alert("No questions available.");
+        return;
+      }
+
+      let currentIndex = 0;
+      let answers = {};
+      let reviewMarked = {};
+      let timeRemaining = questions.length * 60;
+
+      const questionText = document.getElementById("questionText");
+      const optionsBox = document.getElementById("optionsBox");
+      const palette = document.getElementById("palette");
+      const timerDisplay = document.getElementById("timer");
+
+      /* ================= LOAD QUESTION ================= */
+      function loadQuestion(index) {
+        const q = questions[index];
+
+        questionText.innerText = "Q" + (index + 1) + ". " + q.question;
+        optionsBox.innerHTML = "";
+
+        const options = [q.opt1, q.opt2, q.opt3, q.opt4];
+
+        options.forEach((opt, i) => {
+          const div = document.createElement("div");
+          div.className = "option";
+
+          div.innerHTML = `
+        <input type="radio" name="option" id="opt${i}" value="${i + 1}"
+          ${answers[q._id] == (i + 1) ? "checked" : ""}>
+        <label for="opt${i}">
+          ${String.fromCharCode(65 + i)}. ${opt}
+        </label>
+      `;
+
+          optionsBox.appendChild(div);
+        });
+      }
+
+      /* ================= SAVE & NEXT ================= */
+      function saveAndNext() {
+        const selected = document.querySelector('input[name="option"]:checked');
+
+        if (selected) {
+          answers[questions[currentIndex]._id] = parseInt(selected.value);
+          updatePalette(currentIndex, "answered");
+        }
+
+        if (currentIndex < questions.length - 1) {
+          currentIndex++;
+          loadQuestion(currentIndex);
+        }
+      }
+
+      /* ================= MARK FOR REVIEW ================= */
+      function markForReview() {
+        reviewMarked[currentIndex] = true;
+        updatePalette(currentIndex, "review");
+
+        if (currentIndex < questions.length - 1) {
+          currentIndex++;
+          loadQuestion(currentIndex);
+        }
+      }
+
+      /* ================= PALETTE ================= */
+      function generatePalette() {
+        questions.forEach((q, index) => {
+          const btn = document.createElement("button");
+          btn.innerText = index + 1;
+          btn.className = "not-visited";
+
+          btn.addEventListener("click", function () {
+            currentIndex = index;
+            loadQuestion(index);
+          });
+
+          palette.appendChild(btn);
+        });
+      }
+
+      function updatePalette(index, status) {
+        palette.children[index].className = status;
+      }
+
+      /* ================= TIMER ================= */
+      function startTimer() {
+        const interval = setInterval(() => {
+
+          if (timeRemaining <= 0) {
+            clearInterval(interval);
+            submitQuiz();
+            return;
+          }
+
+          const minutes = Math.floor(timeRemaining / 60);
+          const seconds = timeRemaining % 60;
+
+          timerDisplay.innerText =
+            String(minutes).padStart(2, "0") + ":" +
+            String(seconds).padStart(2, "0");
+
+          timeRemaining--;
+
+        }, 1000);
+      }
+
+
+      async function submitQuiz() {
+        try {
+          // Send answers to server
+          const response = await fetch("/api/quiz/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              answers,
+              questions,
+              exam: "<%= exam %>",
+              subject: "<%= subject %>",
+              difficulty:"<%=  difficulty%>"
+            }) // send answers + questions
+          });
+
+          // Get the rendered HTML from server
+          const html = await response.text();
+
+          // Replace current page with results
+          document.open();
+          document.write(html);
+          document.close();
+
+        } catch (err) {
+          console.error(err);
+          alert("Submission failed.");
+        }
+      }
+
+      /* ================= EVENT LISTENERS ================= */
+      document.getElementById("saveBtn").addEventListener("click", saveAndNext);
+      document.getElementById("reviewBtn").addEventListener("click", markForReview);
+      document.getElementById("submitBtn").addEventListener("click", submitQuiz);
+
+      /* ================= INIT ================= */
+      generatePalette();
+      loadQuestion(0);
+      startTimer();
+
+    });
+  </script>
+
+</body>
+
+</html>

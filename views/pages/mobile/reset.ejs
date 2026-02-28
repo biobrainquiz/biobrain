@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>BioBrain - Reset Password</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+  <!-- Header -->
+  <%- include('../../partials/desktop/header') %>
+
+    <div class="login-container">
+      <h2>Reset Password</h2>
+
+      <input type="password" id="newPassword" placeholder="New Password">
+      <input type="password" id="confirmPassword" placeholder="Confirm Password">
+
+      <button class="btn-register" id="resetBtn">Reset Password</button>
+
+      <div class="error" id="errorMsg"></div>
+      <div class="success" id="successMsg"></div>
+
+      <!--<div class="links">
+        <a href="/login">Login</a>
+      </div>-->
+    </div>
+
+    <script>
+      const token = "<%= token %>";
+
+      document.getElementById("resetBtn").addEventListener("click", async () => {
+
+        const newPassword = document.getElementById("newPassword").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+
+        const errorMsg = document.getElementById("errorMsg");
+        const successMsg = document.getElementById("successMsg");
+
+        errorMsg.innerText = "";
+        successMsg.innerText = "";
+
+        if (!newPassword || !confirmPassword) {
+          errorMsg.innerText = "All fields are required!";
+          return;
+        }
+
+        if (newPassword !== confirmPassword) {
+          errorMsg.innerText = "Passwords do not match!";
+          return;
+        }
+
+        try {
+          const res = await fetch(`/reset/${token}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ newPassword })
+          });
+
+          const data = await res.json();
+
+          if (data.success) {
+            successMsg.innerText = "Password reset successful!";
+            setTimeout(() => {
+              window.location.href = "/login";
+            }, 2000);
+          } else {
+            errorMsg.innerText = data.message;
+          }
+
+        } catch (err) {
+          errorMsg.innerText = "Server error!";
+        }
+
+      });
+    </script>
+
+    <!-- Footer -->
+    <%- include('../../partials/desktop/footer') %>
+
+</body>
+
+</html>
