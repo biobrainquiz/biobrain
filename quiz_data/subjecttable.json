@@ -5,28 +5,18 @@
     "subjectname": "Zoology"
   },
   {
-    "examcode": "E1",
-    "subjectcode": "S2",
-    "subjectname": "Botany"
-  },
-  {
     "examcode": "E2",
     "subjectcode": "S1",
-    "subjectname": "Physics"
-  },
-  {
-    "examcode": "E2",
-    "subjectcode": "S2",
-    "subjectname": "Chemistry"
-  },
-  {
-    "examcode": "E3",
-    "subjectcode": "S1",
-    "subjectname": "Mathematics"
+    "subjectname": "Zoology"
   },
   {
     "examcode": "E3",
     "subjectcode": "S2",
-    "subjectname": "Computer Science"
+    "subjectname": "Life Sciences"
+  },
+  {
+    "examcode": "E4",
+    "subjectcode": "S1",
+    "subjectname": "Zoology"
   }
 ]

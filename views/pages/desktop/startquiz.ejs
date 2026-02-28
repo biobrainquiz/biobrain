@@ -1,75 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>BioBrain - Prepare Quiz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/desktopStyle.css">
+
     <style>
-        .card-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+        body {
+            background: #f4f6f9;
+            font-family: Arial, sans-serif;
         }
 
-        .full-card {
-            width: 100%;
-            padding: 15px;
-            box-sizing: border-box;
+        .section {
+            padding: 30px 40px;
+        }
+
+        /* ===== CARD ===== */
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            padding: 25px;
+            margin-bottom: 25px;
+
+        }
+
+        .card h4 {
+            margin-bottom: 18px;
+            color: #2c3e50;
         }
 
         .card-row {
             display: flex;
-            gap: 20px;
+            gap: 25px;
             flex-wrap: wrap;
         }
 
         .half-card {
             flex: 1;
-            min-width: 300px;
-            padding: 15px;
-            box-sizing: border-box;
+            min-width: 350px;
         }
 
-        /* Table responsiveness */
+        /* ===== TABLE ===== */
         .table-container {
             overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            margin-top: 10px;
         }
 
         table {
             width: 100%;
-            min-width: 900px;
-            /* ensures all columns visible */
+            min-width: 950px;
             border-collapse: collapse;
+            font-size: 14px;
         }
 
-        th,
-        td {
-            padding: 8px;
-            border: 1px solid #ccc;
-            text-align: center;
-            white-space: nowrap;
-            /* prevents wrapping */
-        }
-
-        /* Pagination */
-        .pagination {
-            margin-top: 10px;
-            text-align: center;
-        }
-
-        .pagination a {
-            margin: 0 5px;
-            padding: 5px 10px;
-            border: 1px solid #ccc;
-            text-decoration: none;
-        }
-
-        .pagination a.active {
-            background-color: #007bff;
+        th {
+            background: #2c3e50;
             color: white;
+            padding: 10px;
+        }
+
+        td {
+            padding: 9px;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+        }
+
+        tr:hover {
+            background: #f9fbfd;
+        }
+
+        .badge-green,
+        .badge-red {
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .badge-green {
+            background: #e6f9f0;
+            color: #1e8449;
+        }
+
+        .badge-red {
+            background: #fdecea;
+            color: #c0392b;
+        }
+
+        /* ===== FORM ===== */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #007bff, #004aad);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .btn-primary:hover {
+            opacity: .9;
+        }
+
+        /* ===== INLINE SELECT ROW ===== */
+        .inline-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .inline-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .inline-group select {
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .inline-row {
+                flex-direction: column;
+            }
+        }
+
+        /* ===== CUSTOM DROPDOWN ===== */
+        .custom-dropdown {
+            position: relative;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .custom-dropdown.disabled .dropdown-selected {
+            background: #f2f2f2;
+            cursor: not-allowed;
+        }
+
+        .dropdown-selected,
+        .dropdown-search,
+        .dropdown-option {
+            text-align: left;
+            font-size: 13px;
+        }
+
+
+        .dropdown-selected {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            background: #fff;
+            transition: .2s;
+        }
+
+        .dropdown-selected:hover {
+            border-color: #007bff;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            width: 100%;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            margin-top: 6px;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height .3s ease, opacity .2s ease;
+            z-index: 1000;
+        }
+
+        .custom-dropdown.active .dropdown-menu {
+            max-height: 300px;
+            opacity: 1;
+        }
+
+        .dropdown-search {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-bottom: 1px solid #eee;
+            outline: none;
+        }
+
+        .dropdown-options {
+            max-height: 220px;
+            overflow-y: auto;
+            padding-bottom: 15px;
+            /* prevents bottom touch */
+        }
+
+        .dropdown-option {
+            padding: 8px 14px;
+            transition: .2s;
+        }
+
+        .dropdown-option:hover {
+            background: #f2f6ff;
         }
     </style>
 </head>
@@ -78,130 +216,245 @@
 
     <%- include('../../partials/desktop/header') %>
 
-        <!-- Hero Section -->
         <section class="section">
-            <div class="card-container" style="display:flex; flex-direction:column; gap:20px;">
 
-                <!-- Full-width card for past quiz performance -->
-                <div class="card full-card">
-                    <h4>📊 Your Last 50 Quiz Performances</h4>
+            <div class="card">
+                <h4>📊 Your Last 50 Quiz Performances</h4>
 
-                    <% if (quizResults && quizResults.length> 0) { %>
-                        <div class="table-container">
-                            <table>
-                                <thead>
+                <% if (quizResults && quizResults.length> 0) { %>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Date</th>
+                                    <th>Exam</th>
+                                    <th>Subject</th>
+                                    <th>Unit</th>
+                                    <th>Topic</th>
+                                    <th>Difficulty</th>
+                                    <th>Questions</th>
+                                    <th>Right</th>
+                                    <th>Wrong</th>
+                                    <th>Accuracy</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% quizResults.forEach((q,index)=>{ %>
                                     <tr>
-                                        <th>S.No</th>
-                                        <th>Exam Date</th> <!-- NEW COLUMN -->
-                                        <th>Exam</th>
-                                        <th>Subject</th>
-                                        <th>Difficulty</th>
-                                        <th>No. of Questions</th>
-                                        <th>Attempted</th>
-                                        <th>Right</th>
-                                        <th>Wrong</th>
-                                        <th>Accuracy (%)</th>
+                                        <td>
+                                            <%= index+1 %>
+                                        </td>
+                                        <td>
+                                            <%= new Date(q.createdAt).toLocaleDateString() %>
+                                        </td>
+                                        <td>
+                                            <%= q.examcode %>
+                                        </td>
+                                        <td>
+                                            <%= q.subjectcode %>
+                                        </td>
+                                        <td>
+                                            <%= q.unitcode %>
+                                        </td>
+                                        <td>
+                                            <%= q.topiccode %>
+                                        </td>
+                                        <td>
+                                            <%= q.difficulty %>
+                                        </td>
+                                        <td>
+                                            <%= q.noq %>
+                                        </td>
+                                        <td>
+                                            <%= q.right %>
+                                        </td>
+                                        <td>
+                                            <%= q.wrong %>
+                                        </td>
+                                        <td>
+                                            <% if (q.accuracy>= 70) { %>
+                                                <span class="badge-green">
+                                                    <%= q.accuracy %>%
+                                                </span>
+                                                <% } else { %>
+                                                    <span class="badge-red">
+                                                        <%= q.accuracy %>%
+                                                    </span>
+                                                    <% } %>
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    <% quizResults.forEach((q, index)=> { %>
-                                        <tr>
-                                            <td>
-                                                <%= index + 1 + (currentPage - 1) * 10 %>
-                                            </td>
-                                            <td>
-                                                <%= new Date(q.createdAt).toLocaleDateString() %>
-                                            </td> <!-- Exam Date -->
-                                            <td>
-                                                <%= q.exam %>
-                                            </td>
-                                            <td>
-                                                <%= q.subject %>
-                                            </td>
-                                            <td>
-                                                <%= q.difficulty %>
-                                            </td>
-                                            <td>
-                                                <%= q.noq %>
-                                            </td>
-                                            <td>
-                                                <%= q.attempted %>
-                                            </td>
-                                            <td>
-                                                <%= q.right %>
-                                            </td>
-                                            <td>
-                                                <%= q.wrong %>
-                                            </td>
-                                            <td>
-                                                <%= q.accuracy %>
-                                            </td>
-                                        </tr>
-                                        <% }) %>
-                                </tbody>
-                            </table>
+                                    <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+                    <% } else { %>
+                        <p>No quiz attempts found.</p>
+                        <% } %>
+            </div>
+
+            <div class="card-row">
+
+                <div class="card half-card">
+                    <h4>⚙ Configure Your Quiz</h4>
+
+                    <form action="/create-order" method="POST">
+                        <input type="hidden" name="examcode" value="<%= examcode %>">
+                        <input type="hidden" name="subjectcode" value="<%= subjectcode %>">
+
+                        <label>Unit</label>
+                        <div class="custom-dropdown" id="unitWrapper">
+                            <div class="dropdown-selected">Select Unit</div>
+                            <div class="dropdown-menu">
+                                <input type="text" class="dropdown-search" placeholder="Search unit...">
+                                <div class="dropdown-options"></div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="unitcode" id="unitHidden" required>
+
+                        <label>Topic</label>
+                        <div class="custom-dropdown disabled" id="topicWrapper">
+                            <div class="dropdown-selected">Select Topic</div>
+                            <div class="dropdown-menu">
+                                <input type="text" class="dropdown-search" placeholder="Search topic...">
+                                <div class="dropdown-options"></div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="topiccode" id="topicHidden" required>
+
+                        <div class="inline-row">
+                            <div class="inline-group">
+                                <label>No. of Questions</label>
+                                <select name="count">
+                                    <option value="10">10</option>
+                                    <option value="20">20</option>
+                                    <option value="30">30</option>
+                                </select>
+                            </div>
+
+                            <div class="inline-group">
+                                <label>Difficulty</label>
+                                <select name="difficulty">
+                                    <option value="easy">Easy</option>
+                                    <option value="hard">Hard</option>
+                                </select>
+                            </div>
                         </div>
 
-                        <!-- Pagination -->
-                        <div class="pagination">
-                            <% if (currentPage> 1) { %>
-                                <a href="?page=<%= currentPage - 1 %>">&laquo; Previous</a>
-                                <% } %>
-                                    <% for(let i=1; i <=totalPages; i++) { %>
-                                        <a href="?page=<%= i %>" class="<%= currentPage === i ? 'active' : '' %>">
-                                            <%= i %>
-                                        </a>
-                                        <% } %>
-                                            <% if (currentPage < totalPages) { %>
-                                                <a href="?page=<%= currentPage + 1 %>">Next &raquo;</a>
-                                                <% } %>
-                        </div>
-
-                        <% } else { %>
-                            <p>No quiz attempts found.</p>
-                            <% } %>
+                        <button type="submit" class="btn-primary">Proceed to Payment</button>
+                        <p id="formError" style="color:red; display:none; font-size:13px;"></p>
+                    </form>
                 </div>
-                <!-- Row for two smaller cards -->
-                <div class="card-row" style="display:flex; gap:20px; flex-wrap:wrap;">
 
-                    <!-- Quiz Configuration -->
-                    <div class="card half-card">
-                        <h4>⚙ Configure Your Quiz</h4>
-                        <form action="/create-order" method="POST">
-                            <input type="hidden" name="exam" value="<%= exam %>">
-                            <input type="hidden" name="subject" value="<%= subject %>">
-
-                            <label>No. of Questions</label>
-                            <select name="count" required>
-                                <option value="10">10 Questions</option>
-                                <option value="20" selected>20 Questions</option>
-                                <option value="30">30 Questions</option>
-                            </select>
-
-                            <br><br>
-
-                            <label>Difficulty Level</label>
-                            <select name="difficulty" required>
-                                <option value="easy">Easy</option>
-                                <option value="medium">Medium</option>
-                                <option value="hard" selected>Hard</option>
-                            </select>
-
-                            <br><br>
-                            <button type="submit" class="btn-primary">Proceed to Payment</button>
-                        </form>
-                    </div>
-
-                    <!-- Placeholder for future feature -->
-                    <div class="card half-card">
-                        <h4>🔮 Dashboard</h4>
-                        <p>Coming soon...</p>
-                    </div>
-
+                <div class="card half-card">
+                    <h4>📈 Dashboard</h4>
+                    <p>Coming soon...</p>
                 </div>
+
             </div>
         </section>
+
         <%- include('../../partials/desktop/footer') %>
 
+            <script>
+                const form = document.querySelector("form");
+                form.addEventListener("submit", function (e) {
+                    const errorBox = document.getElementById("formError");
+                    const unit = document.getElementById("unitHidden").value;
+                    const topic = document.getElementById("topicHidden").value;
+                    const count = document.querySelector("select[name='count']").value;
+                    const difficulty = document.querySelector("select[name='difficulty']").value;
+
+                    if (!unit || !topic || !count || !difficulty) {
+                        e.preventDefault();
+                        errorBox.style.display = "block";
+                        errorBox.textContent = "Please complete all fields before proceeding.";
+                        return;
+                    }
+                    errorBox.style.display = "none";
+
+                });
+            </script>
+
+            <script>
+                const examcode = "<%= examcode %>";
+                const subjectcode = "<%= subjectcode %>";
+
+                function truncate(text, max = 40) {
+                    return text.length > max ? text.substring(0, max) + "..." : text;
+                }
+
+                function setupDropdown(wrapperId, hiddenInputId) {
+                    const wrapper = document.getElementById(wrapperId);
+                    const selected = wrapper.querySelector(".dropdown-selected");
+                    const optionsContainer = wrapper.querySelector(".dropdown-options");
+                    const searchInput = wrapper.querySelector(".dropdown-search");
+                    const hiddenInput = document.getElementById(hiddenInputId);
+
+                    selected.addEventListener("click", () => {
+                        if (wrapper.classList.contains("disabled")) return;
+                        wrapper.classList.toggle("active");
+                    });
+
+                    document.addEventListener("click", e => {
+                        if (!wrapper.contains(e.target)) {
+                            wrapper.classList.remove("active");
+                        }
+                    });
+
+                    searchInput.addEventListener("input", () => {
+                        const filter = searchInput.value.toLowerCase();
+                        [...optionsContainer.children].forEach(opt => {
+                            opt.style.display = opt.textContent.toLowerCase().includes(filter) ? "block" : "none";
+                        });
+                    });
+
+                    return {
+                        setOptions(data, labelKey, valueKey) {
+                            optionsContainer.innerHTML = "";
+                            data.forEach(item => {
+                                const div = document.createElement("div");
+                                div.className = "dropdown-option";
+                                div.textContent = truncate(item[labelKey]);
+                                div.title = item[labelKey];
+
+                                div.onclick = () => {
+                                    selected.textContent = truncate(item[labelKey]);
+                                    selected.title = item[labelKey];
+                                    hiddenInput.value = item[valueKey];
+                                    wrapper.classList.remove("active");
+                                };
+
+                                optionsContainer.appendChild(div);
+                            });
+                        },
+                        enable() { wrapper.classList.remove("disabled"); },
+                        disable() { wrapper.classList.add("disabled"); }
+                    };
+                }
+
+                const unitDropdown = setupDropdown("unitWrapper", "unitHidden");
+                const topicDropdown = setupDropdown("topicWrapper", "topicHidden");
+
+                window.addEventListener("DOMContentLoaded", async () => {
+                    const res = await fetch(`/api/units/${examcode}/${subjectcode}`);
+                    const units = await res.json();
+                    unitDropdown.setOptions(units, "unitname", "unitcode");
+                });
+
+                document.getElementById("unitWrapper")
+                    .querySelector(".dropdown-options")
+                    .addEventListener("click", async () => {
+                        const unitcode = document.getElementById("unitHidden").value;
+                        if (!unitcode) return;
+
+                        topicDropdown.enable();
+                        const res = await fetch(`/api/topics/${examcode}/${subjectcode}/${unitcode}`);
+                        const topics = await res.json();
+                        topicDropdown.setOptions(topics, "topicname", "topiccode");
+                    });
+            </script>
+
 </body>
+
 </html>

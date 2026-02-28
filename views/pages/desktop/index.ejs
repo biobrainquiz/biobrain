@@ -30,22 +30,22 @@
                 <div class="card">
                     <h4>NEET</h4>
                     <p>Zoology</p>
-                    <button onclick="startQuiz('neet','zoology')">Start</button>
+                    <button onclick="startQuiz('E1','S1')">Start</button>
                 </div>
                 <div class="card">
                     <h4>DL/JL/Asst. Prof.</h4>
                     <p>Zoology</p>
-                    <button onclick="startQuiz('dljl','zoology')">Start</button>
+                    <button onclick="startQuiz('E2','S1')">Start</button>
                 </div>
                 <div class="card">
                     <h4>CSIR.NET/SLET/SET</h4>
                     <p>Life Sciences</p>
-                    <button onclick="startQuiz('csir','lifesciences')">Start</button>
+                    <button onclick="startQuiz('E3','S2')">Start</button>
                 </div>
                 <div class="card">
                     <h4>GATE</h4>
                     <p>Zoology</p>
-                    <button onclick="startQuiz('gate','zoology')">Start</button>
+                    <button onclick="startQuiz('E4','S1')">Start</button>
                 </div>
             </div>
         </section>
@@ -73,8 +73,8 @@
             </ul>
         </section>
         <script>
-            function startQuiz(exam, subject) {
-                window.location.href = `/preparequiz/${exam}/${subject}`;
+            function startQuiz(examcode, subjectcode) {
+                window.location.href = `/preparequiz/${examcode}/${subjectcode}`;
             }
         </script>
         </script>

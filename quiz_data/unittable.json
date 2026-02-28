@@ -1,62 +1,68 @@
 [
   {
-    "examcode": "E1",
+    "examcode": "E4",
     "subjectcode": "S1",
     "unitcode": "U1",
     "unitname": "Animal Diversity"
   },
   {
-    "examcode": "E1",
+    "examcode": "E4",
     "subjectcode": "S1",
     "unitcode": "U2",
-    "unitname": "Animal Physiology"
+    "unitname": "Evolution"
   },
   {
-    "examcode": "E1",
-    "subjectcode": "S2",
-    "unitcode": "U1",
-    "unitname": "Plant Morphology"
-  },
-  {
-    "examcode": "E1",
-    "subjectcode": "S2",
-    "unitcode": "U2",
-    "unitname": "Plant Physiology"
-  },
-  {
-    "examcode": "E2",
+    "examcode": "E4",
     "subjectcode": "S1",
-    "unitcode": "U1",
-    "unitname": "Mechanics"
+    "unitcode": "U3",
+    "unitname": "Genetics"
   },
   {
-    "examcode": "E2",
+    "examcode": "E4",
     "subjectcode": "S1",
-    "unitcode": "U2",
-    "unitname": "Electromagnetism"
+    "unitcode": "U4",
+    "unitname": "Biochemistry And Molecular Biology"
   },
   {
-    "examcode": "E2",
-    "subjectcode": "S2",
-    "unitcode": "U1",
-    "unitname": "Organic Chemistry"
-  },
-  {
-    "examcode": "E2",
-    "subjectcode": "S2",
-    "unitcode": "U2",
-    "unitname": "Inorganic Chemistry"
-  },
-  {
-    "examcode": "E3",
+    "examcode": "E4",
     "subjectcode": "S1",
-    "unitcode": "U1",
-    "unitname": "Algebra"
+    "unitcode": "U5",
+    "unitname": "Cell Biology"
   },
   {
-    "examcode": "E3",
+    "examcode": "E4",
     "subjectcode": "S1",
-    "unitcode": "U2",
-    "unitname": "Calculus"
+    "unitcode": "U6",
+    "unitname": "Gene Expression In Eukaryotes"
+  },
+  {
+    "examcode": "E4",
+    "subjectcode": "S1",
+    "unitcode": "U7",
+    "unitname": "Animal Anatomy And Physiology"
+  },
+  {
+    "examcode": "E4",
+    "subjectcode": "S1",
+    "unitcode": "U8",
+    "unitname": "Parasitology And Immunology"
+  },
+  {
+    "examcode": "E4",
+    "subjectcode": "S1",
+    "unitcode": "U9",
+    "unitname": "Development Biology"
+  },
+  {
+    "examcode": "E4",
+    "subjectcode": "S1",
+    "unitcode": "U10",
+    "unitname": "Ecology"
+  },
+  {
+    "examcode": "E4",
+    "subjectcode": "S1",
+    "unitcode": "U11",
+    "unitname": "Animal Behaviour"
   }
 ]

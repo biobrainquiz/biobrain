@@ -146,13 +146,13 @@
   <header>
     <div>
       Hello, <%= user.username %> 👋 | BioBrain - Examination Portal on
-        <%= exam.toUpperCase() %>
-          <%= subject.charAt(0).toUpperCase() + subject.slice(1) %>
-            • <%= count %> Questions
-              • <%= difficulty.charAt(0).toUpperCase() + difficulty.slice(1) %> Level
+        <%= examcode %>
+          • <%= subjectcode %>
+            • <%= unitcode %>
+              • <%= topiccode %>
+                • <%= count %> Questions
+                  • <%= difficulty.charAt(0).toUpperCase() + difficulty.slice(1) %> Level
     </div>
-
-    <!--  BioBrain - Examination Portal on [[EXAM]] [[SUBJECT]] for [[NO.OF QUESTIONS]] [[DIFFICULY]]-->
     <div>Time Left: <span id="timer">00:00</span></div>
   </header>
 
@@ -304,8 +304,10 @@
             body: JSON.stringify({
               answers,
               questions,
-              exam: "<%= exam %>",
-              subject: "<%= subject %>",
+              examcode: "<%= examcode %>",
+              subjectcode: "<%= subjectcode %>",
+              unitcode: "<%= unitcode %>",
+              topiccode: "<%= topiccode %>",
               difficulty:"<%=  difficulty%>"
             }) // send answers + questions
           });

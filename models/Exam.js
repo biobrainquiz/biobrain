@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { cascadeDelete } = require("../utils/dbHelpers");
 
 const examSchema = new mongoose.Schema({
-  examname: { type: String, required: true, unique: true, trim: true },
+  examname: { type: String, required: true, trim: true },
   examcode: { type: String, required: true, unique: true, uppercase: true, trim: true }
 }, { timestamps: true });
 
@@ -21,3 +21,5 @@ examSchema.pre("findOneAndDelete", async function(next) {
 
   next();
 });
+
+module.exports = mongoose.model("Exam", examSchema);

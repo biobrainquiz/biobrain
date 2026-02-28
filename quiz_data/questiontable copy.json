@@ -56,7 +56,7 @@
     "opt3": "Excretion",
     "opt4": "Respiration",
     "answer": 2,
-    "difficulty_level": "medium",
+    "difficulty_level": "easy",
     "marks": 2
   },
   {
@@ -101,7 +101,7 @@
     "opt3": "Adrenaline",
     "opt4": "Cortisol",
     "answer": 1,
-    "difficulty_level": "medium",
+    "difficulty_level": "hard",
     "marks": 2
   },
   {
@@ -161,7 +161,7 @@
     "opt3": "rRNA",
     "opt4": "snRNA",
     "answer": 2,
-    "difficulty_level": "medium",
+    "difficulty_level": "hard",
     "marks": 2
   },
   {
@@ -176,7 +176,7 @@
     "opt3": "Darwin",
     "opt4": "Pasteur",
     "answer": 1,
-    "difficulty_level": "medium",
+    "difficulty_level": "hard",
     "marks": 2
   },
   {

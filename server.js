@@ -10,6 +10,8 @@ const { autoSeed } = require("./utils/autoSeeder");
 const requireLogin = require("./middleware/requireLogin");
 const QuizResult = require("./models/QuizResult");
 const Question = require("./models/Question");
+const Unit=require("./models/Unit");
+const Topic=require("./models/Topic");
 
 const app = express();
 
@@ -117,31 +119,30 @@ app.get("/quizzes", requireLogin, (req, res) => {
 ============================== */
 
 // Dynamic quiz start
-app.get("/quiz/:exam/:subject/start", requireLogin, async (req, res) => {
-  const { exam, subject } = req.params;
+app.get("/quiz/:examcode/:subjectcode/:unitcode/:topiccode/start", requireLogin, async (req, res) => {
+  const { examcode, subjectcode,unitcode,topiccode } = req.params;
   const { count, difficulty } = req.query;
   const questions = await Question.aggregate([
-    { $match: { exam, subject, difficulty_level: difficulty } },
+    { $match: { examcode:examcode, subjectcode:subjectcode, unitcode:unitcode,topiccode:topiccode,difficulty_level: difficulty } },
     { $sample: { size: parseInt(count) } }
   ]);
-  res.render(`pages/${getDevice(req)}/quiz`, { questions, exam, subject, user: req.session.user, count, difficulty });
+  console.log(questions);
+  res.render(`pages/${getDevice(req)}/quiz`, { questions, examcode, subjectcode,unitcode,topiccode, user: req.session.user, count, difficulty });
 });
 
 // Prepare quiz (past performance)
-app.get("/preparequiz/:exam/:subject", requireLogin, async (req, res) => {
+app.get("/preparequiz/:examcode/:subjectcode", requireLogin, async (req, res) => {
   const device = getDevice(req);
   try {
-    let { exam, subject } = req.params;
-    exam = exam.toLowerCase();
-    subject = subject.toLowerCase();
+    let { examcode, subjectcode } = req.params;
 
     const username = req.session.user.username;
     const page = parseInt(req.query.page) || 1;
     const pageLimit = 5;
     const resultsLimit = 50;
 
-    const totalResults = await QuizResult.countDocuments({ username, exam, subject });
-    const quizResults = await QuizResult.find({ username, exam, subject })
+    const totalResults = await QuizResult.countDocuments({ username, examcode, subjectcode });
+    const quizResults = await QuizResult.find({ username, examcode, subjectcode })
       .sort({ createdAt: -1 })
       .skip((page - 1) * pageLimit)
       .limit(pageLimit)
@@ -151,20 +152,50 @@ app.get("/preparequiz/:exam/:subject", requireLogin, async (req, res) => {
 
     const totalPages = Math.ceil(Math.min(totalResults, resultsLimit) / pageLimit);
 
-    res.render(`pages/${device}/startquiz`, { exam, subject, quizResults, currentPage: page, totalPages });
+    res.render(`pages/${device}/startquiz`, { examcode, subjectcode, quizResults, currentPage: page, totalPages });
 
   } catch (err) {
     console.error(err);
-    res.render(`pages/${device}/startquiz`, { exam: req.params.exam, subject: req.params.subject, quizResults: [], currentPage: 1, totalPages: 1 });
+    res.render(`pages/${device}/startquiz`, { examcode: req.params.examcode, subjectcode: req.params.subjectcode, quizResults: [], currentPage: 1, totalPages: 1 });
   }
 });
 
 // Create order (session-based quiz config)
 app.post("/create-order", requireLogin, (req, res) => {
-  const { exam, subject, count, difficulty } = req.body;
-  req.session.quizConfig = { exam, subject, count, difficulty };
-  res.redirect(`/quiz/${exam}/${subject}/start?count=${count}&difficulty=${difficulty}`);
+  const { examcode, subjectcode, unitcode,topiccode,count, difficulty } = req.body;
+  req.session.quizConfig = { examcode, subjectcode,unitcode,topiccode, count, difficulty };
+  res.redirect(`/quiz/${examcode}/${subjectcode}/${unitcode}/${topiccode}/start?count=${count}&difficulty=${difficulty}`);
 });
+
+app.get("/api/units/:examcode/:subjectcode", requireLogin, async (req, res) => {
+  try {
+    const { examcode, subjectcode } = req.params;
+    const units = await Unit.find({ examcode, subjectcode })
+      .sort({ unitcode: 1 })
+      .select("unitcode unitname -_id")
+      .lean();
+    res.json(units);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json([]);
+  }
+});
+
+app.get("/api/topics/:examcode/:subjectcode/:unitcode", requireLogin, async (req, res) => {
+  try {
+    const { examcode, subjectcode, unitcode } = req.params;
+    const topics = await Topic.find({ examcode, subjectcode, unitcode })
+      .sort({ topiccode: 1 })
+      .select("topiccode topicname -_id")
+      .lean();
+
+    res.json(topics);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json([]);
+  }
+});
+
 
 /* ==============================
    Logout

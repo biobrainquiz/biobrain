@@ -7,146 +7,130 @@
 <link rel="stylesheet" href="/css/desktopStyle.css">
 
 <style>
-body { background:#f4f6f9; font-family:Arial, sans-serif; }
-.section { padding:30px 40px; }
-
-.card {
-    background:#fff;
-    border-radius:12px;
-    box-shadow:0 8px 25px rgba(0,0,0,0.06);
-    padding:25px;
-    margin-bottom:25px;
+body {
+    background: #f4f6f9;
+    font-family: Arial, sans-serif;
 }
 
-.card h4 { margin-bottom:18px; color:#2c3e50; }
+.section {
+    padding: 30px 40px;
+}
 
-.card-row { display:flex; gap:25px; flex-wrap:wrap; }
-.half-card { flex:1; min-width:350px; }
+/* ===== CARD ===== */
+.card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+    padding: 25px;
+    margin-bottom: 25px;
+    
+}
+
+.card h4 {
+    margin-bottom: 18px;
+    color: #2c3e50;
+}
+
+.card-row {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.half-card {
+    flex: 1;
+    min-width: 350px;
+}
 
 /* ===== TABLE ===== */
-.table-container { overflow-x:auto; }
-table { width:100%; min-width:950px; border-collapse:collapse; font-size:14px; }
+.table-container { overflow-x: auto; }
+
+table {
+    width: 100%;
+    min-width: 950px;
+    border-collapse: collapse;
+    font-size: 14px;
+}
 
 th {
-    background:#2c3e50;
-    color:white;
-    padding:10px;
+    background: #2c3e50;
+    color: white;
+    padding: 10px;
 }
 
 td {
-    padding:9px;
-    border-bottom:1px solid #eee;
-    text-align:center;
+    padding: 9px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
 }
 
-tr:hover { background:#f9fbfd; }
+tr:hover { background: #f9fbfd; }
 
-.badge-green {
-    background:#e6f9f0;
-    color:#1e8449;
-    padding:4px 8px;
-    border-radius:20px;
-    font-weight:600;
-}
-
+.badge-green,
 .badge-red {
-    background:#fdecea;
-    color:#c0392b;
-    padding:4px 8px;
-    border-radius:20px;
-    font-weight:600;
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-weight: 600;
 }
+
+.badge-green { background: #e6f9f0; color: #1e8449; }
+.badge-red { background: #fdecea; color: #c0392b; }
 
 /* ===== FORM ===== */
-form { display:flex; flex-direction:column; gap:15px; }
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
 
 .btn-primary {
-    background:linear-gradient(135deg,#007bff,#004aad);
-    color:white;
-    border:none;
-    padding:10px;
-    border-radius:6px;
-    cursor:pointer;
-    transition:.3s;
+    background: linear-gradient(135deg,#007bff,#004aad);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: .3s;
 }
-.btn-primary:hover { opacity:.9; }
+
+.btn-primary:hover { opacity: .9; }
+
+/* ===== INLINE SELECT ROW ===== */
+.inline-row {
+    display: flex;
+    gap: 15px;
+}
+
+.inline-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.inline-group select {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .inline-row {
+        flex-direction: column;
+    }
+}
 
 /* ===== CUSTOM DROPDOWN ===== */
 .custom-dropdown {
-    position:relative;
-    width:100%;
-    cursor:pointer;
-}
-
-.dropdown-selected {
-    padding:10px;
-    border:1px solid #ccc;
-    border-radius:6px;
-    background:#fff;
-    transition:.2s;
-}
-
-.dropdown-selected:hover { border-color:#007bff; }
-
-.dropdown-menu {
-    position:absolute;
-    width:100%;
-    background:#fff;
-    border-radius:8px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
-    margin-top:6px;
-    max-height:0;
-    overflow:hidden;
-    opacity:0;
-    transition:max-height .3s ease, opacity .2s ease;
-    z-index:1000;
-}
-
-.custom-dropdown.active .dropdown-menu {
-    max-height:300px;
-    opacity:1;
-}
-
-.dropdown-search {
-    width:100%;
-    padding:8px;
-    border:none;
-    border-bottom:1px solid #eee;
-    outline:none;
-}
-
-.dropdown-options {
-    max-height:220px;
-    overflow-y:auto;
-}
-
-.dropdown-option {
-    padding:8px 12px;
-    transition:.2s;
-}
-
-.dropdown-option:hover {
-    background:#f2f6ff;
+    position: relative;
+    width: 100%;
+    cursor: pointer;
 }
 
 .custom-dropdown.disabled .dropdown-selected {
-    background:#f2f2f2;
-    cursor:not-allowed;
-}
-
-.dropdown-selected {
-    text-align: left;
-    font-size: 13px;
-}
-
-.dropdown-search {
-    text-align: left;
-}
-
-.dropdown-option {
-    text-align: left;
-    font-size: 13px;
-    padding: 7px 12px;
+    background: #f2f2f2;
+    cursor: not-allowed;
 }
 
 .dropdown-selected,
@@ -156,8 +140,59 @@ form { display:flex; flex-direction:column; gap:15px; }
     font-size: 13px;
 }
 
+
+.dropdown-selected {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #fff;
+    transition: .2s;
+}
+
+.dropdown-selected:hover {
+    border-color: #007bff;
+}
+
+.dropdown-menu {
+    position: absolute;
+    width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    margin-top: 6px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height .3s ease, opacity .2s ease;
+    z-index: 1000;
+}
+
+.custom-dropdown.active .dropdown-menu {
+    max-height: 300px;
+    opacity: 1;
+}
+
+.dropdown-search {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-bottom: 1px solid #eee;
+    outline: none;
+}
+
+.dropdown-options {
+    max-height: 220px;
+    overflow-y: auto;
+    padding-bottom: 15px;   /* prevents bottom touch */
+}
+
 .dropdown-option {
     padding: 8px 14px;
+    transition: .2s;
+}
+
+.dropdown-option:hover {
+    background: #f2f6ff;
 }
 </style>
 </head>
@@ -248,18 +283,24 @@ form { display:flex; flex-direction:column; gap:15px; }
 </div>
 <input type="hidden" name="topiccode" id="topicHidden" required>
 
-<label>No. of Questions</label>
-<select name="count">
-<option value="10">10</option>
-<option value="20">20</option>
-<option value="30">30</option>
-</select>
+<div class="inline-row">
+    <div class="inline-group">
+        <label>No. of Questions</label>
+        <select name="count">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+        </select>
+    </div>
 
-<label>Difficulty</label>
-<select name="difficulty">
-<option value="easy">Easy</option>
-<option value="hard">Hard</option>
-</select>
+    <div class="inline-group">
+        <label>Difficulty</label>
+        <select name="difficulty">
+            <option value="easy">Easy</option>
+            <option value="hard">Hard</option>
+        </select>
+    </div>
+</div>
 
 <button type="submit" class="btn-primary">Proceed to Payment</button>
 </form>
