@@ -1,0 +1,62 @@
+[
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U1",
+    "unitname": "Diversity of the Animal Kingdom"
+  },
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U2",
+    "unitname": "Cell Biology and Molecular Biology"
+  },
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U3",
+    "unitname": "Genetics and Evolution"
+  },
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U4",
+    "unitname": "Developmental Biology"
+  },
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U5",
+    "unitname": "Ecology and Environment"
+  },
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U6",
+    "unitname": "Animal Physiology"
+  },
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U7",
+    "unitname": "Biochemistry and Biophysics"
+  },
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U8",
+    "unitname": "Immunology and Microbiology"
+  },
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U9",
+    "unitname": "Endocrinology"
+  },
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U10",
+    "unitname": "Neurobiology and Behavior"
+  }
+]

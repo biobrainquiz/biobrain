@@ -1,0 +1,142 @@
+[
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U1",
+    "topiccode": "T1",
+    "topicname": "Introduction to Animal Diversity"
+  },
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U1",
+    "topiccode": "T2",
+    "topicname": "Classification of Animals"
+  },
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U2",
+    "topiccode": "T1",
+    "topicname": "Cell Structure and Function"
+  },
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U2",
+    "topiccode": "T2",
+    "topicname": "Molecular Biology Basics"
+  },
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U3",
+    "topiccode": "T1",
+    "topicname": "Mendelian Genetics"
+  },
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U3",
+    "topiccode": "T2",
+    "topicname": "Population Genetics and Evolution"
+  },
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U4",
+    "topiccode": "T1",
+    "topicname": "Embryonic Development"
+  },
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U4",
+    "topiccode": "T2",
+    "topicname": "Organogenesis"
+  },
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U5",
+    "topiccode": "T1",
+    "topicname": "Ecosystem Concepts"
+  },
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U5",
+    "topiccode": "T2",
+    "topicname": "Biodiversity and Conservation"
+  },
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U6",
+    "topiccode": "T1",
+    "topicname": "Digestive Physiology"
+  },
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U6",
+    "topiccode": "T2",
+    "topicname": "Respiratory and Circulatory Systems"
+  },
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U7",
+    "topiccode": "T1",
+    "topicname": "Biomolecules"
+  },
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U7",
+    "topiccode": "T2",
+    "topicname": "Enzymes and Metabolism"
+  },
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U8",
+    "topiccode": "T1",
+    "topicname": "Immune System Basics"
+  },
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U8",
+    "topiccode": "T2",
+    "topicname": "Microbial Diversity"
+  },
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U9",
+    "topiccode": "T1",
+    "topicname": "Endocrine Glands and Hormones"
+  },
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U9",
+    "topiccode": "T2",
+    "topicname": "Hormonal Regulation"
+  },
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U10",
+    "topiccode": "T1",
+    "topicname": "Neurons and Synapses"
+  },
+  {
+    "examcode": "E2",
+    "subjectcode": "S1",
+    "unitcode": "U10",
+    "topiccode": "T2",
+    "topicname": "Behavioral Biology"
+  }
+]
