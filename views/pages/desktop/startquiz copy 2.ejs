@@ -425,7 +425,7 @@
                 <div class="card half-card">
                     <h4>📈 Performance Dashboard</h4>
 
-                    <% if (allResults && allResults.length> 0) { %>
+                    <% if (quizResults && quizResults.length> 0) { %>
                         <canvas id="performanceChart" height="200"></canvas>
                         <% } else { %>
                             <p>No data available for chart.</p>
@@ -539,17 +539,17 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-    <% if (allResults && allResults.length > 0) { %>
+    <% if (quizResults && quizResults.length > 0) { %>
 
     const labels = [
-        <% allResults.slice().reverse().forEach(function(q, index){ %>
-            "<%= new Date(q.createdAt).toLocaleDateString() %>"<%= index < allResults.length-1 ? "," : "" %>
+        <% quizResults.slice().reverse().forEach(function(q, index){ %>
+            "<%= new Date(q.createdAt).toLocaleDateString() %>"<%= index < quizResults.length-1 ? "," : "" %>
         <% }) %>
     ];
 
     const accuracyData = [
-        <% allResults.slice().reverse().forEach(function(q, index){ %>
-            <%= q.accuracy %><%= index < allResults.length-1 ? "," : "" %>
+        <% quizResults.slice().reverse().forEach(function(q, index){ %>
+            <%= q.accuracy %><%= index < quizResults.length-1 ? "," : "" %>
         <% }) %>
     ];
 

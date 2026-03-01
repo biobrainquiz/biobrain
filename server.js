@@ -127,15 +127,14 @@ app.get("/quiz/:examcode/:subjectcode/:unitcode/:topiccode/start", requireLogin,
     { $sample: { size: parseInt(count) } }
   ]);
 
-  res.render(`pages/${getDevice(req)}/quiz`, 
-  { questions, examcode, subjectcode, unitcode, topiccode, user: req.session.user, count, difficulty });
+  res.render(`pages/${getDevice(req)}/quiz`,
+    { questions, examcode, subjectcode, unitcode, topiccode, user: req.session.user, count, difficulty });
 });
 
 // Prepare quiz (past performance)
 app.get("/preparequiz/:examcode/:subjectcode", requireLogin, async (req, res) => {
   const device = getDevice(req);
-  try 
-  {
+  try {
     let { examcode, subjectcode } = req.params;
 
     const username = req.session.user.username;
@@ -153,13 +152,13 @@ app.get("/preparequiz/:examcode/:subjectcode", requireLogin, async (req, res) =>
     quizResults.forEach(q => q.accuracy = ((q.right / q.noq) * 100).toFixed(2));
     const totalPages = Math.ceil(Math.min(totalResults, resultsLimit) / pageLimit);
 
-    // FULL DATA (for graph)
-    //const allResults = await QuizResult.find({ username }).sort({ createdAt: 1 });   // ascending for proper graph order
-    //res.render(`pages/${device}/startquiz`, { examcode, subjectcode, quizResults, currentPage: page, totalPages ,allResults});
-    res.render(`pages/${device}/startquiz`, { examcode, subjectcode, quizResults, currentPage: page, totalPages });
 
-  } catch (err) 
-  {
+    // FULLDATA FOR GRAPH
+    const allResults = await QuizResult.find({ username, examcode, subjectcode })
+      .sort({ createdAt: -1 });
+    allResults.forEach(q => q.accuracy = ((q.right / q.noq) * 100).toFixed(2));
+    res.render(`pages/${device}/startquiz`, { examcode, subjectcode, quizResults, currentPage: page, totalPages, allResults });
+  } catch (err) {
     console.error(err);
     res.render(`pages/${device}/startquiz`, { examcode: req.params.examcode, subjectcode: req.params.subjectcode, quizResults: [], currentPage: 1, totalPages: 1 });
   }
