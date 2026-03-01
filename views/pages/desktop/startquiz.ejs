@@ -536,69 +536,237 @@
                         topicDropdown.setOptions(topics, "topicname", "topiccode");
                     });
             </script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
 
-    <% if (allResults && allResults.length > 0) { %>
+            <!-- Graph-->
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
 
-    const labels = [
-        <% allResults.slice().reverse().forEach(function(q, index){ %>
-            "<%= new Date(q.createdAt).toLocaleDateString() %>"<%= index < allResults.length-1 ? "," : "" %>
-        <% }) %>
-    ];
+<% if (allResults && allResults.length > 1) { %>
 
-    const accuracyData = [
-        <% allResults.slice().reverse().forEach(function(q, index){ %>
-            <%= q.accuracy %><%= index < allResults.length-1 ? "," : "" %>
-        <% }) %>
-    ];
+const accuracyData = [
+    <% allResults.forEach(function (q, index) { %>
+        <%= q.accuracy %><%= index < allResults.length - 1 ? "," : "" %>
+    <% }) %>
+];
 
-    const ctx = document.getElementById("performanceChart").getContext("2d");
+                        const n = accuracyData.length;
+                        const labels = accuracyData.map((_, i) => "Attempt " + (i + 1));
+                        const xValues = accuracyData.map((_, i) => i + 1);
 
-    new Chart(ctx, {
-        type: "line",
-        data: {
-            labels: labels,
-            datasets: [{
-                label: "Accuracy %",
-                data: accuracyData,
-                tension: 0.4,
-                fill: true,
-                borderWidth: 2,
-                pointRadius: 4,
-                borderColor: "#1B5E20",
-                backgroundColor: "rgba(27,94,32,0.1)"
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: true
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    max: 100,
-                    title: {
-                        display: true,
-                        text: "Accuracy (%)"
-                    }
-                },
-                x: {
-                    title: {
-                        display: true,
-                        text: "Quiz Date"
-                    }
-                }
-            }
-        }
-    });
+                        // =======================
+                        // 📊 BASIC STATISTICS
+                        // =======================
+                        const mean = accuracyData.reduce((a, b) => a + b, 0) / n;
 
-    <% } %>
+                        const stdDev = Math.sqrt(
+                            accuracyData.map(x => Math.pow(x - mean, 2))
+                                .reduce((a, b) => a + b, 0) / n
+                        );
+
+                        // =======================
+                        // 📈 MOVING AVERAGE (5)
+                        // =======================
+                        const movingAverage = accuracyData.map((_, i, arr) => {
+                            const start = Math.max(0, i - 4);
+                            const subset = arr.slice(start, i + 1);
+                            return subset.reduce((a, b) => a + b, 0) / subset.length;
+                        });
+
+                        // =======================
+                        // 📊 CUMULATIVE AVERAGE
+                        // =======================
+                        let cumulativeSum = 0;
+                        const cumulativeAvg = accuracyData.map((val, i) => {
+                            cumulativeSum += val;
+                            return cumulativeSum / (i + 1);
+                        });
+
+                        // =======================
+                        // 📈 LINEAR REGRESSION
+                        // =======================
+                        const sumX = xValues.reduce((a, b) => a + b, 0);
+                        const sumY = accuracyData.reduce((a, b) => a + b, 0);
+                        const sumXY = xValues.reduce((sum, x, i) => sum + x * accuracyData[i], 0);
+                        const sumX2 = xValues.reduce((sum, x) => sum + x * x, 0);
+
+                        const slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
+                        const intercept = (sumY - slope * sumX) / n;
+
+                        let predictedScore = slope * (n + 1) + intercept;
+                        predictedScore = Math.max(0, Math.min(100, predictedScore));
+
+                        // Regression line
+                        const regressionLine = xValues.map(x => slope * x + intercept);
+                        regressionLine.push(predictedScore);
+                        labels.push("Predicted");
+
+                        // =======================
+                        // ⭐ BEST / WORST
+                        // =======================
+                        const maxValue = Math.max(...accuracyData);
+                        const minValue = Math.min(...accuracyData);
+                        const bestIndex = accuracyData.indexOf(maxValue);
+                        const worstIndex = accuracyData.indexOf(minValue);
+
+                        const bestPoint = accuracyData.map((v, i) => i === bestIndex ? v : null);
+                        const worstPoint = accuracyData.map((v, i) => i === worstIndex ? v : null);
+
+                        // =======================
+                        // 🎨 GRADIENT
+                        // =======================
+                        const ctx = document.getElementById("performanceChart").getContext("2d");
+                        const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+                        gradient.addColorStop(0, "rgba(0,123,255,0.4)");
+                        gradient.addColorStop(1, "rgba(0,123,255,0.05)");
+
+                        new Chart(ctx, {
+                            type: "line",
+                            data: {
+                                labels: labels,
+                                datasets: [
+
+                                    // 🔵 Raw Accuracy
+                                    {
+                                        label: "Accuracy %",
+                                        data: accuracyData,
+                                        borderColor: "#1f77ff",
+                                        backgroundColor: gradient,
+                                        tension: 0.4,
+                                        fill: true,
+                                        borderWidth: 3
+                                    },
+
+                                    // 🟢 Cumulative Improvement
+                                    {
+                                        label: "Cumulative Average",
+                                        data: cumulativeAvg,
+                                        borderColor: "#00b894",
+                                        borderWidth: 2,
+                                        tension: 0.4,
+                                        fill: false
+                                    },
+
+                                    // 🟠 Moving Average
+                                    {
+                                        label: "Moving Avg (5)",
+                                        data: movingAverage,
+                                        borderColor: "#ff9f43",
+                                        borderDash: [6, 6],
+                                        borderWidth: 2,
+                                        fill: false
+                                    },
+
+                                    // 🟣 Regression Trend
+                                    {
+                                        label: "Trend Line",
+                                        data: regressionLine,
+                                        borderColor: "#6c5ce7",
+                                        borderDash: [4, 4],
+                                        borderWidth: 2,
+                                        fill: false,
+                                        tension: 0
+                                    },
+
+                                    // 🌸 Predicted Point (Deep Pink)
+                                    {
+                                        label: "Predicted Next Score",
+                                        data: [...Array(n).fill(null), predictedScore],
+                                        borderColor: "#e84393",
+                                        backgroundColor: "#e84393",
+                                        pointRadius: 9,
+                                        pointHoverRadius: 11,
+                                        showLine: false
+                                    },
+
+                                    // 🟦 Overall Average (Teal)
+                                    {
+                                        label: "Overall Average",
+                                        data: Array(n + 1).fill(mean),
+                                        borderColor: "#00cec9",
+                                        borderDash: [3, 3],
+                                        borderWidth: 2,
+                                        fill: false
+                                    },
+
+                                    // 🔺 Mean + 1σ (Soft Crimson)
+                                    {
+                                        label: "Mean + 1σ(stdDev)",
+                                        data: Array(n + 1).fill(mean + stdDev),
+                                        borderColor: "#ff6b6b",
+                                        borderDash: [2, 2],
+                                        borderWidth: 1.5,
+                                        fill: false
+                                    },
+
+                                    // 🔻 Mean - 1σ (Slate Gray)
+                                    {
+                                        label: "Mean - 1σ(stdDev)",
+                                        data: Array(n + 1).fill(mean - stdDev),
+                                        borderColor: "#636e72",
+                                        borderDash: [2, 2],
+                                        borderWidth: 1.5,
+                                        fill: false
+                                    },
+
+                                    // 🏆 Best Attempt (Gold)
+                                    {
+                                        label: "Best Attempt",
+                                        data: bestPoint,
+                                        borderColor: "#f1c40f",
+                                        backgroundColor: "#f1c40f",
+                                        pointRadius: 9,
+                                        pointHoverRadius: 11,
+                                        showLine: false
+                                    },
+
+                                    // 🔥 Worst Attempt (Dark Red - Unique)
+                                    {
+                                        label: "Worst Attempt",
+                                        data: worstPoint,
+                                        borderColor: "#b71540",
+                                        backgroundColor: "#b71540",
+                                        pointRadius: 9,
+                                        pointHoverRadius: 11,
+                                        showLine: false
+                                    }
+
+                                ]
+                            },
+                            options: {
+                                responsive: true,
+                                animation: {
+                                    duration: 1600,
+                                    easing: "easeInOutQuart"
+                                },
+                                plugins: {
+                                    legend: { position: "top" },
+                                    tooltip: {
+                                        callbacks: {
+                                            footer: function () {
+                                                return "Mean: " + mean.toFixed(2) +
+                                                    " | Std Dev: " + stdDev.toFixed(2) +
+                                                    " | Predicted: " + predictedScore.toFixed(2) + "%";
+                                            }
+                                        }
+                                    }
+                                },
+                                scales: {
+                                    y: {
+                                        min: 0,
+                                        max: 100,
+                                        title: { display: true, text: "Accuracy (%)" }
+                                    },
+                                    x: {
+                                        title: { display: true, text: "Attempt Number" }
+                                    }
+                                }
+                            }
+                        });
+
+<% } %>
+
 });
-</script>
+            </script>
 </body>
 
 </html>

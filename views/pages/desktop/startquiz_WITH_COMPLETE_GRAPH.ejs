@@ -6,7 +6,7 @@
     <title>BioBrain - Prepare Quiz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/desktopStyle.css">
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             background: #f4f6f9;
@@ -421,9 +421,15 @@
                     </form>
                 </div>
 
+
                 <div class="card half-card">
-                    <h4>📈 Dashboard</h4>
-                    <p>Coming soon...</p>
+                    <h4>📈 Performance Dashboard</h4>
+
+                    <% if (allResults && allResults.length> 0) { %>
+                        <canvas id="performanceChart" height="200"></canvas>
+                        <% } else { %>
+                            <p>No data available for chart.</p>
+                            <% } %>
                 </div>
 
             </div>
@@ -530,7 +536,232 @@
                         topicDropdown.setOptions(topics, "topicname", "topiccode");
                     });
             </script>
+            <script>
+document.addEventListener("DOMContentLoaded", function () {
 
+<% if (allResults && allResults.length > 1) { %>
+
+const accuracyData = [
+    <% allResults.forEach(function(q, index){ %>
+        <%= q.accuracy %><%= index < allResults.length-1 ? "," : "" %>
+    <% }) %>
+];
+
+const n = accuracyData.length;
+const labels = accuracyData.map((_, i) => "Attempt " + (i+1));
+const xValues = accuracyData.map((_, i) => i+1);
+
+// =======================
+// 📊 BASIC STATISTICS
+// =======================
+const mean = accuracyData.reduce((a,b)=>a+b,0) / n;
+
+const stdDev = Math.sqrt(
+    accuracyData.map(x => Math.pow(x - mean, 2))
+                .reduce((a,b)=>a+b,0) / n
+);
+
+// =======================
+// 📈 MOVING AVERAGE (5)
+// =======================
+const movingAverage = accuracyData.map((_, i, arr) => {
+    const start = Math.max(0, i - 4);
+    const subset = arr.slice(start, i+1);
+    return subset.reduce((a,b)=>a+b,0) / subset.length;
+});
+
+// =======================
+// 📊 CUMULATIVE AVERAGE
+// =======================
+let cumulativeSum = 0;
+const cumulativeAvg = accuracyData.map((val, i) => {
+    cumulativeSum += val;
+    return cumulativeSum / (i+1);
+});
+
+// =======================
+// 📈 LINEAR REGRESSION
+// =======================
+const sumX = xValues.reduce((a,b)=>a+b,0);
+const sumY = accuracyData.reduce((a,b)=>a+b,0);
+const sumXY = xValues.reduce((sum,x,i)=>sum + x*accuracyData[i],0);
+const sumX2 = xValues.reduce((sum,x)=>sum + x*x,0);
+
+const slope = (n*sumXY - sumX*sumY) / (n*sumX2 - sumX*sumX);
+const intercept = (sumY - slope*sumX) / n;
+
+let predictedScore = slope*(n+1) + intercept;
+predictedScore = Math.max(0, Math.min(100, predictedScore));
+
+// Regression line
+const regressionLine = xValues.map(x => slope*x + intercept);
+regressionLine.push(predictedScore);
+labels.push("Predicted");
+
+// =======================
+// ⭐ BEST / WORST
+// =======================
+const maxValue = Math.max(...accuracyData);
+const minValue = Math.min(...accuracyData);
+const bestIndex = accuracyData.indexOf(maxValue);
+const worstIndex = accuracyData.indexOf(minValue);
+
+const bestPoint = accuracyData.map((v,i)=> i===bestIndex ? v : null);
+const worstPoint = accuracyData.map((v,i)=> i===worstIndex ? v : null);
+
+// =======================
+// 🎨 GRADIENT
+// =======================
+const ctx = document.getElementById("performanceChart").getContext("2d");
+const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+gradient.addColorStop(0, "rgba(0,123,255,0.4)");
+gradient.addColorStop(1, "rgba(0,123,255,0.05)");
+
+new Chart(ctx, {
+    type: "line",
+    data: {
+        labels: labels,
+        datasets: [
+
+            // 🔵 Raw Accuracy
+            {
+                label: "Accuracy %",
+                data: accuracyData,
+                borderColor: "#007bff",
+                backgroundColor: gradient,
+                tension: 0.4,
+                fill: true,
+                borderWidth: 3
+            },
+
+            // 🟢 Cumulative Improvement
+            {
+                label: "Cumulative Average",
+                data: cumulativeAvg,
+                borderColor: "#28a745",
+                borderWidth: 2,
+                tension: 0.4,
+                fill: false
+            },
+
+            // 🟠 Moving Average
+            {
+                label: "Moving Avg (5)",
+                data: movingAverage,
+                borderColor: "#ff9800",
+                borderDash: [6,6],
+                borderWidth: 2,
+                fill: false
+            },
+
+            // 🟣 Regression Trend
+            {
+                label: "Trend Line",
+                data: regressionLine,
+                borderColor: "#6f42c1",
+                borderDash: [4,4],
+                borderWidth: 2,
+                fill: false,
+                tension: 0
+            },
+
+            // 🔴 Predicted Point
+            {
+                label: "Predicted Next Score",
+                data: [...Array(n).fill(null), predictedScore],
+                borderColor: "#dc3545",
+                backgroundColor: "#dc3545",
+                pointRadius: 8,
+                showLine: false
+            },
+
+            // 📊 Average Line
+            {
+                label: "Overall Average",
+                data: Array(n+1).fill(mean),
+                borderColor: "#20c997",
+                borderDash: [3,3],
+                borderWidth: 2,
+                fill: false
+            },
+
+            // 📉 Standard Deviation Upper
+            {
+                label: "Mean + 1σ",
+                data: Array(n+1).fill(mean + stdDev),
+                borderColor: "rgba(220,53,69,0.5)",
+                borderDash: [2,2],
+                borderWidth: 1,
+                fill: false
+            },
+
+            // 📉 Standard Deviation Lower
+            {
+                label: "Mean - 1σ",
+                data: Array(n+1).fill(mean - stdDev),
+                borderColor: "rgba(108,117,125,0.5)",
+                borderDash: [2,2],
+                borderWidth: 1,
+                fill: false
+            },
+
+            // ⭐ Best Attempt
+            {
+                label: "Best Attempt",
+                data: bestPoint,
+                borderColor: "#ffc107",
+                backgroundColor: "#ffc107",
+                pointRadius: 8,
+                showLine: false
+            },
+
+            // ❌ Worst Attempt
+            {
+                label: "Worst Attempt",
+                data: worstPoint,
+                borderColor: "#dc3545",
+                backgroundColor: "#dc3545",
+                pointRadius: 8,
+                showLine: false
+            }
+
+        ]
+    },
+    options: {
+        responsive: true,
+        animation: {
+            duration: 1600,
+            easing: "easeInOutQuart"
+        },
+        plugins: {
+            legend: { position: "top" },
+            tooltip: {
+                callbacks: {
+                    footer: function() {
+                        return "Mean: " + mean.toFixed(2) +
+                               " | Std Dev: " + stdDev.toFixed(2) +
+                               " | Predicted: " + predictedScore.toFixed(2) + "%";
+                    }
+                }
+            }
+        },
+        scales: {
+            y: {
+                min: 0,
+                max: 100,
+                title: { display: true, text: "Accuracy (%)" }
+            },
+            x: {
+                title: { display: true, text: "Attempt Number" }
+            }
+        }
+    }
+});
+
+<% } %>
+
+});
+</script>
 </body>
 
 </html>

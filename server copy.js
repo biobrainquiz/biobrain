@@ -182,7 +182,7 @@ app.get("/quiz1", requireLogin, async (req, res) => {
 });
 
 // rest style quiz
-app.get("/quiz/:exam/:subject/start", requireLogin, async (req, res) => {
+app.get("/quiz/:examcode/:subjectcode/start", requireLogin, async (req, res) => {
 
   const device = getDevice(req);
   const { exam, subject } = req.params;
