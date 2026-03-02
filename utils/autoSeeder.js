@@ -5,7 +5,7 @@ const Subject = require("../models/Subject");
 const Unit = require("../models/Unit");
 const Topic = require("../models/Topic");
 const Question = require("../models/Question");
-
+const Payment = require("../models/Payment");
 
 function isForcedSeeding() {
   try {
@@ -29,7 +29,7 @@ async function autoSeed() {
     if (forced) {
 
       console.log("⚠ Forced seeding enabled.");
-      
+
       console.log("⚠ Clearing old Questions...");
       await Question.deleteMany({});
       //console.log("⚠ Deleting Existing Questions Table...");
@@ -55,9 +55,16 @@ async function autoSeed() {
       await Exam.deleteMany();
       //console.log("⚠ Deleting Existing Questions Table...");
       //await mongoose.connection.dropCollection("questions");
+
+      console.log("⚠ Clearing old Payemnts...");
+      await Payment.deleteMany({});
+      //console.log("⚠ Deleting Existing Payemnts Table...");
+      //await mongoose.connection.dropCollection("payments");
     }
 
     console.log("⚡ Seeding database...");
+
+
 
     const examTableDataFilePath = path.join(__dirname, "../quiz_data/examtable.json");
     const examTableData = JSON.parse(fs.readFileSync(examTableDataFilePath, "utf-8"));
@@ -84,6 +91,12 @@ async function autoSeed() {
     const questionTableData = JSON.parse(fs.readFileSync(questionTableDataFilePath, "utf-8"));
     await Question.insertMany(questionTableData);
     console.log("🔥 Question seeded successfully!");
+
+    const paymentTableDataFilePath = path.join(__dirname, "../quiz_data/paymenttable.json");
+    const paymentTableData = JSON.parse(fs.readFileSync(paymentTableDataFilePath, "utf-8"));
+    await Payment.insertMany(paymentTableData);
+    console.log("🔥 Payments seeded successfully!");
+
 
   } catch (err) {
     console.error("❌ Auto seeding failed:", err);

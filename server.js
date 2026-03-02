@@ -1,3 +1,11 @@
+process.on("uncaughtException", err => {
+  console.error("UNCAUGHT EXCEPTION:", err);
+});
+
+process.on("unhandledRejection", err => {
+  console.error("UNHANDLED REJECTION:", err);
+});
+
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
@@ -104,9 +112,6 @@ app.get("/leaderboard", requireLogin, (req, res) => {
   res.render(`pages/${getDevice(req)}/leaderboard`);
 });
 
-app.get("/quizzes", requireLogin, (req, res) => {
-  res.render(`pages/${getDevice(req)}/quizzes`);
-});
 
 
 /* ==============================
@@ -231,12 +236,8 @@ app.use("/api", require("./routes/forgot"));
 app.use("/api/quiz", require("./routes/quiz"));
 app.use("/", require("./routes/profile"));
 
-/* ==============================
-   404 Handler
-============================== */
-app.use((req, res) => {
-  res.status(404).render("404");
-});
+const adminRoutes = require("./routes/admin");
+app.use("/admin", adminRoutes);
 
 app.get("/keep-session-alive", (req, res) => {
   if (req.session.user) {
@@ -246,6 +247,19 @@ app.get("/keep-session-alive", (req, res) => {
   }
   res.sendStatus(401);
 });
+
+app.use((err, req, res, next) => {
+    console.error("GLOBAL ERROR:", err);
+    res.status(500).send("Something broke!");
+});
+
+/* ==============================
+   404 Handler
+============================== */
+app.use((req, res) => {
+  res.status(404).render("404");
+});
+
 
 /* ==============================
    Start Server

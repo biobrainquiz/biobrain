@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/css/adminStyle.css">
+</head>
+
+<body>
+
+  <%- include('../../../partials/admin/header') %>
+
+    <div class="admin-container">
+      <%- include('../../../partials/admin/sidebar') %>
+
+        <main class="admin-content">
+
+
+          <div class="cards">
+
+            <div class="card">
+              <h3>Total Exams</h3>
+              <p>
+                <%= examCount || 0 %>
+              </p>
+            </div>
+
+            <div class="card">
+              <h3>Total Subjects</h3>
+              <p>
+                <%= subjectCount || 0 %>
+              </p>
+            </div>
+
+
+
+            <div class="card">
+              <h3>Total Units</h3>
+              <p>
+                <%= unitCount || 0 %>
+              </p>
+            </div>
+
+            <div class="card">
+              <h3>Total Topics</h3>
+              <p>
+                <%= topicCount || 0 %>
+              </p>
+            </div>
+
+            <div class="card">
+              <h3>Total Questions</h3>
+              <p>
+                <%= questionCount || 0 %>
+              </p>
+            </div>
+
+          </div>
+
+          <div class="recent-activity">
+            <h2>🆕 Recent Activity</h2>
+
+            <div class="activity-grid">
+
+              <!-- Recent Users -->
+              <div class="activity-card">
+                <h3>👤 New Users</h3>
+                <ul>
+                  <% recentUsers.forEach(user=> { %>
+                    <li>
+                      <%= user.name %>
+                        <span>
+                          <%= new Date(user.createdAt).toLocaleDateString() %>
+                        </span>
+                    </li>
+                    <% }) %>
+                </ul>
+              </div>
+
+              <!-- Recent Exams -->
+              <div class="activity-card">
+                <h3>📘 Recent Exams</h3>
+                <ul>
+                  <% recentExams.forEach(exam=> { %>
+                    <li>
+                      <strong>
+                        <%= exam.name %>
+                      </strong>
+                      <span>
+                        <%= new Date(exam.createdAt).toLocaleDateString() %>
+                      </span>
+                    </li>
+                    <% }) %>
+                </ul>
+              </div>
+
+              <!-- Recent Payments -->
+              <% if (recentPayments && recentPayments.length> 0) { %>
+                <div class="activity-card">
+                  <h3>💰 Recent Payments</h3>
+                  <ul>
+                    <% recentPayments.forEach(payment=> { %>
+                      <li>
+                        ₹<%= payment.amount %> - <%= payment.userName || "User" %>
+                      </li>
+                      <% }) %>
+                  </ul>
+                </div>
+                <% } %>
+
+                <!-- Recent Exam -->
+                  <div class="activity-card">
+                    <h3>❓ Recent Questions</h3>
+                    <ul>
+                      <% recentQuestions.forEach(q=> { %>
+                        <li>
+                          <%= q.question.substring(0, 40) %>...
+                        </li>
+                        <% }) %>
+                    </ul>
+                  </div>
+                  <!-- Recent Questions -->
+                  <div class="activity-card">
+                    <h3>❓ Recent Questions</h3>
+                    <ul>
+                      <% recentQuestions.forEach(q=> { %>
+                        <li>
+                          <%= q.question.substring(0, 40) %>...
+                        </li>
+                        <% }) %>
+                    </ul>
+                  </div>
+                  <!-- Recent Questions -->
+                  <div class="activity-card">
+                    <h3>❓ Recent Questions</h3>
+                    <ul>
+                      <% recentQuestions.forEach(q=> { %>
+                        <li>
+                          <%= q.question.substring(0, 40) %>...
+                        </li>
+                        <% }) %>
+                    </ul>
+                  </div>
+
+                  <!-- Recent Questions -->
+                  <div class="activity-card">
+                    <h3>❓ Recent Questions</h3>
+                    <ul>
+                      <% recentQuestions.forEach(q=> { %>
+                        <li>
+                          <%= q.question.substring(0, 40) %>...
+                        </li>
+                        <% }) %>
+                    </ul>
+                  </div>
+
+            </div>
+          </div>
+        </main>
+    </div>
+
+    <%- include('../../../partials/admin/footer') %>
+
+</body>
+
+</html>

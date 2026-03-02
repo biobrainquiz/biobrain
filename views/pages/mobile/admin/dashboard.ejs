@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body>
+
+  <%- include('../../../partials/admin/header') %>
+
+    <div class="admin-container">
+      <%- include('../../../partials/admin/sidebar') %>
+
+        <main class="admin-content">
+          <h1>Dashboard</h1>
+
+          <div class="cards">
+            <div class="card">
+              <h3>Total Exams</h3>
+              <p>
+                <%= totalExams || 0 %>
+              </p>
+            </div>
+
+            <div class="card">
+              <h3>Total Subjects</h3>
+              <p>
+                <%= totalSubjects || 0 %>
+              </p>
+            </div>
+
+            <div class="card">
+              <h3>Total Questions</h3>
+              <p>
+                <%= totalQuestions || 0 %>
+              </p>
+            </div>
+          </div>
+        </main>
+    </div>
+
+    <%- include('../../../partials/admin/footer') %>
+
+</body>
+
+</html>
