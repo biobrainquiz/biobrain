@@ -64,94 +64,245 @@
 
               <!-- Recent Users -->
               <div class="activity-card">
-                <h3>👤 New Users</h3>
-                <ul>
-                  <% recentUsers.forEach(user=> { %>
-                    <li>
-                      <%= user.name %>
-                        <span>
-                          <%= new Date(user.createdAt).toLocaleDateString() %>
-                        </span>
-                    </li>
-                    <% }) %>
-                </ul>
-              </div>
+                <h3>📘 Recent Users</h3>
 
-              <!-- Recent Exams -->
-              <div class="activity-card">
-                <h3>📘 Recent Exams</h3>
-                <ul>
-                  <% recentExams.forEach(exam=> { %>
-                    <li>
-                      <strong>
-                        <%= exam.name %>
-                      </strong>
-                      <span>
-                        <%= new Date(exam.createdAt).toLocaleDateString() %>
-                      </span>
-                    </li>
-                    <% }) %>
-                </ul>
+                <% if (recentUsers && recentUsers.length> 0) { %>
+                  <table class="recent-exam-table">
+                    <thead>
+                      <tr>
+                        <th>User</th>
+                        <th>Email</th>
+                        <th>Created On</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% recentUsers.forEach((user)=> { %>
+                        <tr>
+                          <td>
+                            <%= user.username %>
+                          </td>
+                          <td>
+                            <%= user.email %>
+                          </td>
+                          <td>
+                            <%= new Date(user.createdAt).toLocaleDateString() %>
+                          </td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                  </table>
+                  <% } else { %>
+                    <p class="no-data">No recent users found.</p>
+                    <% } %>
               </div>
 
               <!-- Recent Payments -->
-              <% if (recentPayments && recentPayments.length> 0) { %>
-                <div class="activity-card">
-                  <h3>💰 Recent Payments</h3>
-                  <ul>
-                    <% recentPayments.forEach(payment=> { %>
-                      <li>
-                        ₹<%= payment.amount %> - <%= payment.userName || "User" %>
-                      </li>
-                      <% }) %>
-                  </ul>
-                </div>
-                <% } %>
+             <div class="activity-card">
+                <h3>📘 Recent Payments</h3>
 
-                <!-- Recent Exam -->
-                  <div class="activity-card">
-                    <h3>❓ Recent Questions</h3>
-                    <ul>
-                      <% recentQuestions.forEach(q=> { %>
-                        <li>
-                          <%= q.question.substring(0, 40) %>...
-                        </li>
+                <% if (recentPayments && recentPayments.length> 0) { %>
+                  <table class="recent-exam-table">
+                    <thead>
+                      <tr>
+                        <th>User</th>
+                        <th>Amount</th>
+                        <th>Paid At</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% recentPayments.forEach((payment)=> { %>
+                        <tr>
+                          <td>
+                            <%= payment.user ? payment.user.username : "User not found" %>
+                          </td>
+                          <td>
+                            ₹<%= payment.amount %>
+                          </td>
+                          <td>
+                            <%= new Date(payment.paidAt).toLocaleDateString() %>
+                          </td>
+                        </tr>
                         <% }) %>
-                    </ul>
+                    </tbody>
+                  </table>
+                  <% } else { %>
+                    <p class="no-data">No recent users found.</p>
+                    <% } %>
+              </div>
+
+
+                  <!-- Recent Exams -->
+                  <div class="activity-card">
+                    <h3>📘 Recent Exams</h3>
+
+                    <% if (recentExams && recentExams.length> 0) { %>
+                      <table class="recent-exam-table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+                            <th>Code</th>
+                            <th>Created On</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% recentExams.forEach((exam)=> { %>
+                            <tr>
+                              <td>
+                                <%= exam.examname %>
+                              </td>
+                              <td>
+                                <%= exam.examcode %>
+                              </td>
+                              <td>
+                                <%= new Date(exam.createdAt).toLocaleDateString() %>
+                              </td>
+                            </tr>
+                            <% }) %>
+                        </tbody>
+                      </table>
+                      <% } else { %>
+                        <p class="no-data">No recent exams found.</p>
+                        <% } %>
                   </div>
-                  <!-- Recent Questions -->
+
+                  <!-- Recent Subjects -->
                   <div class="activity-card">
-                    <h3>❓ Recent Questions</h3>
-                    <ul>
-                      <% recentQuestions.forEach(q=> { %>
-                        <li>
-                          <%= q.question.substring(0, 40) %>...
-                        </li>
-                        <% }) %>
-                    </ul>
+                    <h3>📚 Recent Subjects</h3>
+
+                    <% if (recentSubjects && recentSubjects.length> 0) { %>
+                      <table class="recent-exam-table">
+                        <thead>
+                          <tr>
+                            <th>Subject Name</th>
+                            <th>Code</th>
+                            <th>Created On</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% recentSubjects.forEach((subject)=> { %>
+                            <tr>
+                              <td>
+                                <%= subject.subjectname %>
+                              </td>
+                              <td>
+                                <%= subject.subjectcode %>
+                              </td>
+                              <td>
+                                <%= new Date(subject.createdAt).toLocaleDateString() %>
+                              </td>
+                            </tr>
+                            <% }) %>
+                        </tbody>
+                      </table>
+                      <% } else { %>
+                        <p class="no-data">No recent subjects found.</p>
+                        <% } %>
                   </div>
-                  <!-- Recent Questions -->
+
+                  <!-- Recent Units -->
                   <div class="activity-card">
-                    <h3>❓ Recent Questions</h3>
-                    <ul>
-                      <% recentQuestions.forEach(q=> { %>
-                        <li>
-                          <%= q.question.substring(0, 40) %>...
-                        </li>
-                        <% }) %>
-                    </ul>
+                    <h3>📖 Recent Units</h3>
+
+                    <% if (recentUnits && recentUnits.length> 0) { %>
+                      <table class="recent-exam-table">
+                        <thead>
+                          <tr>
+                            <th>Unit Name</th>
+                            <th>Code</th>
+                            <th>Created On</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% recentUnits.forEach((unit)=> { %>
+                            <tr>
+                              <td>
+                                <%= unit.unitname %>
+                              </td>
+                              <td>
+                                <%= unit.unitcode %>
+                              </td>
+                              <td>
+                                <%= new Date(unit.createdAt).toLocaleDateString() %>
+                              </td>
+                            </tr>
+                            <% }) %>
+                        </tbody>
+                      </table>
+                      <% } else { %>
+                        <p class="no-data">No recent units found.</p>
+                        <% } %>
+                  </div>
+
+                  <!-- Recent Topics -->
+                  <div class="activity-card">
+                    <h3>📝 Recent Topics</h3>
+
+                    <% if (recentTopics && recentTopics.length> 0) { %>
+                      <table class="recent-exam-table">
+                        <thead>
+                          <tr>
+                            <th>Topic Name</th>
+                            <th>Code</th>
+                            <th>Created On</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% recentTopics.forEach((topic)=> { %>
+                            <tr>
+                              <td>
+                                <%= topic.topicname %>
+                              </td>
+                              <td>
+                                <%= topic.topiccode %>
+                              </td>
+                              <td>
+                                <%= new Date(topic.createdAt).toLocaleDateString() %>
+                              </td>
+                            </tr>
+                            <% }) %>
+                        </tbody>
+                      </table>
+                      <% } else { %>
+                        <p class="no-data">No recent topics found.</p>
+                        <% } %>
                   </div>
 
                   <!-- Recent Questions -->
                   <div class="activity-card">
                     <h3>❓ Recent Questions</h3>
-                    <ul>
-                      <% recentQuestions.forEach(q=> { %>
-                        <li>
-                          <%= q.question.substring(0, 40) %>...
-                        </li>
-                        <% }) %>
-                    </ul>
+
+                    <% if (recentQuestions && recentQuestions.length> 0) { %>
+                      <table class="recent-exam-table">
+                        <thead>
+                          <tr>
+                            <th>Question</th>
+                            <th>Unit</th>
+                            <th>Topic</th>
+                            <th>Created On</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% recentQuestions.forEach((q)=> { %>
+                            <tr>
+                              <td>
+                                <%= q.question %>
+                              </td>
+                              <td>
+                                <%= q.unitcode %>
+                              </td>
+                              <td>
+                                <%= q.topiccode %>
+                              </td>
+                              <td>
+                                <%= new Date(q.createdAt).toLocaleDateString() %>
+                              </td>
+                            </tr>
+                            <% }) %>
+                        </tbody>
+                      </table>
+                      <% } else { %>
+                        <p class="no-data">No recent questions found.</p>
+                        <% } %>
                   </div>
 
             </div>

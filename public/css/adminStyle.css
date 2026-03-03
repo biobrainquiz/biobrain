@@ -220,3 +220,39 @@ body {
 .activity-card li:last-child {
   border-bottom: none;
 }
+
+.recent-exam-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;   /* forces table to fit container */
+  font-size: 13px;
+}
+
+.recent-exam-table th,
+.recent-exam-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #e5e7eb;
+  word-wrap: break-word;   /* prevents overflow */
+}
+
+.recent-exam-table th {
+  background: #f8fafc;
+  font-weight: 600;
+  font-size: 12px;
+  text-align: left;
+}
+
+/* Make exam name take more space */
+.exam-name {
+  width: 40%;
+}
+
+/* Prevent long codes from stretching table */
+.recent-exam-table td:nth-child(3) {
+  width: 20%;
+}
+
+/* Compact look */
+.recent-exam-table tr:hover {
+  background-color: #f9fafb;
+}

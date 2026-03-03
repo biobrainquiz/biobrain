@@ -14,7 +14,7 @@ exports.index = async (req, res) => {
         const device = getDevice(req);
         const uname = req.session?.user?.username || "Admin";
 
-        const [
+        const dashdata=[
             username,
             examCount,
             subjectCount,
@@ -53,10 +53,13 @@ exports.index = async (req, res) => {
                 .sort({ createdAt: -1 })
                 .limit(5),
             User.find().sort({ createdAt: -1 }).limit(5),
-            Payment ? Payment.find().sort({ createdAt: -1 }).limit(5) : []
+            Payment ? Payment.find().populate("user").sort({ createdAt: -1 }).limit(5) : []
             
         ]);
-        res.render(`pages/${device}/admin/dashboard`, {
+        console.log(dashdata);
+        res.render(`pages/${device}/admin/dashboard`, {dashdata});
+
+        /*res.render(`pages/${device}/admin/dashboard`, {
             username,
             examCount,
             subjectCount,
@@ -75,7 +78,7 @@ exports.index = async (req, res) => {
             recentResults,
             recentUsers,
             recentPayments
-        });
+        });*/
     } catch (err) {
         console.error("Dashboard error:", err);
         res.status(500).send("Dashboard error");
