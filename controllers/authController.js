@@ -19,6 +19,8 @@ exports.login = async (req, res) => {
             ]
         });
 
+        const ismatch = await bcrypt.compare(password, user.password);
+
         if (!user) {
             return res.json({
                 success: false,
@@ -65,16 +67,6 @@ exports.login = async (req, res) => {
 };
 
 // ==========================
-// LOGOUT
-// ==========================
-exports.logout = (req, res) => {
-    req.session.destroy(() => {
-        res.clearCookie("connect.sid");
-        res.redirect("/");
-    });
-};
-
-// ==========================
 // REGISTER
 // ==========================
 exports.register = async (req, res) => {
@@ -101,13 +93,10 @@ exports.register = async (req, res) => {
             });
         }
 
-        // 3️⃣ Hash password (IMPORTANT)
-        const hashedPassword = await bcrypt.hash(password, 10);
-
         // 4️⃣ Create user
         const newUser = new User({
             username,
-            password: hashedPassword,
+            password,
             mobile,
             email
         });
@@ -127,6 +116,17 @@ exports.register = async (req, res) => {
             message: "Server error!"
         });
     }
+};
+
+
+// ==========================
+// LOGOUT
+// ==========================
+exports.logout = (req, res) => {
+    req.session.destroy(() => {
+        res.clearCookie("connect.sid");
+        res.redirect("/");
+    });
 };
 
 // ==========================
