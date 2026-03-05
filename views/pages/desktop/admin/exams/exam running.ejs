@@ -1,173 +1,148 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Admin Dashboard - Exams</title>
-    <link rel="stylesheet" href="/css/adminStyle.css">
+<meta charset="UTF-8">
+<title>Exam Management</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        .exam-wrapper {
-            background: #f4f6f9;
-            padding: 25px;
-            border-radius: 8px;
-        }
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    padding: 30px;
+}
 
-        .exam-wrapper h2 {
-            margin-bottom: 20px;
-        }
+h2 { margin-bottom: 20px; }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: #fff;
-        }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+}
 
-        th, td {
-            padding: 10px;
-            border: 1px solid #e0e0e0;
-            text-align: left;
-            font-size: 14px;
-        }
+th, td {
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    text-align: left;
+}
 
-        th {
-            background: #2c3e50;
-            color: white;
-        }
+th {
+    background: #2c3e50;
+    color: white;
+}
 
-        tr:nth-child(even) {
-            background: #f9fafc;
-        }
+tr:nth-child(even) { background: #f9fafc; }
 
-        input[type="text"] {
-            padding: 6px;
-            width: 95%;
-        }
+input[type="text"] {
+    padding: 6px;
+    width: 95%;
+}
 
-        select {
-            margin-top: 5px;
-            width: 100%;
-        }
+select {
+    margin-top: 5px;
+    width: 100%;
+}
 
-        button {
-            padding: 5px 8px;
-            border: none;
-            cursor: pointer;
-            border-radius: 4px;
-            font-size: 12px;
-        }
+button {
+    padding: 5px 8px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 12px;
+}
 
-        .edit-btn { background: #3498db; color: white; }
-        .save-btn { background: #2ecc71; color: white; }
-        .cancel-btn { background: #7f8c8d; color: white; }
-        .delete-btn { background: #e74c3c; color: white; }
-        .add-btn { background: #27ae60; color: white; }
+.edit-btn { background: #3498db; color: white; }
+.save-btn { background: #2ecc71; color: white; }
+.cancel-btn { background: #7f8c8d; color: white; }
+.delete-btn { background: #e74c3c; color: white; }
+.add-btn { background: #27ae60; color: white; }
 
-        .add-row { background: #eef7ff; }
-        .center { text-align: center; }
+.add-row { background: #eef7ff; }
 
-        .sort-btn {
-            background: #34495e;
-            color: white;
-            font-size: 10px;
-            padding: 2px 5px;
-        }
-    </style>
+.center { text-align: center; }
+
+.sort-btn {
+    background: #34495e;
+    color: white;
+    font-size: 10px;
+    padding: 2px 5px;
+}
+</style>
 </head>
-
 <body>
 
-    <%- include('../../../../partials/admin/header') %>
+<h2>Exam Management</h2>
 
-    <div class="admin-container">
-        <%- include('../../../../partials/admin/sidebar') %>
+<table>
+<thead>
+<tr>
+    <th>#</th>
 
-        <main class="admin-content">
+    <th>
+        Exam Name
+        <button class="sort-btn" onclick="sortTable(1)">⇅</button>
+        <select id="filterName" onchange="applyFilters()">
+            <option value="">All</option>
+        </select>
+    </th>
 
-            <div class="exam-wrapper">
-                <h2>Exam Management</h2>
+    <th>
+        Exam Code
+        <button class="sort-btn" onclick="sortTable(2)">⇅</button>
+        <select id="filterCode" onchange="applyFilters()">
+            <option value="">All</option>
+        </select>
+    </th>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>#</th>
+    <th>
+        Created
+        <button class="sort-btn" onclick="sortTable(3)">⇅</button>
+        <select id="filterCreated" onchange="applyFilters()">
+            <option value="">All</option>
+        </select>
+    </th>
 
-                            <th>
-                                Exam Name
-                                <button class="sort-btn" onclick="sortTable(1)">⇅</button>
-                                <select id="filterName" onchange="applyFilters()">
-                                    <option value="">All</option>
-                                </select>
-                            </th>
+    <th>Actions</th>
+</tr>
+</thead>
 
-                            <th>
-                                Exam Code
-                                <button class="sort-btn" onclick="sortTable(2)">⇅</button>
-                                <select id="filterCode" onchange="applyFilters()">
-                                    <option value="">All</option>
-                                </select>
-                            </th>
+<tbody id="examTableBody">
 
-                            <th>
-                                Created
-                                <button class="sort-btn" onclick="sortTable(3)">⇅</button>
-                                <select id="filterCreated" onchange="applyFilters()">
-                                    <option value="">All</option>
-                                </select>
-                            </th>
+<% exams.forEach((exam, index) => { %>
+<tr id="row-<%= exam._id %>">
+    <td class="center row-number"><%= index + 1 %></td>
 
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
+    <td>
+        <span class="text-<%= exam._id %>"><%= exam.examname %></span>
+        <input type="text"
+               value="<%= exam.examname %>"
+               class="input-<%= exam._id %>"
+               style="display:none;">
+    </td>
 
-                    <tbody id="examTableBody">
+    <td><%= exam.examcode %></td>
 
-                        <% exams.forEach((exam, index) => { %>
-                            <tr id="row-<%= exam._id %>">
-                                <td class="center row-number"><%= index + 1 %></td>
+    <td><%= new Date(exam.createdAt).toLocaleDateString() %></td>
 
-                                <td>
-                                    <span class="text-<%= exam._id %>"><%= exam.examname %></span>
-                                    <input type="text"
-                                        value="<%= exam.examname %>"
-                                        class="input-<%= exam._id %>"
-                                        style="display:none;">
-                                </td>
+    <td>
+        <button class="edit-btn" onclick="enableEdit('<%= exam._id %>')">Edit</button>
+        <button class="save-btn" style="display:none;" onclick="saveEdit('<%= exam._id %>')">Save</button>
+        <button class="cancel-btn" style="display:none;" onclick="cancelEdit('<%= exam._id %>')">Cancel</button>
+        <button class="delete-btn" onclick="deleteExam('<%= exam._id %>')">Delete</button>
+    </td>
+</tr>
+<% }) %>
 
-                                <td><%= exam.examcode %></td>
+<tr class="add-row" id="addRow">
+    <td class="center">+</td>
+    <td><input type="text" id="newExamName" placeholder="Exam Name"></td>
+    <td><input type="text" id="newExamCode" placeholder="Exam Code"></td>
+    <td>--</td>
+    <td><button class="add-btn" onclick="addExam()">Add</button></td>
+</tr>
 
-                                <td><%= new Date(exam.createdAt).toLocaleDateString() %></td>
-
-                                <td>
-                                    <button class="edit-btn" onclick="enableEdit('<%= exam._id %>')">Edit</button>
-                                    <button class="save-btn" style="display:none;" onclick="saveEdit('<%= exam._id %>')">Save</button>
-                                    <button class="cancel-btn" style="display:none;" onclick="cancelEdit('<%= exam._id %>')">Cancel</button>
-                                    <button class="delete-btn" onclick="deleteExam('<%= exam._id %>')">Delete</button>
-                                </td>
-                            </tr>
-                        <% }) %>
-
-                        <tr class="add-row" id="addRow">
-                            <td class="center">+</td>
-                            <td><input type="text" id="newExamName" placeholder="Exam Name"></td>
-                            <td><input type="text" id="newExamCode" placeholder="Exam Code"></td>
-                            <td>--</td>
-                            <td><button class="add-btn" onclick="addExam()">Add</button></td>
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
-
-        </main>
-    </div>
-
-    <%- include('../../../../partials/admin/footer') %>
-
-<script>
-/* -------------- ALL YOUR EXISTING JS HERE (UNCHANGED) -------------- */
-/* Paste your full script exactly as you posted */
-</script>
-
+</tbody>
+</table>
 
 <script>
 

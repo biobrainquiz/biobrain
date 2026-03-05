@@ -2,5 +2,6 @@
   { "examname": "NEET", "examcode": "E1" },
   { "examname": "DL/JL/Asst.Prof.", "examcode": "E2" },
   { "examname": "CSIR NET", "examcode": "E3" },
-  { "examname": "GATE", "examcode": "E4" }
+  { "examname": "GATE", "examcode": "E4" },
+  { "examname": "PHD DS", "examcode": "E5" }
 ]

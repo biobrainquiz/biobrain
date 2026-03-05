@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exam Management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            padding: 30px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border: 1px solid #e0e0e0;
+            text-align: left;
+        }
+
+        th {
+            background: #2c3e50;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background: #f9fafc;
+        }
+
+        input[type="text"] {
+            padding: 6px;
+            width: 90%;
+        }
+
+        button {
+            padding: 6px 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 13px;
+            border-radius: 4px;
+        }
+
+        .edit-btn {
+            background: #3498db;
+            color: #fff;
+        }
+
+        .save-btn {
+            background: #2ecc71;
+            color: #fff;
+        }
+
+        .cancel-btn {
+            background: #7f8c8d;
+            color: #fff;
+        }
+
+        .delete-btn {
+            background: #e74c3c;
+            color: #fff;
+        }
+
+        .add-btn {
+            background: #27ae60;
+            color: #fff;
+        }
+
+        .add-row {
+            background: #eef7ff;
+        }
+
+        .add-row input {
+            width: 95%;
+        }
+
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Exam Management</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+
+                <th>
+                    Exam Name
+                    <button onclick="sortTable(1)">⇅</button><br>
+                    <select onchange="filterTable(1, this.value)">
+                        <option value="">All</option>
+                        <% [...new Set(exams.map(e=> e.examname))].forEach(name => { %>
+                            <option value="<%= name %>">
+                                <%= name %>
+                            </option>
+                            <% }) %>
+                    </select>
+                </th>
+
+                <th>
+                    Exam Code
+                    <button onclick="sortTable(2)">⇅</button><br>
+                    <select onchange="filterTable(2, this.value)">
+                        <option value="">All</option>
+                        <% [...new Set(exams.map(e=> e.examcode))].forEach(code => { %>
+                            <option value="<%= code %>">
+                                <%= code %>
+                            </option>
+                            <% }) %>
+                    </select>
+                </th>
+
+                <th>
+                    Created
+                    <button onclick="sortTable(3)">⇅</button><br>
+                    <select onchange="filterTable(3, this.value)">
+                        <option value="">All</option>
+                        <% [...new Set(exams.map(e=>
+                            new Date(e.createdAt).toLocaleDateString()
+                            ))].forEach(date => { %>
+                            <option value="<%= date %>">
+                                <%= date %>
+                            </option>
+                            <% }) %>
+                    </select>
+                </th>
+
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody id="examTableBody">
+
+            <% exams.forEach((exam, index)=> { %>
+                <tr id="row-<%= exam._id %>">
+
+                    <td class="center row-number">
+                        <%= index + 1 %>
+                    </td>
+
+                    <td>
+                        <span class="text-<%= exam._id %>">
+                            <%= exam.examname %>
+                        </span>
+                        <input type="text" value="<%= exam.examname %>" class="input-<%= exam._id %>"
+                            style="display:none;">
+                    </td>
+
+                    <td>
+                        <%= exam.examcode %>
+                    </td>
+
+                    <td>
+                        <%= new Date(exam.createdAt).toLocaleDateString() %>
+                    </td>
+
+                    <td>
+                        <button class="edit-btn" onclick="enableEdit('<%= exam._id %>')">Edit</button>
+
+                        <button class="save-btn" style="display:none;"
+                            onclick="saveEdit('<%= exam._id %>')">Save</button>
+
+                        <button class="cancel-btn" style="display:none;"
+                            onclick="cancelEdit('<%= exam._id %>')">Cancel</button>
+
+                        <button class="delete-btn" onclick="deleteExam('<%= exam._id %>')">Delete</button>
+                    </td>
+                </tr>
+                <% }) %>
+
+                    <!-- ADD NEW EXAM ROW -->
+                    <tr class="add-row" id="addRow">
+                        <td class="center">+</td>
+                        <td>
+                            <input type="text" id="newExamName" placeholder="Enter exam name">
+                        </td>
+                        <td>
+                            <input type="text" id="newExamCode" placeholder="Enter exam code">
+                        </td>
+                        <td>--</td>
+                        <td>
+                            <button class="add-btn" onclick="addExam()">Add Exam</button>
+                        </td>
+                    </tr>
+
+        </tbody>
+    </table>
+
+
+    <script>
+
+        function refreshRowNumbers() {
+            const rows = document.querySelectorAll("#examTableBody tr:not(.add-row)");
+            rows.forEach((row, index) => {
+                row.querySelector(".row-number").innerText = index + 1;
+            });
+        }
+
+
+        function enableEdit(id) {
+            document.querySelector('.text-' + id).style.display = 'none';
+            document.querySelector('.input-' + id).style.display = 'inline';
+
+            const row = document.getElementById('row-' + id);
+            row.querySelector('.edit-btn').style.display = 'none';
+            row.querySelector('.save-btn').style.display = 'inline';
+            row.querySelector('.cancel-btn').style.display = 'inline';
+        }
+
+
+        function cancelEdit(id) {
+            document.querySelector('.text-' + id).style.display = 'inline';
+            document.querySelector('.input-' + id).style.display = 'none';
+
+            const row = document.getElementById('row-' + id);
+            row.querySelector('.edit-btn').style.display = 'inline';
+            row.querySelector('.save-btn').style.display = 'none';
+            row.querySelector('.cancel-btn').style.display = 'none';
+        }
+
+
+        function saveEdit(id) {
+            const newName = document.querySelector('.input-' + id).value;
+            alert(newName);
+            if (!newName) {
+                alert("Exam name cannot be empty");
+                return;
+            }
+
+            fetch(`/admin/exams/update/${id}`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ examname: newName })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        document.querySelector('.text-' + id).innerText = newName;
+                        cancelEdit(id);
+                    } else {
+                        alert("Update failed");
+                    }
+                });
+        }
+
+
+        function deleteExam(id) {
+            if (!confirm("Deleting this exam will remove all its subjects,units,topic,questions?")) return;
+
+            fetch(`/admin/exams/delete/${id}`, {
+                method: "POST"
+            })
+                .then(() => {
+                    document.getElementById("row-" + id).remove();
+                    refreshRowNumbers();
+                });
+        }
+
+
+        function addExam() {
+
+            const name = document.getElementById("newExamName").value.trim();
+            const code = document.getElementById("newExamCode").value.trim();
+
+            if (!name || !code) {
+                alert("Please enter exam name and code");
+                return;
+            }
+
+            fetch("/admin/exams/create", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    examname: name,
+                    examcode: code
+                })
+            })
+                .then(res => res.json())
+                .then(data => {
+
+                    if (!data.success) {
+                        alert(data.message || "Failed to create exam");
+                        return;
+                    }
+
+                    const exam = data.exam;
+
+                    const tableBody = document.getElementById("examTableBody");
+
+                    const newRow = document.createElement("tr");
+                    newRow.id = "row-" + exam._id;
+
+                    newRow.innerHTML = `
+            <td class="center row-number">0</td>
+            <td>
+                <span class="text-${exam._id}">${exam.examname}</span>
+                <input type="text"
+                       value="${exam.examname}"
+                       class="input-${exam._id}"
+                       style="display:none;">
+            </td>
+            <td>${exam.examcode}</td>
+            <td>${new Date(exam.createdAt).toLocaleDateString()}</td>
+            <td>
+                <button class="edit-btn"
+                        onclick="enableEdit('${exam._id}')">Edit</button>
+
+                <button class="save-btn"
+                        style="display:none;"
+                        onclick="saveEdit('${exam._id}')">Save</button>
+
+                <button class="cancel-btn"
+                        style="display:none;"
+                        onclick="cancelEdit('${exam._id}')">Cancel</button>
+
+                <button class="delete-btn"
+                        onclick="deleteExam('${exam._id}')">Delete</button>
+            </td>
+        `;
+
+                    tableBody.insertBefore(newRow, document.getElementById("addRow"));
+
+                    document.getElementById("newExamName").value = "";
+                    document.getElementById("newExamCode").value = "";
+
+                    refreshRowNumbers();
+                });
+        }
+
+        let sortDirection = {};
+
+        // SORT FUNCTION
+        function sortTable(columnIndex) {
+
+            const table = document.getElementById("examTableBody");
+            const rows = Array.from(table.querySelectorAll("tr:not(.add-row)"));
+
+            sortDirection[columnIndex] = !sortDirection[columnIndex];
+
+            rows.sort((a, b) => {
+
+                let A = a.children[columnIndex].innerText.trim().toLowerCase();
+                let B = b.children[columnIndex].innerText.trim().toLowerCase();
+
+                if (!isNaN(Date.parse(A))) {
+                    A = new Date(A);
+                    B = new Date(B);
+                }
+
+                if (A < B) return sortDirection[columnIndex] ? -1 : 1;
+                if (A > B) return sortDirection[columnIndex] ? 1 : -1;
+                return 0;
+            });
+
+            rows.forEach(row => table.insertBefore(row, document.getElementById("addRow")));
+
+            refreshRowNumbers();
+        }
+
+
+        // FILTER FUNCTION
+        function filterTable(columnIndex, value) {
+
+            const rows = document.querySelectorAll("#examTableBody tr:not(.add-row)");
+
+            rows.forEach(row => {
+                const cellValue = row.children[columnIndex].innerText.trim();
+
+                if (!value || cellValue === value) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+
+            refreshRowNumbers();
+        }
+
+    </script>
+
+</body>
+
+</html>

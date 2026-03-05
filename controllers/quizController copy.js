@@ -11,6 +11,7 @@ const {
 } = require("../utils/getNameByCode");
 
 
+
 exports.prepareQuiz = async (req, res) => {
   const device = getDevice(req);
 
@@ -173,9 +174,34 @@ exports.submitQuiz = async (req, res) => {
   }
 };
 
-exports.createOrder = async (req, res) => {
+exports.createOrder = (req, res) => {
   try {
     const { examcode, subjectcode, unitcode, topiccode, count, difficulty } = req.body;
+
+    // Save quiz config in session
+    req.session.quizConfig = {
+      examcode,
+      subjectcode,
+      unitcode,
+      topiccode,
+      count,
+      difficulty
+    };
+
+    return res.redirect(
+      `/quiz/start/${examcode}/${subjectcode}/${unitcode}/${topiccode}?count=${count}&difficulty=${difficulty}`
+    );
+
+  } catch (err) {
+    console.error("Create Order Error:", err);
+    return res.status(500).send("Unable to create quiz session");
+  }
+};
+
+exports.startQuiz = async (req, res) => {
+  try {
+    const { examcode, subjectcode, unitcode, topiccode } = req.params;
+    const { count, difficulty } = req.query;
 
     const questionCount = parseInt(count) || 10;
 
@@ -216,8 +242,9 @@ exports.createOrder = async (req, res) => {
         difficulty
       }
     );
-  } catch (err) {
-    console.error("Create Order Error:", err);
-    return res.status(500).send("Unable to create quiz session");
+
+  } catch (error) {
+    console.error("Quiz Start Error:", error);
+    return res.status(500).send("Something went wrong");
   }
 };

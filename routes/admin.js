@@ -24,25 +24,22 @@ router.get("/", dashboardController.index);
     next();
 }, dashboardController.index);*/
 
-// routes/admin.js or examController.js
-// =====================
-// EXAMS
-// =====================
-
 // GET all exams
 router.get("/exams", examController.list);
-router.get("/subjects", subjectController.list);
-
+router.post("/exams/update/:id", examController.update);
+router.post("/exams/delete/:id", examController.remove);
+router.post("/exams/create", examController.create);
 /*router.get("/exams/new", examController.showCreate);
 router.post("/exams", examController.create);
 router.get("/exams/:id/edit", examController.showEdit);
 router.post("/exams/:id", examController.update);
-router.post("/exams/:id/delete", examController.remove);
+router.post("/exams/:id/delete", examController.remove);*/
 
 // =====================
 // SUBJECTS
 // =====================
-
+router.get("/subjects", subjectController.list);
+/*router.get("/subjects", subjectController.list);
 router.get("/subjects/new", subjectController.showCreate);
 router.post("/subjects", subjectController.create);
 router.get("/subjects/:id/edit", subjectController.showEdit);

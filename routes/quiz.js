@@ -5,13 +5,7 @@ const router = express.Router();
 const requireLogin = require("../middleware/requireLogin");
 const quizController = require("../controllers/quizController");
 
-router.get(
-  "/quiz/start/:examcode/:subjectcode/:unitcode/:topiccode",
-  requireLogin,
-  quizController.startQuiz
-);
-
-// Prepare Quiz (Analytics Page)
+// Prepare Quiz 
 router.get(
   "/quiz/prepare/:examcode/:subjectcode",
   requireLogin,
@@ -25,7 +19,7 @@ router.post(
   quizController.submitQuiz
 );
 
-// Create Order (Session-based Quiz Config)
+// Create Quiz Order and Start Quiz
 router.post(
   "/quiz/createorder",
   requireLogin,
