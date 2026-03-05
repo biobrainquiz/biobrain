@@ -1,29 +1,207 @@
 <aside class="admin-sidebar">
-    <ul class="menu">
-        <li class="menu-item">
-            <a href="/admin">🏠 Dashboard</a>
-        </li>
 
-        <li class="menu-title">MANAGEMENT</li>
+<ul class="menu">
 
-        <li class="menu-item">
-            <a href="/admin/exams">📘 Exams</a>
-        </li>
+    <!-- DASHBOARD -->
+    <li class="menu-item">
+        <a href="/admin">🏠 Dashboard</a>
+    </li>
 
-        <li class="menu-item">
-            <a href="/admin/subjects">📚 Subjects</a>
-        </li>
+    <li class="menu-title">MANAGEMENT</li>
 
-        <li class="menu-item">
-            <a href="/admin/units">📂 Units</a>
-        </li>
+    <li class="menu-item">
+        <a href="/admin/exams">📘 Exams</a>
+    </li>
 
-        <li class="menu-item">
-            <a href="/admin/topics">📝 Topics</a>
-        </li>
+    <li class="menu-item">
+        <a href="/admin/subjects">📚 Subjects</a>
+    </li>
 
-        <li class="menu-item">
-            <a href="/admin/questions">❓ Questions</a>
-        </li>
-    </ul>
+    <li class="menu-item">
+        <a href="/admin/units">📂 Units</a>
+    </li>
+
+    <li class="menu-item">
+        <a href="/admin/topics">📝 Topics</a>
+    </li>
+
+    <li class="menu-item">
+        <a href="/admin/questions">❓ Questions</a>
+    </li>
+
+
+    <!-- DATABASE SECTION -->
+
+    <li class="menu-title">DATABASE</li>
+
+    <!-- COLLAPSIBLE RESET MENU -->
+
+    <li class="menu-item collapsible">
+
+        <a href="#" onclick="toggleResetMenu(event)">
+            ♻ Reset Database To ▾
+        </a>
+
+        <ul class="submenu" id="resetSubmenu">
+
+            <li>
+                <a href="#" class="menu-action danger" onclick="resetFactory()">
+                    ⚙ Factory
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="menu-action warning" onclick="resetBackup()">
+                    🔁 Recent Backup Point
+                </a>
+            </li>
+
+        </ul>
+
+    </li>
+
+
+    <!-- BACKUP DATABASE -->
+
+    <li class="menu-item">
+        <a href="#" class="menu-action success" onclick="backupDatabase()">
+            💾 Backup Database
+        </a>
+    </li>
+
+</ul>
+
 </aside>
+
+
+<style>
+
+.admin-sidebar{
+    width:230px;
+    background:#111827;
+    color:#fff;
+    min-height:100vh;
+}
+
+.menu{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+.menu-title{
+    font-size:11px;
+    letter-spacing:1px;
+    padding:12px 18px 6px;
+    opacity:0.6;
+}
+
+.menu-item a{
+    display:block;
+    padding:10px 18px;
+    color:#d1d5db;
+    text-decoration:none;
+    font-size:14px;
+    transition:0.2s;
+}
+
+.menu-item a:hover{
+    background:#1f2937;
+    color:#fff;
+}
+
+/* SUBMENU */
+
+.submenu{
+    display:none;
+    list-style:none;
+    padding-left:10px;
+}
+
+.submenu li a{
+    padding:8px 18px 8px 30px;
+    font-size:13px;
+}
+
+/* ACTION COLORS */
+
+.menu-action.success:hover{
+    background:#14532d;
+}
+
+.menu-action.warning:hover{
+    background:#7c2d12;
+}
+
+.menu-action.danger:hover{
+    background:#7f1d1d;
+}
+
+</style>
+
+
+<script>
+
+function toggleResetMenu(e){
+
+    e.preventDefault();
+
+    const menu=document.getElementById("resetSubmenu");
+
+    if(menu.style.display==="block")
+        menu.style.display="none";
+    else
+        menu.style.display="block";
+}
+
+
+
+/* RESET TO FACTORY */
+
+function resetFactory(){
+
+    if(!confirm("Reset database to FACTORY state? All data will be deleted."))
+        return;
+
+    fetch("/admin/reset/factory",{method:"POST"})
+    .then(res=>res.json())
+    .then(data=>{
+        alert(data.message || "Database reset complete");
+        location.reload();
+    });
+
+}
+
+
+
+/* RESTORE FROM BACKUP */
+
+function resetBackup(){
+
+    if(!confirm("Restore database from recent backup?"))
+        return;
+
+    fetch("/admin/reset/backup",{method:"POST"})
+    .then(res=>res.json())
+    .then(data=>{
+        alert(data.message || "Database restored");
+        location.reload();
+    });
+
+}
+
+
+
+/* CREATE BACKUP */
+
+function backupDatabase(){
+
+    fetch("/admin/backup",{method:"POST"})
+    .then(res=>res.json())
+    .then(data=>{
+        alert(data.message || "Backup created successfully");
+    });
+
+}
+
+</script>

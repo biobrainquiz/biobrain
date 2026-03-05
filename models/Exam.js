@@ -6,22 +6,27 @@ const examSchema = new mongoose.Schema({
   examcode: { type: String, required: true, unique: true, uppercase: true, trim: true }
 }, { timestamps: true });
 
-module.exports = mongoose.model("Exam", examSchema);
 
 // Cascade delete subjects, units, topics, questions
-examSchema.pre("findOneAndDelete", async function(next) {
+examSchema.pre("findOneAndDelete", async function () {
+
   const filter = this.getFilter();
+
+  const Exam = mongoose.model("Exam");
+  const exam = await Exam.findOne(filter);
+
+  if (!exam) return;
+
   const Subject = require("./Subject");
   const Unit = require("./Unit");
   const Topic = require("./Topic");
   const Question = require("./Question");
 
-  await cascadeDelete(Subject, { examcode: filter.examcode });
-  await cascadeDelete(Unit, { examcode: filter.examcode });
-  await cascadeDelete(Topic, { examcode: filter.examcode });
-  await cascadeDelete(Question, { examcode: filter.examcode });
+  await cascadeDelete(Subject, { examcode: exam.examcode });
+  await cascadeDelete(Unit, { examcode: exam.examcode });
+  await cascadeDelete(Topic, { examcode: exam.examcode });
+  await cascadeDelete(Question, { examcode: exam.examcode });
 
-  next();
 });
 
 module.exports = mongoose.model("Exam", examSchema);

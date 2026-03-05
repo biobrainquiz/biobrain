@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
+
 // Middleware
 const requireLogin = require("../middleware/requireLogin");
 router.use(requireLogin);
@@ -13,42 +14,33 @@ const unitController = require("../controllers/admin/unitController");
 const topicController = require("../controllers/admin/topicController");
 const questionController = require("../controllers/admin/questionController");
 const dashboardController = require("../controllers/admin/dashboardController");
-// Protect all admin routes
+const databaseBkupController = require("../controllers/admin/databaseBkupController");
 
 // =====================
 // DASHBOARD
 // =====================
 router.get("/", dashboardController.index);
 
-/*router.get("/", (req, res, next) => {
-    next();
-}, dashboardController.index);*/
+router.post("/reset/factory", databaseBkupController.resetToFactory);
+router.post("/reset/backup", databaseBkupController.resetToLatestBackup);
+router.post("/backup", databaseBkupController.backupDatabase);
 
 // GET all exams
 router.get("/exams", examController.list);
 router.post("/exams/update/:id", examController.update);
 router.post("/exams/delete/:id", examController.remove);
 router.post("/exams/create", examController.create);
-/*router.get("/exams/new", examController.showCreate);
-router.post("/exams", examController.create);
-router.get("/exams/:id/edit", examController.showEdit);
-router.post("/exams/:id", examController.update);
-router.post("/exams/:id/delete", examController.remove);*/
 
 // =====================
 // SUBJECTS
 // =====================
 router.get("/subjects", subjectController.list);
-/*router.get("/subjects", subjectController.list);
-router.get("/subjects/new", subjectController.showCreate);
-router.post("/subjects", subjectController.create);
-router.get("/subjects/:id/edit", subjectController.showEdit);
-router.post("/subjects/:id", subjectController.update);
-router.post("/subjects/:id/delete", subjectController.remove);
+router.post("/subjects/create", subjectController.create);
+router.post("/subjects/update/:id", subjectController.update);
+router.post("/subjects/delete/:id", subjectController.delete);
 
-// =====================
-// UNITS
-// =====================
+
+    /*
 router.get("/units", unitController.list);
 router.get("/units/new", unitController.showCreate);
 router.post("/units", unitController.create);

@@ -8,7 +8,7 @@ process.on("unhandledRejection", err => {
 
 require("dotenv").config();
 const express = require("express");
-const mongoose = require("mongoose");
+
 const session = require("express-session");
 const MongoStore = require("connect-mongo").default;
 const useragent = require("express-useragent");
@@ -23,6 +23,8 @@ const Topic = require("./models/Topic");
 const Exam = require("./models/Exam");
 const escapeHtml = require("./utils/escapeHtml");
 const getDevice = require("./utils/getDevice");
+const connectDB = require("./config/db");
+const mongoose = require("mongoose");
 
 const app = express();
 
@@ -34,13 +36,16 @@ const mongoURI = isProduction
   ? process.env.PRODUCTION_SERVER_MONGO_URI
   : process.env.LOCAL_SERVER_MONGO_URI;
 
+//connectDB();
 mongoose.connect(mongoURI)
   .then(async () => {
     console.log("✅ Connected to MongoDB");
-    await autoSeed(); // optional seeding
+    await autoSeed("factory");
   })
   .catch(err => console.log("❌ MongoDB connection error:", err));
 
+// optional seeding
+//autoSeed("factory");
 /* ==============================
    Session Middleware
 ============================== */
@@ -130,8 +135,8 @@ app.get("/keep-session-alive", (req, res) => {
 });
 
 app.use((err, req, res, next) => {
-    console.error("GLOBAL ERROR:", err);
-    res.status(500).send("Something broke!");
+  console.error("GLOBAL ERROR:", err);
+  res.status(500).send("Something broke!");
 });
 
 /* ==============================

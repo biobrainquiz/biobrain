@@ -5,7 +5,7 @@
 
     <div class="header-right">
         <span class="welcome-text">
-            Welcome, <%= username || "Admin" %>
+            Welcome, <%= username ? username : "ADMIN" %>
         </span>
 
         <a href="/logout" class="logout-btn">Logout</a>

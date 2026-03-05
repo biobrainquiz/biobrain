@@ -16,9 +16,8 @@ function isForcedSeeding() {
   }
 }
 
-async function autoSeed() {
+async function autoSeed(source) {
   try {
-    //const count = await Question.countDocuments();
     const forced = isForcedSeeding();
 
     if (!forced) {
@@ -31,40 +30,28 @@ async function autoSeed() {
       console.log("🔥  Forced seeding enabled.");
       console.log("⚠ Clearing old Questions...");
       await Question.deleteMany({});
-      //console.log("⚠ Deleting Existing Questions Table...");
-      //await mongoose.connection.dropCollection("questions");
       console.log("⚠ Clearing old Topics...");
       await Topic.deleteMany();
-      //console.log("⚠ Deleting Existing Topics Table...");
-      //await mongoose.connection.dropCollection("topics");
       console.log("⚠ Clearing old Units...");
       await Unit.deleteMany();
-      //console.log("⚠ Deleting Existing Units Table...");
-      //await mongoose.connection.dropCollection("unit");
       console.log("⚠ Clearing old Subjects...");
       await Subject.deleteMany();
-      //console.log("⚠ Deleting Existing Subjects Table...");
-      //await mongoose.connection.dropCollection("subjects");
       console.log("⚠ Clearing old Exams...");
       await Exam.deleteMany();
-      //console.log("⚠ Deleting Existing Questions Table...");
-      //await mongoose.connection.dropCollection("questions");
       console.log("⚠ Clearing old Payemnts...");
       await Payment.deleteMany({});
-      //console.log("⚠ Deleting Existing Payemnts Table...");
-      //await mongoose.connection.dropCollection("payments");
     }
 
     console.log("⚡ Seeding database...");
 
     //start
     // 2️⃣ Load JSON
-    const examsData = JSON.parse(fs.readFileSync(path.join(__dirname, "../datafeed/examtable.json")));
-    const subjectsData = JSON.parse(fs.readFileSync(path.join(__dirname, "../datafeed/subjecttable.json")));
-    const unitsData = JSON.parse(fs.readFileSync(path.join(__dirname, "../datafeed/unittable.json")));
-    const topicsData = JSON.parse(fs.readFileSync(path.join(__dirname, "../datafeed/topictable.json")));
-    const questionsData = JSON.parse(fs.readFileSync(path.join(__dirname, "../datafeed/questiontable.json")));
-    const paymentsData = JSON.parse(fs.readFileSync(path.join(__dirname, "../datafeed/paymenttable.json")));
+    const examsData = JSON.parse(fs.readFileSync(path.join(__dirname, `../datafeed/${source}/examtable.json`)));
+    const subjectsData = JSON.parse(fs.readFileSync(path.join(__dirname, `../datafeed/${source}/subjecttable.json`)));
+    const unitsData = JSON.parse(fs.readFileSync(path.join(__dirname, `../datafeed/${source}/unittable.json`)));
+    const topicsData = JSON.parse(fs.readFileSync(path.join(__dirname, `../datafeed/${source}/topictable.json`)));
+    const questionsData = JSON.parse(fs.readFileSync(path.join(__dirname, `../datafeed/${source}/questiontable.json`)));
+    const paymentsData = JSON.parse(fs.readFileSync(path.join(__dirname, `../datafeed/${source}/paymenttable.json`)));
 
     // 3️⃣ Insert Exams first
     const exams = await Exam.insertMany(examsData); // exams[i]._id available
@@ -86,7 +73,7 @@ async function autoSeed() {
     });
     const units = await Unit.insertMany(unitsToInsert);
     console.log(`🔥 Unit seeded: ${units.length} successfully!`);
-    
+
     // 6️⃣ Insert Topics with exam, subject, unit _id
     const topicsToInsert = topicsData.map(t => {
       const exam = exams.find(e => e.examcode === t.examcode);
@@ -110,7 +97,7 @@ async function autoSeed() {
 
     console.log("✅ All data seeded successfully!");
 
-  } 
+  }
   catch (err) {
     console.error("❌ Auto seeding failed:", err);
   }

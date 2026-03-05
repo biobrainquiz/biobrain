@@ -373,3 +373,48 @@ body {
   font-size: 14px;
   letter-spacing: 0.5px;
 }
+
+.seed-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #16a34a;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.seed-btn:hover {
+    background: #15803d;
+}
+
+.submenu {
+    display: none;
+    padding-left: 20px;
+}
+
+.menu-btn {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+.menu-btn.success {
+    background: #27ae60;
+    color: white;
+}
+
+.menu-btn.warning {
+    background: #f39c12;
+    color: white;
+}
+
+.menu-btn.danger {
+    background: #e74c3c;
+    color: white;
+}

@@ -9,41 +9,107 @@ const Exam = require("../../models/Exam");
 const getDevice = require("../../utils/getDevice"); // if you use device-based views
 
 exports.list = async (req, res) => {
+
   try {
-    const exams = await Subject.find().sort({ createdAt: -1 });
+
+    const subjects = await Subject.find()
+      .populate("exam")
+      .sort({ createdAt: -1 });
+
+    const exams = await Exam.find().sort({ examname: 1 });
 
     res.render(`pages/${getDevice(req)}/admin/subjects/subject`, {
+      subjects,
       exams
     });
 
   } catch (err) {
-    console.error("Error fetching exams:", err);
-    res.status(500).send("Unable to fetch exams");
-  }
-};
 
-/*exports.showCreate = async (req, res) => {
-  const exams = await Exam.find();
-  res.render(`pages/${getDevice(req)}/admin/addSubject`, { exams });
+    console.error("Error loading subjects:", err);
+    res.status(500).send("Server Error");
+
+  }
+
 };
 
 exports.create = async (req, res) => {
-  await Subject.create(req.body);
-  res.redirect("/admin/subjects");
-};
+  try {
 
-exports.showEdit = async (req, res) => {
-  const subject = await Subject.findById(req.params.id);
-  const exams = await Exam.find();
-  res.render(`pages/${getDevice(req)}/admin/editSubject`, { subject, exams });
+    const { examId, examcode, subjectname, subjectcode } = req.body;
+
+    const exam = await Exam.findById(examId);
+
+    if (!exam) {
+      return res.json({ success: false, message: "Exam not found" });
+    }
+
+    const subject = await Subject.create({
+      exam: examId,
+      examcode: examcode,
+      examname: exam.examname,   // ✅ store examname
+      subjectname,
+      subjectcode
+    });
+
+    res.json({ success: true, subject });
+
+  } catch (err) {
+    console.error(err);
+
+    if (err.code === 11000) {
+      return res.json({ success: false, message: "Duplicate subject code for this exam" });
+    }
+
+    res.json({ success: false, message: "Server error" });
+  }
 };
 
 exports.update = async (req, res) => {
-  await Subject.findByIdAndUpdate(req.params.id, req.body);
-  res.redirect("/admin/subjects");
+
+  try {
+
+    const { subjectname } = req.body;
+
+    await Subject.findByIdAndUpdate(
+      req.params.id,
+      { subjectname }
+    );
+
+    res.json({ success: true });
+
+  } catch (err) {
+
+    console.error("Update error:", err);
+
+    res.json({
+      success: false,
+      message: err.message
+    });
+
+  }
+
 };
 
-exports.remove = async (req, res) => {
-  await Subject.findByIdAndDelete(req.params.id);
-  res.redirect("/admin/subjects");
-};*/
+exports.delete = async (req, res) => {
+
+  try {
+
+    const subject = await Subject.findById(req.params.id);
+
+    await Subject.findOneAndDelete({
+      examcode: subject.examcode,
+      subjectcode: subject.subjectcode
+    });
+
+    res.json({ success: true });
+
+  } catch (err) {
+
+    console.error("Delete error:", err);
+
+    res.json({
+      success: false,
+      message: err.message
+    });
+  }
+};
