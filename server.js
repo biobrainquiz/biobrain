@@ -1,32 +1,30 @@
-process.on("uncaughtException", err => {
-  console.error("UNCAUGHT EXCEPTION:", err);
-});
-
-process.on("unhandledRejection", err => {
-  console.error("UNHANDLED REJECTION:", err);
-});
-
 require("dotenv").config();
+const path = require("path");
 const express = require("express");
-
 const session = require("express-session");
 const MongoStore = require("connect-mongo").default;
+const mongoose = require("mongoose");
 const useragent = require("express-useragent");
-const path = require("path");
+const escapeHtml = require("./utils/escapeHtml");
+const getDevice = require("./utils/getDevice");
+const logger = require("./utils/logger");
 const mapCodesToNames = require("./utils/mapCodesToNames");
 const { autoSeed } = require("./utils/autoSeeder");
 const requireLogin = require("./middleware/requireLogin");
+const errorHandler = require("./middleware/errorHandler");
+const connectDB = require("./config/db");
 const QuizResult = require("./models/QuizResult");
 const Question = require("./models/Question");
 const Unit = require("./models/Unit");
 const Topic = require("./models/Topic");
 const Exam = require("./models/Exam");
-const escapeHtml = require("./utils/escapeHtml");
-const getDevice = require("./utils/getDevice");
-const connectDB = require("./config/db");
-const mongoose = require("mongoose");
 
 const app = express();
+app.use(errorHandler);
+app.use((req, res, next) => {
+  logger.info(`${req.method} ${req.url} ${req.ip}`);
+  next();
+});
 
 /* ==============================
    Environment & MongoDB
@@ -36,16 +34,20 @@ const mongoURI = isProduction
   ? process.env.PRODUCTION_SERVER_MONGO_URI
   : process.env.LOCAL_SERVER_MONGO_URI;
 
-//connectDB();
 mongoose.connect(mongoURI)
   .then(async () => {
-    console.log("✅ Connected to MongoDB");
+    logger.info("✅ Connected to MongoDB");
     await autoSeed("factory");
   })
-  .catch(err => console.log("❌ MongoDB connection error:", err));
+  .catch(err => {
+    logger.error({
+      message: "❌ MongoDB connection error",
+      error: err.message,
+      stack: err.stack
+    });
+    process.exit(1);
+  });
 
-// optional seeding
-//autoSeed("factory");
 /* ==============================
    Session Middleware
 ============================== */
@@ -150,4 +152,6 @@ app.use((req, res) => {
    Start Server
 ============================== */
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  logger.info(`🚀 Server running on port ${PORT}`);
+});
