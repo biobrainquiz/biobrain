@@ -1,0 +1,20 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "D:\\Projects\\BioBrainMdb\\logs\\error\\.627904d5a4bf0a743c6c6f559824bc72b6ef0fd4-audit.json",
+    "files": [
+        {
+            "date": 1772820253013,
+            "name": "D:\\Projects\\BioBrainMdb\\logs\\error\\error-06-03-2026.log",
+            "hash": "81ae15a4b0b418df891c190a816c8eb820e56613d558f60f8d88bcf1f1b9a9ae"
+        },
+        {
+            "date": 1772822117951,
+            "name": "D:\\Projects\\BioBrainMdb\\logs\\error\\error-07-03-2026.log",
+            "hash": "72241a2d07e9c95a57cc5309f54a5135a2e2e6f6c8b7b52d720379f066380500"
+        }
+    ],
+    "hashType": "sha256"
+}

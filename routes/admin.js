@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-
 // Middleware
 const requireLogin = require("../middleware/requireLogin");
 router.use(requireLogin);
@@ -15,7 +14,14 @@ const topicController = require("../controllers/admin/topicController");
 const questionController = require("../controllers/admin/questionController");
 const dashboardController = require("../controllers/admin/dashboardController");
 const databaseBkupController = require("../controllers/admin/databaseBkupController");
+const logController = require("../controllers/admin/LogController");
 
+//const { addClient, removeClient } = require("../utils/liveLogs");
+
+router.get("/logs", logController.logsPage);
+router.get("/logs/files", logController.getLogFiles);
+router.get("/logs/view", logController.viewLogFile);
+router.get("/logs/download", logController.downloadlogfile);
 
 // =====================
 // DASHBOARD
@@ -73,4 +79,19 @@ router.get("/questions/:id/edit", questionController.showEdit);
 router.post("/questions/:id", questionController.update);
 router.post("/questions/:id/delete", questionController.remove);*/
 
+
+
+// routes/adminLogs.js
+
+
+router.get("/admin/logs/live", (req, res) => {
+
+    res.render(`pages/${getDevice(req)}/admin/liveLogs`, {
+        username: req.session?.username || "ADMIN"
+    });
+
+});
+
 module.exports = router;
+
+//module.exports = { router, sendLog };

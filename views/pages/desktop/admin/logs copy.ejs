@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Admin - Log Viewer</title>
+
+<link rel="stylesheet" href="/css/adminStyle.css">
+
+<style>
+
+.logs-wrapper{
+background:#f4f6f9;
+padding:25px;
+border-radius:8px;
+}
+
+.log-controls{
+display:flex;
+gap:15px;
+margin-bottom:15px;
+}
+
+select{
+padding:6px;
+}
+
+button{
+padding:6px 12px;
+cursor:pointer;
+}
+
+.log-viewer{
+background:#0f172a;
+color:#e5e7eb;
+
+padding:15px;
+border-radius:8px;
+
+font-family:monospace;
+font-size:13px;
+
+height:500px;
+max-width:100%;
+
+overflow-y:auto;
+overflow-x:auto;
+
+white-space:pre;
+
+border:1px solid #1f2937;
+
+box-sizing:border-box;
+}
+
+.admin-container{
+display:flex;
+}
+
+.admin-content{
+flex:1;
+padding:25px;
+overflow:hidden;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<%- include('../../../partials/admin/header') %>
+
+<div class="admin-container">
+
+<%- include('../../../partials/admin/sidebar') %>
+
+<div class="admin-content">
+
+<div class="logs-wrapper">
+
+<h2>📄 View Old Logs</h2>
+
+<div class="log-controls">
+
+<select id="logType" onchange="loadFiles()">
+
+<option value="">Select Log Type</option>
+
+<% logTypes.forEach(type=>{ %>
+<option value="<%= type %>"><%= type %></option>
+<% }) %>
+
+</select>
+
+
+<select id="logFile" onchange="viewLog()">
+<option value="">Select Log File</option>
+</select>
+
+
+<button onclick="downloadCurrentLog()">⬇ Download</button>
+
+</div>
+
+
+<div id="logViewer" class="log-viewer">
+
+Select log type and file to view logs.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<%- include('../../../partials/admin/footer') %>
+
+
+<script>
+
+/* TRACK CURRENT FILE */
+
+let currentLogType="";
+let currentLogFile="";
+
+
+function loadFiles(){
+
+const type=document.getElementById("logType").value;
+
+fetch(`/admin/logs/files?type=${type}`)
+.then(res=>res.json())
+.then(files=>{
+
+const dropdown=document.getElementById("logFile");
+
+dropdown.innerHTML='<option value="">Select Log File</option>';
+
+files.forEach(f=>{
+dropdown.innerHTML+=`<option value="${f}">${f}</option>`;
+});
+
+});
+
+}
+
+
+
+function viewLog(){
+
+const type=document.getElementById("logType").value;
+const file=document.getElementById("logFile").value;
+
+if(!type || !file) return;
+
+/* SAVE CURRENT FILE */
+currentLogType=type;
+currentLogFile=file;
+
+fetch(`/admin/logs/view?type=${type}&file=${file}`)
+.then(res=>res.text())
+.then(data=>{
+document.getElementById("logViewer").innerText=data;
+});
+
+}
+
+
+
+function downloadCurrentLog(){
+
+if(!currentLogFile){
+
+alert("No log file currently loaded");
+
+return;
+
+}
+
+window.location.href=`/admin/logs/download?type=${currentLogType}&file=${currentLogFile}`;
+
+}
+
+</script>
+
+</body>
+
+</html>

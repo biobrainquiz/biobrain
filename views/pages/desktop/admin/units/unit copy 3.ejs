@@ -228,19 +228,8 @@ Created
 
 <td class="center action-buttons">
 
-<button class="edit-btn" onclick="enableEdit(this)">Edit</button>
-
-<button class="save-btn" style="display:none;" onclick="saveUnit(this)">
-Save
-</button>
-
-<button class="cancel-btn" style="display:none;" onclick="cancelEdit(this)">
-Cancel
-</button>
-
-<button class="delete-btn" onclick="deleteUnit('<%= unit._id %>')">
-Delete
-</button>
+<button class="edit-btn" onclick="editUnit(this)">Edit</button>
+<button class="delete-btn" onclick="deleteUnit('<%= unit._id %>')">Delete</button>
 
 </td>
 
@@ -508,86 +497,43 @@ else alert(data.message);
 
 }
 
-function enableEdit(btn){
+function editUnit(btn){
 
-const row = btn.closest("tr");
+const row=btn.closest("tr");
+const cell=row.querySelector(".unitname");
 
-const cell = row.querySelector(".unitname");
-const oldValue = cell.innerText.trim();
+const old=cell.innerText;
 
-cell.innerHTML = `<input class="edit-input" value="${oldValue}">`;
+cell.innerHTML=`<input id="editName" value="${old}">`;
 
-row.querySelector(".edit-btn").style.display="none";
-//row.querySelector(".delete-btn").style.display="none";
+btn.innerText="Save";
+btn.className="save-btn";
 
-row.querySelector(".save-btn").style.display="inline";
-row.querySelector(".cancel-btn").style.display="inline";
-
-row.querySelector(".edit-input").focus();
+btn.onclick=function(){saveUnit(this)}
 
 }
-
-
-function cancelEdit(btn){
-
-const row = btn.closest("tr");
-const cell = row.querySelector(".unitname");
-
-const input = row.querySelector(".edit-input");
-const original = input.defaultValue;
-
-cell.innerText = original;
-
-row.querySelector(".edit-btn").style.display="inline";
-row.querySelector(".delete-btn").style.display="inline";
-
-row.querySelector(".save-btn").style.display="none";
-row.querySelector(".cancel-btn").style.display="none";
-
-}
-
 
 async function saveUnit(btn){
 
-const row = btn.closest("tr");
-const id = row.dataset.id;
+const row=btn.closest("tr");
+const id=row.dataset.id;
 
-const input = row.querySelector(".edit-input");
-const newName = input.value.trim();
+const name=row.querySelector("#editName").value;
 
-if(!newName){
-alert("Unit name cannot be empty");
-return;
-}
-
-const res = await fetch(`/admin/units/update/${id}`,{
+await fetch(`/admin/units/update/${id}`,{
 
 method:"POST",
 headers:{"Content-Type":"application/json"},
-body:JSON.stringify({unitname:newName})
+body:JSON.stringify({unitname:name})
+
+})
+.then(r=>r.json())
+.then(data=>{
+
+if(data.success) location.reload();
+else alert("Update failed");
 
 });
-
-const data = await res.json();
-
-if(data.success){
-
-row.querySelector(".unitname").innerText = newName;
-
-row.querySelector(".edit-btn").style.display="inline";
-row.querySelector(".delete-btn").style.display="inline";
-
-row.querySelector(".save-btn").style.display="none";
-row.querySelector(".cancel-btn").style.display="none";
-
-buildFilters();
-
-}
-else{
-
-alert("Update failed");
-
-}
 
 }
 

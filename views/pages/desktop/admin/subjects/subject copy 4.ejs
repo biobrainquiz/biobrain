@@ -2,7 +2,6 @@
 <html>
 
 <head>
-
 <title>Admin Dashboard - Subjects</title>
 
 <link rel="stylesheet" href="/css/adminStyle.css">
@@ -29,12 +28,15 @@ font-weight:600;
 color:#2c3e50;
 }
 
+/* CARD */
 .table-card{
 background:#fff;
 border-radius:10px;
 box-shadow:0 4px 14px rgba(0,0,0,0.08);
 overflow:hidden;
 }
+
+/* TABLE */
 
 table{
 width:100%;
@@ -67,6 +69,8 @@ background:#fafbfd;
 text-align:center;
 }
 
+/* INPUTS */
+
 input[type="text"],select{
 padding:6px 8px;
 width:95%;
@@ -74,6 +78,8 @@ border:1px solid #d6d6d6;
 border-radius:4px;
 font-size:13px;
 }
+
+/* BUTTONS */
 
 button{
 padding:6px 10px;
@@ -104,12 +110,7 @@ margin-left:5px;
 border-radius:3px;
 }
 
-.action-buttons{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:6px;
-}
+/* ADD ROW */
 
 .add-row{
 background:#eef7ff;
@@ -118,6 +119,8 @@ background:#eef7ff;
 .add-row td{
 border-top:2px dashed #d6eaff;
 }
+
+/* FILTER DROPDOWN */
 
 th select{
 margin-top:5px;
@@ -231,7 +234,7 @@ style="display:none;">
 
 <td><%= new Date(subject.createdAt).toLocaleDateString() %></td>
 
-<td class="center action-buttons">
+<td class="center">
 
 <button class="edit-btn"
 onclick="enableEdit('<%= subject._id %>')">
@@ -260,6 +263,8 @@ Delete
 </tr>
 
 <% }) %>
+
+<!-- ADD SUBJECT ROW -->
 
 <tr class="add-row" id="addRow">
 
@@ -341,6 +346,8 @@ Add
 
 <script>
 
+/* YOUR ORIGINAL JS (UNCHANGED) */
+
 let sortDirection={};
 
 function refreshRowNumbers(){
@@ -394,10 +401,12 @@ const current=select.value;
 select.innerHTML='<option value="">All</option>';
 
 Array.from(values).sort().forEach(val=>{
+
 const option=document.createElement("option");
 option.value=val;
 option.textContent=val;
 select.appendChild(option);
+
 });
 
 select.value=current;
@@ -526,6 +535,7 @@ rebuildFilters();
 function autoLoadExamCode(){
 
 const select=document.getElementById("examSelect");
+
 const code=select.options[select.selectedIndex].dataset.code;
 
 document.getElementById("examCodeAuto").value=code||"";
@@ -566,4 +576,3 @@ document.addEventListener("DOMContentLoaded",rebuildFilters);
 
 </body>
 </html>
-

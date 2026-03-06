@@ -1,0 +1,141 @@
+2026-03-06 23:35:17 [INFO]: 🚀 Server running on port 3000 
+2026-03-06 23:35:17 [INFO]: ✅ Connected to MongoDB 
+2026-03-06 23:35:17 [INFO]: 🔥  Forced seeding enabled. 
+2026-03-06 23:35:17 [INFO]: ⚠ Clearing old Questions... 
+2026-03-06 23:35:17 [INFO]: ⚠ Clearing old Topics... 
+2026-03-06 23:35:17 [INFO]: ⚠ Clearing old Units... 
+2026-03-06 23:35:17 [INFO]: ⚠ Clearing old Subjects... 
+2026-03-06 23:35:17 [INFO]: ⚠ Clearing old Exams... 
+2026-03-06 23:35:17 [INFO]: ⚠ Clearing old Payments... 
+2026-03-06 23:35:17 [INFO]: ⚡ Seeding database... 
+2026-03-06 23:35:17 [INFO]: 🔥 Exam seeded: 4 successfully! 
+2026-03-06 23:35:17 [INFO]: 🔥 Subject seeded: 4 successfully! 
+2026-03-06 23:35:17 [INFO]: 🔥 Unit seeded: 11 successfully! 
+2026-03-06 23:35:17 [INFO]: 🔥 Topics seeded: 49 successfully! 
+2026-03-06 23:35:17 [INFO]: 🔥 Questions seeded: 200 successfully! 
+2026-03-06 23:35:17 [INFO]: ✅ All data seeded successfully! 
+2026-03-06 23:35:21 [INFO]: GET / ::1 
+2026-03-06 23:35:21 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-06 23:35:21 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-06 23:35:21 [INFO]: GET /js/navibar.js ::1 
+2026-03-06 23:35:21 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-06 23:35:21 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-06 23:35:23 [INFO]: GET /admin ::1 
+2026-03-06 23:35:23 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-06 23:35:23 [INFO]: GET /js/admin.js ::1 
+2026-03-06 23:35:24 [INFO]: GET /admin/logs ::1 
+2026-03-06 23:35:24 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-06 23:35:28 [INFO]: GET /admin/logs/files?type=info ::1 
+2026-03-06 23:35:30 [INFO]: GET /admin/logs/view?type=info&file=info-06-03-2026.log ::1 
+2026-03-06 23:35:33 [INFO]: GET /admin/logs/files?type=error ::1 
+2026-03-06 23:35:33 [INFO]: GET /admin/logs/view?type=error&file=error-06-03-2026.log ::1 
+2026-03-06 23:35:35 [INFO]: GET /admin/logs/files?type=combined ::1 
+2026-03-06 23:35:36 [INFO]: GET /admin/logs/view?type=combined&file=combined-06-03-2026.log ::1 
+2026-03-06 23:42:11 [INFO]: 🚀 Server running on port 3000 
+2026-03-06 23:42:11 [INFO]: ✅ Connected to MongoDB 
+2026-03-06 23:42:11 [INFO]: 🔥  Forced seeding enabled. 
+2026-03-06 23:42:11 [INFO]: ⚠ Clearing old Questions... 
+2026-03-06 23:42:12 [INFO]: ⚠ Clearing old Topics... 
+2026-03-06 23:42:12 [INFO]: ⚠ Clearing old Units... 
+2026-03-06 23:42:12 [INFO]: ⚠ Clearing old Subjects... 
+2026-03-06 23:42:12 [INFO]: ⚠ Clearing old Exams... 
+2026-03-06 23:42:12 [INFO]: ⚠ Clearing old Payments... 
+2026-03-06 23:42:12 [INFO]: ⚡ Seeding database... 
+2026-03-06 23:42:12 [INFO]: 🔥 Exam seeded: 4 successfully! 
+2026-03-06 23:42:12 [INFO]: 🔥 Subject seeded: 4 successfully! 
+2026-03-06 23:42:12 [INFO]: 🔥 Unit seeded: 11 successfully! 
+2026-03-06 23:42:12 [INFO]: 🔥 Topics seeded: 49 successfully! 
+2026-03-06 23:42:12 [INFO]: 🔥 Questions seeded: 200 successfully! 
+2026-03-06 23:42:12 [INFO]: ✅ All data seeded successfully! 
+2026-03-06 23:42:14 [INFO]: GET / ::1 
+2026-03-06 23:42:14 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-06 23:42:14 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-06 23:42:14 [INFO]: GET /js/navibar.js ::1 
+2026-03-06 23:42:14 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-06 23:42:14 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-06 23:42:15 [INFO]: GET /admin ::1 
+2026-03-06 23:42:16 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-06 23:42:16 [INFO]: GET /js/admin.js ::1 
+2026-03-06 23:42:17 [INFO]: GET /admin/logs ::1 
+2026-03-06 23:42:17 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-06 23:42:19 [INFO]: GET /admin/logs/files?type=info ::1 
+2026-03-06 23:42:20 [INFO]: GET /admin/logs/view?type=info&file=info-06-03-2026.log ::1 
+2026-03-06 23:42:27 [INFO]: GET /admin/logs/files?type=error ::1 
+2026-03-06 23:42:28 [INFO]: GET /admin/logs/files?type=combined ::1 
+2026-03-06 23:42:30 [INFO]: GET /admin/logs/view?type=combined&file=combined-06-03-2026.log ::1 
+2026-03-06 23:45:02 [INFO]: 🚀 Server running on port 3000 
+2026-03-06 23:45:02 [INFO]: ✅ Connected to MongoDB 
+2026-03-06 23:45:02 [INFO]: 🔥  Forced seeding enabled. 
+2026-03-06 23:45:02 [INFO]: ⚠ Clearing old Questions... 
+2026-03-06 23:45:02 [INFO]: ⚠ Clearing old Topics... 
+2026-03-06 23:45:02 [INFO]: ⚠ Clearing old Units... 
+2026-03-06 23:45:02 [INFO]: ⚠ Clearing old Subjects... 
+2026-03-06 23:45:02 [INFO]: ⚠ Clearing old Exams... 
+2026-03-06 23:45:02 [INFO]: ⚠ Clearing old Payments... 
+2026-03-06 23:45:02 [INFO]: ⚡ Seeding database... 
+2026-03-06 23:45:03 [INFO]: 🔥 Exam seeded: 4 successfully! 
+2026-03-06 23:45:03 [INFO]: 🔥 Subject seeded: 4 successfully! 
+2026-03-06 23:45:03 [INFO]: 🔥 Unit seeded: 11 successfully! 
+2026-03-06 23:45:03 [INFO]: 🔥 Topics seeded: 49 successfully! 
+2026-03-06 23:45:03 [INFO]: 🔥 Questions seeded: 200 successfully! 
+2026-03-06 23:45:03 [INFO]: ✅ All data seeded successfully! 
+2026-03-06 23:45:05 [INFO]: GET / ::1 
+2026-03-06 23:45:05 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-06 23:45:05 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-06 23:45:05 [INFO]: GET /js/navibar.js ::1 
+2026-03-06 23:45:05 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-06 23:45:05 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-06 23:45:06 [INFO]: GET /admin ::1 
+2026-03-06 23:45:06 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-06 23:45:06 [INFO]: GET /js/admin.js ::1 
+2026-03-06 23:45:08 [INFO]: GET /admin/logs ::1 
+2026-03-06 23:45:08 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-06 23:45:10 [INFO]: GET /admin/logs/files?type=info ::1 
+2026-03-06 23:45:11 [INFO]: GET /admin/logs/view?type=info&file=info-06-03-2026.log ::1 
+2026-03-06 23:45:12 [INFO]: GET /admin/logs/download?type=info&file=info-06-03-2026.log ::1 
+2026-03-06 23:45:20 [INFO]: GET / ::1 
+2026-03-06 23:45:20 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-06 23:45:20 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-06 23:45:20 [INFO]: GET /js/navibar.js ::1 
+2026-03-06 23:49:10 [INFO]: 🚀 Server running on port 3000 
+2026-03-06 23:49:10 [INFO]: ✅ Connected to MongoDB 
+2026-03-06 23:49:10 [INFO]: 🔥  Forced seeding enabled. 
+2026-03-06 23:49:10 [INFO]: ⚠ Clearing old Questions... 
+2026-03-06 23:49:10 [INFO]: ⚠ Clearing old Topics... 
+2026-03-06 23:49:10 [INFO]: ⚠ Clearing old Units... 
+2026-03-06 23:49:10 [INFO]: ⚠ Clearing old Subjects... 
+2026-03-06 23:49:10 [INFO]: ⚠ Clearing old Exams... 
+2026-03-06 23:49:10 [INFO]: ⚠ Clearing old Payments... 
+2026-03-06 23:49:10 [INFO]: ⚡ Seeding database... 
+2026-03-06 23:49:10 [INFO]: 🔥 Exam seeded: 4 successfully! 
+2026-03-06 23:49:10 [INFO]: 🔥 Subject seeded: 4 successfully! 
+2026-03-06 23:49:10 [INFO]: 🔥 Unit seeded: 11 successfully! 
+2026-03-06 23:49:10 [INFO]: 🔥 Topics seeded: 49 successfully! 
+2026-03-06 23:49:10 [INFO]: 🔥 Questions seeded: 200 successfully! 
+2026-03-06 23:49:10 [INFO]: ✅ All data seeded successfully! 
+2026-03-06 23:49:15 [INFO]: GET / ::1 
+2026-03-06 23:49:15 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-06 23:49:15 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-06 23:49:15 [INFO]: GET /js/navibar.js ::1 
+2026-03-06 23:49:15 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-06 23:49:15 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-06 23:49:17 [INFO]: GET /admin ::1 
+2026-03-06 23:49:18 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-06 23:49:18 [INFO]: GET /js/admin.js ::1 
+2026-03-06 23:49:19 [INFO]: GET /admin/logs ::1 
+2026-03-06 23:49:19 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-06 23:49:20 [INFO]: GET /admin/logs/files?type=info ::1 
+2026-03-06 23:49:21 [INFO]: GET /admin/logs/view?type=info&file=info-06-03-2026.log ::1 
+2026-03-06 23:49:22 [INFO]: GET /admin/logs/download?type=info&file=info-06-03-2026.log ::1 
+2026-03-06 23:50:28 [INFO]: GET /admin/logs ::1 
+2026-03-06 23:50:28 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-06 23:50:30 [INFO]: GET /admin/logs/files?type=info ::1 
+2026-03-06 23:50:32 [INFO]: GET /admin/logs/view?type=info&file=info-06-03-2026.log ::1 
+2026-03-06 23:50:32 [INFO]: GET /admin/logs/download?type=info&file=info-06-03-2026.log ::1 
+2026-03-06 23:50:39 [INFO]: GET /admin/live-logs ::1 
+2026-03-06 23:50:48 [INFO]: GET / ::1 
+2026-03-06 23:50:48 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-06 23:50:48 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-06 23:50:48 [INFO]: GET /js/navibar.js ::1 
+2026-03-06 23:50:48 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-06 23:50:48 [INFO]: GET /images/molucule-structure.png ::1 

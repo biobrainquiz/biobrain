@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Admin Dashboard - Logs</title>
+<link rel="stylesheet" href="/css/adminStyle.css">
+
+<style>
+
+.logs-wrapper{
+background:#f4f6f9;
+padding:25px;
+border-radius:8px;
+}
+
+/* ---------- OLD LOGS SECTION ---------- */
+
+.log-controls{
+display:flex;
+gap:10px;
+margin-bottom:15px;
+flex-wrap:wrap;
+}
+
+.log-controls select,
+.log-controls button{
+padding:6px 10px;
+}
+
+.log-viewer{
+background:#000;
+color:#00ff88;
+padding:12px;
+height:300px;
+overflow-y:auto;
+font-family:monospace;
+font-size:13px;
+border-radius:6px;
+white-space:pre-wrap;
+}
+
+/* ---------- LIVE LOG SECTION ---------- */
+
+.live-container{
+display:flex;
+gap:20px;
+margin-top:30px;
+}
+
+.live-box{
+flex:1;
+background:#000;
+height:350px;
+overflow-y:auto;
+border-radius:6px;
+padding:10px;
+font-family:monospace;
+font-size:13px;
+}
+
+.info-feed{
+color:#00ff88;
+}
+
+.error-feed{
+color:#ff4d4d;
+}
+
+.live-title{
+margin-bottom:6px;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="logs-wrapper">
+
+<h2>Logs Dashboard</h2>
+
+<!-- ================= OLD LOG VIEWER ================= -->
+
+<h3>View Old Logs</h3>
+
+<div class="log-controls">
+
+<select id="logType">
+<option value="">Select Log Type</option>
+<option value="info">Info Logs</option>
+<option value="error">Error Logs</option>
+<option value="combined">Combined Logs</option>
+</select>
+
+<select id="logFile">
+<option value="">Select Log File</option>
+</select>
+
+<button onclick="loadLog()">View</button>
+
+<button onclick="downloadLog()">Download</button>
+
+</div>
+
+<div id="logViewer" class="log-viewer">
+
+Select log type and file to view logs.
+
+</div>
+
+
+<!-- ================= LIVE LOGS ================= -->
+
+<h3 style="margin-top:30px;">Live Logs</h3>
+
+<div class="live-container">
+
+<div style="flex:1">
+
+<div class="live-title">Info Logs</div>
+
+<div id="infoLiveLogs" class="live-box info-feed"></div>
+
+</div>
+
+
+<div style="flex:1">
+
+<div class="live-title">Error Logs</div>
+
+<div id="errorLiveLogs" class="live-box error-feed"></div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+
+const logType = document.getElementById("logType");
+const logFile = document.getElementById("logFile");
+const logViewer = document.getElementById("logViewer");
+
+
+/* ================= LOAD FILE LIST ================= */
+
+logType.addEventListener("change", async ()=>{
+
+const type = logType.value;
+
+logFile.innerHTML = '<option>Select Log File</option>';
+
+if(!type) return;
+
+const res = await fetch(`/admin/logs/files/${type}`);
+
+const files = await res.json();
+
+files.forEach(file=>{
+
+const opt = document.createElement("option");
+opt.value = file;
+opt.textContent = file;
+
+logFile.appendChild(opt);
+
+});
+
+});
+
+
+/* ================= VIEW LOG FILE ================= */
+
+async function loadLog(){
+
+const type = logType.value;
+const file = logFile.value;
+
+if(!type || !file){
+
+alert("Select log type and file");
+return;
+
+}
+
+const res = await fetch(`/admin/logs/view/${type}/${file}`);
+
+const text = await res.text();
+
+logViewer.textContent = text;
+
+logViewer.scrollTop = logViewer.scrollHeight;
+
+}
+
+
+/* ================= DOWNLOAD LOG FILE ================= */
+
+function downloadLog(){
+
+const type = logType.value;
+const file = logFile.value;
+
+if(!type || !file){
+
+alert("Select log file first");
+return;
+
+}
+
+window.location.href = `/admin/logs/download/${type}/${file}`;
+
+}
+
+
+/* ================= LIVE LOG FEED ================= */
+
+const socket = io();
+
+const infoBox = document.getElementById("infoLiveLogs");
+const errorBox = document.getElementById("errorLiveLogs");
+
+
+socket.on("infoLog",(msg)=>{
+
+const line = document.createElement("div");
+line.textContent = msg;
+
+infoBox.appendChild(line);
+
+infoBox.scrollTop = infoBox.scrollHeight;
+
+});
+
+
+socket.on("errorLog",(msg)=>{
+
+const line = document.createElement("div");
+line.textContent = msg;
+
+errorBox.appendChild(line);
+
+errorBox.scrollTop = errorBox.scrollHeight;
+
+});
+
+</script>
+
+
+</body>
+
+</html>

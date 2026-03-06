@@ -230,6 +230,9 @@ app.use((req, res) => {
 });
 
 
+const liveLogs = require("./utils/liveLogs");
+console.log(liveLogs);
+
 /* =========================================
    START SERVER
 ========================================= */
