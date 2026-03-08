@@ -2142,3 +2142,492 @@ username is not defined
 2026-03-08 11:39:32 [INFO]: GET /css/adminStyle.css ::1 
 2026-03-08 11:39:33 [INFO]: GET /admin/topics ::1 
 2026-03-08 11:39:34 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:41:55 [INFO]: 🚀 Server running on port 3000 
+2026-03-08 11:41:55 [INFO]: ✅ Connected to MongoDB 
+2026-03-08 11:41:55 [INFO]: 🔥  Forced seeding enabled. 
+2026-03-08 11:41:55 [INFO]: ⚠ Clearing old Questions... 
+2026-03-08 11:41:55 [INFO]: ⚠ Clearing old Topics... 
+2026-03-08 11:41:55 [INFO]: ⚠ Clearing old Units... 
+2026-03-08 11:41:55 [INFO]: ⚠ Clearing old Subjects... 
+2026-03-08 11:41:55 [INFO]: GET / ::1 
+2026-03-08 11:41:55 [INFO]: ⚠ Clearing old Exams... 
+2026-03-08 11:41:55 [INFO]: ⚠ Clearing old Payments... 
+2026-03-08 11:41:55 [INFO]: ⚡ Seeding database... 
+2026-03-08 11:41:55 [INFO]: 🔥 Exam seeded: 4 successfully! 
+2026-03-08 11:41:55 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-08 11:41:55 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-08 11:41:55 [INFO]: GET /js/navibar.js ::ffff:127.0.0.1 
+2026-03-08 11:41:55 [INFO]: 🔥 Subject seeded: 4 successfully! 
+2026-03-08 11:41:55 [INFO]: 🔥 Unit seeded: 11 successfully! 
+2026-03-08 11:41:55 [INFO]: GET /images/dna-pattern.png ::ffff:127.0.0.1 
+2026-03-08 11:41:55 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-08 11:41:55 [INFO]: 🔥 Topics seeded: 49 successfully! 
+2026-03-08 11:41:55 [INFO]: 🔥 Questions seeded: 200 successfully! 
+2026-03-08 11:41:55 [INFO]: ✅ All data seeded successfully! 
+2026-03-08 11:41:59 [INFO]: GET / ::1 
+2026-03-08 11:41:59 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-08 11:41:59 [INFO]: GET /images/biobrain-logo1.png ::ffff:127.0.0.1 
+2026-03-08 11:41:59 [INFO]: GET /js/navibar.js ::1 
+2026-03-08 11:42:01 [INFO]: GET /admin ::1 
+2026-03-08 11:42:01 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:42:01 [INFO]: GET /js/admin.js ::ffff:127.0.0.1 
+2026-03-08 11:42:02 [INFO]: GET /admin/subjects ::ffff:127.0.0.1 
+2026-03-08 11:42:02 [INFO]: GET /css/adminStyle.css ::ffff:127.0.0.1 
+2026-03-08 11:42:50 [INFO]: GET /admin/subjects ::1 
+2026-03-08 11:42:50 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:42:51 [INFO]: GET /admin/units ::1 
+2026-03-08 11:42:51 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:42:52 [INFO]: GET /admin/topics ::1 
+2026-03-08 11:42:52 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:42:53 [INFO]: GET /admin/subjects ::1 
+2026-03-08 11:42:53 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:42:55 [INFO]: GET /admin/units ::1 
+2026-03-08 11:42:55 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:42:55 [INFO]: GET /admin/subjects ::1 
+2026-03-08 11:42:56 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:42:57 [INFO]: GET /admin/units ::1 
+2026-03-08 11:42:57 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:42:58 [INFO]: GET /admin/topics ::1 
+2026-03-08 11:42:58 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:42:59 [INFO]: GET /admin/units ::1 
+2026-03-08 11:42:59 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:43:00 [INFO]: GET /admin/subjects ::1 
+2026-03-08 11:43:00 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:43:01 [INFO]: GET /admin/exams ::1 
+2026-03-08 11:43:01 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:43:02 [INFO]: GET /admin/subjects ::1 
+2026-03-08 11:43:02 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:43:03 [INFO]: GET /admin/exams ::1 
+2026-03-08 11:43:03 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:43:04 [INFO]: GET /admin/subjects ::1 
+2026-03-08 11:43:04 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:43:05 [INFO]: GET /admin/exams ::1 
+2026-03-08 11:43:05 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:43:07 [INFO]: GET /admin/subjects ::1 
+2026-03-08 11:43:07 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:43:08 [INFO]: GET /admin/exams ::1 
+2026-03-08 11:43:08 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:43:35 [INFO]: GET /admin/subjects ::1 
+2026-03-08 11:43:35 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:43:38 [INFO]: GET /admin/exams ::1 
+2026-03-08 11:43:38 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:43:39 [INFO]: GET /admin/subjects ::1 
+2026-03-08 11:43:39 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:43:40 [INFO]: GET /admin/units ::1 
+2026-03-08 11:43:40 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:43:41 [INFO]: GET /admin/topics ::1 
+2026-03-08 11:43:41 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:44:16 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:44:16 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 11:49:15 [INFO]: 🚀 Server running on port 3000 
+2026-03-08 11:49:16 [INFO]: ✅ Connected to MongoDB 
+2026-03-08 11:49:16 [INFO]: 🔥  Forced seeding enabled. 
+2026-03-08 11:49:16 [INFO]: ⚠ Clearing old Questions... 
+2026-03-08 11:49:16 [INFO]: ⚠ Clearing old Topics... 
+2026-03-08 11:49:16 [INFO]: ⚠ Clearing old Units... 
+2026-03-08 11:49:16 [INFO]: ⚠ Clearing old Subjects... 
+2026-03-08 11:49:16 [INFO]: ⚠ Clearing old Exams... 
+2026-03-08 11:49:16 [INFO]: ⚠ Clearing old Payments... 
+2026-03-08 11:49:16 [INFO]: ⚡ Seeding database... 
+2026-03-08 11:49:16 [INFO]: 🔥 Exam seeded: 4 successfully! 
+2026-03-08 11:49:16 [INFO]: 🔥 Subject seeded: 4 successfully! 
+2026-03-08 11:49:16 [INFO]: 🔥 Unit seeded: 11 successfully! 
+2026-03-08 11:49:16 [INFO]: 🔥 Topics seeded: 49 successfully! 
+2026-03-08 11:49:16 [INFO]: 🔥 Questions seeded: 200 successfully! 
+2026-03-08 11:49:16 [INFO]: ✅ All data seeded successfully! 
+2026-03-08 11:49:18 [INFO]: GET / ::1 
+2026-03-08 11:49:18 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-08 11:49:18 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-08 11:49:18 [INFO]: GET /js/navibar.js ::1 
+2026-03-08 11:49:20 [INFO]: GET /admin ::1 
+2026-03-08 11:49:20 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:49:20 [INFO]: GET /js/admin.js ::1 
+2026-03-08 11:49:21 [INFO]: GET /admin/topics ::1 
+2026-03-08 11:49:22 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:50:15 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:50:16 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 11:52:22 [INFO]: 🚀 Server running on port 3000 
+2026-03-08 11:52:22 [INFO]: ✅ Connected to MongoDB 
+2026-03-08 11:52:22 [INFO]: 🔥  Forced seeding enabled. 
+2026-03-08 11:52:22 [INFO]: ⚠ Clearing old Questions... 
+2026-03-08 11:52:22 [INFO]: ⚠ Clearing old Topics... 
+2026-03-08 11:52:22 [INFO]: ⚠ Clearing old Units... 
+2026-03-08 11:52:22 [INFO]: ⚠ Clearing old Subjects... 
+2026-03-08 11:52:22 [INFO]: ⚠ Clearing old Exams... 
+2026-03-08 11:52:22 [INFO]: ⚠ Clearing old Payments... 
+2026-03-08 11:52:22 [INFO]: ⚡ Seeding database... 
+2026-03-08 11:52:22 [INFO]: 🔥 Exam seeded: 4 successfully! 
+2026-03-08 11:52:22 [INFO]: 🔥 Subject seeded: 4 successfully! 
+2026-03-08 11:52:22 [INFO]: 🔥 Unit seeded: 11 successfully! 
+2026-03-08 11:52:22 [INFO]: 🔥 Topics seeded: 49 successfully! 
+2026-03-08 11:52:22 [INFO]: 🔥 Questions seeded: 200 successfully! 
+2026-03-08 11:52:22 [INFO]: ✅ All data seeded successfully! 
+2026-03-08 11:52:26 [INFO]: GET / ::1 
+2026-03-08 11:52:26 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-08 11:52:26 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-08 11:52:26 [INFO]: GET /js/navibar.js ::1 
+2026-03-08 11:52:27 [INFO]: GET /admin ::1 
+2026-03-08 11:52:28 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:52:28 [INFO]: GET /js/admin.js ::1 
+2026-03-08 11:52:29 [INFO]: GET /admin/topics ::1 
+2026-03-08 11:52:29 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:52:59 [INFO]: GET /admin/exams ::1 
+2026-03-08 11:52:59 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:53:04 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:53:04 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 11:53:11 [INFO]: GET /admin/subjects ::1 
+2026-03-08 11:53:11 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 11:53:11 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:53:12 [INFO]: GET /admin/exams ::1 
+2026-03-08 11:53:12 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 11:53:12 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:56:06 [INFO]: GET /admin/subjects ::1 
+2026-03-08 11:56:07 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:56:07 [INFO]: GET /admin/units ::1 
+2026-03-08 11:56:07 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:56:09 [INFO]: GET /admin/subjects ::1 
+2026-03-08 11:56:09 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:56:09 [INFO]: GET /admin/subjects ::1 
+2026-03-08 11:56:09 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:56:10 [INFO]: GET /admin/exams ::1 
+2026-03-08 11:56:10 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:56:11 [INFO]: GET /admin/subjects ::1 
+2026-03-08 11:56:11 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:56:12 [INFO]: GET /admin/exams ::1 
+2026-03-08 11:56:12 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:56:14 [INFO]: GET /admin/subjects ::1 
+2026-03-08 11:56:14 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:56:15 [INFO]: GET /admin/exams ::1 
+2026-03-08 11:56:15 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:56:16 [INFO]: GET /admin/subjects ::1 
+2026-03-08 11:56:16 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:56:18 [INFO]: GET /admin/exams ::1 
+2026-03-08 11:56:18 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:56:19 [INFO]: GET /admin/subjects ::1 
+2026-03-08 11:56:19 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:56:19 [INFO]: GET /admin/subjects ::1 
+2026-03-08 11:56:19 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:56:20 [INFO]: GET /admin/exams ::1 
+2026-03-08 11:56:20 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:56:22 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:56:23 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 11:58:58 [INFO]: GET /admin/topics ::1 
+2026-03-08 11:58:58 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 11:58:58 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 12:00:14 [INFO]: GET /admin/exams ::1 
+2026-03-08 12:00:14 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 12:00:14 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:00:27 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:00:27 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 12:00:27 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:00:30 [INFO]: GET /admin/subjects ::1 
+2026-03-08 12:00:30 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 12:00:30 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:00:31 [INFO]: GET /admin/units ::1 
+2026-03-08 12:00:31 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 12:00:31 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:00:32 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:00:32 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 12:00:32 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:00:34 [INFO]: GET /admin/units ::1 
+2026-03-08 12:00:34 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 12:00:34 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:00:34 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:00:34 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 12:00:34 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:00:37 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:00:37 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:00:38 [INFO]: GET /admin/units ::1 
+2026-03-08 12:00:38 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:00:39 [INFO]: GET /admin/subjects ::1 
+2026-03-08 12:00:39 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:00:40 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:00:40 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:00:54 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:00:54 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 12:01:03 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:01:03 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 12:01:03 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:01:05 [INFO]: GET /admin/units ::1 
+2026-03-08 12:01:05 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 12:01:05 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:01:07 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:01:08 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 12:01:08 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:01:09 [INFO]: GET /admin/units ::1 
+2026-03-08 12:01:09 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 12:01:09 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:01:10 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:01:10 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 12:01:10 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:01:12 [INFO]: GET /admin/units ::1 
+2026-03-08 12:01:12 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 12:01:12 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:01:13 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:01:13 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 12:01:13 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:01:42 [INFO]: GET /admin/exams ::1 
+2026-03-08 12:01:42 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 12:01:42 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:02:04 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:02:04 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 12:02:04 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:02:17 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:02:20 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:02:20 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:02:20 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 12:02:36 [INFO]: GET /admin/exams ::1 
+2026-03-08 12:02:36 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 12:02:36 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:04:25 [INFO]: 🚀 Server running on port 3000 
+2026-03-08 12:04:26 [INFO]: ✅ Connected to MongoDB 
+2026-03-08 12:04:26 [INFO]: 🔥  Forced seeding enabled. 
+2026-03-08 12:04:26 [INFO]: ⚠ Clearing old Questions... 
+2026-03-08 12:04:26 [INFO]: ⚠ Clearing old Topics... 
+2026-03-08 12:04:26 [INFO]: ⚠ Clearing old Units... 
+2026-03-08 12:04:26 [INFO]: ⚠ Clearing old Subjects... 
+2026-03-08 12:04:26 [INFO]: ⚠ Clearing old Exams... 
+2026-03-08 12:04:26 [INFO]: ⚠ Clearing old Payments... 
+2026-03-08 12:04:26 [INFO]: ⚡ Seeding database... 
+2026-03-08 12:04:26 [INFO]: 🔥 Exam seeded: 4 successfully! 
+2026-03-08 12:04:26 [INFO]: 🔥 Subject seeded: 4 successfully! 
+2026-03-08 12:04:26 [INFO]: 🔥 Unit seeded: 11 successfully! 
+2026-03-08 12:04:26 [INFO]: 🔥 Topics seeded: 49 successfully! 
+2026-03-08 12:04:27 [INFO]: 🔥 Questions seeded: 200 successfully! 
+2026-03-08 12:04:27 [INFO]: ✅ All data seeded successfully! 
+2026-03-08 12:04:30 [INFO]: GET / ::1 
+2026-03-08 12:04:30 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-08 12:04:30 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-08 12:04:30 [INFO]: GET /js/navibar.js ::1 
+2026-03-08 12:04:32 [INFO]: GET /admin ::1 
+2026-03-08 12:04:32 [INFO]: GET /login ::1 
+2026-03-08 12:04:32 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-08 12:04:32 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-08 12:04:32 [INFO]: GET /js/navibar.js ::1 
+2026-03-08 12:04:45 [INFO]: POST /login ::1 
+2026-03-08 12:04:45 [INFO]: GET /admin ::1 
+2026-03-08 12:04:45 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:04:45 [INFO]: GET /js/admin.js ::1 
+2026-03-08 12:04:47 [INFO]: GET /admin/units ::1 
+2026-03-08 12:04:47 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:04:48 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:04:48 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:04:49 [INFO]: GET /admin/exams ::1 
+2026-03-08 12:04:49 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:04:52 [INFO]: GET /admin/units ::1 
+2026-03-08 12:04:52 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:04:53 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:04:53 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:04:54 [INFO]: GET /admin/subjects ::1 
+2026-03-08 12:04:55 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:04:56 [INFO]: GET /admin/subjects ::1 
+2026-03-08 12:04:56 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:04:57 [INFO]: GET /admin/exams ::1 
+2026-03-08 12:04:57 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:04:58 [INFO]: GET /admin/subjects ::1 
+2026-03-08 12:04:58 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:04:59 [INFO]: GET /admin/units ::1 
+2026-03-08 12:04:59 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:05:01 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:05:01 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:05:02 [INFO]: GET /admin/subjects ::1 
+2026-03-08 12:05:02 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:05:03 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:05:03 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:05:03 [INFO]: GET /admin/units ::1 
+2026-03-08 12:05:03 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:05:05 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:05:05 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:05:06 [INFO]: GET /admin/units ::1 
+2026-03-08 12:05:06 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:05:10 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:05:10 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 12:05:18 [INFO]: GET /admin/subjects ::1 
+2026-03-08 12:05:18 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 12:05:18 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:05:43 [INFO]: GET /admin/exams ::1 
+2026-03-08 12:05:43 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 12:05:43 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:05:50 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:05:50 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 12:05:50 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:07:56 [INFO]: GET /admin/exams ::1 
+2026-03-08 12:07:56 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 12:07:56 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:15:47 [INFO]: 🚀 Server running on port 3000 
+2026-03-08 12:15:47 [INFO]: ✅ Connected to MongoDB 
+2026-03-08 12:15:47 [INFO]: 🔥  Forced seeding enabled. 
+2026-03-08 12:15:47 [INFO]: ⚠ Clearing old Questions... 
+2026-03-08 12:15:47 [INFO]: ⚠ Clearing old Topics... 
+2026-03-08 12:15:47 [INFO]: ⚠ Clearing old Units... 
+2026-03-08 12:15:47 [INFO]: ⚠ Clearing old Subjects... 
+2026-03-08 12:15:47 [INFO]: ⚠ Clearing old Exams... 
+2026-03-08 12:15:47 [INFO]: ⚠ Clearing old Payments... 
+2026-03-08 12:15:47 [INFO]: ⚡ Seeding database... 
+2026-03-08 12:15:47 [INFO]: 🔥 Exam seeded: 4 successfully! 
+2026-03-08 12:15:47 [INFO]: 🔥 Subject seeded: 4 successfully! 
+2026-03-08 12:15:47 [INFO]: 🔥 Unit seeded: 11 successfully! 
+2026-03-08 12:15:47 [INFO]: 🔥 Topics seeded: 49 successfully! 
+2026-03-08 12:15:47 [INFO]: 🔥 Questions seeded: 200 successfully! 
+2026-03-08 12:15:47 [INFO]: ✅ All data seeded successfully! 
+2026-03-08 12:15:50 [INFO]: GET /admin/units ::1 
+2026-03-08 12:15:50 [ERROR]: ReferenceError: D:\Projects\BioBrainMdb\views\pages\desktop\admin\units\unit.ejs:135
+    133| <body>
+    134| 
+ >> 135| <%- include('../../../../partials/admin/header') %>
+    136| 
+    137| <div class="admin-container">
+    138| 
+
+D:\Projects\BioBrainMdb\views\partials\admin\header.ejs:8
+    6|     <div class="header-right">
+    7|         <span class="welcome-text">
+ >> 8|             Welcome, <%= username ? username : "ADMIN" %>
+    9|         </span>
+    10| 
+    11|         <a href="/" class="home-btn">Home</a>
+
+username is not defined
+    at eval ("D:\\Projects\\BioBrainMdb\\views\\partials\\admin\\header.ejs":12:26)
+    at header (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:703:17)
+    at include (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:701:39)
+    at eval ("D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\admin\\units\\unit.ejs":12:17)
+    at unit (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (D:\Projects\BioBrainMdb\node_modules\express\lib\view.js:139:8)
+    at tryRender (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:627:10)
+    at app.render (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:574:3) {"error":"D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\admin\\units\\unit.ejs:135\n    133| <body>\r\n    134| \r\n >> 135| <%- include('../../../../partials/admin/header') %>\r\n    136| \r\n    137| <div class=\"admin-container\">\r\n    138| \r\n\nD:\\Projects\\BioBrainMdb\\views\\partials\\admin\\header.ejs:8\n    6|     <div class=\"header-right\">\r\n    7|         <span class=\"welcome-text\">\r\n >> 8|             Welcome, <%= username ? username : \"ADMIN\" %>\r\n    9|         </span>\r\n    10| \r\n    11|         <a href=\"/\" class=\"home-btn\">Home</a>\r\n\nusername is not defined"}
+2026-03-08 12:15:57 [INFO]: GET / ::1 
+2026-03-08 12:15:57 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-08 12:15:57 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-08 12:15:57 [INFO]: GET /js/navibar.js ::1 
+2026-03-08 12:15:57 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-08 12:15:57 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-08 12:15:58 [INFO]: GET /admin ::1 
+2026-03-08 12:15:59 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:15:59 [INFO]: GET /js/admin.js ::1 
+2026-03-08 12:16:00 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:16:00 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:16:01 [INFO]: GET /admin/units ::1 
+2026-03-08 12:16:01 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:16:02 [INFO]: GET /admin/subjects ::1 
+2026-03-08 12:16:02 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:16:03 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:16:03 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:16:04 [INFO]: GET /admin/subjects ::1 
+2026-03-08 12:16:04 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:16:05 [INFO]: GET /admin/exams ::1 
+2026-03-08 12:16:05 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:16:06 [INFO]: GET /admin/units ::1 
+2026-03-08 12:16:06 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:16:07 [INFO]: GET /admin/subjects ::1 
+2026-03-08 12:16:07 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:16:08 [INFO]: GET /admin/exams ::1 
+2026-03-08 12:16:08 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:16:09 [INFO]: GET /admin/subjects ::1 
+2026-03-08 12:16:09 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:16:10 [INFO]: GET /admin/units ::1 
+2026-03-08 12:16:10 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:16:12 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:16:12 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:16:14 [INFO]: GET /admin/units ::1 
+2026-03-08 12:16:14 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:16:14 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:16:14 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:16:25 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:16:25 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:16:26 [INFO]: GET /admin/units ::1 
+2026-03-08 12:16:26 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:16:27 [INFO]: GET /admin/questions ::1 
+2026-03-08 12:16:29 [INFO]: GET / ::1 
+2026-03-08 12:16:29 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-08 12:16:29 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-08 12:16:29 [INFO]: GET /js/navibar.js ::1 
+2026-03-08 12:16:32 [INFO]: GET /admin ::1 
+2026-03-08 12:16:32 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:16:32 [INFO]: GET /js/admin.js ::1 
+2026-03-08 12:16:33 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:16:33 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:16:34 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:16:34 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:16:35 [INFO]: GET /admin/units ::1 
+2026-03-08 12:16:35 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:16:36 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:16:36 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:16:37 [INFO]: GET /admin/units ::1 
+2026-03-08 12:16:37 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:16:38 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:16:38 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:16:39 [INFO]: GET /admin/exams ::1 
+2026-03-08 12:16:39 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:16:40 [INFO]: GET /admin/subjects ::1 
+2026-03-08 12:16:40 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:16:41 [INFO]: GET /admin/subjects ::1 
+2026-03-08 12:16:41 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:16:41 [INFO]: GET /admin/exams ::1 
+2026-03-08 12:16:41 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:17:09 [INFO]: 🚀 Server running on port 3000 
+2026-03-08 12:17:09 [INFO]: ✅ Connected to MongoDB 
+2026-03-08 12:17:09 [INFO]: 🔥  Forced seeding enabled. 
+2026-03-08 12:17:09 [INFO]: ⚠ Clearing old Questions... 
+2026-03-08 12:17:09 [INFO]: ⚠ Clearing old Topics... 
+2026-03-08 12:17:09 [INFO]: ⚠ Clearing old Units... 
+2026-03-08 12:17:09 [INFO]: ⚠ Clearing old Subjects... 
+2026-03-08 12:17:09 [INFO]: ⚠ Clearing old Exams... 
+2026-03-08 12:17:09 [INFO]: ⚠ Clearing old Payments... 
+2026-03-08 12:17:09 [INFO]: ⚡ Seeding database... 
+2026-03-08 12:17:09 [INFO]: 🔥 Exam seeded: 4 successfully! 
+2026-03-08 12:17:09 [INFO]: 🔥 Subject seeded: 4 successfully! 
+2026-03-08 12:17:09 [INFO]: 🔥 Unit seeded: 11 successfully! 
+2026-03-08 12:17:09 [INFO]: 🔥 Topics seeded: 49 successfully! 
+2026-03-08 12:17:09 [INFO]: 🔥 Questions seeded: 200 successfully! 
+2026-03-08 12:17:09 [INFO]: ✅ All data seeded successfully! 
+2026-03-08 12:17:11 [INFO]: GET / ::1 
+2026-03-08 12:17:11 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-08 12:17:11 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-08 12:17:11 [INFO]: GET /js/navibar.js ::1 
+2026-03-08 12:17:11 [INFO]: GET /admin ::1 
+2026-03-08 12:17:12 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:17:12 [INFO]: GET /js/admin.js ::1 
+2026-03-08 12:17:14 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:17:14 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:17:30 [INFO]: GET / ::1 
+2026-03-08 12:17:30 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-08 12:17:30 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-08 12:17:30 [INFO]: GET /js/navibar.js ::1 
+2026-03-08 12:17:31 [INFO]: GET /admin ::1 
+2026-03-08 12:17:31 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:17:31 [INFO]: GET /js/admin.js ::1 
+2026-03-08 12:17:32 [INFO]: GET /admin/units ::1 
+2026-03-08 12:17:32 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:17:34 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:17:34 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:21:16 [INFO]: 🚀 Server running on port 3000 
+2026-03-08 12:21:17 [INFO]: ✅ Connected to MongoDB 
+2026-03-08 12:21:17 [INFO]: 🔥  Forced seeding enabled. 
+2026-03-08 12:21:17 [INFO]: ⚠ Clearing old Questions... 
+2026-03-08 12:21:17 [INFO]: ⚠ Clearing old Topics... 
+2026-03-08 12:21:17 [INFO]: ⚠ Clearing old Units... 
+2026-03-08 12:21:17 [INFO]: ⚠ Clearing old Subjects... 
+2026-03-08 12:21:17 [INFO]: ⚠ Clearing old Exams... 
+2026-03-08 12:21:17 [INFO]: ⚠ Clearing old Payments... 
+2026-03-08 12:21:17 [INFO]: ⚡ Seeding database... 
+2026-03-08 12:21:17 [INFO]: 🔥 Exam seeded: 4 successfully! 
+2026-03-08 12:21:17 [INFO]: 🔥 Subject seeded: 4 successfully! 
+2026-03-08 12:21:17 [INFO]: 🔥 Unit seeded: 11 successfully! 
+2026-03-08 12:21:17 [INFO]: 🔥 Topics seeded: 49 successfully! 
+2026-03-08 12:21:17 [INFO]: 🔥 Questions seeded: 200 successfully! 
+2026-03-08 12:21:17 [INFO]: ✅ All data seeded successfully! 
+2026-03-08 12:21:19 [INFO]: GET / ::1 
+2026-03-08 12:21:19 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-08 12:21:19 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-08 12:21:19 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-08 12:21:19 [INFO]: GET /js/navibar.js ::1 
+2026-03-08 12:21:19 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-08 12:21:19 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-08 12:21:21 [INFO]: GET /admin ::1 
+2026-03-08 12:21:21 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 12:21:21 [INFO]: GET /js/admin.js ::1 
+2026-03-08 12:21:22 [INFO]: GET /admin/topics ::1 
+2026-03-08 12:21:22 [INFO]: GET /css/adminStyle.css ::1 
