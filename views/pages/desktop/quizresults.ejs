@@ -32,7 +32,7 @@
 <div class="container">
 
   <div class="greeting">
-    Hello, <strong><%= user ? user.username : 'Guest' %></strong>!
+    Hello, <strong><%= examSession.userName ? examSession.userName : 'Guest' %></strong>!
   </div>
 
   <table class="stats-table">
@@ -44,18 +44,18 @@
       <th>Score</th>
     </tr>
     <tr>
-      <td><%= totalQuestions %></td>
-      <td><%= attempted %></td>
-      <td class="correct"><%= correct %></td>
-      <td class="wrong"><%= wrong %></td>
-      <td><%= score %></td>
+      <td><%= examSession.questionsCount %></td>
+      <td><%= examSession.attempted %></td>
+      <td class="correct"><%= examSession.right %></td>
+      <td class="wrong"><%= examSession.wrong %></td>
+      <td><%= examSession.finalScore %></td>
     </tr>
   </table>
 
   <h2>Question Review</h2>
 
-  <% questions.forEach((q, idx) => { 
-       const userAns = userAnswers[q._id];
+  <% examSession.questions.forEach((q, idx) => { 
+       const userAns = examSession.answers[q._id];
   %>
     <div class="question-box">
       <p><strong>Q<%= idx+1 %>:</strong> <%= q.question %></p>

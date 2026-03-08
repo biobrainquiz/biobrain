@@ -125,3 +125,98 @@ examResults is not defined
     at ServerResponse.render (D:\Projects\BioBrainMdb\node_modules\express\lib\response.js:923:7)
     at exports.prepareQuiz (D:\Projects\BioBrainMdb\controllers\quizController.js:72:16)
     at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\startquiz.ejs:264\n    262|                 <h4>📊 Your Last 50 Exam Performances</h4>\r\n    263| \r\n >> 264|                 <% if (examResults && examResults.length> 0) { %>\r\n    265|                     <div class=\"table-container\">\r\n    266|                         <table>\r\n    267|                             <thead>\r\n\nexamResults is not defined"}
+2026-03-08 18:18:07 [ERROR]: ReferenceError: D:\Projects\BioBrainMdb\views\pages\desktop\quiz.ejs:173
+    171| 
+    172|     <div>
+ >> 173|       Hello, <%= examSession.user.username %> 👋 | Examination Portal |
+    174|         <span class="breadcrumb-wrapper">
+    175|           <span class="breadcrumb">
+    176|             <%= examSession.examName %> &gt; <%= examSession.subjectName %> &gt;
+
+examSession is not defined
+    at eval ("D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\quiz.ejs":12:26)
+    at quiz (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (D:\Projects\BioBrainMdb\node_modules\express\lib\view.js:139:8)
+    at tryRender (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:627:10)
+    at app.render (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (D:\Projects\BioBrainMdb\node_modules\express\lib\response.js:923:7)
+    at exports.createOrder (D:\Projects\BioBrainMdb\controllers\quizController.js:214:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\quiz.ejs:173\n    171| \r\n    172|     <div>\r\n >> 173|       Hello, <%= examSession.user.username %> 👋 | Examination Portal |\r\n    174|         <span class=\"breadcrumb-wrapper\">\r\n    175|           <span class=\"breadcrumb\">\r\n    176|             <%= examSession.examName %> &gt; <%= examSession.subjectName %> &gt;\r\n\nexamSession is not defined"}
+2026-03-08 18:24:37 [ERROR]: TypeError: D:\Projects\BioBrainMdb\views\pages\desktop\quiz.ejs:185
+    183|           </span>
+    184|         </span>
+ >> 185|         <%= examSession.questionsCount %> Questions • <%= examSession.difficulty.charAt(0).toUpperCase() + examSession.difficulty.slice(1) %> Level
+    186|     </div>
+    187| 
+    188|     <div>Time Left: <span id="timer">00:00</span></div>
+
+Cannot read properties of undefined (reading 'charAt')
+    at eval ("D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\quiz.ejs":34:49)
+    at quiz (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (D:\Projects\BioBrainMdb\node_modules\express\lib\view.js:139:8)
+    at tryRender (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:627:10)
+    at app.render (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (D:\Projects\BioBrainMdb\node_modules\express\lib\response.js:923:7)
+    at exports.createOrder (D:\Projects\BioBrainMdb\controllers\quizController.js:215:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\quiz.ejs:185\n    183|           </span>\r\n    184|         </span>\r\n >> 185|         <%= examSession.questionsCount %> Questions • <%= examSession.difficulty.charAt(0).toUpperCase() + examSession.difficulty.slice(1) %> Level\r\n    186|     </div>\r\n    187| \r\n    188|     <div>Time Left: <span id=\"timer\">00:00</span></div>\r\n\nCannot read properties of undefined (reading 'charAt')"}
+2026-03-08 18:26:58 [ERROR]: TypeError: D:\Projects\BioBrainMdb\views\pages\desktop\quiz.ejs:185
+    183|           </span>
+    184|         </span>
+ >> 185|         <%= examSession.questionsCount %> Questions • <%= examSession.difficulty.charAt(0).toUpperCase() + examSession.difficulty.slice(1) %> Level
+    186|     </div>
+    187| 
+    188|     <div>Time Left: <span id="timer">00:00</span></div>
+
+Cannot read properties of undefined (reading 'charAt')
+    at eval ("D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\quiz.ejs":34:49)
+    at quiz (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (D:\Projects\BioBrainMdb\node_modules\express\lib\view.js:139:8)
+    at tryRender (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:627:10)
+    at app.render (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (D:\Projects\BioBrainMdb\node_modules\express\lib\response.js:923:7)
+    at exports.createOrder (D:\Projects\BioBrainMdb\controllers\quizController.js:215:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\quiz.ejs:185\n    183|           </span>\r\n    184|         </span>\r\n >> 185|         <%= examSession.questionsCount %> Questions • <%= examSession.difficulty.charAt(0).toUpperCase() + examSession.difficulty.slice(1) %> Level\r\n    186|     </div>\r\n    187| \r\n    188|     <div>Time Left: <span id=\"timer\">00:00</span></div>\r\n\nCannot read properties of undefined (reading 'charAt')"}
+2026-03-08 18:30:04 [ERROR]: TypeError: D:\Projects\BioBrainMdb\views\pages\desktop\quiz.ejs:185
+    183|           </span>
+    184|         </span>
+ >> 185|         <%= examSession.questionsCount %> Questions • <%= examSession.difficulty.charAt(0).toUpperCase() + examSession.difficulty.slice(1) %> Level
+    186|     </div>
+    187| 
+    188|     <div>Time Left: <span id="timer">00:00</span></div>
+
+Cannot read properties of undefined (reading 'charAt')
+    at eval ("D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\quiz.ejs":34:49)
+    at quiz (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (D:\Projects\BioBrainMdb\node_modules\express\lib\view.js:139:8)
+    at tryRender (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:627:10)
+    at app.render (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (D:\Projects\BioBrainMdb\node_modules\express\lib\response.js:923:7)
+    at exports.createOrder (D:\Projects\BioBrainMdb\controllers\quizController.js:215:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\quiz.ejs:185\n    183|           </span>\r\n    184|         </span>\r\n >> 185|         <%= examSession.questionsCount %> Questions • <%= examSession.difficulty.charAt(0).toUpperCase() + examSession.difficulty.slice(1) %> Level\r\n    186|     </div>\r\n    187| \r\n    188|     <div>Time Left: <span id=\"timer\">00:00</span></div>\r\n\nCannot read properties of undefined (reading 'charAt')"}
+2026-03-08 21:27:32 [ERROR]: ReferenceError: D:\Projects\BioBrainMdb\views\pages\desktop\quizresults.ejs:35
+    33| 
+    34|   <div class="greeting">
+ >> 35|     Hello, <strong><%= user ? user.username : 'Guest' %></strong>!
+    36|   </div>
+    37| 
+    38|   <table class="stats-table">
+
+user is not defined
+    at eval ("D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\quizresults.ejs":12:26)
+    at quizresults (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (D:\Projects\BioBrainMdb\node_modules\express\lib\view.js:139:8)
+    at tryRender (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:627:10)
+    at app.render (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (D:\Projects\BioBrainMdb\node_modules\express\lib\response.js:923:7)
+    at exports.submitQuiz (D:\Projects\BioBrainMdb\controllers\quizController.js:200:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\quizresults.ejs:35\n    33| \r\n    34|   <div class=\"greeting\">\r\n >> 35|     Hello, <strong><%= user ? user.username : 'Guest' %></strong>!\r\n    36|   </div>\r\n    37| \r\n    38|   <table class=\"stats-table\">\r\n\nuser is not defined"}

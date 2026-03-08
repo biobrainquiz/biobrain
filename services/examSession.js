@@ -1,37 +1,31 @@
 // services/ExamSession.js
 class ExamSession {
-    constructor({ userid, username, exampaperCode, examcode, subjectcode, unitcode, topiccode }) {
-        // student info
-        this.userid = userid;
-        this.username = username;
+    constructor({ examcode, subjectcode, unitcode, topiccode, count, difficulty } = {}) {
 
-        // exam identifiers
-        this.exampaperCode = this.exampaperCode;
-        this.examcode = examcode;
+        this.examCode = examcode;
+        this.subjectCode = subjectcode;
+        this.unitCode = unitcode;
+        this.topicCode = topiccode;
+        this.questionsCount = count;
+        this.difficulty = difficulty;
 
-        this.subjectcode = subjectcode;
-        this.unitcode = unitcode;
-        this.topiccode = topiccode;
+        this.userId = null;
+        this.userName = null;
+        this.exampaperCode = null;
+        this.examName = null;
+        this.subjectName = null;
+        this.unitName = null;
+        this.topicName = null;
 
-        this.examname = null;
-        this.subjectname = null;
-        this.unitname = null;
-        this.topicname = null;
 
-        // exam timing
-        this.startedAt = null;
-        this.submittedAt = null;
+        const now = new Date();
+        this.examStartedAt = now.toISOString(); // e.g., "2026-03-08T12:18:07.123Z"
+        this.examEndedAt = null; // will fill later
+
+        this.examEndedAt = null;
         this.duration = 0; // in seconds
-        this.examdate = null;
-        this.examtime = null;
 
-        // questions & answers
-        this.questions = []; // array of {questionId, text, options, selectedOption, correctOption, isCorrect, timeTaken}
-        this.difficulty = null;
-        this.attemptNumber = 1;
-
-        // scoring
-        this.noq = 0;
+        // results computation
         this.attempted = 0;
         this.right = 0;
         this.wrong = 0;
@@ -50,6 +44,11 @@ class ExamSession {
         // optional: topic/unit stats for dashboard
         this.topicStats = [];
         this.unitStats = [];
+
+        // questions & answers
+        this.questions = []; // array of {questionId, text, options, selectedOption, correctOption, isCorrect, timeTaken}
+        this.attemptNumber = 1;
+        this.answers = null; // { questionId: selectedOption }
     }
 
     addQuestion(questionObj) {
@@ -58,25 +57,40 @@ class ExamSession {
     }
 
     calculateScore() {
-        this.attempted = this.questions.filter(q => q.selectedOption).length;
-        this.correct = this.questions.filter(q => q.isCorrect).length;
-        this.wrong = this.questions.filter(q => q.selectedOption && !q.isCorrect).length;
-        this.skipped = this.totalQuestions - this.attempted;
+        this.attempted = Object.keys(this.answers || {}).length;
+        this.finalScore = 0;
+        this.right = 0;
+        this.wrong = 0;
 
-        this.positiveMarks = this.correct; // can multiply by marks per question
-        this.negativeMarks = this.wrong * 0.25; // example negative marking
+        // ✅ Evaluate answers
+        this.questions.forEach(q => {
+            const userAns = this.answers[q._id];
+
+            if (userAns) {
+                if (userAns == q.answer) {
+                    this.finalScore += q.marks;
+                    this.right++;
+                } else {
+                    this.wrong++;
+                }
+            }
+        });
+        this.skipped = this.totalQuestions - this.attempted;
+        const negativeMarking = 0; // example negative marking per wrong answer 
+        this.positiveMarks = this.right; // can multiply by marks per question
+        this.negativeMarks = this.wrong * negativeMarking;
         this.finalScore = this.positiveMarks - this.negativeMarks;
         this.percentage = (this.finalScore / this.totalQuestions) * 100;
-        this.accuracy = this.attempted ? (this.correct / this.attempted) * 100 : 0;
+        this.accuracy = this.attempted ? (this.right / this.attempted) * 100 : 0;
     }
 
-    getExampaperCode(examcode, subjectcode, unitcode, topiccode) {
+    getExampaperCode() {
 
         const parts = [];
-        if (examcode) parts.push(examcode);
-        if (subjectcode) parts.push(subjectcode);
-        if (unitcode) parts.push(unitcode);
-        if (topiccode) parts.push(topiccode);
+        if (this.examCode) parts.push(this.examCode);
+        if (this.subjectCode) parts.push(this.subjectCode);
+        if (this.unitCode) parts.push(this.unitCode);
+        if (this.topicCode) parts.push(this.topicCode);
         return parts.join("_");
     }
 }

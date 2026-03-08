@@ -170,19 +170,22 @@
 
 
     <div>
-      Hello, <%= user.username %> 👋 | Examination Portal |
+      Hello, <%= examSession.userName %> 👋 | Examination Portal |
         <span class="breadcrumb-wrapper">
           <span class="breadcrumb">
-            <%= examName %> &gt; <%= subjectName %> &gt;
-                <span class="truncate" title="<%= unitName %>">
-                  <%= unitName.length> 15 ? unitName.slice(0, 15) + '...' : unitName %>
+            <%= examSession.examName %> &gt; <%= examSession.subjectName %> &gt;
+                <span class="truncate" title="<%= examSession.unitName %>">
+                  <%= examSession.unitName.length> 15 ? examSession.unitName.slice(0, 15) + '...' : examSession.unitName
+                    %>
                 </span> &gt;
-                <span class="truncate" title="<%= topicName %>">
-                  <%= topicName.length> 20 ? topicName.slice(0, 20) + '...' : topicName %>
+                <span class="truncate" title="<%= examSession.topicName %>">
+                  <%= examSession.topicName.length> 20 ? examSession.topicName.slice(0, 20) + '...' :
+                    examSession.topicName %>
                 </span>
           </span>
         </span>
-        <%= count %> Questions • <%= difficulty.charAt(0).toUpperCase() + difficulty.slice(1) %> Level
+        <%= examSession.questionsCount %> Questions • <%= examSession.difficulty.charAt(0).toUpperCase() +
+            examSession.difficulty.slice(1) %> Level
     </div>
 
     <div>Time Left: <span id="timer">00:00</span></div>
@@ -209,14 +212,17 @@
 
   </div>
 
-  <script id="questionsData" type="application/json">
-  <%- JSON.stringify(questions) %>
-</script>
+<!--  <script id="questionsData" type="application/json">
+  <%- JSON.stringify(examSession.questions) %>
+</script>-->
 
-  <script>
+<script>
+    const examSession = <%- JSON.stringify(examSession) %>;
     document.addEventListener("DOMContentLoaded", function () {
 
-      const questions = JSON.parse(document.getElementById("questionsData").textContent);
+      //const questions = JSON.parse(document.getElementById("questionsData").textContent);
+      const questions = examSession.questions;
+
       if (!questions || questions.length === 0) {
         alert("No questions available.");
         return;
@@ -329,17 +335,20 @@
       async function submitQuiz() {
         try {
           // Send answers to server
+
+          examSession.answers=answers;
           const response = await fetch("/quiz/submit", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
+              examSession,
               answers,
-              questions,
-              examcode: "<%= examcode %>",
-              subjectcode: "<%= subjectcode %>",
-              unitcode: "<%= unitcode %>",
-              topiccode: "<%= topiccode %>",
-              difficulty: "<%=  difficulty%>"
+              questions: questions,
+              examcode: "<%= examSession.examCode %>",
+              subjectcode: "<%= examSession.subjectCode %>",
+              unitcode: "<%= examSession.unitCode %>",
+              topiccode: "<%= examSession.topicCode %>",
+              difficulty: "<%= examSession.difficulty %>"
             }) // send answers + questions
           });
 
@@ -369,8 +378,9 @@
 
     });
   </script>
-  
+
   <link rel="stylesheet" href="/css/desktopStyle.css" />
   <%- include('../../partials/desktop/footer') %>
 </body>
+
 </html>
