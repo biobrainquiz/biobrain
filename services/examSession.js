@@ -8,9 +8,15 @@ class ExamSession {
         // exam identifiers
         this.exampaperCode = this.exampaperCode;
         this.examcode = examcode;
+
         this.subjectcode = subjectcode;
         this.unitcode = unitcode;
         this.topiccode = topiccode;
+
+        this.examname = null;
+        this.subjectname = null;
+        this.unitname = null;
+        this.topicname = null;
 
         // exam timing
         this.startedAt = null;

@@ -176,8 +176,10 @@ exports.submitQuiz = async (req, res) => {
 exports.createOrder = async (req, res) => {
   try {
     const { examcode, subjectcode, unitcode, topiccode, count, difficulty } = req.body;
-
     const questionCount = parseInt(count) || 10;
+
+    
+
 
     // Fetch random questions
     const questions = await Question.aggregate([

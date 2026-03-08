@@ -3031,3 +3031,30 @@ examResults is not defined
 2026-03-08 17:32:16 [INFO]: GET /admin/topics ::1 
 2026-03-08 17:32:16 [INFO]: GET /css/adminStyle.css ::1 
 2026-03-08 17:32:19 [INFO]: GET /admin/questions ::1 
+2026-03-08 17:40:48 [INFO]: 🚀 Server running on port 3000 
+2026-03-08 17:40:48 [INFO]: ✅ Connected to MongoDB 
+2026-03-08 17:40:48 [INFO]: 🔥  Forced seeding enabled. 
+2026-03-08 17:40:48 [INFO]: ⚠ Clearing old Questions... 
+2026-03-08 17:40:48 [INFO]: ⚠ Clearing old Topics... 
+2026-03-08 17:40:48 [INFO]: ⚠ Clearing old Units... 
+2026-03-08 17:40:48 [INFO]: ⚠ Clearing old Subjects... 
+2026-03-08 17:40:48 [INFO]: ⚠ Clearing old Exams... 
+2026-03-08 17:40:48 [INFO]: ⚠ Clearing old Payments... 
+2026-03-08 17:40:48 [INFO]: ⚡ Seeding database... 
+2026-03-08 17:40:48 [INFO]: 🔥 Exam seeded: 4 successfully! 
+2026-03-08 17:40:48 [INFO]: 🔥 Subject seeded: 4 successfully! 
+2026-03-08 17:40:48 [INFO]: 🔥 Unit seeded: 11 successfully! 
+2026-03-08 17:40:48 [INFO]: 🔥 Topics seeded: 49 successfully! 
+2026-03-08 17:40:49 [INFO]: 🔥 Questions seeded: 460 successfully! 
+2026-03-08 17:40:49 [INFO]: ✅ All data seeded successfully! 
+2026-03-08 17:40:51 [INFO]: GET / ::1 
+2026-03-08 17:40:51 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-08 17:40:51 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-08 17:40:51 [INFO]: GET /js/navibar.js ::1 
+2026-03-08 17:40:51 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-08 17:40:51 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-08 17:40:54 [INFO]: GET /admin ::1 
+2026-03-08 17:40:54 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-08 17:40:54 [INFO]: GET /js/admin.js ::1 
+2026-03-08 17:40:56 [INFO]: GET /admin/topics ::1 
+2026-03-08 17:40:56 [INFO]: GET /css/adminStyle.css ::1 
