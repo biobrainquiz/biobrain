@@ -1,0 +1,24 @@
+2026-03-09 18:06:28 [ERROR]: Error: Failed to lookup view "admin/question" in views directory "D:\Projects\BioBrainMdb\views"
+    at app.render (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (D:\Projects\BioBrainMdb\node_modules\express\lib\response.js:923:7)
+    at exports.list (D:\Projects\BioBrainMdb\controllers\admin\questionController.js:35:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"Failed to lookup view \"admin/question\" in views directory \"D:\\Projects\\BioBrainMdb\\views\""}
+2026-03-09 18:33:02 [ERROR]: ReferenceError: D:\Projects\BioBrainMdb\views\pages\desktop\admin\questions\question.ejs:320
+    318| <select id="unitSelect">
+    319| <option value="">Unit</option>
+ >> 320| <% units.forEach(u=>{ %>
+    321| <option value="<%= u.unitname %>"><%= u.unitname %></option>
+    322| <% }) %>
+    323| </select>
+
+units is not defined
+    at eval ("D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\admin\\questions\\question.ejs":106:8)
+    at question (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (D:\Projects\BioBrainMdb\node_modules\express\lib\view.js:139:8)
+    at tryRender (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:627:10)
+    at app.render (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (D:\Projects\BioBrainMdb\node_modules\express\lib\response.js:923:7)
+    at exports.list (D:\Projects\BioBrainMdb\controllers\admin\questionController.js:48:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\admin\\questions\\question.ejs:320\n    318| <select id=\"unitSelect\">\r\n    319| <option value=\"\">Unit</option>\r\n >> 320| <% units.forEach(u=>{ %>\r\n    321| <option value=\"<%= u.unitname %>\"><%= u.unitname %></option>\r\n    322| <% }) %>\r\n    323| </select>\r\n\nunits is not defined"}

@@ -11,7 +11,7 @@ const getDevice = require("../../utils/getDevice"); // if you use device-based v
 // controllers/admin/examController.js
 exports.list = async (req, res) => {
   try {
-    const exams = await Exam.find().sort({ createdAt: -1 });
+    const exams = await Exam.find().sort({ examname: 1 });
 
     res.render(`pages/${getDevice(req)}/admin/exams/exam`, {
       exams

@@ -18,17 +18,14 @@ exports.list = async (req, res) => {
         const units = await Unit.find()
             .populate("exam")
             .populate("subject")
-            .sort({ createdAt: -1 });
+            .sort({ unitname: 1 });
 
-        
-
-        
         res.render(`pages/${getDevice(req)}/admin/units/unit`, {
-             units,
             exams,
-            subjects
-            });
-        
+            subjects,
+            units
+        });
+
     } catch (err) {
 
         console.error(err);
@@ -46,7 +43,7 @@ exports.list = async (req, res) => {
 exports.create = async (req, res) => {
     try {
 
-        const { examCode,subjectCode,unitcode,unitname,examId,subjectId } = req.body;
+        const { examCode, subjectCode, unitcode, unitname, examId, subjectId } = req.body;
         const exam = await Exam.findById(examId);
         const subject = await Subject.findById(subjectId);
 
@@ -67,7 +64,7 @@ exports.create = async (req, res) => {
 
         });
 
-       return res.json({
+        return res.json({
             success: true,
             message: "Unit created successfully!"
         });
@@ -87,16 +84,16 @@ exports.create = async (req, res) => {
 
 
 exports.update = async (req, res) => {
-  try {
-    await Unit.findByIdAndUpdate(req.params.id, {
-      unitname: req.body.unitname
-    });
-    res.json({ success: true });
+    try {
+        await Unit.findByIdAndUpdate(req.params.id, {
+            unitname: req.body.unitname
+        });
+        res.json({ success: true });
 
-  } catch (err) {
-    console.error(err);
-    res.json({ success: false });
-  }
+    } catch (err) {
+        console.error(err);
+        res.json({ success: false });
+    }
 };
 
 
@@ -123,27 +120,27 @@ exports.update = async (req, res) => {
 
 exports.delete = async (req, res) => {
 
-  try {
+    try {
 
-    const unit = await Unit.findById({ _id: req.params.id });
+        const unit = await Unit.findById({ _id: req.params.id });
 
-    await Unit.findOneAndDelete({
-         examcode: unit.examcode,
-        subjectcode: unit.subjectcode,
-        unitcode: unit.unitcode
-    });
+        await Unit.findOneAndDelete({
+            examcode: unit.examcode,
+            subjectcode: unit.subjectcode,
+            unitcode: unit.unitcode
+        });
 
-    res.json({ success: true });
+        res.json({ success: true });
 
-  } catch (err) {
+    } catch (err) {
 
-    console.error("Delete error:", err);
+        console.error("Delete error:", err);
 
-    res.json({
-      success: false,
-      message: err.message
-    });
-  }
+        res.json({
+            success: false,
+            message: err.message
+        });
+    }
 };
 
 /* ======================================================

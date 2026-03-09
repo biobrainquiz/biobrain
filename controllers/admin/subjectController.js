@@ -4,23 +4,22 @@ const Unit = require("../../models/Unit");
 const Topic = require("../../models/Topic");
 const Question = require("../../models/Question");
 const QuizResult = require("../../models/QuizResult");
-const Payment = require("../../models/Payment"); // if exists
 const Exam = require("../../models/Exam");
+const Payment = require("../../models/Payment"); // if exists
 const getDevice = require("../../utils/getDevice"); // if you use device-based views
 
 exports.list = async (req, res) => {
 
   try {
 
+    const exams = await Exam.find().sort({ examname: 1 });
     const subjects = await Subject.find()
       .populate("exam")
-      .sort({ createdAt: -1 });
-
-    const exams = await Exam.find().sort({ examname: 1 });
+      .sort({ subjectname: 1 });
 
     res.render(`pages/${getDevice(req)}/admin/subjects/subject`, {
-      subjects,
-      exams
+      exams,
+      subjects
     });
 
   } catch (err) {

@@ -26,15 +26,21 @@ exports.list = async (req, res) => {
     const units = await Unit.find()
       .populate("exam")
       .populate("subject")
-      .sort({ createdAt: -1 });
+      .sort({ unitname: 1 });
 
     const topics = await Topic.find()
       .populate("exam")
       .populate("subject")
       .populate("unit")
-      .sort({ createdAt: -1 });
+      .sort({ topicname: 1 });
 
-    res.render(`pages/${getDevice(req)}/admin/topics/topic`, { topics, exams, subjects, units });
+    res.render(`pages/${getDevice(req)}/admin/topics/topic`,
+      {
+        exams,
+        subjects,
+        units,
+        topics
+      });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server Error");

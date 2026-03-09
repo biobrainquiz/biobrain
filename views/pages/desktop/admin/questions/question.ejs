@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Dashboard - Questions</title>
+<link rel="stylesheet" href="/css/adminStyle.css">
+
+<style>
+
+.question-wrapper{
+background:#f4f6f9;
+padding:25px;
+border-radius:8px;
+}
+
+.page-header h2{
+margin:0;
+font-size:22px;
+font-weight:600;
+color:#2c3e50;
+margin-bottom:20px;
+}
+
+.table-card{
+background:#fff;
+border-radius:8px;
+overflow:hidden;
+box-shadow:0 2px 6px rgba(0,0,0,0.08);
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+.header-row th{
+background:#2c3e50;
+color:white;
+font-size:14px;
+padding:10px;
+}
+
+.filter-row th{
+background:#2c3e50;
+padding:5px;
+}
+
+th,td{
+padding:10px;
+border-bottom:1px solid #e6e6e6;
+font-size:14px;
+}
+
+.center{text-align:center;}
+
+tbody tr:nth-child(even){
+background:#fafbfc;
+}
+
+input[type="text"]{
+padding:6px;
+width:95%;
+border:1px solid #ddd;
+border-radius:4px;
+font-size:13px;
+}
+
+select{
+margin-top:5px;
+width:100%;
+font-size:12px;
+padding:4px;
+}
+
+button{
+padding:5px 8px;
+border:none;
+cursor:pointer;
+border-radius:4px;
+font-size:12px;
+}
+
+.edit-btn{background:#3498db;color:white;}
+.save-btn{background:#2ecc71;color:white;}
+.cancel-btn{background:#7f8c8d;color:white;}
+.delete-btn{background:#e74c3c;color:white;}
+.add-btn{background:#27ae60;color:white;}
+
+.sort-btn{
+background:#34495e;
+color:white;
+font-size:10px;
+padding:2px 5px;
+margin-left:5px;
+}
+
+.action-buttons{
+display:flex;
+gap:6px;
+justify-content:center;
+align-items:center;
+}
+
+.add-row{
+background:#eef7ff;
+border-top:2px dashed #cfe6ff;
+}
+
+.column-selector{
+margin-bottom:15px;
+}
+
+.pagination{
+margin-top:15px;
+text-align:center;
+}
+
+.pagination button{
+margin:2px;
+padding:5px 10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<%- include('../../../../partials/admin/header') %>
+
+<div class="admin-container">
+
+<%- include('../../../../partials/admin/sidebar') %>
+
+<main class="admin-content">
+
+<div class="question-wrapper">
+
+<div class="page-header">
+<h2>❓ Question Management</h2>
+</div>
+
+<div class="column-selector">
+<label><input type="checkbox" checked onchange="toggleColumn(10)">Question</label>
+<label><input type="checkbox" checked onchange="toggleColumn(11)">Opt1</label>
+<label><input type="checkbox" checked onchange="toggleColumn(12)">Opt2</label>
+<label><input type="checkbox" checked onchange="toggleColumn(13)">Opt3</label>
+<label><input type="checkbox" checked onchange="toggleColumn(14)">Opt4</label>
+</div>
+
+<div class="table-card">
+
+<table id="questionTable">
+
+<thead>
+
+<tr class="header-row">
+
+<th>#</th>
+
+<th>Exam Code <button class="sort-btn" onclick="sortTable(1)">⇅</button></th>
+<th>Exam Name <button class="sort-btn" onclick="sortTable(2)">⇅</button></th>
+
+<th>Subject Code <button class="sort-btn" onclick="sortTable(3)">⇅</button></th>
+<th>Subject Name <button class="sort-btn" onclick="sortTable(4)">⇅</button></th>
+
+<th>Unit Code <button class="sort-btn" onclick="sortTable(5)">⇅</button></th>
+<th>Unit Name <button class="sort-btn" onclick="sortTable(6)">⇅</button></th>
+
+<th>Topic Code <button class="sort-btn" onclick="sortTable(7)">⇅</button></th>
+<th>Topic Name <button class="sort-btn" onclick="sortTable(8)">⇅</button></th>
+
+<th>QNo <button class="sort-btn" onclick="sortTable(9)">⇅</button></th>
+
+<th>Question</th>
+
+<th>Opt1</th>
+<th>Opt2</th>
+<th>Opt3</th>
+<th>Opt4</th>
+
+<th>Answer</th>
+<th>Difficulty</th>
+<th>Marks</th>
+<th>Created</th>
+
+<th class="center">Actions</th>
+
+</tr>
+
+<tr class="filter-row">
+
+<th></th>
+
+<th><select id="filterExamCode"></select></th>
+<th><select id="filterExamName"></select></th>
+
+<th><select id="filterSubjectCode"></select></th>
+<th><select id="filterSubjectName"></select></th>
+
+<th><select id="filterUnitCode"></select></th>
+<th><select id="filterUnitName"></select></th>
+
+<th><select id="filterTopicCode"></select></th>
+<th><select id="filterTopicName"></select></th>
+
+<th><select id="filterQno"></select></th>
+
+<th><select id="filterQuestion"></select></th>
+
+<th><select id="filterOpt1"></select></th>
+<th><select id="filterOpt2"></select></th>
+<th><select id="filterOpt3"></select></th>
+<th><select id="filterOpt4"></select></th>
+
+<th><select id="filterAnswer"></select></th>
+<th><select id="filterDifficulty"></select></th>
+<th><select id="filterMarks"></select></th>
+<th><select id="filterCreated"></select></th>
+
+<th></th>
+
+</tr>
+
+</thead>
+
+<tbody id="questionTableBody">
+
+<% questions.forEach((q,index)=>{ %>
+
+<tr>
+
+<td class="center"><%= index+1 %></td>
+
+<td><%= q.exam.examcode %></td>
+<td><%= q.exam.examname %></td>
+
+<td><%= q.subject.subjectcode %></td>
+<td><%= q.subject.subjectname %></td>
+
+<td><%= q.unit.unitcode %></td>
+<td><%= q.unit.unitname %></td>
+
+<td><%= q.topic.topiccode %></td>
+<td><%= q.topic.topicname %></td>
+
+<td><%= q.qno %></td>
+
+<td><%= q.question %></td>
+
+<td><%= q.opt1 %></td>
+<td><%= q.opt2 %></td>
+<td><%= q.opt3 %></td>
+<td><%= q.opt4 %></td>
+
+<td><%= q.answer %></td>
+<td><%= q.difficulty_level %></td>
+<td><%= q.marks %></td>
+
+<td><%= new Date(q.createdon).toLocaleDateString() %></td>
+
+<td class="center">
+<button class="delete-btn" onclick="deleteQuestion(this,'<%= q._id %>')">Delete</button>
+</td>
+
+</tr>
+
+<% }) %>
+
+<tr id="insertRow" class="add-row">
+
+<td>+</td>
+
+<td id="newExamCode"></td>
+
+<td>
+<select id="examSelect" onchange="examChanged()">
+<option value="">Select Exam</option>
+<% exams.forEach(exam=>{ %>
+<option value="<%= exam._id %>" data-code="<%= exam.examcode %>">
+<%= exam.examname %>
+</option>
+<% }) %>
+</select>
+</td>
+
+<td id="newSubjectCode"></td>
+
+<td>
+<select id="subjectSelect" onchange="subjectChanged()">
+<option value="">Select Subject</option>
+</select>
+</td>
+
+<td id="newUnitCode"></td>
+
+<td>
+<select id="unitSelect" onchange="unitChanged()">
+<option value="">Select Unit</option>
+</select>
+</td>
+
+<td id="newTopicCode"></td>
+
+<td>
+<select id="topicSelect" onchange="topicChanged()">
+<option value="">Select Topic</option>
+</select>
+</td>
+
+<td><input id="qnoInput" placeholder="Qno"></td>
+<td><input id="questionInput" placeholder="Question"></td>
+<td><input id="opt1Input" placeholder="Option 1"></td>
+<td><input id="opt2Input" placeholder="Option 2"></td>
+<td><input id="opt3Input" placeholder="Option 3"></td>
+<td><input id="opt4Input" placeholder="Option 4"></td>
+
+<td>
+<select id="answerSelect">
+<option value="1" selected="true">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+</select>
+</td>
+
+<td>
+<select id="difficultySelect">
+<option value="easy" selected="true">easy</option>
+<option value="hard">hard</option>
+</select>
+</td>
+
+<td>
+<select id="marksSelect">
+<option selected="true">1</option>
+<option>2</option>
+</select>
+</td>
+
+<td>--</td>
+
+<td class="center">
+<button class="add-btn" onclick="insertQuestion()">Add</button>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<div class="pagination" id="pagination"></div>
+
+</div>
+</div>
+</main>
+</div>
+
+<%- include('../../../../partials/admin/footer') %>
+
+<script>
+
+const subjects=<%- JSON.stringify(subjects) %>
+const units=<%- JSON.stringify(units) %>
+const topics=<%- JSON.stringify(topics) %>
+
+function examChanged(){
+
+const exam=document.getElementById("examSelect")
+const code=exam.selectedOptions[0]?.dataset.code
+document.getElementById("newExamCode").innerText=code||""
+
+const subjectSelect=document.getElementById("subjectSelect")
+subjectSelect.innerHTML='<option value="">Select Subject</option>'
+
+subjects.forEach(s=>{
+if(s.exam._id===exam.value){
+let o=document.createElement("option")
+o.value=s._id
+o.dataset.code=s.subjectcode
+o.textContent=s.subjectname
+subjectSelect.appendChild(o)
+}
+})
+
+document.getElementById("unitSelect").innerHTML='<option value="">Unit</option>'
+document.getElementById("topicSelect").innerHTML='<option value="">Topic</option>'
+}
+
+function subjectChanged(){
+
+const sub=document.getElementById("subjectSelect")
+const code=sub.selectedOptions[0]?.dataset.code
+document.getElementById("newSubjectCode").innerText=code||""
+
+const unitSelect=document.getElementById("unitSelect")
+unitSelect.innerHTML='<option value="">Select Unit</option>'
+
+units.forEach(u=>{
+if(u.subject._id===sub.value){
+let o=document.createElement("option")
+o.value=u._id
+o.dataset.code=u.unitcode
+o.textContent=u.unitname
+unitSelect.appendChild(o)
+}
+})
+
+document.getElementById("topicSelect").innerHTML='<option value="">Topic</option>'
+}
+
+function unitChanged(){
+
+const unit=document.getElementById("unitSelect")
+const code=unit.selectedOptions[0]?.dataset.code
+document.getElementById("newUnitCode").innerText=code||""
+
+const topicSelect=document.getElementById("topicSelect")
+topicSelect.innerHTML='<option value="">Select Topic</option>'
+
+topics.forEach(t=>{
+if(t.unit._id===unit.value){
+let o=document.createElement("option")
+o.value=t._id
+o.dataset.code=t.topiccode
+o.textContent=t.topicname
+topicSelect.appendChild(o)
+}
+})
+}
+
+function topicChanged(){
+const topic=document.getElementById("topicSelect")
+const code=topic.selectedOptions[0]?.dataset.code
+document.getElementById("newTopicCode").innerText=code||""
+}
+
+function toggleColumn(col){
+let table=document.getElementById("questionTable")
+for(let r of table.rows){
+let cell=r.cells[col]
+if(cell) cell.style.display=cell.style.display==="none"?"":"none"
+}
+}
+
+/* pagination */
+
+const rowsPerPage=10
+let currentPage=1
+
+function paginate(){
+
+const rows=document.querySelectorAll("#questionTableBody tr:not(#insertRow)")
+const totalPages=Math.ceil(rows.length/rowsPerPage)
+
+rows.forEach((row,i)=>{
+row.style.display=(i>= (currentPage-1)*rowsPerPage && i<currentPage*rowsPerPage)?"":"none"
+})
+
+const container=document.getElementById("pagination")
+container.innerHTML=""
+
+for(let i=1;i<=totalPages;i++){
+const btn=document.createElement("button")
+btn.innerText=i
+btn.onclick=()=>{currentPage=i;paginate()}
+container.appendChild(btn)
+}
+
+}
+
+paginate()
+
+function populateFilters(){
+
+const table=document.getElementById("questionTable")
+
+for(let c=1;c<table.rows[0].cells.length;c++){
+
+let set=new Set()
+
+for(let r=2;r<table.rows.length-1;r++){
+
+let val=table.rows[r].cells[c]?.innerText
+if(val) set.add(val)
+
+}
+
+let select=table.rows[1].cells[c]?.querySelector("select")
+
+if(select){
+
+select.innerHTML='<option value="">All</option>'
+
+set.forEach(v=>{
+let o=document.createElement("option")
+o.value=v
+o.text=v
+select.appendChild(o)
+})
+
+}
+
+}
+
+}
+
+populateFilters()
+
+</script>
+
+</body>
+</html>

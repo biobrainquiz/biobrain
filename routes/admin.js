@@ -15,7 +15,6 @@ const questionController = require("../controllers/admin/questionController");
 const dashboardController = require("../controllers/admin/dashboardController");
 const databaseBkupController = require("../controllers/admin/databaseBkupController");
 const logController = require("../controllers/admin/LogController");
-
 //const { addClient, removeClient } = require("../utils/liveLogs");
 
 router.get("/logs", logController.logsPage);
@@ -66,6 +65,12 @@ router.get("/topics", topicController.list);
 router.post("/topics/create", topicController.create);
 router.post("/topics/update/:id", topicController.update);
 router.post("/topics/delete", topicController.delete);
+
+router.get("/questions", questionController.list);
+router.post("/questions/create", questionController.create);
+router.post("/questions/update/:id", questionController.update);
+router.post("/questions/delete", questionController.delete);
+
 
 /*// =====================
 // QUESTIONS
