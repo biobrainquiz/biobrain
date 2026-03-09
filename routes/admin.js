@@ -46,7 +46,6 @@ router.post("/subjects/update/:id", subjectController.update);
 router.post("/subjects/delete/:id", subjectController.delete);
 
 
-
 /* =============================
    UNITS 
 ============================= */
@@ -66,6 +65,10 @@ router.post("/topics/create", topicController.create);
 router.post("/topics/update/:id", topicController.update);
 router.post("/topics/delete", topicController.delete);
 
+
+// =====================
+// QUESTIONS
+// =====================
 router.get("/questions", questionController.list);
 router.post("/questions/create", questionController.create);
 router.post("/questions/update/:id", questionController.update);

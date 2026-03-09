@@ -51,24 +51,44 @@ exports.list = async (req, res) => {
 
 // ================= CREATE =================
 
+
+// Create Question
 exports.create = async (req, res) => {
-
   try {
+    const { examId, subId, unitId,topicId, examCode, subCode, unitCode, topiccode, qno,question,opt1,opt2,opt3,answer,difficulty,marks } = req.body;
+    if (!examId || !subId || !unitId || !topicId || !examCode || !subCode || !unitCode || !topiccode || !qno || !question || !opt1 ||  !opt2 || !opt3 || !answer || !difficulty || !marks ) {
+      return res.json({ success: false, message: "All fields are required" });
+    }
 
-    await Question.create(req.body);
+    const existing = await Question.findOne({ qno: qno, topiccode:  topiccode });
+    if (existing) return res.json({ success: false, message: "Question already exists under this topic" });
 
-    res.redirect("/questions");
+    const newQuestion = await Question.create({
+      exam: examId,
+      subject: subId,
+      unit: unitId,
+      topic: topicId,
+      examcode: examCode,
+      subjectcode: subCode,
+      unitcode: unitCode,
+      topiccode:topicCode,
+      qno:qno,
+      question:question,
+      opt1:opt1,
+      opt2:opt2,
+      opt3:opt3,
+      opt4:opt4,
+      answer:answer,
+      difficulty_level:difficulty,
+      marks:marks
+    });
 
+    res.json({ success: true, question: newQuestion });
   } catch (err) {
-
     console.error(err);
-    res.status(500).send("Insert failed");
-
+    res.json({ success: false, message: "Server error" });
   }
-
 };
-
-
 
 // ================= UPDATE =================
 
@@ -93,23 +113,16 @@ exports.update = async (req, res) => {
 
 
 
-// ================= DELETE =================
-
+// DELETE via POST
 exports.delete = async (req, res) => {
-
   try {
+    const { qid } = req.body;  // <-- receive question ID via POST body
+    if (!qid) return res.json({ success: false, message: "Qqestion ID required" });
 
-    const id = req.body.id;
-
-    await Question.findByIdAndDelete(id);
-
-    res.redirect("/questions");
-
+    await Question.findByIdAndDelete(qid);
+    res.json({ success: true });
   } catch (err) {
-
     console.error(err);
-    res.status(500).send("Delete failed");
-
+    res.json({ success: false, message: "Server error" });
   }
-
 };
