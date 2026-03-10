@@ -1,0 +1,1154 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Dashboard - Questions</title>
+<link rel="stylesheet" href="/css/adminStyle.css">
+<style>
+
+/* ===== SAME STYLE AS exam.ejs ===== */
+
+.question-wrapper{
+background:#f4f6f9;
+padding:25px;
+border-radius:8px;
+}
+
+.page-header h2{
+margin:0;
+font-size:22px;
+font-weight:600;
+color:#2c3e50;
+margin-bottom:20px;
+}
+
+.table-card{
+background:#fff;
+border-radius:8px;
+overflow:hidden;
+box-shadow:0 2px 6px rgba(0,0,0,0.08);
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+/* header */
+
+.header-row th{
+background:#2c3e50;
+color:white;
+font-size:14px;
+padding:10px;
+}
+
+.filter-row th{
+background:#2c3e50;
+padding:5px;
+}
+
+/* cells */
+
+th,td{
+padding:10px;
+border-bottom:1px solid #e6e6e6;
+font-size:14px;
+}
+
+.center{
+text-align:center;
+}
+
+/* zebra rows */
+
+tbody tr:nth-child(even){
+background:#fafbfc;
+}
+
+/* inputs */
+
+input[type="text"]{
+padding:6px;
+width:95%;
+border:1px solid #ddd;
+border-radius:4px;
+font-size:13px;
+}
+
+select{
+margin-top:5px;
+width:100%;
+font-size:12px;
+padding:4px;
+}
+
+/* buttons */
+
+button{
+padding:5px 8px;
+border:none;
+cursor:pointer;
+border-radius:4px;
+font-size:12px;
+}
+
+.edit-btn{background:#3498db;color:white;}
+.save-btn{background:#2ecc71;color:white;}
+.cancel-btn{background:#7f8c8d;color:white;}
+.delete-btn{background:#e74c3c;color:white;}
+.add-btn{background:#27ae60;color:white;}
+
+.sort-btn{
+background:#34495e;
+color:white;
+font-size:10px;
+padding:2px 5px;
+margin-left:5px;
+}
+
+/* action buttons */
+
+.action-buttons{
+display:flex;
+gap:6px;
+justify-content:center;
+display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+/* add row */
+
+.add-row{
+background:#eef7ff;
+border-top:2px dashed #cfe6ff;
+}
+
+/* code column center */
+
+td:nth-child(2),
+td:nth-child(4),
+td:nth-child(6),
+td:nth-child(8){
+text-align:center;
+font-weight:600;
+}
+
+/* column widths (kept same as your file) */
+
+th:nth-child(1){width:30px;} /*#*/
+
+th:nth-child(2){width:75px;}/*examcode*/
+th:nth-child(3){width:120px;}/*examname*/
+
+th:nth-child(4){width:75px;}/*subjectcode*/
+th:nth-child(5){width:120px;}/*subjectname*/
+
+th:nth-child(6){width:75px;}/*unitcode*/
+th:nth-child(7){width:120px;}/*unitname*/
+
+th:nth-child(8){width:75px;}/*topiccode*/
+th:nth-child(9){width:120px;}/*topicname*/
+
+th:nth-child(10){width:75px;}/*qno*/
+th:nth-child(11){width:120px;}/*question*/
+th:nth-child(12){width:75px;}/*opt1*/
+th:nth-child(13){width:75px;}/*opt2*/
+th:nth-child(14){width:75px;}/*opt3*/
+th:nth-child(15){width:75px;}/*opt4*/
+th:nth-child(16){width:30px;}/*answer*/
+th:nth-child(17){width:30px;}/*difficulty*/
+th:nth-child(18){width:30px;}/*marks*/
+
+th:nth-child(19){width:90px;}/*createdon*/
+th:nth-child(20){width:190px;}/*action btns*/
+
+
+</style>
+</head>
+</style>
+</head>
+
+<body>
+
+<%- include('../../../../partials/admin/header') %>
+
+<div class="admin-container">
+
+<%- include('../../../../partials/admin/sidebar') %>
+
+<main class="admin-content">
+
+<div class="question-wrapper">
+
+<div class="page-header">
+<h2>📝 Question Management</h2>
+</div>
+
+<div class="table-card">
+
+<table>
+
+<thead>
+
+<!-- HEADER ROW -->
+<tr class="header-row">
+
+<th>#</th>
+
+<th>Exam Code <button class="sort-btn" onclick="sortTable(1)">⇅</button></th>
+
+<th>Exam Name <button class="sort-btn" onclick="sortTable(2)">⇅</button></th>
+
+<th>Subject Code <button class="sort-btn" onclick="sortTable(3)">⇅</button></th>
+
+<th>Subject Name <button class="sort-btn" onclick="sortTable(4)">⇅</button></th>
+
+<th>Unit Code <button class="sort-btn" onclick="sortTable(5)">⇅</button></th>
+
+<th>Unit Name <button class="sort-btn" onclick="sortTable(6)">⇅</button></th>
+
+<th>Topic Code <button class="sort-btn" onclick="sortTable(7)">⇅</button></th>
+
+<th>Topic Name <button class="sort-btn" onclick="sortTable(8)">⇅</button></th>
+
+<th>Qno <button class="sort-btn" onclick="sortTable(9)">⇅</button></th>
+<th>Question <button class="sort-btn" onclick="sortTable(10)">⇅</button></th>
+<th>Opt1 <button class="sort-btn" onclick="sortTable(11)">⇅</button></th>
+<th>Opt2 <button class="sort-btn" onclick="sortTable(12)">⇅</button></th>
+<th>Opt3 <button class="sort-btn" onclick="sortTable(13)">⇅</button></th>
+<th>Opt4 <button class="sort-btn" onclick="sortTable(14)">⇅</button></th>
+<th>Answer <button class="sort-btn" onclick="sortTable(15)">⇅</button></th>
+<th>Difficulty <button class="sort-btn" onclick="sortTable(16)">⇅</button></th>
+<th>Marks <button class="sort-btn" onclick="sortTable(17)">⇅</button></th>
+<th>Created <button class="sort-btn" onclick="sortTable(18)">⇅</button></th>
+
+<th class="center">Actions</th>
+
+</tr>
+
+<!-- FILTER ROW -->
+
+<tr class="filter-row">
+
+<th></th>
+
+<th><select id="filterExamCode" onchange="applyFilters()"><option value="">All</option></select></th>
+<th><select id="filterExamName" onchange="applyFilters()"><option value="">All</option></select></th>
+
+<th><select id="filterSubjectCode" onchange="applyFilters()"><option value="">All</option></select></th>
+<th><select id="filterSubjectName" onchange="applyFilters()"><option value="">All</option></select></th>
+
+<th><select id="filterUnitCode" onchange="applyFilters()"><option value="">All</option></select></th>
+<th><select id="filterUnitName" onchange="applyFilters()"><option value="">All</option></select></th>
+
+<th><select id="filterTopicCode" onchange="applyFilters()"><option value="">All</option></select></th>
+<th><select id="filterTopicName" onchange="applyFilters()"><option value="">All</option></select></th>
+
+<th><select id="filterQno" onchange="applyFilters()"><option value="">All</option></select></th>
+<th><select id="filterQuestion" onchange="applyFilters()"><option value="">All</option></select></th>
+<th><select id="filterOpt1" onchange="applyFilters()"><option value="">All</option></select></th>
+<th><select id="filterOpt2" onchange="applyFilters()"><option value="">All</option></select></th>
+<th><select id="filterOpt3" onchange="applyFilters()"><option value="">All</option></select></th>
+<th><select id="filterOpt4" onchange="applyFilters()"><option value="">All</option></select></th>
+<th><select id="filterAnswer" onchange="applyFilters()"><option value="">All</option></select></th>
+<th><select id="filterDifficulty" onchange="applyFilters()"><option value="">All</option></select></th>
+<th><select id="filterMarks" onchange="applyFilters()"><option value="">All</option></select></th>
+
+<th><select id="filterCreated" onchange="applyFilters()"><option value="">All</option></select></th>
+
+<th></th>
+
+</tr>
+
+</thead>
+
+
+
+<tbody id="questionTableBody">
+
+<% questions.forEach((question,index)=>{ %>
+
+<tr data-id="<%= question._id %>">
+
+<td class="center row-number"><%= index+1 %></td>
+
+<td><%= question.exam?.examcode %></td>
+<td><%= question.exam?.examname %></td>
+
+<td><%= question.subject?.subjectcode %></td>
+<td><%= question.subject?.subjectname %></td>
+
+<td><%= question.unit?.unitcode %></td>
+<td><%= question.unit?.unitname %></td>
+
+<td><%= question.topic?.topiccode %></td>
+<td><%= question.topic?.topicname %></td>
+
+<td><%= question.qno%></td>
+<td class="question"><%= question.question %></td>
+<td class="opt1"><%= question.opt1 %></td>
+<td class="opt2"><%= question.opt2 %></td>
+<td class="opt3"><%= question.opt3 %></td>
+<td class="opt4"><%= question.opt4 %></td>
+<td class="answer"><%= question.answer%></td>
+<td class="difficulty"><%= question.difficulty_level %></td>
+<td class="marks"><%= question.marks %></td>
+
+<td><%= new Date(question.createdAt).toLocaleDateString() %></td>
+
+<td class="center action-buttons">
+
+<button class="edit-btn" onclick="enableEdit(this)">Edit</button>
+
+<button class="save-btn" style="display:none;" onclick="saveQuestion(this)">Save</button>
+
+<button class="cancel-btn" style="display:none;" onclick="cancelEdit(this)">Cancel</button>
+
+<button class="delete-btn" onclick="deleteQuestion(this,'<%= question._id %>')">Delete</button>
+
+</td>
+
+</tr>
+
+<% }) %>
+
+<!-- INLINE ADD ROW -->
+
+<tr id="insertRow" class="add-row">
+
+<td>+</td>
+
+<td id="newExamCode"></td>
+
+<td>
+<select id="examSelect" onchange="examChanged()">
+<option value="">Select Exam</option>
+<% exams.forEach(exam=>{ %>
+<option value="<%= exam._id %>" data-code="<%= exam.examcode %>">
+<%= exam.examname %>
+</option>
+<% }) %>
+</select>
+</td>
+
+<td id="newSubjectCode"></td>
+
+<td>
+<select id="subjectSelect" onchange="subjectChanged()">
+<option value="">Select Subject</option>
+</select>
+</td>
+
+<td id="newUnitCode"></td>
+
+<td>
+<select id="unitSelect" onchange="unitChanged()">
+<option value="">Select Unit</option>
+</select>
+</td>
+
+<td id="newTopicCode"></td>
+
+<td>
+<select id="topicSelect" onchange="topicChanged()">
+<option value="">Select Topic</option>
+</select>
+</td>
+
+<td><input id="qnoInput" placeholder="Qno"></td>
+<td><input id="questionInput" placeholder="Question"></td>
+<td><input id="opt1Input" placeholder="Option 1"></td>
+<td><input id="opt2Input" placeholder="Option 2"></td>
+<td><input id="opt3Input" placeholder="Option 3"></td>
+<td><input id="opt4Input" placeholder="Option 4"></td>
+
+<td>
+<select id="answerSelect">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+</select>
+</td>
+
+<td>
+<select id="difficultySelect">
+<option value="easy">easy</option>
+<option value="hard">hard</option>
+</select>
+</td>
+
+<td>
+<select id="marksSelect">
+<option>1</option>
+<option>2</option>
+</select>
+</td>
+
+<td>--</td>
+
+<td class="center">
+<button class="add-btn" onclick="insertQuestion()">Add</button>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</main>
+
+</div>
+
+<%- include('../../../../partials/admin/footer') %>
+
+<script>
+
+const exams = <%- JSON.stringify(exams) %>;
+const subjects = <%- JSON.stringify(subjects) %>;
+const units = <%- JSON.stringify(units) %>;
+const topics = <%- JSON.stringify(topics) %>;
+
+let sortDirection={};
+
+function refreshRowNumbers(){
+
+const rows=document.querySelectorAll("#questionTableBody tr");
+
+let i=1;
+
+rows.forEach(row=>{
+
+if(row.style.display!=="none" && row.id!=="insertRow"){
+
+row.querySelector(".row-number").innerText=i++;
+
+}
+
+});
+
+}
+
+function rebuildFilters(){
+
+const rows=document.querySelectorAll("#questionTableBody tr:not(#insertRow)");
+
+const sets=[new Set(),new Set(),new Set(),new Set(),new Set(),new Set(),new Set(),new Set(),new Set(),new Set(),new Set(),new Set(),new Set(),new Set(),new Set(),new Set(),new Set(),new Set()];
+
+rows.forEach(row=>{
+
+for(let i=1;i<=18;i++){
+
+sets[i-1].add(row.children[i].innerText.trim());
+
+}
+
+});
+
+fillDropdown("filterExamCode",sets[0]);
+fillDropdown("filterExamName",sets[1]);
+fillDropdown("filterSubjectCode",sets[2]);
+fillDropdown("filterSubjectName",sets[3]);
+fillDropdown("filterUnitCode",sets[4]);
+fillDropdown("filterUnitName",sets[5]);
+fillDropdown("filterTopicCode",sets[6]);
+fillDropdown("filterTopicName",sets[7]);
+
+
+fillDropdown("filterQno",sets[8]);
+fillDropdown("filterQuestion",sets[9]);
+fillDropdown("filterOpt1",sets[10]);
+fillDropdown("filterOpt2",sets[11]);
+fillDropdown("filterOpt3",sets[12]);
+fillDropdown("filterOpt4",sets[13]);
+fillDropdown("filterAnswer",sets[14]);
+fillDropdown("filterDifficulty",sets[15]);
+fillDropdown("filterMarks",sets[16]);
+
+fillDropdown("filterCreated",sets[17]);
+
+}
+
+function fillDropdown(id,set){
+
+const select=document.getElementById(id);
+
+const current=select.value;
+
+select.innerHTML='<option value="">All</option>';
+
+Array.from(set).sort().forEach(v=>{
+
+const opt=document.createElement("option");
+
+opt.value=v;
+
+opt.textContent=v;
+
+select.appendChild(opt);
+
+});
+
+select.value=current;
+
+}
+
+function applyFilters(){
+
+const filters=[
+
+filterExamCode.value,
+filterExamName.value,
+filterSubjectCode.value,
+filterSubjectName.value,
+filterUnitCode.value,
+filterUnitName.value,
+filterTopicCode.value,
+filterTopicName.value,
+
+filterQno.value,
+filterQuestion.value,
+filterOpt1.value,
+filterOpt2.value,
+filterOpt3.value,
+filterOpt4.value,
+filterAnswer.value,
+filterDifficulty.value,
+filterMarks.value,
+
+filterCreated.value
+
+];
+
+const rows=document.querySelectorAll("#questionTableBody tr:not(#insertRow)");
+
+rows.forEach(row=>{
+
+let visible=true;
+
+filters.forEach((f,i)=>{
+
+if(f && row.children[i+1].innerText!==f) visible=false;
+
+});
+
+row.style.display=visible?"":"none";
+
+});
+
+refreshRowNumbers();
+
+}
+
+function sortTable(col){
+
+const table=document.getElementById("questionTableBody");
+
+const rows=Array.from(table.querySelectorAll("tr")).filter(r=>r.id!=="insertRow");
+
+sortDirection[col]=!sortDirection[col];
+
+rows.sort((a,b)=>{
+
+let A=a.children[col].innerText.toLowerCase();
+
+let B=b.children[col].innerText.toLowerCase();
+
+if(A<B) return sortDirection[col]?-1:1;
+
+if(A>B) return sortDirection[col]?1:-1;
+
+return 0;
+
+});
+
+rows.forEach(r=>table.appendChild(r));
+
+table.appendChild(document.getElementById("insertRow"));
+
+refreshRowNumbers();
+rebuildFilters();
+
+}
+
+
+// ---------- Cascading Dropdowns ----------
+
+function examChanged(){
+
+const exam=document.getElementById("examSelect");
+
+const code=exam.selectedOptions[0]?.dataset.code;
+
+document.getElementById("newExamCode").innerText=code||"";
+
+const subjectSelect=document.getElementById("subjectSelect");
+
+subjectSelect.innerHTML='<option value="">Select Subject</option>';
+
+subjects.forEach(s=>{
+
+if(s.exam._id===exam.value){
+
+const opt=document.createElement("option");
+
+opt.value=s._id;
+
+opt.dataset.code=s.subjectcode;
+
+opt.textContent=s.subjectname;
+
+subjectSelect.appendChild(opt);
+
+}
+
+});
+
+subjectChanged();
+
+}
+
+function subjectChanged(){
+
+const sub=document.getElementById("subjectSelect");
+
+const code=sub.selectedOptions[0]?.dataset.code;
+
+document.getElementById("newSubjectCode").innerText=code||"";
+
+const unitSelect=document.getElementById("unitSelect");
+
+unitSelect.innerHTML='<option value="">Select Unit</option>';
+
+units.forEach(u=>{
+
+if(u.subject._id===sub.value){
+
+const opt=document.createElement("option");
+
+opt.value=u._id;
+
+opt.dataset.code=u.unitcode;
+
+opt.textContent=u.unitname;
+
+unitSelect.appendChild(opt);
+
+}
+
+});
+
+unitChanged();
+
+}
+
+function unitChanged(){
+
+const uni=document.getElementById("unitSelect");
+
+const code=uni.selectedOptions[0]?.dataset.code;
+
+document.getElementById("newUnitCode").innerText=code||"";
+
+const topicSelect=document.getElementById("topicSelect");
+
+topicSelect.innerHTML='<option value="">Select Topic</option>';
+
+topics.forEach(t=>{
+
+if(t.unit._id===uni.value){
+
+const opt=document.createElement("option");
+
+opt.value=t._id;
+
+opt.dataset.code=t.topiccode;
+
+opt.textContent=t.topicname;
+
+topicSelect.appendChild(opt);
+
+}
+
+});
+
+topicChanged();
+
+}
+
+function topicChanged(){
+
+const t=document.getElementById("topicSelect");
+
+const code=t.selectedOptions[0]?.dataset.code;
+
+document.getElementById("newTopicCode").innerText=code||"";
+
+}
+
+
+// ---------- ADD QUESTION ----------
+
+async function insertQuestion(){
+
+const examSelect=document.getElementById("examSelect");
+const examOpt=examSelect.options[examSelect.selectedIndex];
+const examId=examOpt.value, examCode=examOpt.dataset.code;
+
+const subSelect=document.getElementById("subjectSelect");
+const subOpt=subSelect.options[subSelect.selectedIndex];
+const subId=subOpt.value, subCode=subOpt.dataset.code;
+
+const unitSelectEl=document.getElementById("unitSelect");
+const unitOpt=unitSelectEl.options[unitSelectEl.selectedIndex];
+const unitId=unitOpt.value, unitCode=unitOpt.dataset.code;
+
+const topicSelectEl=document.getElementById("topicSelect");
+const topicOpt=topicSelectEl.options[topicSelectEl.selectedIndex];
+const topicId=topicOpt.value, topicCode=topicOpt.dataset.code;
+
+const qno=document.getElementById("qnoInput").value.trim();
+const questiontxt=document.getElementById("questionInput").value.trim();
+
+const opt1=document.getElementById("opt1Input").value.trim();
+const opt2=document.getElementById("opt2Input").value.trim();
+const opt3=document.getElementById("opt3Input").value.trim();
+const opt4=document.getElementById("opt4Input").value.trim();
+
+const answer=document.getElementById("answerSelect").value;
+const difficulty=document.getElementById("difficultySelect").value;
+const marks=document.getElementById("marksSelect").value;
+
+if(!examId || !subId || !unitId || !topicId || !qno || !questiontxt || !opt1 || !opt2 || !opt3 || !opt4 || !answer || !difficulty || !marks){
+
+alert("All fields are required");
+return;
+
+}
+
+const res=await fetch("/admin/questions/create",{
+
+method:"POST",
+
+headers:{"Content-Type":"application/json"},
+
+body:JSON.stringify({
+examId, subId, unitId, topicId,
+examCode, subCode, unitCode, topicCode,
+qno,
+question:questiontxt,
+opt1,opt2,opt3,opt4,
+answer,difficulty,marks
+})
+
+});
+
+const data=await res.json();
+
+if(data.success){
+
+const tbody=document.getElementById("questionTableBody");
+
+const row=document.createElement("tr");
+
+row.dataset.id=data.question._id;
+
+row.innerHTML=`
+
+<td class="center row-number"></td>
+
+<td>${examCode}</td>
+<td>${examOpt.textContent}</td>
+
+<td>${subCode}</td>
+<td>${subOpt.textContent}</td>
+
+<td>${unitCode}</td>
+<td>${unitOpt.textContent}</td>
+
+<td>${topicCode}</td>
+<td>${topicOpt.textContent}</td>
+
+<td>${qno}</td>
+
+<td class="question">${questiontxt}</td>
+
+<td class="opt1">${opt1}</td>
+<td class="opt2">${opt2}</td>
+<td class="opt3">${opt3}</td>
+<td class="opt4">${opt4}</td>
+
+<td class="answer">${answer}</td>
+<td class="difficulty">${difficulty}</td>
+<td class="marks">${marks}</td>
+
+<td>${new Date().toLocaleDateString()}</td>
+
+<td class="center action-buttons">
+
+<button class="edit-btn" onclick="enableEdit(this)">Edit</button>
+
+<button class="save-btn" style="display:none;" onclick="saveQuestion(this)">Save</button>
+
+<button class="cancel-btn" style="display:none;" onclick="cancelEdit(this)">Cancel</button>
+
+<button class="delete-btn" onclick="deleteQuestion(this,'${data.question._id}')">Delete</button>
+
+</td>
+
+`;
+
+const insertRow=document.getElementById("insertRow");
+
+tbody.insertBefore(row,insertRow);
+
+/* clear inputs */
+document.getElementById("qnoInput").value="";
+document.getElementById("questionInput").value="";
+document.getElementById("opt1Input").value="";
+document.getElementById("opt2Input").value="";
+document.getElementById("opt3Input").value="";
+document.getElementById("opt4Input").value="";
+
+/* reset dropdowns */
+/*document.getElementById("examSelect").selectedIndex=0;
+document.getElementById("subjectSelect").selectedIndex=0;
+document.getElementById("unitSelect").selectedIndex=0;
+document.getElementById("topicSelect").selectedIndex=0;*/
+
+document.getElementById("answerSelect").selectedIndex=0;
+document.getElementById("difficultySelect").selectedIndex=0;
+document.getElementById("marksSelect").selectedIndex=0;
+
+rebuildFilters();
+refreshRowNumbers();
+
+}
+
+}
+
+function cancelEdit1(btn){
+
+const row=btn.closest("tr");
+
+const cell=row.querySelector(".question");
+const input=row.querySelector(".edit-input");
+cell.innerText=input.defaultValue;
+row.querySelector(".edit-btn").style.display="inline";
+row.querySelector(".delete-btn").style.display="inline";
+row.querySelector(".save-btn").style.display="none";
+row.querySelector(".cancel-btn").style.display="none";
+
+cell=row.querySelector(".opt1");
+input=row.querySelector(".edit-input");
+cell.innerText=input.defaultValue;
+row.querySelector(".edit-btn").style.display="inline";
+row.querySelector(".delete-btn").style.display="inline";
+row.querySelector(".save-btn").style.display="none";
+row.querySelector(".cancel-btn").style.display="none";
+
+cell=row.querySelector(".opt2");
+input=row.querySelector(".edit-input");
+cell.innerText=input.defaultValue;
+row.querySelector(".edit-btn").style.display="inline";
+row.querySelector(".delete-btn").style.display="inline";
+row.querySelector(".save-btn").style.display="none";
+row.querySelector(".cancel-btn").style.display="none";
+
+cell=row.querySelector(".opt3");
+input=row.querySelector(".edit-input");
+cell.innerText=input.defaultValue;
+row.querySelector(".edit-btn").style.display="inline";
+row.querySelector(".delete-btn").style.display="inline";
+row.querySelector(".save-btn").style.display="none";
+row.querySelector(".cancel-btn").style.display="none";
+
+cell=row.querySelector(".opt4");
+input=row.querySelector(".edit-input");
+cell.innerText=input.defaultValue;
+row.querySelector(".edit-btn").style.display="inline";
+row.querySelector(".delete-btn").style.display="inline";
+row.querySelector(".save-btn").style.display="none";
+row.querySelector(".cancel-btn").style.display="none";
+
+}
+
+async function saveTopic(btn){
+
+const row=btn.closest("tr");
+
+const id=row.dataset.id;
+
+const input=row.querySelector(".edit-input");
+
+const newVal=input.value.trim();
+
+if(!newVal){
+
+alert("Topic name cannot be empty");
+
+return;
+
+}
+
+const res=await fetch(`/admin/topics/update/${id}`,{
+
+method:"POST",
+
+headers:{"Content-Type":"application/json"},
+
+body:JSON.stringify({topicname:newVal})
+
+});
+
+const data=await res.json();
+
+if(data.success){
+
+row.querySelector(".topicname").innerText=newVal;
+
+row.querySelector(".edit-btn").style.display="inline";
+
+row.querySelector(".delete-btn").style.display="inline";
+
+row.querySelector(".save-btn").style.display="none";
+
+row.querySelector(".cancel-btn").style.display="none";
+
+rebuildFilters();
+
+}
+
+}
+
+// ---------- DELETE ----------
+
+function deleteQuestion(btn, qid) {
+    if (!confirm("Are you sure you want to delete this question?")) return;
+
+    fetch("/admin/questions/delete", { 
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ qid })  // send id in body
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.success){
+            // remove the row from table
+            const row = btn.closest("tr");
+            row.remove();
+            rebuildFilters();
+            refreshRowNumbers();
+            alert("Question deleted successfully!");
+        } else {
+            alert(data.message || "Failed to delete question.");
+        }
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Error deleting question.");
+    });
+}
+
+// ---------- EDIT QUESTION ----------
+
+function enableEdit(btn){
+
+const row = btn.closest("tr");
+
+// store original values
+row.dataset.question = row.querySelector(".question").innerText.trim();
+row.dataset.opt1 = row.querySelector(".opt1").innerText.trim();
+row.dataset.opt2 = row.querySelector(".opt2").innerText.trim();
+row.dataset.opt3 = row.querySelector(".opt3").innerText.trim();
+row.dataset.opt4 = row.querySelector(".opt4").innerText.trim();
+row.dataset.answer = row.querySelector(".answer").innerText.trim();
+row.dataset.marks = row.querySelector(".marks").innerText.trim();
+row.dataset.difficulty = row.querySelector(".difficulty").innerText.trim();
+
+// get cells
+const questionCell = row.querySelector(".question");
+const opt1Cell = row.querySelector(".opt1");
+const opt2Cell = row.querySelector(".opt2");
+const opt3Cell = row.querySelector(".opt3");
+const opt4Cell = row.querySelector(".opt4");
+
+const answerCell = row.querySelector(".answer");
+const marksCell = row.querySelector(".marks");
+const difficultyCell = row.querySelector(".difficulty");
+
+// old values
+const question = questionCell.innerText.trim();
+const opt1 = opt1Cell.innerText.trim();
+const opt2 = opt2Cell.innerText.trim();
+const opt3 = opt3Cell.innerText.trim();
+const opt4 = opt4Cell.innerText.trim();
+
+const answer = answerCell.innerText.trim();
+const marks = marksCell.innerText.trim();
+const difficulty = difficultyCell.innerText.trim();
+
+// convert to inputs
+questionCell.innerHTML = `<input class="edit-input question-input" value="${question}">`;
+
+opt1Cell.innerHTML = `<input class="edit-input opt1-input" value="${opt1}">`;
+opt2Cell.innerHTML = `<input class="edit-input opt2-input" value="${opt2}">`;
+opt3Cell.innerHTML = `<input class="edit-input opt3-input" value="${opt3}">`;
+opt4Cell.innerHTML = `<input class="edit-input opt4-input" value="${opt4}">`;
+
+// answer dropdown
+answerCell.innerHTML = `
+<select class="edit-select answer-input">
+<option ${answer==="1"?"selected":""}>1</option>
+<option ${answer==="2"?"selected":""}>2</option>
+<option ${answer==="3"?"selected":""}>3</option>
+<option ${answer==="4"?"selected":""}>4</option>
+</select>`;
+
+// marks dropdown
+marksCell.innerHTML = `
+<select class="edit-select marks-input">
+<option ${marks==="1"?"selected":""}>1</option>
+<option ${marks==="2"?"selected":""}>2</option>
+</select>`;
+
+// difficulty dropdown
+difficultyCell.innerHTML = `
+<select class="edit-select difficulty-input">
+<option ${difficulty==="easy"?"selected":""}>easy</option>
+<option ${difficulty==="hard"?"selected":""}>hard</option>
+</select>`;
+
+// buttons
+row.querySelector(".edit-btn").style.display="none";
+row.querySelector(".delete-btn").style.display="inline";
+row.querySelector(".save-btn").style.display="inline";
+row.querySelector(".cancel-btn").style.display="inline";
+
+// focus first input
+row.querySelector(".question-input").focus();
+}
+
+
+
+function cancelEdit(btn){
+
+const row = btn.closest("tr");
+row.querySelector(".question").innerText=row.dataset.question;
+row.querySelector(".opt1").innerText=row.dataset.opt1;
+row.querySelector(".opt2").innerText=row.dataset.opt2;
+row.querySelector(".opt3").innerText=row.dataset.opt3;
+row.querySelector(".opt4").innerText=row.dataset.opt4;
+row.querySelector(".answer").innerText=row.dataset.answer;
+row.querySelector(".marks").innerText=row.dataset.marks;
+row.querySelector(".difficulty").innerText=row.dataset.difficulty;
+
+// buttons
+row.querySelector(".edit-btn").style.display="inline";
+row.querySelector(".delete-btn").style.display="inline";
+row.querySelector(".save-btn").style.display="none";
+row.querySelector(".cancel-btn").style.display="none";
+}
+
+
+// ---------- SAVE QUESTION ----------
+
+async function saveQuestion(btn){
+
+const row = btn.closest("tr");
+const id = row.dataset.id;
+
+// read edited values
+const question = row.querySelector(".question-input").value.trim();
+
+const opt1 = row.querySelector(".opt1-input").value.trim();
+const opt2 = row.querySelector(".opt2-input").value.trim();
+const opt3 = row.querySelector(".opt3-input").value.trim();
+const opt4 = row.querySelector(".opt4-input").value.trim();
+
+const answer = row.querySelector(".answer-input").value;
+const marks = row.querySelector(".marks-input").value;
+const difficulty = row.querySelector(".difficulty-input").value;
+
+
+// validation
+if(!question || !opt1 || !opt2 || !opt3 || !opt4 || !answer || !marks || !difficulty){
+alert("All fields must be filled");
+return;
+}
+
+try{
+
+const res = await fetch(`/admin/questions/update/${id}`,{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+question,
+opt1,
+opt2,
+opt3,
+opt4,
+answer,
+marks,
+difficulty
+})
+});
+
+const data = await res.json();
+
+if(!data.success){
+alert(data.message || "Update failed");
+return;
+}
+
+// update table cells
+row.querySelector(".question").innerText = question;
+
+row.querySelector(".opt1").innerText = opt1;
+row.querySelector(".opt2").innerText = opt2;
+row.querySelector(".opt3").innerText = opt3;
+row.querySelector(".opt4").innerText = opt4;
+
+row.querySelector(".answer").innerText = answer;
+row.querySelector(".marks").innerText = marks;
+row.querySelector(".difficulty").innerText = difficulty;
+
+
+// restore buttons
+row.querySelector(".edit-btn").style.display="inline";
+row.querySelector(".delete-btn").style.display="inline";
+row.querySelector(".save-btn").style.display="none";
+row.querySelector(".cancel-btn").style.display="none";
+
+}catch(err){
+
+console.error("Save Question Error:",err);
+alert("Server error while updating question");
+
+}
+
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+rebuildFilters();
+
+refreshRowNumbers();
+
+});
+
+</script>
+
+</body>
+
+</html>

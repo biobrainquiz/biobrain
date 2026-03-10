@@ -55,12 +55,12 @@ exports.list = async (req, res) => {
 // Create Question
 exports.create = async (req, res) => {
   try {
-    const { examId, subId, unitId,topicId, examCode, subCode, unitCode, topicCode, qno,question,opt1,opt2,opt3,opt4,answer,difficulty,marks  } = req.body;
-    if (!examId || !subId || !unitId || !topicId || !examCode || !subCode || !unitCode || !topicCode || !qno || !question || !opt1 ||  !opt2 || !opt3 || !opt4 || !answer || !difficulty || !marks ) {
+    const { examId, subId, unitId, topicId, examCode, subCode, unitCode, topicCode, qno, question, opt1, opt2, opt3, opt4, answer, difficulty, marks } = req.body;
+    if (!examId || !subId || !unitId || !topicId || !examCode || !subCode || !unitCode || !topicCode || !qno || !question || !opt1 || !opt2 || !opt3 || !opt4 || !answer || !difficulty || !marks) {
       return res.json({ success: false, message: "All fields are required" });
     }
 
-    const existing = await Question.findOne({ qno: qno, topiccode:  topicCode });
+    const existing = await Question.findOne({ qno: qno, topiccode: topicCode });
     if (existing) return res.json({ success: false, message: "Question already exists under this topic" });
 
     const newQuestion = await Question.create({
@@ -71,16 +71,16 @@ exports.create = async (req, res) => {
       examcode: examCode,
       subjectcode: subCode,
       unitcode: unitCode,
-      topiccode:topicCode,
-      qno:qno,
-      question:question,
-      opt1:opt1,
-      opt2:opt2,
-      opt3:opt3,
-      opt4:opt4,
-      answer:answer,
-      difficulty_level:difficulty,
-      marks:marks
+      topiccode: topicCode,
+      qno: qno,
+      question: question,
+      opt1: opt1,
+      opt2: opt2,
+      opt3: opt3,
+      opt4: opt4,
+      answer: answer,
+      difficulty_level: difficulty,
+      marks: marks
     });
 
     console.log(newQuestion);
@@ -97,21 +97,61 @@ exports.update = async (req, res) => {
 
   try {
 
-    const id = req.params.id;
+    const { id } = req.params;
 
-    await Question.findByIdAndUpdate(id, req.body);
+    const {
+      question,
+      opt1,
+      opt2,
+      opt3,
+      opt4,
+      answer,
+      marks,
+      difficulty
+    } = req.body;
 
-    res.redirect("/questions");
+
+    // basic validation
+    if (!question || !opt1 || !opt2 || !opt3 || !opt4 || !answer || !marks || !difficulty) {
+      return res.json({
+        success: false,
+        message: "All fields are required"
+      });
+    }
+
+
+    // update question
+    await Question.findByIdAndUpdate(
+      id,
+      {
+        question,
+        opt1,
+        opt2,
+        opt3,
+        opt4,
+        answer,
+        marks,
+        difficulty_level: difficulty
+      }
+    );
+
+    res.json({
+      success: true,
+      message: "Question updated successfully"
+    });
 
   } catch (err) {
 
-    console.error(err);
-    res.status(500).send("Update failed");
+    console.error("Update Question Error:", err);
+
+    res.status(500).json({
+      success: false,
+      message: "Server error"
+    });
 
   }
 
 };
-
 
 
 // DELETE via POST
