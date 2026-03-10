@@ -1,0 +1,46 @@
+2026-03-10 21:39:28 [ERROR]: ReferenceError: D:\Projects\BioBrainMdb\views\pages\desktop\admin\questions\question.ejs:280
+    278| <% questions.forEach((question,index)=>{ %>
+    279| 
+ >> 280| <tr data-id="<%= topic._id %>">
+    281| 
+    282| <td class="center row-number"><%= index+1 %></td>
+    283| 
+
+topic is not defined
+    at eval ("D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\admin\\questions\\question.ejs":21:26)
+    at Array.forEach (<anonymous>)
+    at eval ("D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\admin\\questions\\question.ejs":18:18)
+    at question (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (D:\Projects\BioBrainMdb\node_modules\express\lib\view.js:139:8)
+    at tryRender (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:627:10)
+    at app.render (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (D:\Projects\BioBrainMdb\node_modules\express\lib\response.js:923:7) {"error":"D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\admin\\questions\\question.ejs:280\n    278| <% questions.forEach((question,index)=>{ %>\r\n    279| \r\n >> 280| <tr data-id=\"<%= topic._id %>\">\r\n    281| \r\n    282| <td class=\"center row-number\"><%= index+1 %></td>\r\n    283| \r\n\ntopic is not defined"}
+2026-03-10 22:49:46 [ERROR]: ReferenceError: D:\Projects\BioBrainMdb\views\pages\desktop\admin\questions\question.ejs:182
+    180| <body>
+    181| 
+ >> 182| <%- include('../../../../partials/admin/header') %>
+    183| 
+    184| <div class="admin-container">
+    185| 
+
+D:\Projects\BioBrainMdb\views\partials\admin\header.ejs:8
+    6|     <div class="header-right">
+    7|         <span class="welcome-text">
+ >> 8|             Welcome, <%= username ? username : "ADMIN" %>
+    9|         </span>
+    10| 
+    11|         <a href="/" class="home-btn">Home</a>
+
+username is not defined
+    at eval ("D:\\Projects\\BioBrainMdb\\views\\partials\\admin\\header.ejs":12:26)
+    at header (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:703:17)
+    at include (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:701:39)
+    at eval ("D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\admin\\questions\\question.ejs":12:17)
+    at question (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (D:\Projects\BioBrainMdb\node_modules\express\lib\view.js:139:8)
+    at tryRender (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:627:10)
+    at app.render (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:574:3) {"error":"D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\admin\\questions\\question.ejs:182\n    180| <body>\r\n    181| \r\n >> 182| <%- include('../../../../partials/admin/header') %>\r\n    183| \r\n    184| <div class=\"admin-container\">\r\n    185| \r\n\nD:\\Projects\\BioBrainMdb\\views\\partials\\admin\\header.ejs:8\n    6|     <div class=\"header-right\">\r\n    7|         <span class=\"welcome-text\">\r\n >> 8|             Welcome, <%= username ? username : \"ADMIN\" %>\r\n    9|         </span>\r\n    10| \r\n    11|         <a href=\"/\" class=\"home-btn\">Home</a>\r\n\nusername is not defined"}

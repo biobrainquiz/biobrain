@@ -254,14 +254,14 @@ th:nth-child(20){width:190px;}/*action btns*/
 <th><select id="filterTopicName" onchange="applyFilters()"><option value="">All</option></select></th>
 
 <th><select id="filterQno" onchange="applyFilters()"><option value="">All</option></select></th>
-<th><select id="filterQuestion" onchange="applyFilters()"><option value="">All</option></select></th>
+<th><select id="filterQquestion" onchange="applyFilters()"><option value="">All</option></select></th>
 <th><select id="filterOpt1" onchange="applyFilters()"><option value="">All</option></select></th>
 <th><select id="filterOpt2" onchange="applyFilters()"><option value="">All</option></select></th>
 <th><select id="filterOpt3" onchange="applyFilters()"><option value="">All</option></select></th>
 <th><select id="filterOpt4" onchange="applyFilters()"><option value="">All</option></select></th>
 <th><select id="filterAnswer" onchange="applyFilters()"><option value="">All</option></select></th>
 <th><select id="filterDifficulty" onchange="applyFilters()"><option value="">All</option></select></th>
-<th><select id="filterMarks" onchange="applyFilters()"><option value="">All</option></select></th>
+<th><select id="filtermarks" onchange="applyFilters()"><option value="">All</option></select></th>
 
 <th><select id="filterCreated" onchange="applyFilters()"><option value="">All</option></select></th>
 
@@ -277,7 +277,7 @@ th:nth-child(20){width:190px;}/*action btns*/
 
 <% questions.forEach((question,index)=>{ %>
 
-<tr data-id="<%= question._id %>">
+<tr data-id="<%= topic._id %>">
 
 <td class="center row-number"><%= index+1 %></td>
 
@@ -293,15 +293,15 @@ th:nth-child(20){width:190px;}/*action btns*/
 <td><%= question.topic?.topiccode %></td>
 <td><%= question.topic?.topicname %></td>
 
-<td><%= question.qno%></td>
-<td class="question"><%= question.question %></td>
-<td class="opt1"><%= question.opt1 %></td>
-<td class="opt2"><%= question.opt2 %></td>
-<td class="opt3"><%= question.opt3 %></td>
-<td class="opt4"><%= question.opt4 %></td>
-<td class="answer"><%= question.answer%></td>
-<td class="difficulty"><%= question.difficulty_level %></td>
-<td class="marks"><%= question.marks %></td>
+<td><%= question.qno?.qno %></td>
+<td class="question"><%= question.question?.question %></td>
+<td class="opt1"><%= question.opt1?.opt1 %></td>
+<td class="opt2"><%= question.opt2?.opt2 %></td>
+<td class="opt3"><%= question.opt3?.opt3 %></td>
+<td class="opt4"><%= question.opt4?.opt4 %></td>
+<td class="answer"><%= question.answer?.answer %></td>
+<td class="difficulty"><%= question.difficulty_level?.difficulty_level %></td>
+<td class="marks"><%= question.marks?.marks %></td>
 
 <td><%= new Date(question.createdAt).toLocaleDateString() %></td>
 
@@ -313,7 +313,7 @@ th:nth-child(20){width:190px;}/*action btns*/
 
 <button class="cancel-btn" style="display:none;" onclick="cancelEdit(this)">Cancel</button>
 
-<button class="delete-btn" onclick="deleteQuestion(this,'<%= question._id %>')">Delete</button>
+<button class="delete-btn" onclick="deleteTopic(this,'<%= question._id %>')">Delete</button>
 
 </td>
 
@@ -701,7 +701,7 @@ document.getElementById("newTopicCode").innerText=code||"";
 }
 
 
-// ---------- ADD QUESTION ----------
+// ---------- ADD Question ----------
 
 async function insertQuestion(){
 
@@ -723,19 +723,27 @@ const topicId=topicOpt.value, topicCode=topicOpt.dataset.code;
 
 const qno=document.getElementById("qnoInput").value.trim();
 const questiontxt=document.getElementById("questionInput").value.trim();
-
 const opt1=document.getElementById("opt1Input").value.trim();
 const opt2=document.getElementById("opt2Input").value.trim();
 const opt3=document.getElementById("opt3Input").value.trim();
 const opt4=document.getElementById("opt4Input").value.trim();
 
-const answer=document.getElementById("answerSelect").value;
-const difficulty=document.getElementById("difficultySelect").value;
-const marks=document.getElementById("marksSelect").value;
+const answerSelectEl=document.getElementById("answerSelect");
+const answerOpt=answerSelectEl.options[answerSelectEl.selectedIndex];
+const answer=answerOpt.value;
 
-if(!examId || !subId || !unitId || !topicId || !qno || !questiontxt || !opt1 || !opt2 || !opt3 || !opt4 || !answer || !difficulty || !marks){
+const difficultySelectEl=document.getElementById("difficultySelect");
+const difficultyOpt=difficultySelectEl.options[difficultySelectEl.selectedIndex];
+const difficulty=difficultyOpt.value;
+
+const marksSelectEl=document.getElementById("marksSelect");
+const marksOpt=marksSelectEl.options[marksSelectEl.selectedIndex];
+const marks=marksOpt.value;
+
+if(!examId || !subId || !unitId || !topicId || !examCode || !subCode || !unitCode || !topicCode || !qno || !questiontxt || !opt1 ||  !opt2 || !opt3 || !opt4 ||!answer || !difficulty || !marks ){
 
 alert("All fields are required");
+
 return;
 
 }
@@ -746,14 +754,7 @@ method:"POST",
 
 headers:{"Content-Type":"application/json"},
 
-body:JSON.stringify({
-examId, subId, unitId, topicId,
-examCode, subCode, unitCode, topicCode,
-qno,
-question:questiontxt,
-opt1,opt2,opt3,opt4,
-answer,difficulty,marks
-})
+body:JSON.stringify({examId, subId, unitId,topicId, examCode, subCode, unitCode, topicCode, qno,question:questiontxt,opt1,opt2,opt3,opt4,answer,difficulty,marks })
 
 });
 
@@ -772,41 +773,41 @@ row.innerHTML=`
 <td class="center row-number"></td>
 
 <td>${examCode}</td>
+
 <td>${examOpt.textContent}</td>
 
 <td>${subCode}</td>
+
 <td>${subOpt.textContent}</td>
 
 <td>${unitCode}</td>
+
 <td>${unitOpt.textContent}</td>
 
 <td>${topicCode}</td>
+
 <td>${topicOpt.textContent}</td>
 
 <td>${qno}</td>
-
-<td class="question">${questiontxt}</td>
-
-<td class="opt1">${opt1}</td>
-<td class="opt2">${opt2}</td>
-<td class="opt3">${opt3}</td>
-<td class="opt4">${opt4}</td>
-
-<td class="answer">${answer}</td>
-<td class="difficulty">${difficulty}</td>
-<td class="marks">${marks}</td>
-
+<td>${questiontxt}</td>
+<td>${opt1}</td>
+<td>${opt2}</td>
+<td>${opt3}</td>
+<td>${opt4}</td>
+<td>${answer}</td>
+<td>${difficulty}</td>
+<td>${marks}</td>
 <td>${new Date().toLocaleDateString()}</td>
 
 <td class="center action-buttons">
 
 <button class="edit-btn" onclick="enableEdit(this)">Edit</button>
 
-<button class="save-btn" style="display:none;" onclick="saveQuestion(this)">Save</button>
+<button class="save-btn" style="display:none;" onclick="saveTopic(this)">Save</button>
 
 <button class="cancel-btn" style="display:none;" onclick="cancelEdit(this)">Cancel</button>
 
-<button class="delete-btn" onclick="deleteQuestion(this,'${data.question._id}')">Delete</button>
+<button class="delete-btn" onclick="deleteTopic(this,'${data.question._id}')">Delete</button>
 
 </td>
 
@@ -816,25 +817,32 @@ const insertRow=document.getElementById("insertRow");
 
 tbody.insertBefore(row,insertRow);
 
-/* clear inputs */
-document.getElementById("qnoInput").value="";
-document.getElementById("questionInput").value="";
+
+tbody.insertBefore(row,insertRow);
+
+document.getElementById("QnoInput").value="";
+document.getElementById("QuestionInput").value="";
 document.getElementById("opt1Input").value="";
 document.getElementById("opt2Input").value="";
 document.getElementById("opt3Input").value="";
 document.getElementById("opt4Input").value="";
 
-/* reset dropdowns */
-/*document.getElementById("examSelect").selectedIndex=0;
-document.getElementById("subjectSelect").selectedIndex=0;
-document.getElementById("unitSelect").selectedIndex=0;
-document.getElementById("topicSelect").selectedIndex=0;*/
 
-document.getElementById("answerSelect").selectedIndex=0;
-document.getElementById("difficultySelect").selectedIndex=0;
-document.getElementById("marksSelect").selectedIndex=0;
+const answerSelectEl=document.getElementById("answerSelect");
+const answerOpt=answerSelectEl.options[answerSelectEl.selectedIndex];
+const answer=answerOpt.value;
+
+const difficultySelectEl=document.getElementById("difficultySelect");
+const difficultyOpt=difficultySelectEl.options[difficultySelectEl.selectedIndex];
+const difficulty=difficultyOpt.value;
+
+const marksSelectEl=document.getElementById("marksSelect");
+const marksOpt=marksSelectEl.options[marksSelectEl.selectedIndex];
+const marks=marksOpt.value;
+
 
 rebuildFilters();
+
 refreshRowNumbers();
 
 }
@@ -990,33 +998,33 @@ rebuildFilters();
 
 // ---------- DELETE ----------
 
-function deleteQuestion(btn, qid) {
-    if (!confirm("Are you sure you want to delete this question?")) return;
+async function deleteTopic(btn,id){
 
-    fetch("/admin/questions/delete", { 
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ qid })  // send id in body
-    })
-    .then(res => res.json())
-    .then(data => {
-        if(data.success){
-            // remove the row from table
-            const row = btn.closest("tr");
-            row.remove();
-            rebuildFilters();
-            refreshRowNumbers();
-            alert("Question deleted successfully!");
-        } else {
-            alert(data.message || "Failed to delete question.");
-        }
-    })
-    .catch(err => {
-        console.error(err);
-        alert("Error deleting question.");
-    });
+if(!confirm("Delete this topic?")) return;
+
+const res = await fetch("/admin/topics/delete",{
+
+method:"POST",
+
+headers:{"Content-Type":"application/json"},
+
+body: JSON.stringify({id})
+
+});
+
+const data = await res.json();
+
+if(data.success){
+
+btn.closest("tr").remove();
+
+rebuildFilters();
+
+refreshRowNumbers();
+
 }
 
+}
 
 document.addEventListener("DOMContentLoaded",()=>{
 

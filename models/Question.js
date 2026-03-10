@@ -37,8 +37,6 @@ questionSchema.pre("save", async function (next) {
   await validateExistence(Subject, { examcode: this.examcode, subjectcode: this.subjectcode }, `Subject ${this.subjectcode} does not exist`);
   await validateExistence(Unit, { examcode: this.examcode, subjectcode: this.subjectcode, unitcode: this.unitcode }, `Unit ${this.unitcode} does not exist`);
   await validateExistence(Topic, { examcode: this.examcode, subjectcode: this.subjectcode, unitcode: this.unitcode, topiccode: this.topiccode }, `Topic ${this.topiccode} does not exist`);
-
-  next();
 });
 
 module.exports = mongoose.model("Question", questionSchema);

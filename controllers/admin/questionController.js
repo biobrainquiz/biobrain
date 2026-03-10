@@ -55,12 +55,12 @@ exports.list = async (req, res) => {
 // Create Question
 exports.create = async (req, res) => {
   try {
-    const { examId, subId, unitId,topicId, examCode, subCode, unitCode, topiccode, qno,question,opt1,opt2,opt3,answer,difficulty,marks } = req.body;
-    if (!examId || !subId || !unitId || !topicId || !examCode || !subCode || !unitCode || !topiccode || !qno || !question || !opt1 ||  !opt2 || !opt3 || !answer || !difficulty || !marks ) {
+    const { examId, subId, unitId,topicId, examCode, subCode, unitCode, topicCode, qno,question,opt1,opt2,opt3,opt4,answer,difficulty,marks  } = req.body;
+    if (!examId || !subId || !unitId || !topicId || !examCode || !subCode || !unitCode || !topicCode || !qno || !question || !opt1 ||  !opt2 || !opt3 || !opt4 || !answer || !difficulty || !marks ) {
       return res.json({ success: false, message: "All fields are required" });
     }
 
-    const existing = await Question.findOne({ qno: qno, topiccode:  topiccode });
+    const existing = await Question.findOne({ qno: qno, topiccode:  topicCode });
     if (existing) return res.json({ success: false, message: "Question already exists under this topic" });
 
     const newQuestion = await Question.create({
@@ -83,6 +83,7 @@ exports.create = async (req, res) => {
       marks:marks
     });
 
+    console.log(newQuestion);
     res.json({ success: true, question: newQuestion });
   } catch (err) {
     console.error(err);

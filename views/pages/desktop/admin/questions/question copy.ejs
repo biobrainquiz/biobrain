@@ -553,6 +553,220 @@ rows.forEach(r=>tbody.insertBefore(r,document.getElementById("insertRow")))
 
 }
 
+function deleteQuestion(btn, qid) {
+    if (!confirm("Are you sure you want to delete this question?")) return;
+
+    fetch("/admin/questions/delete", { 
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ qid })  // send id in body
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.success){
+            // remove the row from table
+            const row = btn.closest("tr");
+            row.remove();
+            alert("Question deleted successfully!");
+        } else {
+            alert(data.message || "Failed to delete question.");
+        }
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Error deleting question.");
+    });
+}
+
+
+/*** Insert Question **/
+
+async function insertQuestion(){
+
+const examSelect=document.getElementById("examSelect");
+const examOpt=examSelect.options[examSelect.selectedIndex];
+const examId=examOpt.value, examCode=examOpt.dataset.code;
+
+const subSelect=document.getElementById("subjectSelect");
+const subOpt=subSelect.options[subSelect.selectedIndex];
+const subId=subOpt.value, subCode=subOpt.dataset.code;
+
+const unitSelectEl=document.getElementById("unitSelect");
+const unitOpt=unitSelectEl.options[unitSelectEl.selectedIndex];
+const unitId=unitOpt.value, unitCode=unitOpt.dataset.code;
+
+const topicSelectEl=document.getElementById("topicSelect");
+const topicOpt=topicSelectEl.options[topicSelectEl.selectedIndex];
+const topicId=topicOpt.value, topicCode=topicOpt.dataset.code;
+
+const qno=document.getElementById("qnoInput").value.trim();
+const questiontxt=document.getElementById("questionInput").value.trim();
+const opt1=document.getElementById("opt1Input").value.trim();
+const opt2=document.getElementById("opt2Input").value.trim();
+const opt3=document.getElementById("opt3Input").value.trim();
+const opt4=document.getElementById("opt4Input").value.trim();
+
+const answerSelectEl=document.getElementById("answerSelect");
+const answerOpt=answerSelectEl.options[answerSelectEl.selectedIndex];
+const answer=answerOpt.value;
+
+const difficultySelectEl=document.getElementById("difficultySelect");
+const difficultyOpt=difficultySelectEl.options[difficultySelectEl.selectedIndex];
+const difficulty=difficultyOpt.value;
+
+const marksSelectEl=document.getElementById("marksSelect");
+const marksOpt=marksSelectEl.options[marksSelectEl.selectedIndex];
+const marks=marksOpt.value;
+
+if(!examId || !subId || !unitId || !topicId || !examCode || !subCode || !unitCode || !topicCode || !qno || !questiontxt || !opt1 ||  !opt2 || !opt3 || !opt4 ||!answer || !difficulty || !marks ){
+
+alert("All fields are required");
+
+return;
+
+}
+
+const res=await fetch("/admin/questions/create",{
+
+method:"POST",
+
+headers:{"Content-Type":"application/json"},
+
+body:JSON.stringify({examId, subId, unitId,topicId, examCode, subCode, unitCode, topicCode, qno,question:questiontxt,opt1,opt2,opt3,opt4,answer,difficulty,marks })
+
+});
+
+const data=await res.json();
+
+if(data.success){
+
+const tbody=document.getElementById("questionTableBody");
+
+const row=document.createElement("tr");
+
+row.dataset.id=data.question._id;
+
+row.innerHTML=`
+
+<td class="center row-number"></td>
+
+<td>${examCode}</td>
+
+<td>${examOpt.textContent}</td>
+
+<td>${subCode}</td>
+
+<td>${subOpt.textContent}</td>
+
+<td>${unitCode}</td>
+
+<td>${unitOpt.textContent}</td>
+
+<td>${topicCode}</td>
+
+<td>${topicOpt.textContent}</td>
+
+<td>${qno}</td>
+<td>${questiontxt}</td>
+<td>${opt1}</td>
+<td>${opt2}</td>
+<td>${opt3}</td>
+<td>${opt4}</td>
+<td>${answer}</td>
+<td>${difficulty}</td>
+<td>${marks}</td>
+<td>${new Date().toLocaleDateString()}</td>
+
+<td class="center action-buttons">
+
+<button class="edit-btn" onclick="enableEdit(this)">Edit</button>
+
+<button class="save-btn" style="display:none;" onclick="saveTopic(this)">Save</button>
+
+<button class="cancel-btn" style="display:none;" onclick="cancelEdit(this)">Cancel</button>
+
+<button class="delete-btn" onclick="deleteTopic(this,'${data.question._id}')">Delete</button>
+
+</td>
+
+`;
+
+const insertRow=document.getElementById("insertRow");
+
+tbody.insertBefore(row,insertRow);
+
+/*document.getElementById("questionCodeInput").value="";
+
+document.getElementById("questionNameInput").value="";
+
+rebuildFilters();
+
+refreshRowNumbers();*/
+
+}
+
+}
+
+
+
+function refreshRowNumbers(){
+
+const rows=document.querySelectorAll("#questionTableBody tr");
+
+let i=1;
+
+rows.forEach(row=>{
+
+if(row.style.display!=="none" && row.id!=="insertRow"){
+
+row.querySelector(".row-number").innerText=i++;
+
+}
+
+});
+
+}
+
+function rebuildFilters(){
+
+const rows=document.querySelectorAll("#questionTableBody tr:not(#insertRow)");
+
+const sets=[new Set(),new Set(),new Set(),new Set(),new Set(),new Set(),new Set(),new Set(),new Set(),new Set(),new Set(),new Set(),new Set(),new Set(),new Set(),new Set(),new Set(),new Set()];
+
+rows.forEach(row=>{
+
+for(let i=1;i<=18;i++){
+
+sets[i-1].add(row.children[i].innerText.trim());
+
+}
+
+});
+
+fillDropdown("filterExamCode",sets[0]);
+fillDropdown("filterExamName",sets[1]);
+fillDropdown("filterSubjectCode",sets[2]);
+fillDropdown("filterSubjectName",sets[3]);
+fillDropdown("filterUnitCode",sets[4]);
+fillDropdown("filterUnitName",sets[5]);
+fillDropdown("filterTopicCode",sets[6]);
+fillDropdown("filterTopicName",sets[7]);
+fillDropdown("filterCreated",sets[8]);
+
+
+fillDropdown("filterExamCode",sets[9]);
+fillDropdown("filterExamName",sets[10]);
+fillDropdown("filterSubjectCode",sets[11]);
+fillDropdown("filterSubjectName",sets[12]);
+fillDropdown("filterUnitCode",sets[13]);
+fillDropdown("filterUnitName",sets[14]);
+fillDropdown("filterTopicCode",sets[15]);
+fillDropdown("filterTopicName",sets[16]);
+fillDropdown("filterCreated",sets[17]);
+
+}
+/***********************/
+
 /* ---------------- INIT ---------------- */
 
 populateFilters()
