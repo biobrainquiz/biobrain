@@ -648,3 +648,5 @@ Cannot read properties of undefined (reading 'map')
     at ServerResponse.render (D:\Projects\BioBrainMdb\node_modules\express\lib\response.js:923:7)
     at exports.getProfile (D:\Projects\BioBrainMdb\controllers\userController.js:79:13)
     at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\profile.ejs:187\n    185|             <p><strong>Email:</strong> <%= user.email %></p>\r\n    186|             <p><strong>Member Since:</strong> <%= new Date(user.userCreatedOn).toDateString() %></p>\r\n >> 187|             <p><strong>Roles:</strong> <%= user.roles.role.map(role => role.role || role).join(', ') %></p>\r\n    188|         </div>\r\n    189|         <div class=\"badge\">BioBrain Explorer 🚀</div>\r\n    190|     </div>\r\n\nCannot read properties of undefined (reading 'map')"}
+2026-03-11 21:02:27 [ERROR]: Error: querySrv ECONNREFUSED _mongodb._tcp.biobrainmdbcluster.vxuyat6.mongodb.net
+    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:294:17) {"error":"querySrv ECONNREFUSED _mongodb._tcp.biobrainmdbcluster.vxuyat6.mongodb.net"}

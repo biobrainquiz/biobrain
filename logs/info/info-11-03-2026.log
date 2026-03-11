@@ -6711,3 +6711,51 @@ Cannot read properties of undefined (reading 'map')
 2026-03-11 14:54:11 [INFO]: GET /css/adminStyle.css ::1 
 2026-03-11 14:55:30 [INFO]: GET /keep-session-alive ::1 
 2026-03-11 14:55:30 [INFO]: GET /keep-session-alive ::1 
+2026-03-11 21:02:27 [INFO]: 🚀 Server running on port 3000 
+2026-03-11 21:02:36 [INFO]: 🚀 Server running on port 3000 
+2026-03-11 21:02:36 [INFO]: ✅ Connected to MongoDB 
+2026-03-11 21:02:36 [INFO]: 🔥  Forced seeding of Exam Database enabled. 
+2026-03-11 21:02:36 [INFO]: ⚠ Clearing old Questions... 
+2026-03-11 21:02:37 [INFO]: ⚠ Clearing old Topics... 
+2026-03-11 21:02:37 [INFO]: ⚠ Clearing old Units... 
+2026-03-11 21:02:37 [INFO]: ⚠ Clearing old Subjects... 
+2026-03-11 21:02:37 [INFO]: ⚠ Clearing old Exams... 
+2026-03-11 21:02:37 [INFO]: ⚠ Clearing old Payments... 
+2026-03-11 21:02:37 [INFO]: ⚡ Seeding Exam database... 
+2026-03-11 21:02:37 [INFO]: 🔥 Exam seeded: 4 successfully! 
+2026-03-11 21:02:37 [INFO]: 🔥 Subject seeded: 4 successfully! 
+2026-03-11 21:02:37 [INFO]: 🔥 Unit seeded: 11 successfully! 
+2026-03-11 21:02:37 [INFO]: 🔥 Topics seeded: 49 successfully! 
+2026-03-11 21:02:37 [INFO]: 🔥 Questions seeded: 460 successfully! 
+2026-03-11 21:02:37 [INFO]: ✅ All Exam database seeded successfully! 
+2026-03-11 21:02:37 [INFO]: 🔥  Forced seeding of UserRoles Database enabled. 
+2026-03-11 21:02:37 [INFO]: ⚠ Clearing old Users... 
+2026-03-11 21:02:37 [INFO]: ⚠ Clearing old Roles... 
+2026-03-11 21:02:37 [INFO]: ⚡ Seeding UserRoles Database ... 
+2026-03-11 21:02:37 [INFO]: 🔥 Roles seeded: 5 successfully! 
+2026-03-11 21:02:37 [INFO]: 🔥 Users seeded: 1 successfully! 
+2026-03-11 21:02:37 [INFO]: ✅ All UserRole Database seeded successfully! 
+2026-03-11 21:02:43 [INFO]: GET / ::1 
+2026-03-11 21:02:43 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-11 21:02:43 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-11 21:02:43 [INFO]: GET /js/navibar.js ::1 
+2026-03-11 21:02:43 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-11 21:02:43 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-11 21:02:45 [INFO]: GET /quiz/prepare/E4/S1 ::1 
+2026-03-11 21:02:45 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-11 21:02:45 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-11 21:02:45 [INFO]: GET /js/navibar.js ::1 
+2026-03-11 21:02:45 [INFO]: GET /units/E4/S1 ::1 
+2026-03-11 21:02:47 [INFO]: GET /topics/E4/S1/U1 ::1 
+2026-03-11 21:02:52 [INFO]: POST /quiz/createorder ::1 
+2026-03-11 21:02:52 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-11 21:02:58 [INFO]: POST /quiz/submit ::1 
+2026-03-11 21:03:02 [INFO]: GET / ::1 
+2026-03-11 21:03:02 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-11 21:03:02 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-11 21:03:02 [INFO]: GET /js/navibar.js ::1 
+2026-03-11 21:03:04 [INFO]: GET /admin ::1 
+2026-03-11 21:03:04 [INFO]: GET /css/adminStyle.css ::1 
+2026-03-11 21:03:04 [INFO]: GET /js/admin.js ::1 
+2026-03-11 21:03:05 [INFO]: GET /admin/userroles ::1 
+2026-03-11 21:03:05 [INFO]: GET /css/adminStyle.css ::1 
