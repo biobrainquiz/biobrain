@@ -87,7 +87,7 @@ router.post("/users/remove-role",userroleController.removeRole);
 router.get("/admin/logs", (req, res) => {
     res.render(`pages/${getDevice(req)}/admin/logs`, {
         logTypes: ["info", "error"],  // for old logs dropdown
-        username: req.session?.username || "ADMIN"
+        username: req.session?.user?.username || "ADMIN"
     });
 });
 

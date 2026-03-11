@@ -20,7 +20,7 @@ exports.prepareQuiz = async (req, res) => {
   try {
     const { examcode, subjectcode } = req.params;
 
-    const username = req.session.user.username;
+    const username = req.session?.user?.username;
     const page = parseInt(req.query.page) || 1;
 
     const pageLimit = 5;      // table records per page
@@ -103,8 +103,8 @@ exports.createOrder = async (req, res) => {
     const questionCount = parseInt(count) || 10;
 
     const examSessionObj = new ExamSession({ examcode, subjectcode, unitcode, topiccode, count, difficulty });
-    examSessionObj.userId = req.session.user.id;
-    examSessionObj.userName = req.session.user.username;
+    examSessionObj.userId = req.session?.user?._id;
+    examSessionObj.userName = req.session?.user?.username;
     examSessionObj.exampaperCode = examSessionObj.getExampaperCode();
     examSessionObj.examName = await getExamName(examcode);
     examSessionObj.subjectName = await getSubjectName(examcode, subjectcode);
@@ -245,7 +245,6 @@ async function GetRandomQuestions(userid, exampapercode, examcode, subjectcode, 
 
   const attemptedIds = attempt ? attempt.questionids : [];
 
-  console.log(questioncount);
   const qescount = parseInt(questioncount, 10);
   let questions = await Question.aggregate([
     {

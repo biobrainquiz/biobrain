@@ -42,11 +42,14 @@ exports.login = async (req, res) => {
         }
 
         // 3️⃣ Create session
-        req.session.user = {
+
+        req.session.user = user;
+
+        /*req.session.user = {
             id: user._id,
             username: user.username,
             roles: user.roles 
-        };
+        };*/
 
         // 4️⃣ Redirect support
         const redirectUrl = req.session.redirectTo || "/";
