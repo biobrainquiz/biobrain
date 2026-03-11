@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Role = require("../models/Role"); 
 const crypto = require("crypto");
 const bcrypt = require("bcryptjs");
 const { Resend } = require("resend");
@@ -18,7 +19,7 @@ exports.login = async (req, res) => {
                 { email: identifier },
                 { mobile: identifier }
             ]
-        });
+        }).populate("roles");
 
         const ismatch = await bcrypt.compare(password, user.password);
 
@@ -43,7 +44,7 @@ exports.login = async (req, res) => {
         req.session.user = {
             id: user._id,
             username: user.username,
-            role: user.role || "user"
+            roles: user.roles || ["user"]
         };
 
         // 4️⃣ Redirect support
@@ -72,10 +73,75 @@ exports.login = async (req, res) => {
     }
 };
 
+
+
+
+exports.register = async (req, res) => {
+    try {
+        const { username, password, confirmPassword, mobile, email } = req.body;
+
+        // 1️⃣ Password match check
+        if (password !== confirmPassword) {
+            return res.status(400).json({
+                success: false,
+                message: "Passwords do not match!"
+            });
+        }
+
+        // 2️⃣ Check if username/email exists
+        const existingUser = await User.findOne({
+            $or: [{ username }, { email }]
+        });
+
+        if (existingUser) {
+            return res.status(400).json({
+                success: false,
+                message: "Username or Email already exists!"
+            });
+        }
+
+        // 3️⃣ Get default role (_id) from Role collection
+        const defaultRole = await Role.findOne({ role: "student" });
+        if (!defaultRole) {
+            return res.status(500).json({
+                success: false,
+                message: "Default role not found. Please seed roles first."
+            });
+        }
+
+        // 4️⃣ Create user with default role
+        const newUser = new User({
+            username,
+            password,
+            mobile,
+            email,
+            roles: [defaultRole._id] // assign default role
+        });
+
+        await newUser.save();
+
+        return res.status(201).json({
+            success: true,
+            message: "User registered successfully!"
+        });
+
+    } catch (err) {
+        logger.error({
+            message: "Register Error",
+            error: err.message,
+            stack: err.stack
+        });
+
+        return res.status(500).json({
+            success: false,
+            message: "Server error!"
+        });
+    }
+};
 // ==========================
 // REGISTER
 // ==========================
-exports.register = async (req, res) => {
+exports.register1 = async (req, res) => {
     try {
         const { username, password, confirmPassword, mobile, email } = req.body;
 

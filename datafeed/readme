@@ -1,0 +1,3 @@
+node .\utils\hashPasswordCli.js admin1420
+this will return hashed password for the password admin1420 that we can use in datafeed/usertable.json
+Hashed password: $2b$10$c8ZEeAT8sJsV2rYnG8ZxxOHWRS9cmkryrSq8tWGjOVZLDEHK5F65S

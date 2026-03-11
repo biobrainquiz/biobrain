@@ -1,0 +1,484 @@
+2026-03-11 00:49:23 [ERROR]: ReferenceError: D:\Projects\BioBrainMdb\views\pages\desktop\admin\exams\exam.ejs:108
+    106| <body>
+    107| 
+ >> 108| <%- include('../../../../partials/admin/header') %>
+    109| 
+    110| <div class="admin-container">
+    111| 
+
+D:\Projects\BioBrainMdb\views\partials\admin\header.ejs:8
+    6|     <div class="header-right">
+    7|         <span class="welcome-text">
+ >> 8|             Welcome, <%= username ? username : "ADMIN" %>
+    9|         </span>
+    10| 
+    11|         <a href="/" class="home-btn">Home</a>
+
+username is not defined
+    at eval ("D:\\Projects\\BioBrainMdb\\views\\partials\\admin\\header.ejs":12:26)
+    at header (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:703:17)
+    at include (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:701:39)
+    at eval ("D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\admin\\exams\\exam.ejs":12:17)
+    at exam (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (D:\Projects\BioBrainMdb\node_modules\express\lib\view.js:139:8)
+    at tryRender (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:627:10)
+    at app.render (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:574:3) {"error":"D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\admin\\exams\\exam.ejs:108\n    106| <body>\r\n    107| \r\n >> 108| <%- include('../../../../partials/admin/header') %>\r\n    109| \r\n    110| <div class=\"admin-container\">\r\n    111| \r\n\nD:\\Projects\\BioBrainMdb\\views\\partials\\admin\\header.ejs:8\n    6|     <div class=\"header-right\">\r\n    7|         <span class=\"welcome-text\">\r\n >> 8|             Welcome, <%= username ? username : \"ADMIN\" %>\r\n    9|         </span>\r\n    10| \r\n    11|         <a href=\"/\" class=\"home-btn\">Home</a>\r\n\nusername is not defined"}
+2026-03-11 01:25:46 [ERROR]: TypeError: Cannot read properties of null (reading 'password')
+    at exports.login (D:\Projects\BioBrainMdb\controllers\authController.js:23:61)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"Cannot read properties of null (reading 'password')"}
+2026-03-11 01:25:51 [ERROR]: TypeError: Cannot read properties of null (reading 'password')
+    at exports.login (D:\Projects\BioBrainMdb\controllers\authController.js:23:61)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"Cannot read properties of null (reading 'password')"}
+2026-03-11 01:25:52 [ERROR]: TypeError: Cannot read properties of null (reading 'password')
+    at exports.login (D:\Projects\BioBrainMdb\controllers\authController.js:23:61)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"Cannot read properties of null (reading 'password')"}
+2026-03-11 01:25:55 [ERROR]: TypeError: Cannot read properties of null (reading 'password')
+    at exports.login (D:\Projects\BioBrainMdb\controllers\authController.js:23:61)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"Cannot read properties of null (reading 'password')"}
+2026-03-11 01:28:38 [ERROR]: TypeError: Cannot read properties of null (reading 'password')
+    at exports.login (D:\Projects\BioBrainMdb\controllers\authController.js:23:61)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"Cannot read properties of null (reading 'password')"}
+2026-03-11 01:28:39 [ERROR]: TypeError: Cannot read properties of null (reading 'password')
+    at exports.login (D:\Projects\BioBrainMdb\controllers\authController.js:23:61)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"Cannot read properties of null (reading 'password')"}
+2026-03-11 01:44:25 [ERROR]: TypeError: Cannot read properties of null (reading 'password')
+    at exports.login (D:\Projects\BioBrainMdb\controllers\authController.js:23:61)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"Cannot read properties of null (reading 'password')"}
+2026-03-11 02:07:25 [ERROR]: TypeError: Cannot read properties of null (reading 'password')
+    at exports.login (D:\Projects\BioBrainMdb\controllers\authController.js:23:61)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"Cannot read properties of null (reading 'password')"}
+2026-03-11 02:18:28 [ERROR]: TypeError: Cannot read properties of undefined (reading 'some')
+    at D:\Projects\BioBrainMdb\middleware\authorize.js:8:36
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9
+    at processParams (D:\Projects\BioBrainMdb\node_modules\router\index.js:582:12)
+    at next (D:\Projects\BioBrainMdb\node_modules\router\index.js:291:5)
+    at requireLogin (D:\Projects\BioBrainMdb\middleware\requireLogin.js:7:3)
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9 {"error":"Cannot read properties of undefined (reading 'some')"}
+2026-03-11 02:20:02 [ERROR]: TypeError: Cannot read properties of undefined (reading 'some')
+    at D:\Projects\BioBrainMdb\middleware\authorize.js:8:36
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9
+    at processParams (D:\Projects\BioBrainMdb\node_modules\router\index.js:582:12)
+    at next (D:\Projects\BioBrainMdb\node_modules\router\index.js:291:5)
+    at requireLogin (D:\Projects\BioBrainMdb\middleware\requireLogin.js:7:3)
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9 {"error":"Cannot read properties of undefined (reading 'some')"}
+2026-03-11 02:20:56 [ERROR]: TypeError: Cannot read properties of undefined (reading 'some')
+    at D:\Projects\BioBrainMdb\middleware\authorize.js:8:36
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9
+    at processParams (D:\Projects\BioBrainMdb\node_modules\router\index.js:582:12)
+    at next (D:\Projects\BioBrainMdb\node_modules\router\index.js:291:5)
+    at requireLogin (D:\Projects\BioBrainMdb\middleware\requireLogin.js:7:3)
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9 {"error":"Cannot read properties of undefined (reading 'some')"}
+2026-03-11 02:21:45 [ERROR]: TypeError: Cannot read properties of undefined (reading 'some')
+    at D:\Projects\BioBrainMdb\middleware\authorize.js:8:36
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9
+    at processParams (D:\Projects\BioBrainMdb\node_modules\router\index.js:582:12)
+    at next (D:\Projects\BioBrainMdb\node_modules\router\index.js:291:5)
+    at requireLogin (D:\Projects\BioBrainMdb\middleware\requireLogin.js:7:3)
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9 {"error":"Cannot read properties of undefined (reading 'some')"}
+2026-03-11 02:24:04 [ERROR]: TypeError: Cannot read properties of undefined (reading 'some')
+    at D:\Projects\BioBrainMdb\middleware\authorize.js:8:36
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9
+    at processParams (D:\Projects\BioBrainMdb\node_modules\router\index.js:582:12)
+    at next (D:\Projects\BioBrainMdb\node_modules\router\index.js:291:5)
+    at requireLogin (D:\Projects\BioBrainMdb\middleware\requireLogin.js:7:3)
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9 {"error":"Cannot read properties of undefined (reading 'some')"}
+2026-03-11 02:24:36 [ERROR]: TypeError: Cannot read properties of undefined (reading 'some')
+    at D:\Projects\BioBrainMdb\middleware\authorize.js:8:36
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9
+    at processParams (D:\Projects\BioBrainMdb\node_modules\router\index.js:582:12)
+    at next (D:\Projects\BioBrainMdb\node_modules\router\index.js:291:5)
+    at requireLogin (D:\Projects\BioBrainMdb\middleware\requireLogin.js:7:3)
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9 {"error":"Cannot read properties of undefined (reading 'some')"}
+2026-03-11 02:26:08 [ERROR]: TypeError: Cannot read properties of undefined (reading 'some')
+    at D:\Projects\BioBrainMdb\middleware\authorize.js:8:36
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9
+    at processParams (D:\Projects\BioBrainMdb\node_modules\router\index.js:582:12)
+    at next (D:\Projects\BioBrainMdb\node_modules\router\index.js:291:5)
+    at requireLogin (D:\Projects\BioBrainMdb\middleware\requireLogin.js:7:3)
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9 {"error":"Cannot read properties of undefined (reading 'some')"}
+2026-03-11 02:27:21 [ERROR]: ReferenceError: hasRole is not defined
+    at D:\Projects\BioBrainMdb\middleware\authorize.js:12:9
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9
+    at processParams (D:\Projects\BioBrainMdb\node_modules\router\index.js:582:12)
+    at next (D:\Projects\BioBrainMdb\node_modules\router\index.js:291:5)
+    at requireLogin (D:\Projects\BioBrainMdb\middleware\requireLogin.js:7:3)
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9 {"error":"hasRole is not defined"}
+2026-03-11 02:31:38 [ERROR]: ReferenceError: hasRole is not defined
+    at D:\Projects\BioBrainMdb\middleware\authorize.js:12:9
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9
+    at processParams (D:\Projects\BioBrainMdb\node_modules\router\index.js:582:12)
+    at next (D:\Projects\BioBrainMdb\node_modules\router\index.js:291:5)
+    at requireLogin (D:\Projects\BioBrainMdb\middleware\requireLogin.js:7:3)
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9 {"error":"hasRole is not defined"}
+2026-03-11 02:32:38 [ERROR]: TypeError: Cannot read properties of undefined (reading 'some')
+    at D:\Projects\BioBrainMdb\middleware\authorize.js:9:36
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9
+    at processParams (D:\Projects\BioBrainMdb\node_modules\router\index.js:582:12)
+    at next (D:\Projects\BioBrainMdb\node_modules\router\index.js:291:5)
+    at requireLogin (D:\Projects\BioBrainMdb\middleware\requireLogin.js:7:3)
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9 {"error":"Cannot read properties of undefined (reading 'some')"}
+2026-03-11 02:32:46 [ERROR]: TypeError: Cannot read properties of undefined (reading 'some')
+    at D:\Projects\BioBrainMdb\middleware\authorize.js:9:36
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9
+    at processParams (D:\Projects\BioBrainMdb\node_modules\router\index.js:582:12)
+    at next (D:\Projects\BioBrainMdb\node_modules\router\index.js:291:5)
+    at requireLogin (D:\Projects\BioBrainMdb\middleware\requireLogin.js:7:3)
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9 {"error":"Cannot read properties of undefined (reading 'some')"}
+2026-03-11 02:33:09 [ERROR]: TypeError: Cannot read properties of undefined (reading 'some')
+    at D:\Projects\BioBrainMdb\middleware\authorize.js:7:36
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9
+    at processParams (D:\Projects\BioBrainMdb\node_modules\router\index.js:582:12)
+    at next (D:\Projects\BioBrainMdb\node_modules\router\index.js:291:5)
+    at requireLogin (D:\Projects\BioBrainMdb\middleware\requireLogin.js:7:3)
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9 {"error":"Cannot read properties of undefined (reading 'some')"}
+2026-03-11 02:34:36 [ERROR]: TypeError: Cannot read properties of undefined (reading 'some')
+    at D:\Projects\BioBrainMdb\middleware\authorize.js:8:36
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9
+    at processParams (D:\Projects\BioBrainMdb\node_modules\router\index.js:582:12)
+    at next (D:\Projects\BioBrainMdb\node_modules\router\index.js:291:5)
+    at requireLogin (D:\Projects\BioBrainMdb\middleware\requireLogin.js:7:3)
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9 {"error":"Cannot read properties of undefined (reading 'some')"}
+2026-03-11 02:36:51 [ERROR]: TypeError: Cannot read properties of undefined (reading 'some')
+    at D:\Projects\BioBrainMdb\middleware\authorize.js:8:36
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9
+    at processParams (D:\Projects\BioBrainMdb\node_modules\router\index.js:582:12)
+    at next (D:\Projects\BioBrainMdb\node_modules\router\index.js:291:5)
+    at requireLogin (D:\Projects\BioBrainMdb\middleware\requireLogin.js:7:3)
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9 {"error":"Cannot read properties of undefined (reading 'some')"}
+2026-03-11 02:36:54 [ERROR]: TypeError: Cannot read properties of undefined (reading 'some')
+    at D:\Projects\BioBrainMdb\middleware\authorize.js:8:36
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9
+    at processParams (D:\Projects\BioBrainMdb\node_modules\router\index.js:582:12)
+    at next (D:\Projects\BioBrainMdb\node_modules\router\index.js:291:5)
+    at requireLogin (D:\Projects\BioBrainMdb\middleware\requireLogin.js:7:3)
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9 {"error":"Cannot read properties of undefined (reading 'some')"}
+2026-03-11 02:37:18 [ERROR]: TypeError: Cannot read properties of undefined (reading 'some')
+    at D:\Projects\BioBrainMdb\middleware\authorize.js:8:36
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9
+    at processParams (D:\Projects\BioBrainMdb\node_modules\router\index.js:582:12)
+    at next (D:\Projects\BioBrainMdb\node_modules\router\index.js:291:5)
+    at requireLogin (D:\Projects\BioBrainMdb\middleware\requireLogin.js:7:3)
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9 {"error":"Cannot read properties of undefined (reading 'some')"}
+2026-03-11 02:38:51 [ERROR]: TypeError: Cannot read properties of undefined (reading 'some')
+    at D:\Projects\BioBrainMdb\middleware\authorize.js:8:36
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9
+    at processParams (D:\Projects\BioBrainMdb\node_modules\router\index.js:582:12)
+    at next (D:\Projects\BioBrainMdb\node_modules\router\index.js:291:5)
+    at requireLogin (D:\Projects\BioBrainMdb\middleware\requireLogin.js:7:3)
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9 {"error":"Cannot read properties of undefined (reading 'some')"}
+2026-03-11 03:17:09 [ERROR]: ReferenceError: User is not defined
+    at exports.usersPage (D:\Projects\BioBrainMdb\controllers\admin\userroleController.js:4:19)
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Projects\BioBrainMdb\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\Projects\BioBrainMdb\node_modules\router\lib\route.js:117:3)
+    at handle (D:\Projects\BioBrainMdb\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:295:15
+    at processParams (D:\Projects\BioBrainMdb\node_modules\router\index.js:582:12)
+    at next (D:\Projects\BioBrainMdb\node_modules\router\index.js:291:5)
+    at D:\Projects\BioBrainMdb\middleware\authorize.js:14:9 {"error":"User is not defined"}
+2026-03-11 03:18:16 [ERROR]: ReferenceError: User is not defined
+    at exports.usersPage (D:\Projects\BioBrainMdb\controllers\admin\userroleController.js:4:19)
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Projects\BioBrainMdb\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\Projects\BioBrainMdb\node_modules\router\lib\route.js:117:3)
+    at handle (D:\Projects\BioBrainMdb\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:295:15
+    at processParams (D:\Projects\BioBrainMdb\node_modules\router\index.js:582:12)
+    at next (D:\Projects\BioBrainMdb\node_modules\router\index.js:291:5)
+    at D:\Projects\BioBrainMdb\middleware\authorize.js:14:9 {"error":"User is not defined"}
+2026-03-11 03:18:31 [ERROR]: ReferenceError: User is not defined
+    at exports.usersPage (D:\Projects\BioBrainMdb\controllers\admin\userroleController.js:4:19)
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Projects\BioBrainMdb\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\Projects\BioBrainMdb\node_modules\router\lib\route.js:117:3)
+    at handle (D:\Projects\BioBrainMdb\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:295:15
+    at processParams (D:\Projects\BioBrainMdb\node_modules\router\index.js:582:12)
+    at next (D:\Projects\BioBrainMdb\node_modules\router\index.js:291:5)
+    at D:\Projects\BioBrainMdb\middleware\authorize.js:14:9 {"error":"User is not defined"}
+2026-03-11 03:18:37 [ERROR]: ReferenceError: User is not defined
+    at exports.usersPage (D:\Projects\BioBrainMdb\controllers\admin\userroleController.js:4:19)
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at next (D:\Projects\BioBrainMdb\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\Projects\BioBrainMdb\node_modules\router\lib\route.js:117:3)
+    at handle (D:\Projects\BioBrainMdb\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:295:15
+    at processParams (D:\Projects\BioBrainMdb\node_modules\router\index.js:582:12)
+    at next (D:\Projects\BioBrainMdb\node_modules\router\index.js:291:5)
+    at D:\Projects\BioBrainMdb\middleware\authorize.js:14:9 {"error":"User is not defined"}
+2026-03-11 03:29:11 [ERROR]: TypeError: Cannot read properties of null (reading 'password')
+    at exports.login (D:\Projects\BioBrainMdb\controllers\authController.js:23:61)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"Cannot read properties of null (reading 'password')"}
+2026-03-11 04:00:33 [ERROR]: Error: Failed to lookup view "/pages/desktop/admin/userroles" in views directory "D:\Projects\BioBrainMdb\views"
+    at app.render (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:562:17)
+    at ServerResponse.render (D:\Projects\BioBrainMdb\node_modules\express\lib\response.js:923:7)
+    at exports.usersRoles (D:\Projects\BioBrainMdb\controllers\admin\userroleController.js:15:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"Failed to lookup view \"/pages/desktop/admin/userroles\" in views directory \"D:\\Projects\\BioBrainMdb\\views\""}
+2026-03-11 08:31:32 [ERROR]: TypeError: Cannot read properties of undefined (reading 'some')
+    at D:\Projects\BioBrainMdb\middleware\authorize.js:7:41
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9
+    at processParams (D:\Projects\BioBrainMdb\node_modules\router\index.js:582:12)
+    at next (D:\Projects\BioBrainMdb\node_modules\router\index.js:291:5)
+    at requireLogin (D:\Projects\BioBrainMdb\middleware\requireLogin.js:7:3)
+    at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\Projects\BioBrainMdb\node_modules\router\index.js:342:13)
+    at D:\Projects\BioBrainMdb\node_modules\router\index.js:297:9 {"error":"Cannot read properties of undefined (reading 'some')"}
+2026-03-11 08:33:39 [ERROR]: TypeError: Cannot read properties of null (reading 'password')
+    at exports.login (D:\Projects\BioBrainMdb\controllers\authController.js:23:61)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"Cannot read properties of null (reading 'password')"}
+2026-03-11 08:33:43 [ERROR]: TypeError: Cannot read properties of null (reading 'password')
+    at exports.login (D:\Projects\BioBrainMdb\controllers\authController.js:23:61)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"Cannot read properties of null (reading 'password')"}
+2026-03-11 09:57:42 [ERROR]: ReferenceError: User is not defined
+    at autoSeedUserRolesDb (D:\Projects\BioBrainMdb\utils\autoSeeder.js:65:7)
+    at autoSeed (D:\Projects\BioBrainMdb\utils\autoSeeder.js:41:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async D:\Projects\BioBrainMdb\server.js:74:5 {"error":"User is not defined"}
+2026-03-11 09:58:51 [ERROR]: ValidationError: Role validation failed: role: Path `role` is required.
+    at Document.invalidate (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\document.js:3405:32)
+    at validatePath (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\document.js:3177:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async Promise.all (index 0)
+    at async model.$__validate (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\document.js:3118:3)
+    at async model.validate (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\document.js:2687:5) {"error":"Role validation failed: role: Path `role` is required."}
+2026-03-11 10:05:40 [ERROR]: ValidationError: Role validation failed: role: Path `role` is required.
+    at Document.invalidate (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\document.js:3405:32)
+    at validatePath (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\document.js:3177:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async Promise.all (index 0)
+    at async model.$__validate (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\document.js:3118:3)
+    at async model.validate (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\document.js:2687:5) {"error":"Role validation failed: role: Path `role` is required."}
+2026-03-11 10:09:49 [ERROR]: ValidationError: Role validation failed: createdAt: Cast to date failed for value "{ '$date': '2026-03-11T00:00:00.000Z' }" (type Object) at path "createdAt", _id: Cast to ObjectId failed for value "{ '$oid': '650f1a2b3c4d5e6f7a8b9010' }" (type Object) at path "_id" because of "BSONError"
+    at Document.invalidate (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\document.js:3405:32)
+    at model.$set (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\document.js:1516:12)
+    at model.$set (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\document.js:1170:16)
+    at model.Document (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\document.js:181:12)
+    at model.Model (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\model.js:131:12)
+    at new model (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\model.js:4805:15)
+    at validateDoc (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\model.js:3001:13)
+    at parallelLimit (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\helpers\parallelLimit.js:23:15)
+    at model.insertMany (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\model.js:3022:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"Role validation failed: createdAt: Cast to date failed for value \"{ '$date': '2026-03-11T00:00:00.000Z' }\" (type Object) at path \"createdAt\", _id: Cast to ObjectId failed for value \"{ '$oid': '650f1a2b3c4d5e6f7a8b9010' }\" (type Object) at path \"_id\" because of \"BSONError\""}
+2026-03-11 10:10:24 [ERROR]: SyntaxError: Expected ',' or '}' after property value in JSON at position 246 (line 9 column 1)
+    at JSON.parse (<anonymous>)
+    at autoSeedUserRolesDb (D:\Projects\BioBrainMdb\utils\autoSeeder.js:76:28)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async autoSeed (D:\Projects\BioBrainMdb\utils\autoSeeder.js:42:5)
+    at async D:\Projects\BioBrainMdb\server.js:74:5 {"error":"Expected ',' or '}' after property value in JSON at position 246 (line 9 column 1)"}
+2026-03-11 10:10:41 [ERROR]: ValidationError: Role validation failed: createdAt: Cast to date failed for value "{ '$date': '2026-03-11T00:00:00.000Z' }" (type Object) at path "createdAt", _id: Cast to ObjectId failed for value "{ '$oid': '650f1a2b3c4d5e6f7a8b9010' }" (type Object) at path "_id" because of "BSONError"
+    at Document.invalidate (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\document.js:3405:32)
+    at model.$set (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\document.js:1516:12)
+    at model.$set (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\document.js:1170:16)
+    at model.Document (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\document.js:181:12)
+    at model.Model (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\model.js:131:12)
+    at new model (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\model.js:4805:15)
+    at validateDoc (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\model.js:3001:13)
+    at parallelLimit (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\helpers\parallelLimit.js:23:15)
+    at model.insertMany (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\model.js:3022:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"Role validation failed: createdAt: Cast to date failed for value \"{ '$date': '2026-03-11T00:00:00.000Z' }\" (type Object) at path \"createdAt\", _id: Cast to ObjectId failed for value \"{ '$oid': '650f1a2b3c4d5e6f7a8b9010' }\" (type Object) at path \"_id\" because of \"BSONError\""}
+2026-03-11 10:11:26 [ERROR]: ValidationError: Role validation failed: createdAt: Cast to date failed for value "{ '$date': '2026-03-11T00:00:00.000Z' }" (type Object) at path "createdAt", _id: Cast to ObjectId failed for value "{ '$oid': '650f1a2b3c4d5e6f7a8b9010' }" (type Object) at path "_id" because of "BSONError"
+    at Document.invalidate (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\document.js:3405:32)
+    at model.$set (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\document.js:1516:12)
+    at model.$set (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\document.js:1170:16)
+    at model.Document (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\document.js:181:12)
+    at model.Model (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\model.js:131:12)
+    at new model (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\model.js:4805:15)
+    at validateDoc (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\model.js:3001:13)
+    at parallelLimit (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\helpers\parallelLimit.js:23:15)
+    at model.insertMany (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\model.js:3022:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"Role validation failed: createdAt: Cast to date failed for value \"{ '$date': '2026-03-11T00:00:00.000Z' }\" (type Object) at path \"createdAt\", _id: Cast to ObjectId failed for value \"{ '$oid': '650f1a2b3c4d5e6f7a8b9010' }\" (type Object) at path \"_id\" because of \"BSONError\""}
+2026-03-11 10:12:23 [ERROR]: ValidationError: Role validation failed: _id: Cast to ObjectId failed for value "{ '$oid': '650f1a2b3c4d5e6f7a8b9010' }" (type Object) at path "_id" because of "BSONError"
+    at Document.invalidate (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\document.js:3405:32)
+    at model.$set (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\document.js:1516:12)
+    at model.$set (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\document.js:1170:16)
+    at model.Document (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\document.js:181:12)
+    at model.Model (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\model.js:131:12)
+    at new model (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\model.js:4805:15)
+    at validateDoc (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\model.js:3001:13)
+    at parallelLimit (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\helpers\parallelLimit.js:23:15)
+    at model.insertMany (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\model.js:3022:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"Role validation failed: _id: Cast to ObjectId failed for value \"{ '$oid': '650f1a2b3c4d5e6f7a8b9010' }\" (type Object) at path \"_id\" because of \"BSONError\""}
+2026-03-11 10:14:16 [ERROR]: TypeError: User.deleteMany is not a function
+    at autoSeedUserRolesDb (D:\Projects\BioBrainMdb\utils\autoSeeder.js:66:18)
+    at autoSeed (D:\Projects\BioBrainMdb\utils\autoSeeder.js:42:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async D:\Projects\BioBrainMdb\server.js:74:5 {"error":"User.deleteMany is not a function"}
+2026-03-11 10:14:45 [ERROR]: TypeError: User.deleteMany is not a function
+    at autoSeedUserRolesDb (D:\Projects\BioBrainMdb\utils\autoSeeder.js:66:18)
+    at autoSeed (D:\Projects\BioBrainMdb\utils\autoSeeder.js:42:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async D:\Projects\BioBrainMdb\server.js:74:5 {"error":"User.deleteMany is not a function"}
+2026-03-11 10:14:58 [ERROR]: TypeError: User.deleteMany is not a function
+    at autoSeedUserRolesDb (D:\Projects\BioBrainMdb\utils\autoSeeder.js:66:18)
+    at autoSeed (D:\Projects\BioBrainMdb\utils\autoSeeder.js:42:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async D:\Projects\BioBrainMdb\server.js:74:5 {"error":"User.deleteMany is not a function"}
+2026-03-11 10:16:22 [ERROR]: TypeError: Role.deleteMany is not a function
+    at autoSeedUserRolesDb (D:\Projects\BioBrainMdb\utils\autoSeeder.js:69:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async autoSeed (D:\Projects\BioBrainMdb\utils\autoSeeder.js:42:5)
+    at async D:\Projects\BioBrainMdb\server.js:74:5 {"error":"Role.deleteMany is not a function"}
+2026-03-11 10:16:35 [ERROR]: TypeError: Role.deleteMany is not a function
+    at autoSeedUserRolesDb (D:\Projects\BioBrainMdb\utils\autoSeeder.js:69:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async autoSeed (D:\Projects\BioBrainMdb\utils\autoSeeder.js:42:5)
+    at async D:\Projects\BioBrainMdb\server.js:74:5 {"error":"Role.deleteMany is not a function"}
+2026-03-11 10:17:14 [ERROR]: TypeError: Role.deleteMany is not a function
+    at autoSeedUserRolesDb (D:\Projects\BioBrainMdb\utils\autoSeeder.js:69:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async autoSeed (D:\Projects\BioBrainMdb\utils\autoSeeder.js:42:5)
+    at async D:\Projects\BioBrainMdb\server.js:74:5 {"error":"Role.deleteMany is not a function"}
+2026-03-11 10:18:59 [ERROR]: TypeError: Role.deleteMany is not a function
+    at autoSeedUserRolesDb (D:\Projects\BioBrainMdb\utils\autoSeeder.js:69:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async autoSeed (D:\Projects\BioBrainMdb\utils\autoSeeder.js:42:5)
+    at async D:\Projects\BioBrainMdb\server.js:74:5 {"error":"Role.deleteMany is not a function"}
+2026-03-11 10:20:40 [ERROR]: TypeError: Role.deleteMany is not a function
+    at autoSeedUserRolesDb (D:\Projects\BioBrainMdb\utils\autoSeeder.js:69:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async autoSeed (D:\Projects\BioBrainMdb\utils\autoSeeder.js:42:5)
+    at async D:\Projects\BioBrainMdb\server.js:74:5 {"error":"Role.deleteMany is not a function"}
+2026-03-11 10:24:18 [ERROR]: TypeError: Role.deleteMany is not a function
+    at autoSeedUserRolesDb (D:\Projects\BioBrainMdb\utils\autoSeeder.js:78:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async autoSeed (D:\Projects\BioBrainMdb\utils\autoSeeder.js:42:5)
+    at async D:\Projects\BioBrainMdb\server.js:74:5 {"error":"Role.deleteMany is not a function"}
+2026-03-11 10:51:17 [ERROR]: TypeError: Cannot read properties of null (reading 'password')
+    at exports.login (D:\Projects\BioBrainMdb\controllers\authController.js:23:61)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"Cannot read properties of null (reading 'password')"}
+2026-03-11 10:53:24 [ERROR]: TypeError: Cannot read properties of null (reading 'password')
+    at exports.login (D:\Projects\BioBrainMdb\controllers\authController.js:23:61)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"Cannot read properties of null (reading 'password')"}
+2026-03-11 11:07:09 [ERROR]: Error: ENOENT: no such file or directory, open 'D:\Projects\BioBrainMdb\datafeed\undefined\examtable.json'
+    at Object.openSync (node:fs:559:18)
+    at Object.readFileSync (node:fs:443:35)
+    at autoSeedExamDb (D:\Projects\BioBrainMdb\utils\autoSeeder.js:134:37)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async autoSeed (D:\Projects\BioBrainMdb\utils\autoSeeder.js:45:7)
+    at async exports.resetToLatestBackup (D:\Projects\BioBrainMdb\controllers\admin\databaseBkupController.js:45:9) {"error":"ENOENT: no such file or directory, open 'D:\\Projects\\BioBrainMdb\\datafeed\\undefined\\examtable.json'"}
+2026-03-11 11:08:43 [ERROR]: Error: ENOENT: no such file or directory, open 'D:\Projects\BioBrainMdb\datafeed\undefined\examtable.json'
+    at Object.openSync (node:fs:559:18)
+    at Object.readFileSync (node:fs:443:35)
+    at autoSeedExamDb (D:\Projects\BioBrainMdb\utils\autoSeeder.js:134:37)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async autoSeed (D:\Projects\BioBrainMdb\utils\autoSeeder.js:45:7)
+    at async exports.resetToLatestBackup (D:\Projects\BioBrainMdb\controllers\admin\databaseBkupController.js:45:9) {"error":"ENOENT: no such file or directory, open 'D:\\Projects\\BioBrainMdb\\datafeed\\undefined\\examtable.json'"}
+2026-03-11 11:29:24 [ERROR]: ReferenceError: Role is not defined
+    at exports.usersRoles (D:\Projects\BioBrainMdb\controllers\admin\userroleController.js:14:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"Role is not defined"}
+2026-03-11 11:30:04 [ERROR]: ReferenceError: D:\Projects\BioBrainMdb\views\pages\desktop\admin\userroles.ejs:98
+    96| 
+    97|             <select name="role" class="role-select">
+ >> 98|                 <% databaseRoles.forEach(dbRole=> { %>
+    99|                     <option value="<%= dbRole._id %>">
+    100|                         <%= dbRole.role %>
+    101|                     </option>
+
+databaseRoles is not defined
+    at eval ("D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\admin\\userroles.ejs":12:8)
+    at userroles (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (D:\Projects\BioBrainMdb\node_modules\express\lib\view.js:139:8)
+    at tryRender (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:627:10)
+    at app.render (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (D:\Projects\BioBrainMdb\node_modules\express\lib\response.js:923:7)
+    at exports.usersRoles (D:\Projects\BioBrainMdb\controllers\admin\userroleController.js:16:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\admin\\userroles.ejs:98\n    96| \r\n    97|             <select name=\"role\" class=\"role-select\">\r\n >> 98|                 <% databaseRoles.forEach(dbRole=> { %>\r\n    99|                     <option value=\"<%= dbRole._id %>\">\r\n    100|                         <%= dbRole.role %>\r\n    101|                     </option>\r\n\ndatabaseRoles is not defined"}
+2026-03-11 11:35:12 [ERROR]: CastError: Cast to ObjectId failed for value "{\r\n' +
+  "  _id: new ObjectId('650f1a2b3c4d5e6f7a8b9014'),\r\n" +
+  "  role: 'premium_student',\r\n" +
+  "  description: 'Student with premium features access',\r\n" +
+  "  permissions: [ 'attempt_quiz', 'view_results', 'access_premium_content' ],\r\n" +
+  '  createdAt: 2026-03-11T00:00:00.000Z,\r\n' +
+  '  __v: 0\r\n' +
+  '}" (type string) at path "roles" because of "BSONError"
+    at SchemaObjectId.cast (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\schema\objectId.js:253:11)
+    at SchemaType.applySetters (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\schemaType.js:1280:12)
+    at SchemaType.castForQuery (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\schemaType.js:1706:17)
+    at SchemaArray._castForQuery (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\schema\array.js:524:30)
+    at SchemaArray.castForQuery (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\schema\array.js:550:17)
+    at castUpdateVal (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\helpers\query\castUpdate.js:642:17)
+    at walkUpdatePath (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\helpers\query\castUpdate.js:438:24)
+    at castUpdate (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\helpers\query\castUpdate.js:144:7)
+    at model.Query._castUpdate (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\query.js:4903:10)
+    at model.Query._updateThunk (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\query.js:4128:25) {"error":"Cast to ObjectId failed for value \"{\\r\\n' +\n  \"  _id: new ObjectId('650f1a2b3c4d5e6f7a8b9014'),\\r\\n\" +\n  \"  role: 'premium_student',\\r\\n\" +\n  \"  description: 'Student with premium features access',\\r\\n\" +\n  \"  permissions: [ 'attempt_quiz', 'view_results', 'access_premium_content' ],\\r\\n\" +\n  '  createdAt: 2026-03-11T00:00:00.000Z,\\r\\n' +\n  '  __v: 0\\r\\n' +\n  '}\" (type string) at path \"roles\" because of \"BSONError\""}
+2026-03-11 12:18:45 [ERROR]: TypeError: Cannot read properties of null (reading 'password')
+    at exports.login (D:\Projects\BioBrainMdb\controllers\authController.js:24:61)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"Cannot read properties of null (reading 'password')"}

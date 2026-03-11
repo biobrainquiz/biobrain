@@ -1,52 +1,42 @@
 [
   {
-    "_id": "69acdec06efcdae32cd7306b",
+    "_id": "69b100d8047151145aba15b9",
     "examcode": "E1",
     "subjectcode": "S1",
     "subjectname": "Zoology",
-    "exam": "69acdec06efcdae32cd73066",
-    "createdAt": "2026-03-08T02:28:16.288Z",
-    "updatedAt": "2026-03-08T02:28:16.288Z",
+    "exam": "69b100d8047151145aba15b4",
+    "createdAt": "2026-03-11T05:42:48.667Z",
+    "updatedAt": "2026-03-11T05:42:48.667Z",
     "__v": 0
   },
   {
-    "_id": "69acdec06efcdae32cd7306c",
+    "_id": "69b100d8047151145aba15ba",
     "examcode": "E2",
     "subjectcode": "S1",
     "subjectname": "Zoology",
-    "exam": "69acdec06efcdae32cd73067",
-    "createdAt": "2026-03-08T02:28:16.289Z",
-    "updatedAt": "2026-03-08T02:28:16.289Z",
+    "exam": "69b100d8047151145aba15b5",
+    "createdAt": "2026-03-11T05:42:48.667Z",
+    "updatedAt": "2026-03-11T05:42:48.667Z",
     "__v": 0
   },
   {
-    "_id": "69acdec06efcdae32cd7306d",
+    "_id": "69b100d8047151145aba15bb",
     "examcode": "E3",
     "subjectcode": "S2",
     "subjectname": "Life Sciences",
-    "exam": "69acdec06efcdae32cd73068",
-    "createdAt": "2026-03-08T02:28:16.289Z",
-    "updatedAt": "2026-03-08T02:28:16.289Z",
+    "exam": "69b100d8047151145aba15b6",
+    "createdAt": "2026-03-11T05:42:48.667Z",
+    "updatedAt": "2026-03-11T05:42:48.667Z",
     "__v": 0
   },
   {
-    "_id": "69acdec06efcdae32cd7306e",
+    "_id": "69b100d8047151145aba15bc",
     "examcode": "E4",
     "subjectcode": "S1",
     "subjectname": "Zoology",
-    "exam": "69acdec06efcdae32cd73069",
-    "createdAt": "2026-03-08T02:28:16.289Z",
-    "updatedAt": "2026-03-08T02:28:16.289Z",
-    "__v": 0
-  },
-  {
-    "_id": "69acdf3c6efcdae32cd731b5",
-    "examcode": "E5",
-    "subjectcode": "S1",
-    "subjectname": "Maths",
-    "exam": "69acdf1e6efcdae32cd7319c",
-    "createdAt": "2026-03-08T02:30:20.615Z",
-    "updatedAt": "2026-03-08T02:30:20.615Z",
+    "exam": "69b100d8047151145aba15b7",
+    "createdAt": "2026-03-11T05:42:48.668Z",
+    "updatedAt": "2026-03-11T05:42:48.668Z",
     "__v": 0
   }
 ]

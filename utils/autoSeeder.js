@@ -6,15 +6,16 @@ const Unit = require("../models/Unit");
 const Topic = require("../models/Topic");
 const Question = require("../models/Question");
 const Payment = require("../models/Payment");
+const User = require("../models/User");
+const Role = require("../models/Role"); // correct path to your Role model
 const logger = require("./logger");
 
-function isForcedSeeding() {
+function isForcedSeedingExamDbInEnv() {
   try {
-    return process.env.FORCED_SEEDING === "true";
+    return process.env.FORCED_SEEDING_EXAMDB === "true";
   } catch (err) {
-    //logger.error(err);
     logger.error({
-      message: "envirnonment variable process.env.FORCED_SEEDING Missing",
+      message: "envirnonment variable process.env.FORCED_SEEDING_EXAMDB Missing",
       error: err.message,
       stack: err.stack
     });
@@ -22,34 +23,111 @@ function isForcedSeeding() {
   }
 }
 
-async function autoSeed(source) {
+function isForcedSeedingUserRolesDbInEnv() {
   try {
-    const forced = isForcedSeeding();
+    return process.env.FORCED_SEEDING_USER_ROLES_DB === "true";
+  } catch (err) {
+    logger.error({
+      message: "envirnonment variable process.env.FORCED_SEEDING_USER_ROLES_DB Missing",
+      error: err.message,
+      stack: err.stack
+    });
+    return false;
+  }
+}
 
-    if (!forced) {
-      logger.info("✅ Forced seeding disabled. Skipping...");
+async function autoSeed(requestFromDashboard, source) {
+  try {
+    if (!requestFromDashboard) {//autoseed request when server started and hence autoseed as per process.env flags
+      await autoSeedExamDb(source, isForcedSeedingExamDbInEnv());
+      await autoSeedUserRolesDb(isForcedSeedingUserRolesDbInEnv());
+    } else { //order from dashboard to seed Exam databse to factory or recent bkup point irrespective of process.env flags
+      await autoSeedExamDb(source,true);
+    }
+  }
+  catch (err) {
+    logger.error({
+      message: "❌ Auto seeding failed",
+      error: err.message,
+      stack: err.stack
+    });
+  }
+}
+
+async function autoSeedUserRolesDb(forcedSeedingUserRolesDbInEnv) {
+  try {
+
+    if (!forcedSeedingUserRolesDbInEnv) {
+      logger.info("✅ Forced seeding of UserRoles Database disabled. Skipping...");
       return;
     }
+    else {
 
-    if (forced) {
+      logger.info("🔥  Forced seeding of UserRoles Database enabled.");
+      logger.info("⚠ Clearing old Users...");
+      await User.deleteMany();
 
-      logger.info("🔥  Forced seeding enabled.");
+      logger.info("⚠ Clearing old Roles...");
+      await Role.deleteMany({});
+    }
+
+    logger.info("⚡ Seeding UserRoles Database ...");
+
+    //start
+    // 2️⃣ Load JSON
+    const usersData = JSON.parse(fs.readFileSync(path.join(__dirname, `../datafeed/usertable.json`)));
+    const RolesData = JSON.parse(fs.readFileSync(path.join(__dirname, `../datafeed/roletable.json`)));
+
+    // 3️⃣ Insert Roles first
+    const roles = await Role.insertMany(RolesData); // roles[i]._id available
+    logger.info(`🔥 Roles seeded: ${roles.length} successfully!`);
+
+    // 4 Insert Users
+    const users = await User.insertMany(usersData);
+    logger.info(`🔥 Users seeded: ${users.length} successfully!`);
+
+    logger.info("✅ All UserRole Database seeded successfully!");
+
+  }
+  catch (err) {
+    logger.error({
+      message: "❌ Auto seeding failed",
+      error: err.message,
+      stack: err.stack
+    });
+  }
+}
+
+async function autoSeedExamDb(source,forcedSeedingExamDbInEnv) {
+  try {
+    if (!forcedSeedingExamDbInEnv) {
+      logger.info("✅ Forced seeding of Exam Database disabled. Skipping...");
+      return;
+    }
+    else {
+
+      logger.info("🔥  Forced seeding of Exam Database enabled.");
+
       logger.info("⚠ Clearing old Questions...");
-
       await Question.deleteMany({});
+
       logger.info("⚠ Clearing old Topics...");
       await Topic.deleteMany();
+
       logger.info("⚠ Clearing old Units...");
       await Unit.deleteMany();
+
       logger.info("⚠ Clearing old Subjects...");
       await Subject.deleteMany();
+
       logger.info("⚠ Clearing old Exams...");
       await Exam.deleteMany();
+
       logger.info("⚠ Clearing old Payments...");
       await Payment.deleteMany({});
     }
 
-    logger.info("⚡ Seeding database...");
+    logger.info("⚡ Seeding Exam database...");
 
     //start
     // 2️⃣ Load JSON
@@ -101,12 +179,10 @@ async function autoSeed(source) {
     });
     await Question.insertMany(questionsToInsert);
     logger.info(`🔥 Questions seeded: ${questionsToInsert.length} successfully!`);
-    logger.info("✅ All data seeded successfully!");
+    logger.info("✅ All Exam database seeded successfully!");
 
   }
   catch (err) {
-    //logger.info("❌ Auto seeding failed");
-    //logger.error(err);
     logger.error({
       message: "❌ Auto seeding failed",
       error: err.message,

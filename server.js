@@ -71,7 +71,8 @@ const mongoURI = isProduction
 mongoose.connect(mongoURI)
   .then(async () => {
     logger.info("✅ Connected to MongoDB");
-    await autoSeed("factory");
+    const requestFromDashboard=false;
+    await autoSeed(requestFromDashboard,"factory");
   })
   .catch(err => {
     logger.error({
@@ -206,6 +207,15 @@ app.get("/keep-session-alive", (req, res) => {
 });
 
 
+
+
+/* =========================================
+   404 HANDLER
+========================================= */
+app.use((req, res) => {
+  res.status(404).render("errors/404");
+});
+
 /* =========================================
    ERROR HANDLING
 ========================================= */
@@ -216,19 +226,11 @@ app.use((err, req, res, next) => {
   logger.error({
       message: "GLOBAL ERROR",
       error: err.message,
+
       stack: err.stack
     });
   res.status(500).send("Something broke!");
 });
-
-
-/* =========================================
-   404 HANDLER
-========================================= */
-app.use((req, res) => {
-  res.status(404).render("404");
-});
-
 
 const liveLogs = require("./utils/liveLogs");
 

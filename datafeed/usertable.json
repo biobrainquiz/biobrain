@@ -1,0 +1,10 @@
+[
+  {
+    "username": "admin",
+    "password": "$2b$10$c8ZEeAT8sJsV2rYnG8ZxxOHWRS9cmkryrSq8tWGjOVZLDEHK5F65S",
+    "mobile": "9876543210",
+    "email": "admin@biobrain.com",
+    "roles": ["650f1a2b3c4d5e6f7a8b9010"],
+    "isActive": true
+  }
+]

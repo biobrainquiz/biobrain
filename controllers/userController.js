@@ -2,6 +2,7 @@ const User = require("../models/User");
 const QuizResult = require("../models/QuizResult");
 const getDevice = require("../utils/getDevice");
 
+
 // ==========================
 // PROFILE PAGE
 // ==========================

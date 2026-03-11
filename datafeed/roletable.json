@@ -1,0 +1,57 @@
+[
+  {
+    "_id": "650f1a2b3c4d5e6f7a8b9010",
+    "role": "admin",
+    "description": "Full access to all system features and user management",
+    "permissions": [
+      "manage_users",
+      "manage_exams",
+      "manage_questions",
+      "view_logs",
+      "reset_database"
+    ],
+    "createdAt": "2026-03-11T00:00:00.000Z"
+  },
+  {
+    "_id": "650f1a2b3c4d5e6f7a8b9011",
+    "role": "teacher",
+    "description": "Can manage questions and exams",
+    "permissions": [
+      "manage_questions",
+      "manage_exams",
+      "view_student_progress"
+    ],
+    "createdAt": "2026-03-11T00:00:00.000Z"
+  },
+  {
+    "_id": "650f1a2b3c4d5e6f7a8b9012",
+    "role": "student",
+    "description": "Can attempt quizzes and view own results",
+    "permissions": [
+      "attempt_quiz",
+      "view_results"
+    ],
+    "createdAt": "2026-03-11T00:00:00.000Z"
+  },
+  {
+    "_id": "650f1a2b3c4d5e6f7a8b9013",
+    "role": "moderator",
+    "description": "Can moderate content but not manage users",
+    "permissions": [
+      "moderate_questions",
+      "moderate_topics"
+    ],
+    "createdAt": "2026-03-11T00:00:00.000Z"
+  },
+  {
+    "_id": "650f1a2b3c4d5e6f7a8b9014",
+    "role": "premium_student",
+    "description": "Student with premium features access",
+    "permissions": [
+      "attempt_quiz",
+      "view_results",
+      "access_premium_content"
+    ],
+    "createdAt": "2026-03-11T00:00:00.000Z"
+  }
+]

@@ -8,12 +8,13 @@
 <link rel="stylesheet" href="/css/adminStyle.css">
 
 <style>
-
 .unit-wrapper{
 background:#f4f6f9;
 padding:30px;
 border-radius:10px;
 }
+
+/* Page Header */
 
 .page-header{
 display:flex;
@@ -29,51 +30,92 @@ font-weight:600;
 color:#2c3e50;
 }
 
+/* Table Card */
+
 .table-card{
 background:#fff;
 border-radius:10px;
 box-shadow:0 4px 14px rgba(0,0,0,0.08);
-overflow:hidden;
+overflow:auto;
 }
+
+/* Table */
 
 table{
 width:100%;
 border-collapse:collapse;
 }
 
-th,td{
-padding:12px 10px;
-font-size:14px;
+/* Header Row */
+
+thead th{
+background:#2f3e4e;
+color:white;
+font-size:13px;
+font-weight:500;
+padding:10px 8px;
 text-align:left;
+position:sticky;
+top:0;
+z-index:3;
+border-bottom:1px solid #3c4d60;
+}
+
+/* Filter Row */
+
+.filter-row th{
+background:#2f3e4e;
+padding:6px 6px;
+position:sticky;
+top:40px;
+z-index:2;
+}
+
+/* Filter Dropdown */
+
+.filter-row select{
+width:100%;
+padding:4px;
+font-size:12px;
+border-radius:4px;
+border:1px solid #3c4d60;
+background:#2f3e4e;
+color:white;
+}
+
+/* Table Body */
+
+tbody td{
+padding:10px 8px;
+font-size:14px;
 border-bottom:1px solid #e9ecef;
 }
 
-th{
-background:#2c3e50;
-color:white;
-font-weight:500;
-font-size:13px;
+tbody tr:nth-child(even){
+background:#fafbfd;
 }
 
 tbody tr:hover{
-background:#f7fbff;
+background:#f1f6fb;
 }
 
-tr:nth-child(even){
-background:#fafbfd;
-}
+/* Center Column */
 
 .center{
 text-align:center;
 }
 
-input[type="text"],select{
+/* Inputs */
+
+input[type="text"], select{
 padding:6px 8px;
 width:95%;
 border:1px solid #d6d6d6;
 border-radius:4px;
 font-size:13px;
 }
+
+/* Buttons */
 
 button{
 padding:6px 10px;
@@ -89,20 +131,26 @@ transform:translateY(-1px);
 opacity:0.9;
 }
 
+/* Button Colors */
+
 .edit-btn{background:#3498db;color:white;}
 .save-btn{background:#2ecc71;color:white;}
 .cancel-btn{background:#7f8c8d;color:white;}
 .delete-btn{background:#e74c3c;color:white;}
 .add-btn{background:#27ae60;color:white;}
 
+/* Sort Button */
+
 .sort-btn{
-background:#34495e;
+background:#415366;
 color:white;
 font-size:10px;
 padding:2px 6px;
-margin-left:5px;
+margin-left:4px;
 border-radius:3px;
 }
+
+/* Action Buttons */
 
 .action-buttons{
 display:flex;
@@ -111,6 +159,8 @@ align-items:center;
 gap:6px;
 }
 
+/* Add Row */
+
 .add-row{
 background:#eef7ff;
 }
@@ -118,14 +168,6 @@ background:#eef7ff;
 .add-row td{
 border-top:2px dashed #d6eaff;
 }
-
-th select{
-margin-top:5px;
-width:100%;
-font-size:12px;
-padding:3px;
-}
-
 </style>
 
 </head>
@@ -152,53 +194,97 @@ padding:3px;
 
 <thead>
 
-<tr>
+<tr class="header-row">
 
 <th>#</th>
 
 <th>
 Exam Code
 <button class="sort-btn" onclick="sortTable(1)">⇅</button>
-<select id="filterExamCode" onchange="applyFilters()"><option value="">All</option></select>
 </th>
 
 <th>
 Exam Name
 <button class="sort-btn" onclick="sortTable(2)">⇅</button>
-<select id="filterExamName" onchange="applyFilters()"><option value="">All</option></select>
 </th>
 
 <th>
 Subject Code
 <button class="sort-btn" onclick="sortTable(3)">⇅</button>
-<select id="filterSubjectCode" onchange="applyFilters()"><option value="">All</option></select>
 </th>
 
 <th>
 Subject Name
 <button class="sort-btn" onclick="sortTable(4)">⇅</button>
-<select id="filterSubjectName" onchange="applyFilters()"><option value="">All</option></select>
 </th>
 
 <th>
 Unit Code
 <button class="sort-btn" onclick="sortTable(5)">⇅</button>
-<select id="filterUnitCode" onchange="applyFilters()"><option value="">All</option></select>
 </th>
 
 <th>
 Unit Name
 <button class="sort-btn" onclick="sortTable(6)">⇅</button>
-<select id="filterUnitName" onchange="applyFilters()"><option value="">All</option></select>
 </th>
 
 <th>
 Created
 <button class="sort-btn" onclick="sortTable(7)">⇅</button>
-<select id="filterCreated" onchange="applyFilters()"><option value="">All</option></select>
 </th>
 
 <th class="center">Actions</th>
+
+</tr>
+
+
+<tr class="filter-row">
+
+<th></th>
+
+<th>
+<select id="filterExamCode" onchange="applyFilters()">
+<option value="">All</option>
+</select>
+</th>
+
+<th>
+<select id="filterExamName" onchange="applyFilters()">
+<option value="">All</option>
+</select>
+</th>
+
+<th>
+<select id="filterSubjectCode" onchange="applyFilters()">
+<option value="">All</option>
+</select>
+</th>
+
+<th>
+<select id="filterSubjectName" onchange="applyFilters()">
+<option value="">All</option>
+</select>
+</th>
+
+<th>
+<select id="filterUnitCode" onchange="applyFilters()">
+<option value="">All</option>
+</select>
+</th>
+
+<th>
+<select id="filterUnitName" onchange="applyFilters()">
+<option value="">All</option>
+</select>
+</th>
+
+<th>
+<select id="filterCreated" onchange="applyFilters()">
+<option value="">All</option>
+</select>
+</th>
+
+<th></th>
 
 </tr>
 

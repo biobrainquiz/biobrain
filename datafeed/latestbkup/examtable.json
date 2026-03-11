@@ -1,42 +1,34 @@
 [
   {
-    "_id": "69acdec06efcdae32cd73066",
+    "_id": "69b100d8047151145aba15b4",
     "examname": "NEET",
     "examcode": "E1",
-    "createdAt": "2026-03-08T02:28:16.277Z",
-    "updatedAt": "2026-03-08T02:28:16.277Z",
+    "createdAt": "2026-03-11T05:42:48.656Z",
+    "updatedAt": "2026-03-11T05:42:48.656Z",
     "__v": 0
   },
   {
-    "_id": "69acdec06efcdae32cd73067",
+    "_id": "69b100d8047151145aba15b5",
     "examname": "DL/JL/Asst.Prof.",
     "examcode": "E2",
-    "createdAt": "2026-03-08T02:28:16.279Z",
-    "updatedAt": "2026-03-08T02:28:16.279Z",
+    "createdAt": "2026-03-11T05:42:48.659Z",
+    "updatedAt": "2026-03-11T05:42:48.659Z",
     "__v": 0
   },
   {
-    "_id": "69acdec06efcdae32cd73068",
+    "_id": "69b100d8047151145aba15b6",
     "examname": "CSIR NET",
     "examcode": "E3",
-    "createdAt": "2026-03-08T02:28:16.279Z",
-    "updatedAt": "2026-03-08T02:28:16.279Z",
+    "createdAt": "2026-03-11T05:42:48.659Z",
+    "updatedAt": "2026-03-11T05:42:48.659Z",
     "__v": 0
   },
   {
-    "_id": "69acdec06efcdae32cd73069",
+    "_id": "69b100d8047151145aba15b7",
     "examname": "GATE",
     "examcode": "E4",
-    "createdAt": "2026-03-08T02:28:16.279Z",
-    "updatedAt": "2026-03-08T02:28:16.279Z",
-    "__v": 0
-  },
-  {
-    "_id": "69acdf1e6efcdae32cd7319c",
-    "examname": "SSC",
-    "examcode": "E5",
-    "createdAt": "2026-03-08T02:29:50.334Z",
-    "updatedAt": "2026-03-08T02:29:50.334Z",
+    "createdAt": "2026-03-11T05:42:48.659Z",
+    "updatedAt": "2026-03-11T05:42:48.659Z",
     "__v": 0
   }
 ]

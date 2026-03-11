@@ -6,6 +6,15 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   mobile: { type: String, required: true },
   email: { type: String, required: true, unique: true },
+
+  roles: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Role"
+    }],
+  isActive: {
+    type: Boolean,
+    default: true
+  },
   userCreatedOn: { type: Date, default: Date.now }, // Timestamp for user creation
   resetPasswordToken: { type: String, default: null },
   resetPasswordExpires: { type: Date, default: null }
@@ -20,18 +29,18 @@ userSchema.pre("save", async function () {
 
 userSchema.pre("findOneAndDelete", async function () {
 
-    const filter = this.getFilter();
+  const filter = this.getFilter();
 
-    const User = mongoose.model("User");
-    const user = await User.findOne(filter);
+  const User = mongoose.model("User");
+  const user = await User.findOne(filter);
 
-    if (!user) return;
+  if (!user) return;
 
-    const Attempt = require("./Attempt");
+  const Attempt = require("./Attempt");
 
-    await cascadeDelete(Attempt, {
-        userid: user._id
-    });
+  await cascadeDelete(Attempt, {
+    userid: user._id
+  });
 
 });
 
