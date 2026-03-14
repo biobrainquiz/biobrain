@@ -36,7 +36,7 @@ exports.resetToFactory = async (req, res) => {
 };
 
 /* ===============================
-   RESTORE BACKUP
+   RESTORE TO BACKUP
 ================================ */
 
 exports.resetToLatestBackup = async (req, res) => {

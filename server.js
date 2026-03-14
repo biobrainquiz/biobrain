@@ -192,7 +192,7 @@ app.use("/", require("./routes/user"));
 app.use("/", require("./routes/unit"));
 app.use("/", require("./routes/topic"));
 app.use("/", require("./routes/quiz"));
-app.use("/", require("./routes/authRoutes"));
+app.use("/", require("./routes/authentication"));
 
 
 /* =========================================

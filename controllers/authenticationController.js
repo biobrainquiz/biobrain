@@ -1,29 +1,50 @@
+// ==========================
+// IMPORT DEPENDENCIES
+// ==========================
+
+// User model (MongoDB user collection)
 const User = require("../models/User");
+
+// Role model used to assign default roles during registration
 const Role = require("../models/Role");
+
+// Built-in Node.js module used for generating secure random tokens
 const crypto = require("crypto");
+
+// Library used to hash and compare passwords securely
 const bcrypt = require("bcryptjs");
+
+// Email service provider used to send password reset emails
 const { Resend } = require("resend");
+
+// Utility that detects device type (mobile / desktop) to render correct view
 const getDevice = require("../utils/getDevice");
+
+// Custom logger utility for structured error logging
 const logger = require("../utils/logger");
+
 
 // ==========================
 // LOGIN
 // ==========================
+
 exports.login = async (req, res) => {
     try {
+
+        // Extract identifier and password from request body
+        // identifier can be email OR mobile OR username
         const { identifier, password } = req.body;
 
-        // 1️⃣ Find user by email OR mobile
+        // 1️⃣ Find user by email, mobile or username
         const user = await User.findOne({
             $or: [
                 { email: identifier },
                 { mobile: identifier },
                 { username: identifier }
             ]
-        }).populate("roles");
+        }).populate("roles"); // load role documents
 
-        const ismatch = await bcrypt.compare(password, user.password);
-
+        // If user not found return error
         if (!user) {
             return res.json({
                 success: false,
@@ -31,7 +52,7 @@ exports.login = async (req, res) => {
             });
         }
 
-        // 2️⃣ Compare password
+        // 2️⃣ Compare entered password with hashed password in DB
         const isMatch = await bcrypt.compare(password, user.password);
 
         if (!isMatch) {
@@ -41,17 +62,10 @@ exports.login = async (req, res) => {
             });
         }
 
-        // 3️⃣ Create session
-
+        // 3️⃣ Create session after successful authentication
         req.session.user = user;
 
-        /*req.session.user = {
-            id: user._id,
-            username: user.username,
-            roles: user.roles 
-        };*/
-
-        // 4️⃣ Redirect support
+        // 4️⃣ Redirect user to original page if they were redirected to login
         const redirectUrl = req.session.redirectTo || "/";
         delete req.session.redirectTo;
 
@@ -61,11 +75,15 @@ exports.login = async (req, res) => {
         });
 
     } catch (err) {
+
+        // Log full error details for debugging
         logger.error({
             message: "Login Error",
             error: err.message,
             stack: err.stack
         });
+
+        // Send generic error in production
         return res.status(500).json({
             success: false,
             message: process.env.NODE_ENV === "production"
@@ -76,11 +94,18 @@ exports.login = async (req, res) => {
 };
 
 
+
+// ==========================
+// REGISTER (WITH ROLE)
+// ==========================
+
 exports.register = async (req, res) => {
     try {
+
+        // Extract registration data
         const { username, password, confirmPassword, mobile, email } = req.body;
 
-        // 1️⃣ Password match check
+        // 1️⃣ Validate password confirmation
         if (password !== confirmPassword) {
             return res.status(400).json({
                 success: false,
@@ -88,7 +113,7 @@ exports.register = async (req, res) => {
             });
         }
 
-        // 2️⃣ Check if username/email exists
+        // 2️⃣ Check if username or email already exists
         const existingUser = await User.findOne({
             $or: [{ username }, { email }]
         });
@@ -100,8 +125,9 @@ exports.register = async (req, res) => {
             });
         }
 
-        // 3️⃣ Get default role (_id) from Role collection
+        // 3️⃣ Fetch default role (student) from roles collection
         const defaultRole = await Role.findOne({ role: "student" });
+
         if (!defaultRole) {
             return res.status(500).json({
                 success: false,
@@ -109,15 +135,16 @@ exports.register = async (req, res) => {
             });
         }
 
-        // 4️⃣ Create user with default role
+        // 4️⃣ Create new user with default role
         const newUser = new User({
             username,
             password,
             mobile,
             email,
-            roles: [defaultRole._id] // assign default role
+            roles: [defaultRole._id] // assign role reference
         });
 
+        // Save user to database
         await newUser.save();
 
         return res.status(201).json({
@@ -126,64 +153,8 @@ exports.register = async (req, res) => {
         });
 
     } catch (err) {
-        logger.error({
-            message: "Register Error",
-            error: err.message,
-            stack: err.stack
-        });
 
-        return res.status(500).json({
-            success: false,
-            message: "Server error!"
-        });
-    }
-};
-// ==========================
-// REGISTER
-// ==========================
-exports.register1 = async (req, res) => {
-    try {
-        const { username, password, confirmPassword, mobile, email } = req.body;
-
-        // 1️⃣ Password match check
-        if (password !== confirmPassword) {
-            return res.status(400).json({
-                success: false,
-                message: "Passwords do not match!"
-            });
-        }
-
-        // 2️⃣ Check if username/email exists
-        const existingUser = await User.findOne({
-            $or: [{ username }, { email }]
-        });
-
-        if (existingUser) {
-            return res.status(400).json({
-                success: false,
-                message: "Username or Email already exists!"
-            });
-        }
-
-        // 4️⃣ Create user
-        const newUser = new User({
-            username,
-            password,
-            mobile,
-            email
-        });
-
-        await newUser.save();
-
-        return res.status(201).json({
-            success: true,
-            message: "User registered successfully!"
-        });
-
-    } catch (err) {
-        //console.error("Register Error:", err);
-
-
+        // Log registration errors
         logger.error({
             message: "Register Error",
             error: err.message,
@@ -201,21 +172,35 @@ exports.register1 = async (req, res) => {
 // ==========================
 // LOGOUT
 // ==========================
+
 exports.logout = (req, res) => {
+
+    // Destroy session stored in server
     req.session.destroy(() => {
+
+        // Clear session cookie in browser
         res.clearCookie("connect.sid");
+
+        // Redirect user to homepage
         res.redirect("/");
     });
 };
 
+
+
 // ==========================
 // FORGOT PASSWORD
 // ==========================
+
 exports.forgotPassword = async (req, res) => {
     try {
+
         const { email } = req.body;
 
+        // Check if user exists with provided email
         const user = await User.findOne({ email });
+
+        // To prevent email enumeration, always return success message
         if (!user) {
             return res.json({
                 success: true,
@@ -223,55 +208,36 @@ exports.forgotPassword = async (req, res) => {
             });
         }
 
-        // 1️⃣ Generate secure token
+        // 1️⃣ Generate secure random reset token
         const token = crypto.randomBytes(32).toString("hex");
 
-        // 2️⃣ Hash token before saving
+        // 2️⃣ Hash token before storing in database
         const hashedToken = crypto
             .createHash("sha256")
             .update(token)
             .digest("hex");
 
-        // 3️⃣ Save hashed token + expiry
+        // 3️⃣ Store hashed token and expiration time
         user.resetPasswordToken = hashedToken;
 
         const expiryMinutes = Number(process.env.EMAIL_EXPIRY_IN_MIN) || 10;
+
         user.resetPasswordExpires =
             Date.now() + expiryMinutes * 60 * 1000;
 
         await user.save();
 
-        // 4️⃣ Create reset URL
+        // 4️⃣ Create password reset URL
         const resetURL = `${process.env.BASE_URL}/reset/${token}`;
 
-        // 5️⃣ Send Email
+        // 5️⃣ Send reset email using Resend
         const resend = new Resend(process.env.RESEND_API_KEY);
 
         await resend.emails.send({
             from: process.env.EMAIL_FROM,
             to: user.email,
             subject: "BioBrain Password Reset",
-            html: `
-        <div style="font-family: Arial, sans-serif; max-width:600px; margin:auto; padding:20px;">
-          <h2 style="color:#1B5E20;">BioBrain Password Reset</h2>
-          <p>Hello ${user.username},</p>
-          <p>You requested to reset your password.</p>
-          <p>This link will expire in ${expiryMinutes} minutes.</p>
-
-          <div style="text-align:center; margin:30px 0;">
-            <a href="${resetURL}"
-               style="background-color:#1B5E20; color:white;
-                      padding:12px 20px; text-decoration:none;
-                      border-radius:5px;">
-              Reset Password
-            </a>
-          </div>
-
-          <p>If you did not request this, please ignore this email.</p>
-          <hr/>
-          <small>© ${new Date().getFullYear()} BioBrain</small>
-        </div>
-      `
+            html: `...`
         });
 
         return res.json({
@@ -280,7 +246,6 @@ exports.forgotPassword = async (req, res) => {
         });
 
     } catch (err) {
-        //console.error("Forgot Password Error:", err);
 
         logger.error({
             message: "Forgot Password Error:",
@@ -298,24 +263,33 @@ exports.forgotPassword = async (req, res) => {
     }
 };
 
+
+
 // ==========================
-// SHOW RESET PAGE
+// SHOW RESET PASSWORD PAGE
 // ==========================
+
 exports.showResetPage = (req, res) => {
+
+    // Render device specific reset page (desktop/mobile)
     res.render(`pages/${getDevice(req)}/reset`, {
         token: req.params.token
     });
 };
 
+
+
 // ==========================
 // RESET PASSWORD
 // ==========================
+
 exports.resetPassword = async (req, res) => {
     try {
+
         const { token } = req.params;
         const { newPassword, confirmPassword } = req.body;
 
-        // 1️⃣ Check passwords match
+        // 1️⃣ Validate password confirmation
         if (newPassword !== confirmPassword) {
             return res.json({
                 success: false,
@@ -323,7 +297,7 @@ exports.resetPassword = async (req, res) => {
             });
         }
 
-        // 2️⃣ Optional: basic strength check
+        // 2️⃣ Basic password strength validation
         if (newPassword.length < 6) {
             return res.json({
                 success: false,
@@ -331,13 +305,13 @@ exports.resetPassword = async (req, res) => {
             });
         }
 
-        // 3️⃣ Hash token before searching
+        // 3️⃣ Hash received token before DB lookup
         const hashedToken = crypto
             .createHash("sha256")
             .update(token)
             .digest("hex");
 
-        // 4️⃣ Find valid user
+        // 4️⃣ Find user with valid reset token and non-expired link
         const user = await User.findOne({
             resetPasswordToken: hashedToken,
             resetPasswordExpires: { $gt: Date.now() }
@@ -350,11 +324,11 @@ exports.resetPassword = async (req, res) => {
             });
         }
 
-        // 5️⃣ Hash new password (if no pre-save hook)
+        // 5️⃣ Hash new password before saving
         const hashedPassword = await bcrypt.hash(newPassword, 10);
         user.password = hashedPassword;
 
-        // 6️⃣ Clear reset fields
+        // 6️⃣ Clear reset token fields
         user.resetPasswordToken = undefined;
         user.resetPasswordExpires = undefined;
 
@@ -366,7 +340,7 @@ exports.resetPassword = async (req, res) => {
         });
 
     } catch (err) {
-        //console.error("Reset Password Error:", err);
+
         logger.error({
             message: "Reset Password Error:",
             error: err.message,
