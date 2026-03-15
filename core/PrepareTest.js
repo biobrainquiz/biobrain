@@ -1,12 +1,12 @@
 class PrepareTest {
-    constructor({ examcode, subjectcode, pageResult, pageno, totalPages, resultsForGraph } = {}) {
+    constructor({ examcode, subjectcode, pageresult, pageno, totalpages, resultsforgraph } = {}) {
 
         this.examcode = examcode;
         this.subjectcode = subjectcode;
-        this.pageResult = pageResult;
+        this.pageresult = pageresult;
         this.pageno = pageno;
-        this.totalPages = totalPages;
-        this.resultsForGraph = resultsForGraph;
+        this.totalpages = totalpages;
+        this.resultsforgraph = resultsforgraph;
     }
 }
 module.exports = PrepareTest;

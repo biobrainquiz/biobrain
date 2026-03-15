@@ -1232,3 +1232,747 @@ Cannot read properties of undefined (reading 'length')
 2026-03-15 17:04:46 [INFO]: GET /css/desktopStyle.css ::1 
 2026-03-15 17:04:48 [INFO]: GET /mocktest/init/E4/S1 ::1 
 2026-03-15 17:04:48 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 17:08:07 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 17:08:07 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 17:08:07 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 17:08:07 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 17:08:10 [INFO]: GET / ::1 
+2026-03-15 17:08:10 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:08:10 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:08:10 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:08:10 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 17:08:10 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 17:08:12 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 17:08:12 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:08:12 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:08:12 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:08:12 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 17:08:12 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 17:10:37 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 17:10:37 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 17:10:37 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 17:10:37 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 17:10:40 [INFO]: GET / ::1 
+2026-03-15 17:10:40 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:10:40 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:10:40 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:10:40 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 17:10:40 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 17:10:41 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 17:10:41 [ERROR]: ReferenceError: totalpages is not defined
+    at new PrepareTest (D:\Projects\BioBrainMdb\core\PrepareTest.js:8:27)
+    at exports.init (D:\Projects\BioBrainMdb\services\mocktestService.js:33:28)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async exports.init (D:\Projects\BioBrainMdb\controllers\mocktestController.js:6:28) 
+2026-03-15 17:10:41 [ERROR]: ReferenceError: examcode is not defined
+    at exports.init (D:\Projects\BioBrainMdb\services\mocktestService.js:49:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async exports.init (D:\Projects\BioBrainMdb\controllers\mocktestController.js:6:28) {"error":"examcode is not defined"}
+2026-03-15 17:11:42 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 17:11:42 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 17:11:42 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 17:11:42 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 17:11:44 [INFO]: GET / ::1 
+2026-03-15 17:11:44 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:11:44 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:11:44 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:11:44 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 17:11:44 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 17:11:46 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 17:11:46 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:11:46 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:11:46 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:11:46 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 17:12:31 [INFO]: GET /keep-session-alive ::1 
+2026-03-15 17:16:23 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 17:16:23 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 17:16:23 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 17:16:23 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 17:16:26 [INFO]: GET / ::1 
+2026-03-15 17:16:26 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:16:26 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:16:26 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:16:26 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 17:16:26 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 17:16:27 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 17:16:27 [INFO]: GET /login ::1 
+2026-03-15 17:16:27 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:16:27 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:16:27 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:16:40 [INFO]: POST /login ::1 
+2026-03-15 17:16:40 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 17:16:41 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:16:41 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:16:41 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:16:41 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 17:16:41 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 17:18:19 [INFO]: GET /keep-session-alive ::1 
+2026-03-15 17:21:41 [INFO]: GET /keep-session-alive ::1 
+2026-03-15 17:22:13 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 17:22:13 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 17:22:13 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 17:22:13 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 17:22:16 [INFO]: GET / ::1 
+2026-03-15 17:22:16 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:22:16 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:22:16 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:22:16 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 17:22:16 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 17:22:17 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 17:22:18 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:22:18 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:22:18 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:22:18 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 17:22:18 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 17:23:19 [INFO]: GET /keep-session-alive ::1 
+2026-03-15 17:23:39 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 17:23:39 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 17:23:39 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 17:23:39 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 17:23:41 [INFO]: GET / ::1 
+2026-03-15 17:23:42 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:23:42 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:23:42 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:23:42 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 17:23:42 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 17:23:43 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 17:23:43 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:23:43 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:23:43 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:23:43 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 17:23:43 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 17:24:02 [INFO]: GET / ::1 
+2026-03-15 17:24:02 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:24:02 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:24:02 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:24:02 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 17:24:03 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 17:24:03 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:24:03 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:24:03 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:24:03 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 17:24:05 [INFO]: GET /topics/E4/S1/U1 ::1 
+2026-03-15 17:24:09 [INFO]: POST /mocktest/createorder ::1 
+2026-03-15 17:24:09 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:24:17 [INFO]: POST /mocktest/submit ::1 
+2026-03-15 17:26:31 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 17:26:31 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 17:26:31 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 17:26:31 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 17:26:33 [INFO]: GET / ::1 
+2026-03-15 17:26:34 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:26:34 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:26:34 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:26:35 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 17:26:35 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:26:35 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:26:35 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:26:36 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 17:26:36 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 17:26:38 [INFO]: GET /topics/E4/S1/U1 ::1 
+2026-03-15 17:26:40 [INFO]: POST /mocktest/createorder ::1 
+2026-03-15 17:26:40 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:26:50 [INFO]: POST /mocktest/submit ::1 
+2026-03-15 17:26:52 [INFO]: GET / ::1 
+2026-03-15 17:26:52 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:26:52 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:26:52 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:26:52 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 17:26:52 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 17:26:54 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 17:26:54 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:26:54 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:26:54 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:26:54 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 17:27:45 [INFO]: GET /topics/E4/S1/U1 ::1 
+2026-03-15 17:27:47 [INFO]: POST /mocktest/createorder ::1 
+2026-03-15 17:27:48 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:28:12 [INFO]: POST /mocktest/submit ::1 
+2026-03-15 17:28:19 [INFO]: GET /keep-session-alive ::1 
+2026-03-15 17:28:23 [INFO]: GET / ::1 
+2026-03-15 17:28:23 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:28:23 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:28:23 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:28:23 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 17:28:23 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 17:28:25 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 17:28:25 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:28:25 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:28:25 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:28:25 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 17:33:19 [INFO]: GET /keep-session-alive ::1 
+2026-03-15 17:33:25 [INFO]: GET /keep-session-alive ::1 
+2026-03-15 17:33:29 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 17:33:29 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 17:33:29 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 17:33:29 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 17:33:30 [INFO]: GET / ::1 
+2026-03-15 17:33:30 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:33:30 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:33:30 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:33:30 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 17:33:30 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 17:33:32 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 17:33:32 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:33:32 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:33:32 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:33:32 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 17:33:32 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 17:37:46 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 17:37:46 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 17:37:46 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 17:37:46 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 17:37:47 [INFO]: GET / ::1 
+2026-03-15 17:37:47 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:37:47 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:37:47 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:37:47 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 17:37:49 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 17:37:49 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:37:49 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:37:49 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:37:49 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 17:37:51 [INFO]: GET /topics/E4/S1/U1 ::1 
+2026-03-15 17:37:53 [INFO]: GET /topics/E4/S1/U1 ::1 
+2026-03-15 17:37:55 [INFO]: POST /mocktest/createorder ::1 
+2026-03-15 17:37:55 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:38:09 [INFO]: POST /mocktest/submit ::1 
+2026-03-15 17:38:11 [INFO]: GET / ::1 
+2026-03-15 17:38:11 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:38:11 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:38:11 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:38:12 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 17:38:13 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:38:13 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:38:13 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:38:13 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 17:38:19 [INFO]: GET /keep-session-alive ::1 
+2026-03-15 17:38:22 [INFO]: GET /topics/E4/S1/U1 ::1 
+2026-03-15 17:38:25 [INFO]: POST /mocktest/createorder ::1 
+2026-03-15 17:38:25 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:38:37 [INFO]: POST /mocktest/submit ::1 
+2026-03-15 17:38:39 [INFO]: GET / ::1 
+2026-03-15 17:38:39 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:38:39 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:38:39 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:38:41 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 17:38:41 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:38:41 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:38:41 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:38:41 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 17:42:18 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 17:42:18 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 17:42:18 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 17:42:18 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 17:42:20 [INFO]: GET / ::1 
+2026-03-15 17:42:21 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:42:21 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:42:21 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:42:21 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 17:42:21 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 17:42:22 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 17:42:22 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:42:22 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:42:22 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:42:22 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 17:42:22 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 17:43:19 [INFO]: GET /keep-session-alive ::1 
+2026-03-15 17:43:49 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 17:43:49 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 17:43:49 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 17:43:49 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 17:43:51 [INFO]: GET / ::1 
+2026-03-15 17:43:51 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:43:51 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:43:51 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:43:51 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 17:43:51 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 17:43:52 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 17:43:52 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:43:52 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:43:52 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:43:52 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 17:43:52 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 17:48:19 [INFO]: GET /keep-session-alive ::1 
+2026-03-15 17:48:52 [INFO]: GET /keep-session-alive ::1 
+2026-03-15 17:53:19 [INFO]: GET /keep-session-alive ::1 
+2026-03-15 17:53:52 [INFO]: GET /keep-session-alive ::1 
+2026-03-15 17:54:45 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 17:54:45 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 17:54:45 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 17:54:45 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 17:54:49 [INFO]: GET / ::1 
+2026-03-15 17:54:49 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:54:49 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:54:49 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:54:49 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 17:54:49 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 17:54:51 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 17:54:51 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:54:51 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:54:51 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:54:51 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 17:54:51 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 17:56:31 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 17:56:32 [INFO]: GET / ::ffff:127.0.0.1 
+2026-03-15 17:56:32 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 17:56:32 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 17:56:32 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 17:56:32 [INFO]: GET /css/desktopStyle.css ::ffff:127.0.0.1 
+2026-03-15 17:56:32 [INFO]: GET /images/biobrain-logo1.png ::ffff:127.0.0.1 
+2026-03-15 17:56:32 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:56:32 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 17:56:32 [INFO]: GET /images/molucule-structure.png ::ffff:127.0.0.1 
+2026-03-15 17:56:33 [INFO]: GET / ::ffff:127.0.0.1 
+2026-03-15 17:56:33 [INFO]: GET /css/desktopStyle.css ::ffff:127.0.0.1 
+2026-03-15 17:56:33 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:56:33 [INFO]: GET /js/navibar.js ::ffff:127.0.0.1 
+2026-03-15 17:56:35 [INFO]: GET /mocktest/init/E4/S1 ::ffff:127.0.0.1 
+2026-03-15 17:56:35 [INFO]: GET /css/desktopStyle.css ::ffff:127.0.0.1 
+2026-03-15 17:56:35 [INFO]: GET /images/biobrain-logo1.png ::ffff:127.0.0.1 
+2026-03-15 17:56:35 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:56:35 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 17:56:46 [INFO]: GET /topics/E4/S1/U1 ::1 
+2026-03-15 17:56:49 [INFO]: POST /mocktest/createorder ::1 
+2026-03-15 17:56:49 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:57:13 [INFO]: POST /mocktest/submit ::1 
+2026-03-15 17:57:14 [INFO]: GET / ::1 
+2026-03-15 17:57:15 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:57:15 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:57:15 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:57:16 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 17:57:17 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 17:57:17 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 17:57:17 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 17:57:17 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 17:58:19 [INFO]: GET /keep-session-alive ::1 
+2026-03-15 18:02:17 [INFO]: GET /keep-session-alive ::1 
+2026-03-15 18:03:02 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 18:03:02 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 18:03:02 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 18:03:02 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 18:03:07 [INFO]: GET / ::1 
+2026-03-15 18:03:07 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:03:07 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:03:07 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:03:08 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 18:03:08 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 18:03:09 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 18:03:09 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:03:09 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:03:09 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:03:10 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 18:03:19 [INFO]: GET /keep-session-alive ::1 
+2026-03-15 18:03:37 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 18:03:37 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 18:03:37 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 18:03:37 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 18:03:40 [INFO]: GET / ::1 
+2026-03-15 18:03:40 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:03:40 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:03:40 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:03:42 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 18:03:42 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:03:42 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:03:42 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:03:42 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 18:03:50 [INFO]: GET /topics/E4/S1/U1 ::1 
+2026-03-15 18:03:52 [INFO]: POST /mocktest/createorder ::1 
+2026-03-15 18:03:52 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:04:01 [INFO]: POST /mocktest/submit ::1 
+2026-03-15 18:04:02 [INFO]: GET / ::1 
+2026-03-15 18:04:02 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:04:02 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:04:02 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:04:04 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 18:04:04 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:04:04 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:04:04 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:04:05 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 18:08:20 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 18:08:20 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 18:08:20 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 18:08:20 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 18:08:20 [INFO]: GET /keep-session-alive ::1 
+2026-03-15 18:08:24 [INFO]: GET / ::1 
+2026-03-15 18:08:24 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:08:24 [INFO]: GET /images/biobrain-logo1.png ::ffff:127.0.0.1 
+2026-03-15 18:08:24 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:08:24 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 18:08:24 [INFO]: GET /images/molucule-structure.png ::ffff:127.0.0.1 
+2026-03-15 18:08:25 [INFO]: GET /mocktest/init/E4/S1 ::ffff:127.0.0.1 
+2026-03-15 18:08:26 [INFO]: GET /css/desktopStyle.css ::ffff:127.0.0.1 
+2026-03-15 18:08:26 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:08:26 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:08:26 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 18:12:03 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 18:12:03 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 18:12:03 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 18:12:03 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 18:12:06 [INFO]: GET / ::1 
+2026-03-15 18:12:06 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:12:06 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:12:06 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:12:09 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 18:12:09 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:12:09 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:12:09 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:12:09 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 18:13:19 [INFO]: GET /keep-session-alive ::1 
+2026-03-15 18:17:09 [INFO]: GET /keep-session-alive ::1 
+2026-03-15 18:18:19 [INFO]: GET /keep-session-alive ::1 
+2026-03-15 18:30:20 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 18:30:20 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 18:30:20 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 18:30:20 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 18:30:23 [INFO]: GET / ::1 
+2026-03-15 18:30:23 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:30:23 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:30:23 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:30:23 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 18:30:23 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 18:30:24 [INFO]: GET /favicon.ico ::1 
+2026-03-15 18:30:25 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 18:30:25 [INFO]: GET /login ::1 
+2026-03-15 18:30:25 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:30:25 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:30:25 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:30:41 [INFO]: POST /login ::1 
+2026-03-15 18:30:41 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 18:30:41 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:30:41 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:30:41 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:30:41 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 18:30:55 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:30:55 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-15 18:31:39 [INFO]: GET / ::1 
+2026-03-15 18:31:39 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:31:39 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:31:39 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:31:39 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 18:31:39 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 18:31:42 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:31:42 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-15 18:31:46 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 18:31:46 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-15 18:31:46 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:31:46 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:31:46 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:31:46 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 18:32:57 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 18:32:57 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 18:32:57 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 18:32:57 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 18:33:00 [INFO]: GET / ::1 
+2026-03-15 18:33:00 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:33:00 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:33:00 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:33:02 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 18:33:03 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:33:03 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:33:03 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:33:03 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 18:38:03 [INFO]: GET /keep-session-alive ::1 
+2026-03-15 18:38:30 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 18:38:30 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 18:38:30 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 18:38:30 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 18:38:37 [INFO]: GET / ::1 
+2026-03-15 18:38:37 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:38:37 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:38:37 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:38:37 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 18:38:37 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 18:38:38 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 18:38:39 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:38:39 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 18:39:30 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 18:39:30 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 18:39:30 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 18:39:30 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 18:39:34 [INFO]: GET / ::1 
+2026-03-15 18:39:35 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:39:35 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:39:35 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:39:35 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 18:39:35 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 18:39:36 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 18:39:37 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:39:37 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:39:37 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:39:37 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 18:42:47 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 18:42:47 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 18:42:47 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 18:42:47 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 18:42:51 [INFO]: GET / ::1 
+2026-03-15 18:42:52 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:42:52 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:42:52 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:42:52 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 18:42:52 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 18:42:53 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 18:42:53 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:42:53 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:42:53 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:42:53 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 18:43:39 [INFO]: GET /keep-session-alive ::1 
+2026-03-15 18:47:15 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 18:47:15 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 18:47:15 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 18:47:15 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 18:47:17 [INFO]: GET / ::1 
+2026-03-15 18:47:17 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:47:17 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:47:17 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:47:17 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 18:47:17 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 18:47:19 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 18:47:19 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:47:19 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:47:19 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:47:20 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 18:48:39 [INFO]: GET /keep-session-alive ::1 
+2026-03-15 18:49:24 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 18:49:24 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 18:49:24 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 18:49:24 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 18:49:26 [INFO]: GET / ::1 
+2026-03-15 18:49:26 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:49:26 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:49:26 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:49:28 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 18:49:28 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:49:28 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:49:28 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:49:28 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 18:50:53 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 18:50:53 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 18:50:53 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 18:50:53 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 18:50:54 [INFO]: GET / ::1 
+2026-03-15 18:50:54 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:50:54 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:50:54 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:50:54 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 18:50:54 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 18:50:58 [INFO]: GET / ::1 
+2026-03-15 18:50:58 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:50:58 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:50:58 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:51:00 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 18:51:00 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:51:00 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:51:00 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:51:00 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 18:52:50 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 18:52:50 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 18:52:50 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 18:52:50 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 18:52:52 [INFO]: GET / ::1 
+2026-03-15 18:52:52 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:52:52 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:52:52 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:52:52 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 18:52:52 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 18:52:54 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 18:52:54 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 18:52:54 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 18:52:54 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 18:52:54 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 18:53:39 [INFO]: GET /keep-session-alive ::1 
+2026-03-15 19:08:11 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 19:08:11 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 19:08:11 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 19:08:11 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 19:08:37 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 19:08:39 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 19:08:39 [INFO]: GET /favicon.ico ::1 
+2026-03-15 19:08:40 [INFO]: GET / ::1 
+2026-03-15 19:08:41 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 19:08:41 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 19:08:41 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 19:08:41 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 19:08:41 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 19:08:43 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 19:08:43 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 19:08:43 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 19:08:43 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 19:08:43 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 19:08:43 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 19:08:44 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 19:10:15 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 19:10:15 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 19:10:15 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 19:10:15 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 19:10:18 [INFO]: GET / ::1 
+2026-03-15 19:10:18 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 19:10:18 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 19:10:18 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 19:10:18 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 19:10:18 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 19:10:19 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 19:10:20 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 19:10:20 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 19:10:20 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 19:10:20 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 19:10:40 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 19:10:40 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 19:10:40 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 19:10:40 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 19:10:43 [INFO]: GET / ::1 
+2026-03-15 19:10:43 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 19:10:43 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 19:10:43 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 19:10:44 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 19:10:45 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 19:10:45 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 19:10:45 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 19:10:45 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 19:12:21 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 19:12:21 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 19:12:21 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 19:12:21 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 19:12:23 [INFO]: GET / ::1 
+2026-03-15 19:12:23 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 19:12:23 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 19:12:23 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 19:12:23 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 19:12:23 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 19:12:25 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 19:12:25 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 19:12:25 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 19:12:25 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 19:12:25 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 19:12:51 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 19:12:51 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 19:12:51 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 19:12:51 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 19:12:53 [INFO]: GET / ::1 
+2026-03-15 19:12:53 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 19:12:54 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 19:12:54 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 19:12:55 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 19:12:56 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 19:12:56 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 19:12:56 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 19:12:56 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 19:13:10 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 19:13:10 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 19:13:10 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 19:13:10 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 19:13:12 [INFO]: GET / ::1 
+2026-03-15 19:13:12 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 19:13:12 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 19:13:12 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 19:13:14 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 19:13:14 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 19:13:14 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 19:13:14 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 19:13:14 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 19:13:46 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 19:13:46 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 19:13:46 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 19:13:46 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 19:13:46 [INFO]: GET /keep-session-alive ::1 
+2026-03-15 19:13:48 [INFO]: GET / ::1 
+2026-03-15 19:13:48 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 19:13:48 [INFO]: GET /images/biobrain-logo1.png ::ffff:127.0.0.1 
+2026-03-15 19:13:48 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 19:13:50 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 19:13:51 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 19:13:51 [INFO]: GET /images/biobrain-logo1.png ::ffff:127.0.0.1 
+2026-03-15 19:13:51 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 19:13:51 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 19:16:04 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 19:16:04 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 19:16:04 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 19:16:04 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 19:16:07 [INFO]: GET / ::1 
+2026-03-15 19:16:07 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 19:16:07 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 19:16:07 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 19:16:07 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 19:16:07 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 19:16:08 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 19:16:08 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 19:16:08 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 19:16:08 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 19:16:08 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 19:16:28 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 19:16:28 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 19:16:28 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 19:16:28 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 19:16:29 [INFO]: GET / ::1 
+2026-03-15 19:16:29 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 19:16:29 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 19:16:29 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 19:16:31 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 19:16:31 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 19:16:31 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 19:16:31 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 19:16:31 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 19:18:44 [INFO]: GET /keep-session-alive ::1 
+2026-03-15 19:20:47 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 19:20:47 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-15 19:20:48 [INFO]: GET / ::1 
+2026-03-15 19:20:48 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-15 19:20:48 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 19:20:48 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 19:20:48 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 19:20:48 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 19:20:48 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 19:20:50 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 19:20:51 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-15 19:20:51 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 19:20:51 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 19:20:51 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 19:20:51 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 19:22:43 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 19:22:43 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 19:22:43 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 19:22:43 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 19:22:44 [INFO]: GET / ::1 
+2026-03-15 19:22:44 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 19:22:44 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 19:22:44 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 19:22:44 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-15 19:22:45 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 19:22:45 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 19:22:48 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 19:22:48 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 19:22:48 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 19:22:48 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 19:22:49 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 19:23:05 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 19:23:05 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-15 19:23:41 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 19:23:41 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 19:23:41 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 19:23:41 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 19:23:44 [INFO]: GET / ::1 
+2026-03-15 19:23:44 [INFO]: GET /.well-known/appspecific/com.chrome.devtools.json ::1 
+2026-03-15 19:23:44 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 19:23:44 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 19:23:44 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 19:23:44 [INFO]: GET /keep-session-alive ::1 
+2026-03-15 19:23:47 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 19:23:47 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 19:23:47 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 19:23:47 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 19:23:48 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-15 19:23:48 [INFO]: GET /units/E4/S1 ::1 
+2026-03-15 19:24:40 [INFO]: 🚀 Server running on port 3000 
+2026-03-15 19:24:40 [INFO]: ✅ Connected to MongoDB 
+2026-03-15 19:24:40 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-15 19:24:40 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-15 19:24:41 [INFO]: GET / ::1 
+2026-03-15 19:24:41 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 19:24:41 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 19:24:41 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 19:24:41 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-15 19:24:43 [INFO]: GET /mocktest/init/E4/S1 ::1 
+2026-03-15 19:24:44 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-15 19:24:44 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-15 19:24:44 [INFO]: GET /js/navibar.js ::1 
+2026-03-15 19:24:44 [INFO]: GET /units/E4/S1 ::1 

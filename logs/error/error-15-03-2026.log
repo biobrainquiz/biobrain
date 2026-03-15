@@ -79,3 +79,12 @@ Cannot read properties of undefined (reading 'length')
     at ServerResponse.render (D:\Projects\BioBrainMdb\node_modules\express\lib\response.js:923:7)
     at exports.createOrder (D:\Projects\BioBrainMdb\controllers\mocktestController.js:19:16)
     at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\quiz.ejs:178\n    176|             <%= examSession.examName %> &gt; <%= examSession.subjectName %> &gt;\r\n    177|                 <span class=\"truncate\" title=\"<%= examSession.unitName %>\">\r\n >> 178|                   <%= examSession.unitName.length> 15 ? examSession.unitName.slice(0, 15) + '...' : examSession.unitName\r\n    179|                     %>\r\n    180|                 </span> &gt;\r\n    181|                 <span class=\"truncate\" title=\"<%= examSession.topicName %>\">\r\n\nCannot read properties of undefined (reading 'length')"}
+2026-03-15 17:10:41 [ERROR]: ReferenceError: totalpages is not defined
+    at new PrepareTest (D:\Projects\BioBrainMdb\core\PrepareTest.js:8:27)
+    at exports.init (D:\Projects\BioBrainMdb\services\mocktestService.js:33:28)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async exports.init (D:\Projects\BioBrainMdb\controllers\mocktestController.js:6:28) 
+2026-03-15 17:10:41 [ERROR]: ReferenceError: examcode is not defined
+    at exports.init (D:\Projects\BioBrainMdb\services\mocktestService.js:49:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async exports.init (D:\Projects\BioBrainMdb\controllers\mocktestController.js:6:28) {"error":"examcode is not defined"}

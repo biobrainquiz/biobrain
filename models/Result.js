@@ -39,7 +39,8 @@ const ResultSchema = new mongoose.Schema({
   topiccode: { type: String },
   topicname: { type: String },
   testcode: { type: String },
-
+  testcode: { type: String },
+  difficulty: { type: String, required: true,  enum: ["easy", "hard"] },
 
   questions: [questionAttemptSchema],
   questionscount: { type: Number },

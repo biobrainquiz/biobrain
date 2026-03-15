@@ -6,7 +6,7 @@ class ExamSession {
         this.subjectcode = subjectcode;
         this.unitcode = unitcode;
         this.topiccode = topiccode;
-       
+
         this.difficulty = difficulty;
 
         this.userid = null;
@@ -61,22 +61,26 @@ class ExamSession {
         this.questions.forEach(q => {
             const userans = this.answers[q._id];
 
-            if (userans) {
+            if (userans !== undefined && userans !== null) {
                 if (userans == q.answer) {
-                    this.finalscore += q.marks;
                     this.right++;
                 } else {
                     this.wrong++;
                 }
             }
         });
+
         this.skipped = this.questionscount - this.attempted;
+
         const negativemarking = 0; // example negative marking per wrong answer 
         this.positivemarks = this.right; // can multiply by marks per question
         this.negativemarks = this.wrong * negativemarking;
+
         this.finalscore = this.positivemarks - this.negativemarks;
-        this.percentage = (this.finalscore / this.questionscount) * 100;
-        this.accuracy = this.attempted ? (this.right / this.attempted) * 100 : 0;
+
+        // ✅ Round to nearest integer
+        this.percentage = Math.round((this.finalscore / this.questionscount) * 100);
+        this.accuracy = this.attempted ? Math.round((this.right / this.attempted) * 100) : 0;
     }
 
     getExampaperCode() {

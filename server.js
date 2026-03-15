@@ -46,7 +46,6 @@ const connectDB = require("./config/db");
 /* =========================================
    DATABASE MODELS
 ========================================= */
-const QuizResult = require("./models/QuizResult");
 const Question = require("./models/Question");
 const Unit = require("./models/Unit");
 const Topic = require("./models/Topic");

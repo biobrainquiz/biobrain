@@ -3,7 +3,7 @@ const ExamSession = require("./ExamSession");
 
 const Result = require("../models/Result");
 const Question = require("../models/Question");
-const QuizResult = require("../models/QuizResult");
+//const QuizResult = require("../models/QuizResult");
 const Attempt = require("../models/Attempt");
 
 const logger = require("../utils/logger");
@@ -38,7 +38,7 @@ exports.init = async (req, res) => {
       totalpages,
       resultsforgraph
     });
-
+    console.log(prepareTestObj);
     return prepareTestObj;
 
   } catch (err) {
@@ -104,7 +104,8 @@ exports.createOrder = async (req, res) => {
     examSessionObj.subjectname = await getSubjectName(examcode, subjectcode);
     examSessionObj.unitname = await getUnitName(examcode, subjectcode, unitcode);
     examSessionObj.topicname = await getTopicName(examcode, subjectcode, unitcode, topiccode);
-   
+    examSessionObj.difficulty = difficulty;
+
     // 1️⃣ Capture client IP
     const ipaddress = (req.headers['x-forwarded-for'] || req.socket.remoteAddress || '')
       .split(',')[0]
@@ -228,7 +229,7 @@ exports.submit = async (req, res) => {
     await SaveResult(examSessionObj)
 
     // ✅ Save result in DB
-    const newResult = new QuizResult({
+    /*const newResult = new QuizResult({
       sno,
       examdate: examSessionObj.examstartedat,
       examtime: examSessionObj.examendedat,
@@ -244,8 +245,8 @@ exports.submit = async (req, res) => {
       wrong: examSessionObj.wrong,
       score: examSessionObj.finalscore
     });
+    await newResult.save();*/
 
-    await newResult.save();
     await UpdateAttemptedTable(examSessionObj.userid, examSessionObj.exampapercode, examSessionObj.questions);
     return examSessionObj;
   } catch (err) {
@@ -273,7 +274,6 @@ async function UpdateAttemptedTable(userid, exampapercode, questions) {
 
 async function SaveResult(examSessionObj) {
 
-  console.log(examSessionObj);
   const answers = examSessionObj.answers || {};
 
   const resultQuestions = examSessionObj.questions.map(q => {
@@ -319,6 +319,7 @@ async function SaveResult(examSessionObj) {
     topiccode: examSessionObj.topiccode,
     topicname: examSessionObj.topicname,
     testcode: examSessionObj.exampapercode,
+    difficulty: examSessionObj.difficulty,
     attempted: examSessionObj.attempted,
     right: examSessionObj.right,
     wrong: examSessionObj.wrong,
@@ -340,5 +341,5 @@ async function SaveResult(examSessionObj) {
     topicstats: examSessionObj.topicstats,
     unitstats: examSessionObj.unitstats,
   });
- await result.save();
+  await result.save();
 }
