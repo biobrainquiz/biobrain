@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/desktopStyle.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         body {
             background: #f4f6f9;
@@ -281,6 +282,23 @@
             width: 100% !important;
             max-height: 420px;
         }
+
+        .action-icons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .action-icons a {
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .action-icons a:hover {
+            transform: scale(1.2);
+        }
     </style>
 </head>
 
@@ -298,7 +316,7 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Attempt #</th>
+                                    <!--<th>Attempt #</th>-->
                                     <th>Date</th>
                                     <th>Exam</th>
                                     <th>Subject</th>
@@ -312,78 +330,90 @@
                                     <th>Wrong</th>
                                     <th>Accuracy</th>
                                     <th>Percentage</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                <% prepareTestObj.pageresult.forEach((q,index)=>{ %>
+                                <% prepareTestObj.pageresult.forEach((r,index)=>{ %>
                                     <tr>
-                                        <td>
+                                        <!--<td>
                                             <%= index+1 %>
+                                        </td>-->
+                                        <td>
+                                            <%= new Date(r.createdAt).toLocaleString('en-GB', { day: '2-digit' ,
+                                                month: 'short' , year: 'numeric' , hour: 'numeric' , minute: '2-digit' ,
+                                                hour12: true }) %>
                                         </td>
                                         <td>
-                                            <%= new Date(q.createdAt).toLocaleDateString() %>
-                                                <%= new Date(q.createdAt).toLocaleTimeString([], { hour: '2-digit' ,
-                                                    minute: '2-digit' }) %>
+                                            <%= r.examname %>
                                         </td>
                                         <td>
-                                            <%= q.examname %>
-                                        </td>
-                                        <td>
-                                            <%= q.subjectname %>
+                                            <%= r.subjectname %>
                                         </td>
 
                                         <!-- Truncated unitName with tooltip -->
-                                        <td title="<%= q.unitname %>">
-                                            <%= q.unitname.length> 15 ? q.unitname.slice(0,15) + '...' : q.unitname %>
+                                        <td title="<%= r.unitname %>">
+                                            <%= r.unitname.length> 15 ? r.unitname.slice(0,15) + '...' : r.unitname %>
                                         </td>
 
                                         <!-- Truncated topicName with tooltip -->
-                                        <td title="<%= q.topicname %>">
-                                            <%= q.topicname.length> 20 ? q.topicname.slice(0,20) + '...' : q.topicname
+                                        <td title="<%= r.topicname %>">
+                                            <%= r.topicname.length> 20 ? r.topicname.slice(0,20) + '...' : r.topicname
                                                 %>
                                         </td>
                                         <td>
-                                            <%= q.difficulty %>
+                                            <%= r.difficulty %>
                                         </td>
                                         <td>
-                                            <%= q.questionscount %>
+                                            <%= r.questionscount %>
                                         </td>
                                         <td>
-                                            <%= q.attempted %>
+                                            <%= r.attempted %>
                                         </td>
                                         <td>
-                                            <%= q.skipped %>
+                                            <%= r.skipped %>
                                         </td>
                                         <td>
-                                            <%= q.right %>
+                                            <%= r.right %>
                                         </td>
                                         <td>
-                                            <%= q.wrong %>
+                                            <%= r.wrong %>
                                         </td>
 
                                         <td>
-                                            <% if (q.accuracy>= 70) { %>
+                                            <% if (r.accuracy>= 70) { %>
                                                 <span class="badge-green">
-                                                    <%= q.accuracy %>%
+                                                    <%= r.accuracy %>%
                                                 </span>
                                                 <% } else { %>
                                                     <span class="badge-red">
-                                                        <%= q.accuracy %>%
+                                                        <%= r.accuracy %>%
                                                     </span>
                                                     <% } %>
                                         </td>
 
                                         <td>
-                                            <% if (q.percentage>= 70) { %>
+                                            <% if (r.percentage>= 70) { %>
                                                 <span class="badge-green">
-                                                    <%= q.percentage %>%
+                                                    <%= r.percentage %>%
                                                 </span>
                                                 <% } else { %>
                                                     <span class="badge-red">
-                                                        <%= q.percentage %>%
+                                                        <%= r.percentage %>%
                                                     </span>
                                                     <% } %>
+                                        </td>
+                                        <td class="action-icons">
+
+                                            <a href="/mocktest/result/pdf/<%= r._id %>" title="Download PDF">
+                                                <i class="fa-solid fa-file-pdf"></i>
+                                            </a>
+
+                                            <a href="/mocktest/result/email/<%= r._id %>" title="Send Email">
+                                                <i class="fa-solid fa-envelope"></i>
+                                            </a>
+
                                         </td>
                                     </tr>
                                     <% }) %>
@@ -397,7 +427,7 @@
 
                         <!-- Previous -->
                         <% if(prepareTestObj.pageno> 1){ %>
-                            <a href="?page=<%= prepareTestObj.pageno - 1 %>">⬅ Previous</a>
+                            <a href="?pageno=<%= prepareTestObj.pageno - 1 %>">⬅ Previous</a>
                             <% } else { %>
                                 <span class="disabled">⬅ Previous</span>
                                 <% } %>
@@ -410,7 +440,7 @@
                                                 <%= i %>
                                             </span>
                                             <% } else { %>
-                                                <a href="?page=<%= i %>">
+                                                <a href="?pageno=<%= i %>">
                                                     <%= i %>
                                                 </a>
                                                 <% } %>
@@ -419,7 +449,8 @@
 
                                                         <!-- Next -->
                                                         <% if(prepareTestObj.pageno < prepareTestObj.totalpages){ %>
-                                                            <a href="?page=<%= prepareTestObj.pageno + 1 %>">Next ➡</a>
+                                                            <a href="?pageno=<%= prepareTestObj.pageno + 1 %>">Next
+                                                                ➡</a>
                                                             <% } else { %>
                                                                 <span class="disabled">Next ➡</span>
                                                                 <% } %>
@@ -608,13 +639,13 @@
                         const xValues = Array.from({ length: n }, (_, i) => i + 1);
 
                         // Accuracy data
-                        const accuracyData = [<% prepareTestObj.resultsforgraph.forEach(function (q, index) { %>
-    <%= Math.round(Number(q.accuracy)) %><%= index < prepareTestObj.resultsforgraph.length - 1 ? "," : "" %>
+                        const accuracyData = [<% prepareTestObj.resultsforgraph.forEach(function (r, index) { %>
+    <%= Math.round(Number(r.accuracy)) %><%= index < prepareTestObj.resultsforgraph.length - 1 ? "," : "" %>
   <% }) %>];
 
                         // Percentage data (replace with your real percentage if available)
-                        const percentageData = [<% prepareTestObj.resultsforgraph.forEach(function (q, index) { %>
-    <%= Math.round(Number(q.percentage)) %><%= index < prepareTestObj.resultsforgraph.length - 1 ? "," : "" %>
+                        const percentageData = [<% prepareTestObj.resultsforgraph.forEach(function (r, index) { %>
+    <%= Math.round(Number(r.percentage)) %><%= index < prepareTestObj.resultsforgraph.length - 1 ? "," : "" %>
   <% }) %>];
 
                         let chart = null;

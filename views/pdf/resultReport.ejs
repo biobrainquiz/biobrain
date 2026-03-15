@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<style>
+
+body{
+font-family: "Segoe UI", Arial, sans-serif;
+margin:40px;
+color:#2c3e50;
+}
+
+/* HEADER */
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:4px solid #2f80ed;
+padding-bottom:10px;
+margin-bottom:25px;
+}
+
+.logo{
+font-size:26px;
+font-weight:bold;
+color:#2f80ed;
+}
+
+.report-title{
+text-align:right;
+}
+
+.report-title h2{
+margin:0;
+font-size:20px;
+}
+
+.report-title p{
+margin:0;
+font-size:11px;
+color:#7f8c8d;
+}
+
+/* SECTION */
+
+.section{
+margin-bottom:28px;
+}
+
+.section-title{
+font-size:16px;
+font-weight:bold;
+border-left:5px solid #2f80ed;
+padding-left:8px;
+margin-bottom:12px;
+}
+
+/* INFO GRID */
+
+.info-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+font-size:13px;
+}
+
+.info-box{
+background:#f9fafc;
+border:1px solid #e6e9ef;
+padding:8px 10px;
+border-radius:5px;
+}
+
+/* SCORE CARDS */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
+margin-top:10px;
+}
+
+.card{
+border-radius:6px;
+padding:12px;
+text-align:center;
+border:1px solid #e6e6e6;
+}
+
+.card h3{
+margin:0;
+font-size:20px;
+}
+
+.card p{
+margin:3px 0;
+font-size:11px;
+}
+
+.blue{background:#ecf4ff}
+.green{background:#eafaf1}
+.orange{background:#fff5e6}
+.red{background:#fdecea}
+
+/* PERFORMANCE BARS */
+
+.bar{
+height:12px;
+border-radius:6px;
+background:#e5e7eb;
+overflow:hidden;
+margin-top:6px;
+}
+
+.bar-fill{
+height:100%;
+}
+
+.bar-green{background:#27ae60}
+.bar-red{background:#e74c3c}
+.bar-blue{background:#3498db}
+
+/* QUESTION BLOCK */
+
+.question-block{
+margin-top:18px;
+padding:14px;
+border:1px solid #e2e8f0;
+border-radius:6px;
+background:#fafbfc;
+page-break-inside:avoid;
+}
+
+.question-title{
+font-weight:600;
+margin-bottom:10px;
+font-size:14px;
+}
+
+/* OPTIONS */
+
+.option-line{
+display:flex;
+align-items:center;
+padding:3px 0;
+font-size:13px;
+}
+
+.option-text{
+min-width:350px;
+}
+
+.tag{
+margin-left:18px;
+font-weight:600;
+}
+
+.correct{
+color:#1e8449;
+}
+
+.wrong{
+color:#c0392b;
+}
+
+.correct-tag{
+color:#1e8449;
+}
+
+.wrong-tag{
+color:#c0392b;
+}
+
+/* ANSWER SUMMARY */
+
+.answer-summary{
+margin-top:8px;
+font-size:12px;
+}
+
+.skipped{
+color:#7f8c8d;
+font-weight:bold;
+}
+
+/* FOOTER */
+
+.footer{
+text-align:center;
+margin-top:40px;
+font-size:10px;
+color:#7f8c8d;
+border-top:1px solid #ddd;
+padding-top:10px;
+}
+
+.option-line{
+    padding:4px 0;
+    font-size:13px;
+}
+
+.option-text{
+    display:inline;
+}
+
+.tag{
+    margin-left:6px;
+    font-weight:600;
+}
+
+.correct-tag{
+    color:#1e8449;
+}
+
+.wrong-tag{
+    color:#c0392b;
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<div class="header">
+
+<div class="logo">
+BioBrain
+</div>
+
+<div class="report-title">
+<h2>Performance Analytics Report</h2>
+<p>Generated on <%= new Date().toLocaleString() %></p>
+</div>
+
+</div>
+
+
+<!-- USER INFO -->
+
+<div class="section">
+
+<div class="section-title">Candidate Information</div>
+
+<div class="info-grid">
+
+<div class="info-box">
+<b>Name:</b> <%= result.username %>
+</div>
+
+<div class="info-box">
+<b>Email:</b> <%= result.useremail %>
+</div>
+
+<div class="info-box">
+<b>User ID:</b> <%= result.userid %>
+</div>
+
+<div class="info-box">
+<b>Attempt #:</b> <%= result.attemptnumber %>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- TEST INFO -->
+
+<div class="section">
+
+<div class="section-title">Test Information</div>
+
+<div class="info-grid">
+
+<div class="info-box"><b>Exam:</b> <%= result.examname %></div>
+<div class="info-box"><b>Subject:</b> <%= result.subjectname %></div>
+<div class="info-box"><b>Unit:</b> <%= result.unitname %></div>
+<div class="info-box"><b>Topic:</b> <%= result.topicname %></div>
+<div class="info-box"><b>Difficulty:</b> <%= result.difficulty %></div>
+<div class="info-box"><b>Test Code:</b> <%= result.testcode %></div>
+<div class="info-box"><b>Started:</b> <%= new Date(result.teststartedat).toLocaleString() %></div>
+<div class="info-box"><b>Ended:</b> <%= new Date(result.testendedat).toLocaleString() %></div>
+
+</div>
+
+</div>
+
+
+<!-- PERFORMANCE SUMMARY -->
+
+<div class="section">
+
+<div class="section-title">Performance Summary</div>
+
+<div class="cards">
+
+<div class="card blue">
+<h3><%= result.finalscore %></h3>
+<p>Final Score</p>
+</div>
+
+<div class="card green">
+<h3><%= result.accuracy.toFixed(2) %>%</h3>
+<p>Accuracy</p>
+</div>
+
+<div class="card orange">
+<h3><%= result.percentage.toFixed(2) %>%</h3>
+<p>Percentage</p>
+</div>
+
+<div class="card red">
+<h3><%= result.wrong %></h3>
+<p>Wrong Answers</p>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PERFORMANCE BARS -->
+
+<div class="section">
+
+<div class="section-title">Performance Breakdown</div>
+
+<b>Correct Answers</b>
+
+<div class="bar">
+<div class="bar-fill bar-green" style="width:<%= (result.right/result.questionscount)*100 %>%"></div>
+</div>
+
+<br>
+
+<b>Wrong Answers</b>
+
+<div class="bar">
+<div class="bar-fill bar-red" style="width:<%= (result.wrong/result.questionscount)*100 %>%"></div>
+</div>
+
+<br>
+
+<b>Skipped</b>
+
+<div class="bar">
+<div class="bar-fill bar-blue" style="width:<%= (result.skipped/result.questionscount)*100 %>%"></div>
+</div>
+
+</div>
+
+
+<!-- QUESTION ANALYSIS -->
+
+<div class="section">
+
+<div class="section-title">Question Wise Analysis</div>
+
+<% result.questions.forEach((q,i)=>{ %>
+
+<div class="question-block">
+
+<div class="question-title">
+Q<%= i+1 %>. <%= q.question %>
+</div>
+
+
+<div class="option-line">
+<span class="option-text">1. <%= q.opt1 %></span>
+
+<% if(q.correctanswer===1){ %>
+<span class="tag correct-tag">✔ Correct</span>
+<% } %>
+
+<% if(q.useranswer===1 && q.correctanswer!==1 && q.useranswer!==-1){ %>
+<span class="tag wrong-tag">✘ Your Answer</span>
+<% } %>
+</div>
+
+
+<div class="option-line">
+<span class="option-text">2. <%= q.opt2 %></span>
+
+<% if(q.correctanswer===2){ %>
+<span class="tag correct-tag">✔ Correct</span>
+<% } %>
+
+<% if(q.useranswer===2 && q.correctanswer!==2 && q.useranswer!==-1){ %>
+<span class="tag wrong-tag">✘ Your Answer</span>
+<% } %>
+</div>
+
+
+<div class="option-line">
+<span class="option-text">3. <%= q.opt3 %></span>
+
+<% if(q.correctanswer===3){ %>
+<span class="tag correct-tag">✔ Correct</span>
+<% } %>
+
+<% if(q.useranswer===3 && q.correctanswer!==3 && q.useranswer!==-1){ %>
+<span class="tag wrong-tag">✘ Your Answer</span>
+<% } %>
+</div>
+
+
+<div class="option-line">
+<span class="option-text">4. <%= q.opt4 %></span>
+
+<% if(q.correctanswer===4){ %>
+<span class="tag correct-tag">✔ Correct</span>
+<% } %>
+
+<% if(q.useranswer===4 && q.correctanswer!==4 && q.useranswer!==-1){ %>
+<span class="tag wrong-tag">✘ Your Answer</span>
+<% } %>
+</div>
+
+
+<div class="answer-summary">
+
+<b>Your Answer:</b>
+
+<% if(q.useranswer===-1){ %>
+<span class="skipped">Unattempted</span>
+<% } else { %>
+Option <%= q.useranswer %>
+<% } %>
+
+&nbsp;&nbsp;
+
+<b>Correct Answer:</b> Option <%= q.correctanswer %>
+
+&nbsp;&nbsp;
+
+<b>Time:</b> <%= q.timetaken %> sec
+
+</div>
+
+</div>
+
+<% }) %>
+
+</div>
+
+
+<div class="footer">
+BioBrain Learning Analytics Platform
+</div>
+
+</body>
+</html>

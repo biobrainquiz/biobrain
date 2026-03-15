@@ -22,7 +22,7 @@ exports.init = async (req, res) => {
 
     const { examcode, subjectcode } = req.params;
     const username = req.session?.user?.username;
-    const pageno = 1;
+    const pageno = parseInt(req.query.pageno) || 1;
 
     const { pageresult, totalpages } =
       await getResultsForPaging(username, examcode, subjectcode, pageno);
@@ -38,7 +38,6 @@ exports.init = async (req, res) => {
       totalpages,
       resultsforgraph
     });
-    console.log(prepareTestObj);
     return prepareTestObj;
 
   } catch (err) {
@@ -73,7 +72,7 @@ async function getResultsForPaging(username, examcode, subjectcode, pageno) {
     username,
     examcode,
     subjectcode
-  }).sort({ createdat: 1 })
+  }).sort({ createdat: -1 })
     .skip((pageno - 1) * pagelimit)
     .limit(pagelimit)
     .lean();
@@ -81,7 +80,7 @@ async function getResultsForPaging(username, examcode, subjectcode, pageno) {
   return { pageresult, totalpages };
 }
 
-async function getResultsForGraph(username, examcode, subjectcode, pageno) {
+async function getResultsForGraph(username, examcode, subjectcode) {
   const resultsForGraph = await Result.find({
     username,
     examcode,

@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const requireLogin = require("../middleware/requireLogin");
 const mocktestController = require("../controllers/mocktestController");
+const resultController = require("../controllers/resultController");
 
 // initalize mocktest 
 router.get(
@@ -9,7 +10,6 @@ router.get(
   requireLogin,
   mocktestController.init
 );
-
 
 // Create mocktest Order and Start mocktest
 router.post(
@@ -25,5 +25,9 @@ router.post(
   mocktestController.submit
 );
 
+// Download PDF
+router.get(
+  "/mocktest/result/pdf/:mocktestid",
+  resultController.downloadResultPdf);
 
 module.exports = router;
