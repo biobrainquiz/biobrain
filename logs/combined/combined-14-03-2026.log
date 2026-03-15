@@ -2,3 +2,21 @@
 2026-03-14 18:42:29 [INFO]: ✅ Connected to MongoDB 
 2026-03-14 18:42:29 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
 2026-03-14 18:42:29 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-14 18:53:46 [INFO]: 🚀 Server running on port 3000 
+2026-03-14 18:53:46 [INFO]: ✅ Connected to MongoDB 
+2026-03-14 18:53:46 [INFO]: ✅ Forced seeding of Exam Database disabled. Skipping... 
+2026-03-14 18:53:46 [INFO]: ✅ Forced seeding of UserRoles Database disabled. Skipping... 
+2026-03-14 18:53:49 [INFO]: GET / ::1 
+2026-03-14 18:53:49 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-14 18:53:49 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-14 18:53:49 [INFO]: GET /js/navibar.js ::1 
+2026-03-14 18:53:49 [INFO]: GET /images/dna-pattern.png ::1 
+2026-03-14 18:53:49 [INFO]: GET /images/molucule-structure.png ::1 
+2026-03-14 18:53:49 [INFO]: GET /favicon.ico ::1 
+2026-03-14 18:53:58 [INFO]: GET /quiz/prepare/E4/S1 ::1 
+2026-03-14 18:53:58 [INFO]: GET /login ::1 
+2026-03-14 18:53:58 [INFO]: GET /css/desktopStyle.css ::1 
+2026-03-14 18:53:58 [INFO]: GET /images/biobrain-logo1.png ::1 
+2026-03-14 18:53:58 [INFO]: GET /js/navibar.js ::1 
+2026-03-14 18:58:59 [INFO]: GET /keep-session-alive ::1 
+2026-03-14 19:03:59 [INFO]: GET /keep-session-alive ::1 

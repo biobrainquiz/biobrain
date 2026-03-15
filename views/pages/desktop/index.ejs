@@ -30,22 +30,22 @@
                 <div class="card">
                     <h4>NEET</h4>
                     <p>Zoology</p>
-                    <button onclick="startQuiz('E1','S1')">Start</button>
+                    <button onclick="mockTest('E1','S1')">Start</button>
                 </div>
                 <div class="card">
                     <h4>DL/JL/Asst. Prof.</h4>
                     <p>Zoology</p>
-                    <button onclick="startQuiz('E2','S1')">Start</button>
+                    <button onclick="mockTest('E2','S1')">Start</button>
                 </div>
                 <div class="card">
                     <h4>CSIR.NET/SLET/SET</h4>
                     <p>Life Sciences</p>
-                    <button onclick="startQuiz('E3','S2')">Start</button>
+                    <button onclick="mockTest('E3','S2')">Start</button>
                 </div>
                 <div class="card">
                     <h4>GATE</h4>
                     <p>Zoology</p>
-                    <button onclick="startQuiz('E4','S1')">Start</button>
+                    <button onclick="mockTest('E4','S1')">Start</button>
                 </div>
             </div>
         </section>
@@ -73,8 +73,8 @@
             </ul>
         </section>
         <script>
-            function startQuiz(examcode, subjectcode) {
-                window.location.href = `/quiz/prepare/${examcode}/${subjectcode}`;
+            function mockTest(examcode, subjectcode) {
+                window.location.href = `/mocktest/init/${examcode}/${subjectcode}`;
             }
         </script>
         </script>

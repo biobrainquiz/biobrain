@@ -261,7 +261,7 @@
             <div class="card">
                 <h4>📊 Your Last 50 Quiz Performances</h4>
 
-                <% if (quizResults && quizResults.length> 0) { %>
+                <% if (prepareTestObj.pageResult && prepareTestObj.pageResult.length> 0) { %>
                     <div class="table-container">
                         <table>
                             <thead>
@@ -281,7 +281,7 @@
                             </thead>
 
                             <tbody>
-                                <% quizResults.forEach((q,index)=>{ %>
+                                <% prepareTestObj.pageResult.forEach((q,index)=>{ %>
                                     <tr>
                                         <td>
                                             <%= index+1 %>
@@ -349,16 +349,16 @@
                     <div class="pagination">
 
                         <!-- Previous -->
-                        <% if(currentPage> 1){ %>
-                            <a href="?page=<%= currentPage - 1 %>">⬅ Previous</a>
+                        <% if(prepareTestObj.pageno> 1){ %>
+                            <a href="?page=<%= prepareTestObj.pageno - 1 %>">⬅ Previous</a>
                             <% } else { %>
                                 <span class="disabled">⬅ Previous</span>
                                 <% } %>
 
                                     <!-- Page Numbers -->
-                                    <% for(let i=1; i <=totalPages; i++){ %>
+                                    <% for(let i=1; i <=prepareTestObj.totalPages; i++){ %>
 
-                                        <% if(i===currentPage){ %>
+                                        <% if(i===prepareTestObj.pageno){ %>
                                             <span class="active">
                                                 <%= i %>
                                             </span>
@@ -371,8 +371,8 @@
                                                     <% } %>
 
                                                         <!-- Next -->
-                                                        <% if(currentPage < totalPages){ %>
-                                                            <a href="?page=<%= currentPage + 1 %>">Next ➡</a>
+                                                        <% if(prepareTestObj.pageno < prepareTestObj.totalPages){ %>
+                                                            <a href="?page=<%= prepareTestObj.pageno + 1 %>">Next ➡</a>
                                                             <% } else { %>
                                                                 <span class="disabled">Next ➡</span>
                                                                 <% } %>
@@ -389,8 +389,8 @@
                     <h4>⚙ Configure Your Exam</h4>
 
                     <form action="/quiz/createorder" method="POST">
-                        <input type="hidden" name="examcode" value="<%= examcode %>">
-                        <input type="hidden" name="subjectcode" value="<%= subjectcode %>">
+                        <input type="hidden" name="examcode" value="<%= prepareTestObj.examcode %>">
+                        <input type="hidden" name="subjectcode" value="<%= prepareTestObj.subjectcode %>">
 
                         <label>Unit</label>
                         <div class="custom-dropdown" id="unitWrapper">
@@ -439,7 +439,7 @@
                 <div class="card half-card">
                     <h4>📈 Performance Dashboard</h4>
 
-                    <% if (allResults && allResults.length> 0) { %>
+                    <% if (prepareTestObj.resultsForGraph && prepareTestObj.resultsForGraph.length> 0) { %>
                         <canvas id="performanceChart" height="200"></canvas>
                         <% } else { %>
                             <p>No data available for chart.</p>
@@ -473,8 +473,8 @@
 
             <script>
                 //script for filling unit,topic dropdowns
-                const examcode = "<%= examcode %>";
-                const subjectcode = "<%= subjectcode %>";
+                const examcode = "<%= prepareTestObj.examcode %>";
+                const subjectcode = "<%= prepareTestObj.subjectcode %>";
 
                 function truncate(text, max = 40) {
                     return text.length > max ? text.substring(0, max) + "..." : text;
@@ -555,11 +555,11 @@
                 // script for displaying graph that renders users performance
                 document.addEventListener("DOMContentLoaded", function () {
 
-<% if (allResults && allResults.length > 1) { %>
+<% if (prepareTestObj.resultsForGraph && prepareTestObj.resultsForGraph.length > 1) { %>
 
 const accuracyData = [
-    <% allResults.forEach(function (q, index) { %>
-        <%= q.accuracy %><%= index < allResults.length - 1 ? "," : "" %>
+    <% prepareTestObj.resultsForGraph.forEach(function (q, index) { %>
+        <%= q.accuracy %><%= index < prepareTestObj.resultsForGraph.length - 1 ? "," : "" %>
     <% }) %>
 ];
 
