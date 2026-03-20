@@ -3,7 +3,6 @@ const ExamSession = require("./ExamSession");
 
 const Result = require("../models/Result");
 const Question = require("../models/Question");
-//const QuizResult = require("../models/QuizResult");
 const Attempt = require("../models/Attempt");
 
 const logger = require("../utils/logger");
@@ -191,6 +190,7 @@ exports.submit = async (req, res) => {
     examSessionObj.userid = examSession.userid;
     examSessionObj.username = examSession.username;
     examSessionObj.useremail = req.session.user?.email;
+    examSessionObj.userroles = req.session.user?.roles;
     examSessionObj.exampapercode = examSession.exampapercode;
     examSessionObj.examname = examSession.examname;
     examSessionObj.subjectname = examSession.subjectname;
@@ -221,30 +221,14 @@ exports.submit = async (req, res) => {
     examSessionObj.percentage = 0;
     examSessionObj.accuracy = 0;
     examSessionObj.calculateScore();
+    examSessionObj.updateIsUserPremiumFlag(req.session.user);
+
+    console.log(examSessionObj);
 
     // ✅ Auto-increment serial number
     const sno = await getNextSequence("quizResultCounter");
 
     await SaveResult(examSessionObj)
-
-    // ✅ Save result in DB
-    /*const newResult = new QuizResult({
-      sno,
-      examdate: examSessionObj.examstartedat,
-      examtime: examSessionObj.examendedat,
-      username: examSessionObj.username,
-      examcode: examSessionObj.examcode,
-      subjectcode: examSessionObj.subjectcode,
-      unitcode: examSessionObj.unitcode,
-      topiccode: examSessionObj.topiccode,
-      difficulty: examSessionObj.difficulty,
-      noq: examSessionObj.questionscount,
-      attempted: examSessionObj.attempted,
-      right: examSessionObj.right,
-      wrong: examSessionObj.wrong,
-      score: examSessionObj.finalscore
-    });
-    await newResult.save();*/
 
     await UpdateAttemptedTable(examSessionObj.userid, examSessionObj.exampapercode, examSessionObj.questions);
     return examSessionObj;

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BioBrain | Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/desktopStyle.css">
+
+    <style>
+        body {
+            margin: 0;
+            background: #0f172a;
+            font-family: 'Poppins', sans-serif;
+            color: #ffffff;
+        }
+
+        .profile-wrapper {
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        /* USER CARD */
+        .profile-card {
+            background: #1e293b;
+            padding: 22px 28px;
+            border-radius: 18px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            margin-bottom: 28px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .profile-card h2 {
+            margin: 0;
+            font-size: 20px;
+            color: #38bdf8;
+        }
+
+        .profile-card p {
+            margin: 4px 0;
+            font-size: 13px;
+            color: #cbd5e1;
+        }
+
+        .badge {
+            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+            padding: 7px 15px;
+            border-radius: 25px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* STATS GRID */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 16px;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+            padding: 15px;
+            border-radius: 14px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            transition: 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-4px);
+        }
+
+        .stat-box h4 {
+            margin: 0;
+            font-size: 12px;
+        }
+
+        .stat-box span {
+            font-size: 18px;
+            font-weight: bold;
+            display: block;
+            margin-top: 5px;
+        }
+
+        /* SECTION BASE */
+        .section {
+            background: #1e293b;
+            padding: 18px;
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .section-header h3 {
+            margin: 0;
+            font-size: 15px;
+            color: #38bdf8;
+        }
+
+        .mini-badge {
+            background: #0ea5e9;
+            padding: 4px 9px;
+            border-radius: 18px;
+            font-size: 11px;
+        }
+
+        /* PERFORMANCE ROW */
+        .performance-row {
+            display: flex;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .half-card {
+            flex: 1;
+        }
+
+        /* PROGRESS BAR */
+        .progress-container {
+            background: #334155;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 10px;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            transition: width 1.2s ease-in-out;
+        }
+
+        .performance-meta {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #cbd5e1;
+        }
+
+        .performance-meta p {
+            margin: 3px 0;
+        }
+
+        /* CHART */
+        .chart-container {
+            position: relative;
+            height: 200px;
+        }
+
+        canvas {
+            max-height: 200px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .performance-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+
+<%- include('../../partials/desktop/header') %>
+
+<div class="profile-wrapper">
+<div class="container">
+
+    <!-- USER INFO -->
+    <div class="profile-card">
+        <div>
+            <h2><%= user.username %></h2>
+            <p><strong>Email:</strong> <%= user.email %></p>
+            <p><strong>Member Since:</strong> <%= new Date(user.userCreatedOn).toDateString() %></p>
+            <p><strong>Roles:</strong> <%= user.roles.map(role => role.role || role).join(', ') %></p>
+        </div>
+        <div class="badge">BioBrain Explorer 🚀</div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-grid">
+        <div class="stat-box"><h4>Quizzes</h4><span><%= stats.totalQuizzes %></span></div>
+        <div class="stat-box"><h4>Total Score</h4><span><%= stats.totalScore %></span></div>
+        <div class="stat-box"><h4>Average</h4><span><%= stats.averageScore %></span></div>
+        <div class="stat-box"><h4>Highest</h4><span><%= stats.highestScore %></span></div>
+        <div class="stat-box"><h4>Lowest</h4><span><%= stats.lowestScore %></span></div>
+        <div class="stat-box"><h4>Accuracy</h4><span><%= stats.overallAccuracy %>%</span></div>
+    </div>
+
+    <!-- PERFORMANCE + CHART SIDE BY SIDE -->
+    <div class="performance-row">
+
+        <!-- OVERALL PERFORMANCE -->
+        <div class="section half-card">
+            <div class="section-header">
+                <h3>Overall Performance</h3>
+                <span class="mini-badge"><%= stats.overallAccuracy %>%</span>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" style="width:<%= stats.overallAccuracy %>%"></div>
+            </div>
+
+            <div class="performance-meta">
+                <p>Total Quizzes: <strong><%= stats.totalQuizzes %></strong></p>
+                <p>Average Score: <strong><%= stats.averageScore %></strong></p>
+            </div>
+        </div>
+
+        <!-- SCORE TREND -->
+        <div class="section half-card">
+            <div class="section-header">
+                <h3>Score Trend</h3>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="scoreChart"></canvas>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+<%- include('../../partials/desktop/footer') %>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const quizData = <%- JSON.stringify(quizHistory || []) %>;
+
+    const labels = quizData.map((q, i) => `Q${i+1}`);
+    const scores = quizData.map(q => q.finalscore);
+
+    const ctx = document.getElementById('scoreChart').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Score',
+                data: scores,
+                tension: 0.4,
+                fill: true,
+                borderWidth: 2,
+                backgroundColor: 'rgba(14,165,233,0.2)',
+                borderColor: '#38bdf8',
+                pointRadius: 3,
+                pointBackgroundColor: '#22c55e'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            animation: { duration: 1200 },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#ffffff',
+                        boxWidth: 10
+                    }
+                }
+            },
+            layout: { padding: 8 },
+            scales: {
+                x: {
+                    ticks: { color: '#cbd5e1', font: { size: 10 }},
+                    grid: { color: '#334155' }
+                },
+                y: {
+                    beginAtZero: true,
+                    ticks: { color: '#cbd5e1', font: { size: 10 }},
+                    grid: { color: '#334155' }
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

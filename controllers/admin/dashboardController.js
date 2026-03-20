@@ -5,7 +5,7 @@ const Subject = require("../../models/Subject");
 const Unit = require("../../models/Unit");
 const Topic = require("../../models/Topic");
 const Question = require("../../models/Question");
-const QuizResult = require("../../models/QuizResult");
+const Result = require("../../models/Result");
 const Payment = require("../../models/Payment"); // if exists
 const autoSeed = require("../../utils/autoSeeder");
 
@@ -49,7 +49,7 @@ exports.index = async (req, res) => {
             Topic.find().sort({ createdAt: -1 }).limit(5),
             Question.find().sort({ createdAt: -1 }).limit(5),
 
-            QuizResult.find()
+            Result.find()
                 .sort({ createdAt: -1 })
                 .limit(5),
             User.find().sort({ createdAt: -1 }).limit(5),

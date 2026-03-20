@@ -24,7 +24,6 @@
             margin: auto;
         }
 
-        /* USER CARD */
         .profile-card {
             background: #1e293b;
             padding: 22px 28px;
@@ -57,7 +56,6 @@
             font-weight: bold;
         }
 
-        /* STATS GRID */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -70,11 +68,6 @@
             border-radius: 14px;
             text-align: center;
             box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-            transition: 0.3s ease;
-        }
-
-        .stat-box:hover {
-            transform: translateY(-4px);
         }
 
         .stat-box h4 {
@@ -89,7 +82,6 @@
             margin-top: 5px;
         }
 
-        /* SECTION BASE */
         .section {
             background: #1e293b;
             padding: 18px;
@@ -97,27 +89,6 @@
             box-shadow: 0 12px 30px rgba(0,0,0,0.5);
         }
 
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .section-header h3 {
-            margin: 0;
-            font-size: 15px;
-            color: #38bdf8;
-        }
-
-        .mini-badge {
-            background: #0ea5e9;
-            padding: 4px 9px;
-            border-radius: 18px;
-            font-size: 11px;
-        }
-
-        /* PERFORMANCE ROW */
         .performance-row {
             display: flex;
             gap: 20px;
@@ -128,7 +99,6 @@
             flex: 1;
         }
 
-        /* PROGRESS BAR */
         .progress-container {
             background: #334155;
             border-radius: 20px;
@@ -139,39 +109,19 @@
         .progress-bar {
             height: 10px;
             background: linear-gradient(135deg, #22c55e, #16a34a);
-            transition: width 1.2s ease-in-out;
         }
 
-        .performance-meta {
-            margin-top: 10px;
-            font-size: 12px;
-            color: #cbd5e1;
-        }
-
-        .performance-meta p {
-            margin: 3px 0;
-        }
-
-        /* CHART */
         .chart-container {
             position: relative;
             height: 200px;
         }
 
-        canvas {
-            max-height: 200px;
-        }
-
-        /* RESPONSIVE */
         @media (max-width: 900px) {
             .performance-row {
                 flex-direction: column;
             }
         }
     </style>
-
-
-
 </head>
 
 <body>
@@ -185,49 +135,44 @@
     <div class="profile-card">
         <div>
             <h2><%= user.username %></h2>
-            <p><strong>Email:</strong> <%= user.email %></p>
-            <p><strong>Member Since:</strong> <%= new Date(user.userCreatedOn).toDateString() %></p>
-            <p><strong>Roles:</strong> <%= user.roles.map(role => role.role || role).join(', ') %></p>
+
+            <p><strong>Email:</strong> <%= user.email || 'N/A' %></p>
+
+            <p><strong>Member Since:</strong> 
+                <%= user.userCreatedOn ? new Date(user.userCreatedOn).toDateString() : 'N/A' %>
+            </p>
+
+            <p><strong>Roles:</strong> 
+                <%= user.roles.map(role => role.role || role).join(', ') %>
+            </p>
         </div>
+
         <div class="badge">BioBrain Explorer 🚀</div>
     </div>
 
     <!-- STATS -->
     <div class="stats-grid">
-        <div class="stat-box"><h4>Quizzes</h4><span><%= stats.totalQuizzes %></span></div>
-        <div class="stat-box"><h4>Total Score</h4><span><%= stats.totalScore %></span></div>
-        <div class="stat-box"><h4>Average</h4><span><%= stats.averageScore %></span></div>
-        <div class="stat-box"><h4>Highest</h4><span><%= stats.highestScore %></span></div>
-        <div class="stat-box"><h4>Lowest</h4><span><%= stats.lowestScore %></span></div>
-        <div class="stat-box"><h4>Accuracy</h4><span><%= stats.overallAccuracy %>%</span></div>
+        <div class="stat-box"><h4>Quizzes</h4><span><%= stats.totalQuizzes || 0 %></span></div>
+        <div class="stat-box"><h4>Total Score</h4><span><%= stats.totalScore || 0 %></span></div>
+        <div class="stat-box"><h4>Average</h4><span><%= stats.averageScore || 0 %></span></div>
+        <div class="stat-box"><h4>Highest</h4><span><%= stats.highestScore || 0 %></span></div>
+        <div class="stat-box"><h4>Lowest</h4><span><%= stats.lowestScore || 0 %></span></div>
+        <div class="stat-box"><h4>Accuracy</h4><span><%= stats.overallAccuracy || 0 %>%</span></div>
     </div>
 
-    <!-- PERFORMANCE + CHART SIDE BY SIDE -->
+    <!-- PERFORMANCE + CHART -->
     <div class="performance-row">
 
-        <!-- OVERALL PERFORMANCE -->
         <div class="section half-card">
-            <div class="section-header">
-                <h3>Overall Performance</h3>
-                <span class="mini-badge"><%= stats.overallAccuracy %>%</span>
-            </div>
+            <h3>Overall Performance (<%= stats.overallAccuracy || 0 %>%)</h3>
 
             <div class="progress-container">
-                <div class="progress-bar" style="width:<%= stats.overallAccuracy %>%"></div>
-            </div>
-
-            <div class="performance-meta">
-                <p>Total Quizzes: <strong><%= stats.totalQuizzes %></strong></p>
-                <p>Average Score: <strong><%= stats.averageScore %></strong></p>
+                <div class="progress-bar" style="width:<%= Math.min(stats.overallAccuracy || 0, 100) %>%"></div>
             </div>
         </div>
 
-        <!-- SCORE TREND -->
         <div class="section half-card">
-            <div class="section-header">
-                <h3>Score Trend</h3>
-            </div>
-
+            <h3>Score Trend</h3>
             <div class="chart-container">
                 <canvas id="scoreChart"></canvas>
             </div>
@@ -243,55 +188,27 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-    const quizData = <%- JSON.stringify(quizHistory || []) %>;
+    const quizData = <%- JSON.stringify(quizHistory ?? []) %>;
 
-    const labels = quizData.map((q, i) => `Q${i+1}`);
-    const scores = quizData.map(q => q.score);
+    if (quizData.length) {
+        const labels = quizData.map(q => new Date(q.createdAt).toLocaleDateString());
+        const scores = quizData.map(q => q.finalscore || 0);
 
-    const ctx = document.getElementById('scoreChart').getContext('2d');
-
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'Score',
-                data: scores,
-                tension: 0.4,
-                fill: true,
-                borderWidth: 2,
-                backgroundColor: 'rgba(14,165,233,0.2)',
-                borderColor: '#38bdf8',
-                pointRadius: 3,
-                pointBackgroundColor: '#22c55e'
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            animation: { duration: 1200 },
-            plugins: {
-                legend: {
-                    labels: {
-                        color: '#ffffff',
-                        boxWidth: 10
-                    }
-                }
-            },
-            layout: { padding: 8 },
-            scales: {
-                x: {
-                    ticks: { color: '#cbd5e1', font: { size: 10 }},
-                    grid: { color: '#334155' }
-                },
-                y: {
-                    beginAtZero: true,
-                    ticks: { color: '#cbd5e1', font: { size: 10 }},
-                    grid: { color: '#334155' }
-                }
+        new Chart(document.getElementById('scoreChart'), {
+            type: 'line',
+            data: {
+                labels,
+                datasets: [{
+                    label: 'Score',
+                    data: scores,
+                    borderColor: '#38bdf8',
+                    backgroundColor: 'rgba(14,165,233,0.2)',
+                    fill: true,
+                    tension: 0.4
+                }]
             }
-        }
-    });
+        });
+    }
 </script>
 
 </body>

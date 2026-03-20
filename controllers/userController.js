@@ -1,5 +1,5 @@
 const User = require("../models/User");
-const QuizResult = require("../models/QuizResult");
+const Result = require("../models/Result");
 const getDevice = require("../utils/getDevice");
 
 
@@ -18,18 +18,18 @@ exports.getProfile = async (req, res) => {
         }
 
         // 🔹 Aggregate Performance Stats
-        const statsData = await QuizResult.aggregate([
+        const statsData = await Result.aggregate([
             { $match: { username: uname } },
             {
                 $group: {
                     _id: "$username",
                     totalQuizzes: { $sum: 1 },
-                    totalScore: { $sum: "$score" },
-                    averageScore: { $avg: "$score" },
-                    highestScore: { $max: "$score" },
-                    lowestScore: { $min: "$score" },
-                    totalCorrect: { $sum: "$correctAnswers" },
-                    totalQuestions: { $sum: "$totalQuestions" }
+                    totalScore: { $sum: "$finalscore" },
+                    averageScore: { $avg: "$finalscore" },
+                    highestScore: { $max: "$finalscore" },
+                    lowestScore: { $min: "$finalscore" },
+                    totalCorrect: { $sum: "$right" },
+                    totalQuestions: { $sum: "$questionscount" }
                 }
             },
             {
@@ -71,11 +71,12 @@ exports.getProfile = async (req, res) => {
         };
 
         // 🔹 Quiz History For Chart
-        const quizHistory = await QuizResult.find({ username: uname })
+        const quizHistory = await Result.find({ username: uname })
             .sort({ createdAt: 1 })
             .select("score createdAt")
             .lean();
 
+        console.log(quizHistory);
         res.render(`pages/${getDevice(req)}/profile`, {
             user,
             stats,

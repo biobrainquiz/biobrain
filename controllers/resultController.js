@@ -2,6 +2,8 @@ const puppeteer = require("puppeteer");
 const path = require("path");
 const ejs = require("ejs");
 const Result = require("../models/Result");
+const fetch = require("node-fetch");
+const aiAssistantService = require("../services/aiAssistantService");
 
 exports.downloadResultPdf = async (req, res) => {
 
@@ -67,5 +69,35 @@ exports.downloadResultPdf = async (req, res) => {
         console.error(err);
         res.status(500).send("PDF generation failed");
 
+    }
+};
+
+
+exports.aiAssistantExplainAnswer = async (req, res) => {
+    try {
+        const { question, options, correctanswer, useranswer } = req.body;
+
+        // 🛡️ Basic validation
+        if (!question || !options || !correctanswer) {
+            return res.status(400).json({
+                explanation: "Invalid input"
+            });
+        }
+
+        const explanation = await aiAssistantService.generateExplanation({
+            question,
+            options,
+            correctanswer,
+            useranswer
+        });
+
+        res.json({ explanation });
+
+    } catch (err) {
+        console.error("AI Controller Error:", err);
+
+        res.status(500).json({
+            explanation: "⚠️ AI failed. Try again."
+        });
     }
 };

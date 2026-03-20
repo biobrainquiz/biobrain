@@ -1,0 +1,170 @@
+2026-03-20 20:07:19 [ERROR]: ReferenceError: D:\Projects\BioBrainMdb\views\pages\desktop\startquiz.ejs:140
+    138|     <div class="greeting">
+    139|       Hello, <strong>
+ >> 140|         <%= examSession.userName ? examSession.userName : 'Guest' %>
+    141|       </strong>!
+    142|     </div>
+    143| 
+
+examSession is not defined
+    at eval ("D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\startquiz.ejs":12:26)
+    at startquiz (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (D:\Projects\BioBrainMdb\node_modules\express\lib\view.js:139:8)
+    at tryRender (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:627:10)
+    at app.render (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (D:\Projects\BioBrainMdb\node_modules\express\lib\response.js:923:7)
+    at exports.init (D:\Projects\BioBrainMdb\controllers\mocktestController.js:10:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\startquiz.ejs:140\n    138|     <div class=\"greeting\">\r\n    139|       Hello, <strong>\r\n >> 140|         <%= examSession.userName ? examSession.userName : 'Guest' %>\r\n    141|       </strong>!\r\n    142|     </div>\r\n    143| \r\n\nexamSession is not defined"}
+2026-03-20 20:08:41 [ERROR]: ReferenceError: D:\Projects\BioBrainMdb\views\pages\desktop\startquiz.ejs:140
+    138|     <div class="greeting">
+    139|       Hello, <strong>
+ >> 140|         <%= examSession.userName ? examSession.userName : 'Guest' %>
+    141|       </strong>!
+    142|     </div>
+    143| 
+
+examSession is not defined
+    at eval ("D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\startquiz.ejs":12:26)
+    at startquiz (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (D:\Projects\BioBrainMdb\node_modules\express\lib\view.js:139:8)
+    at tryRender (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:627:10)
+    at app.render (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (D:\Projects\BioBrainMdb\node_modules\express\lib\response.js:923:7)
+    at exports.init (D:\Projects\BioBrainMdb\controllers\mocktestController.js:10:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\startquiz.ejs:140\n    138|     <div class=\"greeting\">\r\n    139|       Hello, <strong>\r\n >> 140|         <%= examSession.userName ? examSession.userName : 'Guest' %>\r\n    141|       </strong>!\r\n    142|     </div>\r\n    143| \r\n\nexamSession is not defined"}
+2026-03-20 20:10:23 [ERROR]: ReferenceError: D:\Projects\BioBrainMdb\views\pages\desktop\startquiz.ejs:140
+    138|     <div class="greeting">
+    139|       Hello, <strong>
+ >> 140|         <%= examSession.userName ? examSession.userName : 'Guest' %>
+    141|       </strong>!
+    142|     </div>
+    143| 
+
+examSession is not defined
+    at eval ("D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\startquiz.ejs":12:26)
+    at startquiz (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (D:\Projects\BioBrainMdb\node_modules\express\lib\view.js:139:8)
+    at tryRender (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:627:10)
+    at app.render (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (D:\Projects\BioBrainMdb\node_modules\express\lib\response.js:923:7)
+    at exports.init (D:\Projects\BioBrainMdb\controllers\mocktestController.js:10:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\startquiz.ejs:140\n    138|     <div class=\"greeting\">\r\n    139|       Hello, <strong>\r\n >> 140|         <%= examSession.userName ? examSession.userName : 'Guest' %>\r\n    141|       </strong>!\r\n    142|     </div>\r\n    143| \r\n\nexamSession is not defined"}
+2026-03-20 20:11:48 [ERROR]: ReferenceError: D:\Projects\BioBrainMdb\views\pages\desktop\startquiz.ejs:140
+    138|     <div class="greeting">
+    139|       Hello, <strong>
+ >> 140|         <%= examSession.userName ? examSession.userName : 'Guest' %>
+    141|       </strong>!
+    142|     </div>
+    143| 
+
+examSession is not defined
+    at eval ("D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\startquiz.ejs":12:26)
+    at startquiz (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (D:\Projects\BioBrainMdb\node_modules\express\lib\view.js:139:8)
+    at tryRender (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:627:10)
+    at app.render (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (D:\Projects\BioBrainMdb\node_modules\express\lib\response.js:923:7)
+    at exports.init (D:\Projects\BioBrainMdb\controllers\mocktestController.js:10:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\startquiz.ejs:140\n    138|     <div class=\"greeting\">\r\n    139|       Hello, <strong>\r\n >> 140|         <%= examSession.userName ? examSession.userName : 'Guest' %>\r\n    141|       </strong>!\r\n    142|     </div>\r\n    143| \r\n\nexamSession is not defined"}
+2026-03-20 20:13:29 [ERROR]: ReferenceError: D:\Projects\BioBrainMdb\views\pages\desktop\startquiz.ejs:140
+    138|     <div class="greeting">
+    139|       Hello, <strong>
+ >> 140|         <%= examSession.userName ? examSession.userName : 'Guest' %>
+    141|       </strong>!
+    142|     </div>
+    143| 
+
+examSession is not defined
+    at eval ("D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\startquiz.ejs":12:26)
+    at startquiz (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (D:\Projects\BioBrainMdb\node_modules\express\lib\view.js:139:8)
+    at tryRender (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:627:10)
+    at app.render (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (D:\Projects\BioBrainMdb\node_modules\express\lib\response.js:923:7)
+    at exports.init (D:\Projects\BioBrainMdb\controllers\mocktestController.js:10:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\startquiz.ejs:140\n    138|     <div class=\"greeting\">\r\n    139|       Hello, <strong>\r\n >> 140|         <%= examSession.userName ? examSession.userName : 'Guest' %>\r\n    141|       </strong>!\r\n    142|     </div>\r\n    143| \r\n\nexamSession is not defined"}
+2026-03-20 20:14:46 [ERROR]: ReferenceError: D:\Projects\BioBrainMdb\views\pages\desktop\startquiz.ejs:140
+    138|     <div class="greeting">
+    139|       Hello, <strong>
+ >> 140|         <%= examSession.userName ? examSession.userName : 'Guest' %>
+    141|       </strong>!
+    142|     </div>
+    143| 
+
+examSession is not defined
+    at eval ("D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\startquiz.ejs":12:26)
+    at startquiz (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (D:\Projects\BioBrainMdb\node_modules\express\lib\view.js:139:8)
+    at tryRender (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:627:10)
+    at app.render (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (D:\Projects\BioBrainMdb\node_modules\express\lib\response.js:923:7)
+    at exports.init (D:\Projects\BioBrainMdb\controllers\mocktestController.js:10:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\startquiz.ejs:140\n    138|     <div class=\"greeting\">\r\n    139|       Hello, <strong>\r\n >> 140|         <%= examSession.userName ? examSession.userName : 'Guest' %>\r\n    141|       </strong>!\r\n    142|     </div>\r\n    143| \r\n\nexamSession is not defined"}
+2026-03-20 20:15:31 [ERROR]: ReferenceError: D:\Projects\BioBrainMdb\views\pages\desktop\startquiz.ejs:140
+    138|     <div class="greeting">
+    139|       Hello, <strong>
+ >> 140|         <%= examSession.userName ? examSession.userName : 'Guest' %>
+    141|       </strong>!
+    142|     </div>
+    143| 
+
+examSession is not defined
+    at eval ("D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\startquiz.ejs":12:26)
+    at startquiz (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (D:\Projects\BioBrainMdb\node_modules\express\lib\view.js:139:8)
+    at tryRender (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:627:10)
+    at app.render (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (D:\Projects\BioBrainMdb\node_modules\express\lib\response.js:923:7)
+    at exports.init (D:\Projects\BioBrainMdb\controllers\mocktestController.js:10:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\startquiz.ejs:140\n    138|     <div class=\"greeting\">\r\n    139|       Hello, <strong>\r\n >> 140|         <%= examSession.userName ? examSession.userName : 'Guest' %>\r\n    141|       </strong>!\r\n    142|     </div>\r\n    143| \r\n\nexamSession is not defined"}
+2026-03-20 20:21:01 [ERROR]: ReferenceError: D:\Projects\BioBrainMdb\views\pages\desktop\startquiz.ejs:140
+    138|     <div class="greeting">
+    139|       Hello, <strong>
+ >> 140|         <%= examSession.userName ? examSession.userName : 'Guest' %>
+    141|       </strong>!
+    142|     </div>
+    143| 
+
+examSession is not defined
+    at eval ("D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\startquiz.ejs":12:26)
+    at startquiz (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (D:\Projects\BioBrainMdb\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (D:\Projects\BioBrainMdb\node_modules\express\lib\view.js:139:8)
+    at tryRender (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:627:10)
+    at app.render (D:\Projects\BioBrainMdb\node_modules\express\lib\application.js:574:3)
+    at ServerResponse.render (D:\Projects\BioBrainMdb\node_modules\express\lib\response.js:923:7)
+    at exports.init (D:\Projects\BioBrainMdb\controllers\mocktestController.js:10:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"error":"D:\\Projects\\BioBrainMdb\\views\\pages\\desktop\\startquiz.ejs:140\n    138|     <div class=\"greeting\">\r\n    139|       Hello, <strong>\r\n >> 140|         <%= examSession.userName ? examSession.userName : 'Guest' %>\r\n    141|       </strong>!\r\n    142|     </div>\r\n    143| \r\n\nexamSession is not defined"}
+2026-03-20 20:25:25 [ERROR]: MongoServerError: E11000 duplicate key error collection: biobrain.users index: mobile_1 dup key: { mobile: "9876543210" }
+    at InsertOneOperation.handleOk (D:\Projects\BioBrainMdb\node_modules\mongoose\node_modules\mongodb\lib\operations\insert.js:51:19)
+    at tryOperation (D:\Projects\BioBrainMdb\node_modules\mongoose\node_modules\mongodb\lib\operations\execute_operation.js:216:34)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async executeOperation (D:\Projects\BioBrainMdb\node_modules\mongoose\node_modules\mongodb\lib\operations\execute_operation.js:80:16)
+    at async Collection.insertOne (D:\Projects\BioBrainMdb\node_modules\mongoose\node_modules\mongodb\lib\collection.js:154:16)
+    at async model.$__save (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\model.js:400:16)
+    at async model.save (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\model.js:614:5)
+    at async exports.register (D:\Projects\BioBrainMdb\controllers\authenticationController.js:148:9) {"error":"E11000 duplicate key error collection: biobrain.users index: mobile_1 dup key: { mobile: \"9876543210\" }"}
+2026-03-20 20:25:27 [ERROR]: MongoServerError: E11000 duplicate key error collection: biobrain.users index: mobile_1 dup key: { mobile: "9876543210" }
+    at InsertOneOperation.handleOk (D:\Projects\BioBrainMdb\node_modules\mongoose\node_modules\mongodb\lib\operations\insert.js:51:19)
+    at tryOperation (D:\Projects\BioBrainMdb\node_modules\mongoose\node_modules\mongodb\lib\operations\execute_operation.js:216:34)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async executeOperation (D:\Projects\BioBrainMdb\node_modules\mongoose\node_modules\mongodb\lib\operations\execute_operation.js:80:16)
+    at async Collection.insertOne (D:\Projects\BioBrainMdb\node_modules\mongoose\node_modules\mongodb\lib\collection.js:154:16)
+    at async model.$__save (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\model.js:400:16)
+    at async model.save (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\model.js:614:5)
+    at async exports.register (D:\Projects\BioBrainMdb\controllers\authenticationController.js:148:9) {"error":"E11000 duplicate key error collection: biobrain.users index: mobile_1 dup key: { mobile: \"9876543210\" }"}
