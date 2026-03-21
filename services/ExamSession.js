@@ -2,6 +2,7 @@
 class ExamSession {
     constructor({ examcode, subjectcode, unitcode, topiccode, count, difficulty } = {}) {
 
+        
         this.examcode = examcode;
         this.subjectcode = subjectcode;
         this.unitcode = unitcode;
@@ -50,6 +51,8 @@ class ExamSession {
         this.questionscount = count;
         this.answers = null; // { questionId: selectedOption }
         this.attemptnumber = 1;
+
+        this.resultid=null;
     }
 
     updateIsUserPremiumFlag(user) {

@@ -23,11 +23,9 @@ exports.createOrder = async (req, res) => {
 exports.submit = async (req, res) => {
     const device = getDevice(req);
     const examSession = await mocktestService.submit(req, res);
-
     if (!examSession) {
         return res.status(404).send("Mocktest Submit Failed !!!");
     }
     // ✅ Render result page
     return res.render(`pages/${device}/quizresults`, { examSession });
-
 }

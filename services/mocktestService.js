@@ -223,15 +223,13 @@ exports.submit = async (req, res) => {
     examSessionObj.calculateScore();
     examSessionObj.updateIsUserPremiumFlag(req.session.user);
 
-    console.log(examSessionObj);
-
+    
     // ✅ Auto-increment serial number
     const sno = await getNextSequence("quizResultCounter");
-
-    await SaveResult(examSessionObj)
-
+    examSessionObj.resultid = await SaveResult(examSessionObj)
     await UpdateAttemptedTable(examSessionObj.userid, examSessionObj.exampapercode, examSessionObj.questions);
     return examSessionObj;
+
   } catch (err) {
     console.error("Quiz Submit Error:", err);
     return null;
@@ -324,5 +322,6 @@ async function SaveResult(examSessionObj) {
     topicstats: examSessionObj.topicstats,
     unitstats: examSessionObj.unitstats,
   });
-  await result.save();
+  const savedResult = await result.save();
+  return savedResult._id;
 }
