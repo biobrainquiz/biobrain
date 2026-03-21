@@ -12,6 +12,7 @@
   "type": "commonjs",
   "dependencies": {
     "@sendgrid/mail": "^8.1.6",
+    "@sparticuz/chromium": "^143.0.4",
     "bcryptjs": "^3.0.3",
     "connect-mongo": "^6.0.0",
     "crypto": "^1.0.1",
@@ -28,6 +29,7 @@
     "openai": "^6.32.0",
     "pdfkit": "^0.18.0",
     "puppeteer": "^24.39.1",
+    "puppeteer-core": "^24.40.0",
     "resend": "^6.9.3",
     "ua-parser-js": "^2.0.9",
     "winston": "^3.19.0",
