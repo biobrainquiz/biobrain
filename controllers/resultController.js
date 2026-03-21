@@ -4,87 +4,10 @@ const path = require("path");
 const ejs = require("ejs");
 const Result = require("../models/Result");
 const aiAssistantService = require("../services/aiAssistantService");
+const pdfDownloaderService = require("../services/pdfDownloaderService");
 
 exports.downloadResultPdf = async (req, res) => {
-    let browser;
-
-    try {
-        const mocktestid = req.params.mocktestid;
-        const result = await Result.findById(mocktestid).lean();
-
-        if (!result) {
-            return res.status(404).send("Result not found");
-        }
-
-        const templatePath = path.join(
-            __dirname,
-            "../views/pdf/resultReport.ejs"
-        );
-
-        const html = await ejs.renderFile(templatePath, { result });
-
-        /* =========================
-        Environment-based launcher
-        ========================= */
-
-        /*const isProd =
-            process.env.PRODUCTION === "true" &&
-            process.platform !== "win32";*/
-
-        const isProd = process.env.PRODUCTION === "true";
-
-        if (isProd) {
-            // ✅ Render (Linux)
-            const puppeteer = require("puppeteer-core");
-            const chromium = require("@sparticuz/chromium");
-
-            browser = await puppeteer.launch({
-                args: chromium.args,
-                executablePath: await chromium.executablePath(),
-                headless: chromium.headless
-            });
-
-        } else {
-            // ✅ Local (Windows)
-            const puppeteer = require("puppeteer");
-
-            browser = await puppeteer.launch({
-                headless: true,
-                args: ["--no-sandbox", "--disable-setuid-sandbox"]
-            });
-        }
-
-        const page = await browser.newPage();
-
-        await page.setContent(html, {
-            waitUntil: "domcontentloaded"
-        });
-
-        const pdfBuffer = await page.pdf({
-            format: "A4",
-            printBackground: true
-        });
-
-        res.setHeader("Content-Type", "application/pdf");
-        res.setHeader(
-            "Content-Disposition",
-            `attachment; filename=biobrain-result-${mocktestid}.pdf`
-        );
-
-        return res.send(pdfBuffer);
-
-    } catch (err) {
-        console.error("❌ PDF Error:", err);
-
-        if (!res.headersSent) {
-            res.status(500).send("PDF generation failed");
-        }
-
-    } finally {
-        if (browser) {
-            await browser.close();
-        }
-    }
+   await pdfDownloaderService.downloadResultPdf(req, res);
 };
 
 
