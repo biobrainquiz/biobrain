@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | BioBrain</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-bg: #0f172a;
+            --accent-teal: #2dd4bf;
+            --text-gray: #94a3b8;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', system-ui, sans-serif;
+            background: radial-gradient(circle at top right, #1e293b, var(--primary-bg));
+            color: white;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 500px;
+        }
+
+        /* 404 Glitch Effect */
+        .error-code {
+            font-size: 8rem;
+            font-weight: 900;
+            margin: 0;
+            background: linear-gradient(to bottom, var(--accent-teal), #0d9488);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            line-height: 1;
+        }
+
+        .error-code::after {
+            content: "404";
+            position: absolute;
+            left: 2px;
+            top: 2px;
+            text-shadow: -2px 0 #ff00c1;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch 3s infinite linear alternate-reverse;
+            background: var(--primary-bg);
+            -webkit-background-clip: text;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 1rem;
+            color: white;
+        }
+
+        p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        /* The Styled Home Button */
+        .home-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent-teal);
+            color: var(--primary-bg);
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(45, 212, 191, 0.3);
+        }
+
+        .home-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 25px -5px rgba(45, 212, 191, 0.4);
+            filter: brightness(1.1);
+        }
+
+        /* Floating Brain/Icon Decoration */
+        .bg-decoration {
+            position: absolute;
+            font-size: 15rem;
+            opacity: 0.03;
+            z-index: -1;
+            transform: rotate(-15deg);
+        }
+
+        @keyframes glitch {
+            0% { clip: rect(10px, 9999px, 85px, 0); }
+            20% { clip: rect(80px, 9999px, 10px, 0); }
+            40% { clip: rect(30px, 9999px, 50px, 0); }
+            60% { clip: rect(15px, 9999px, 90px, 0); }
+            80% { clip: rect(60px, 9999px, 20px, 0); }
+            100% { clip: rect(5px, 9999px, 95px, 0); }
+        }
+    </style>
+</head>
+<body>
+    <i class="fa-solid fa-brain bg-decoration"></i>
+    
+    <div class="container">
+        <h1 class="error-code">404</h1>
+        <h2>Oops! Link Expired or Lost</h2>
+        <p>The quiz page you are looking for might have been moved, deleted, or never existed in the BioBrain database.</p>
+        
+        <a href="/" class="home-btn">
+            <i class="fa-solid fa-house"></i> Back to Dashboard
+        </a>
+    </div>
+</body>
+</html>
