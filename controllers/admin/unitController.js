@@ -1,20 +1,16 @@
 const Unit = require("../../models/Unit");
 const Exam = require("../../models/Exam");
 const Subject = require("../../models/Subject");
-const getDevice = require("../../utils/getDevice"); // if you use device-based views
+const getDevice = require("../../utils/getDevice"); 
+const logger = require("../../utils/logger");
 
-/* ======================================================
-   LIST UNITS PAGE
-====================================================== */
-
+// LIST UNITS PAGE
 exports.list = async (req, res) => {
 
     try {
 
         const exams = await Exam.find().sort({ examname: 1 });
-
         const subjects = await Subject.find().populate("exam").sort({ subjectname: 1 });
-
         const units = await Unit.find()
             .populate("exam")
             .populate("subject")
@@ -25,21 +21,13 @@ exports.list = async (req, res) => {
             subjects,
             units
         });
-
     } catch (err) {
-
-        console.error(err);
+        logger.error("Error while Listing units:", err);
         res.status(500).send("Error loading units");
-
     }
-
 };
 
-
-/* ======================================================
-   CREATE UNIT
-====================================================== */
-
+// CREATE UNIT
 exports.create = async (req, res) => {
     try {
 
@@ -70,19 +58,12 @@ exports.create = async (req, res) => {
         });
 
     } catch (err) {
-
-        console.error(err);
+        logger.error("Error creating unit:", err);
         res.status(500).json({ error: "Error creating unit" });
     }
 };
 
-
-/* ======================================================
-   UPDATE UNIT
-====================================================== */
-
-
-
+// UPDATE UNIT
 exports.update = async (req, res) => {
     try {
         await Unit.findByIdAndUpdate(req.params.id, {
@@ -91,33 +72,12 @@ exports.update = async (req, res) => {
         res.json({ success: true });
 
     } catch (err) {
-        console.error(err);
+        logger.error("Error updating unit:", err);
         res.json({ success: false });
     }
 };
 
-
-/* ======================================================
-   DELETE UNIT
-====================================================== */
-
-/*exports.delete = async (req, res) => {
-
-    try {
-
-        await Unit.findOneAndDelete({ _id: req.params.id });
-
-        res.json({ success: true });
-
-    } catch (err) {
-
-        console.error(err);
-        res.status(500).json({ error: "Delete failed" });
-
-    }
-
-};*/
-
+// DELETE UNIT
 exports.delete = async (req, res) => {
 
     try {
@@ -134,7 +94,7 @@ exports.delete = async (req, res) => {
 
     } catch (err) {
 
-        console.error("Delete error:", err);
+        logger.error("Error deleting unit:", err);
 
         res.json({
             success: false,
@@ -143,10 +103,7 @@ exports.delete = async (req, res) => {
     }
 };
 
-/* ======================================================
-   API: GET SUBJECTS BY EXAM
-====================================================== */
-
+// API: GET SUBJECTS BY EXAM
 exports.getSubjectsByExam = async (req, res) => {
 
     try {
@@ -158,10 +115,7 @@ exports.getSubjectsByExam = async (req, res) => {
         res.json(subjects);
 
     } catch (err) {
-
-        console.error(err);
+        logger.error("Error getting subjects by exam:", err);
         res.status(500).json({ error: "Cannot load subjects" });
-
     }
-
 };

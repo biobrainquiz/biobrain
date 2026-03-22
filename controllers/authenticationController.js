@@ -226,7 +226,7 @@ exports.forgotPassword = async (req, res) => {
         await user.save();
 
         // 4️⃣ Create password reset URL
-        const resetURL = `${process.env.BASE_URL}/reset/${token}`;
+        const resetURL = `${process.env.BASE_URI}/reset/${token}`;
 
         // 5️⃣ Send reset email using Resend
         const resend = new Resend(process.env.RESEND_API_KEY);

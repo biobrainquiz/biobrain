@@ -1,5 +1,6 @@
 const { Resend } = require("resend");
 const fs = require("fs");
+const logger = require("../utils/logger");
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -48,7 +49,7 @@ async function sendReportEmail(useremail, username,filename, pdfpath) {
     return response;
 
   } catch (error) {
-    console.error("Email sending failed:", error);
+    logger.error("Error sending email:", error);
     throw error;
   }
 

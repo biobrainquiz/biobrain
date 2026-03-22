@@ -1,7 +1,7 @@
 const User = require("../models/User");
 const Result = require("../models/Result");
 const getDevice = require("../utils/getDevice");
-
+const logger = require("../utils/logger");
 
 // ==========================
 // PROFILE PAGE
@@ -76,7 +76,6 @@ exports.getProfile = async (req, res) => {
             .select("score createdAt")
             .lean();
 
-        console.log(quizHistory);
         res.render(`pages/${getDevice(req)}/profile`, {
             user,
             stats,
@@ -84,7 +83,7 @@ exports.getProfile = async (req, res) => {
         });
 
     } catch (err) {
-        console.error("Profile Error:", err);
+        logger.error("get Profile Error:", err);
         res.redirect("/login");
     }
 };

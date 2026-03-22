@@ -1,11 +1,7 @@
-const User = require("../../models/User");
 const Subject = require("../../models/Subject");
-const Unit = require("../../models/Unit");
-const Topic = require("../../models/Topic");
-const Question = require("../../models/Question");
 const Exam = require("../../models/Exam");
-const Payment = require("../../models/Payment"); // if exists
-const getDevice = require("../../utils/getDevice"); // if you use device-based views
+const getDevice = require("../../utils/getDevice");
+const logger = require("../../utils/logger");
 
 exports.list = async (req, res) => {
 
@@ -22,19 +18,15 @@ exports.list = async (req, res) => {
     });
 
   } catch (err) {
-
-    console.error("Error loading subjects:", err);
+    logger.error("Error listing subjects:", err);
     res.status(500).send("Server Error");
-
   }
-
 };
 
 exports.create = async (req, res) => {
   try {
 
     const { examId, examcode, subjectname, subjectcode } = req.body;
-
     const exam = await Exam.findById(examId);
 
     if (!exam) {
@@ -52,7 +44,7 @@ exports.create = async (req, res) => {
     res.json({ success: true, subject });
 
   } catch (err) {
-    console.error(err);
+    logger.error("Error creating subject:", err);
 
     if (err.code === 11000) {
       return res.json({ success: false, message: "Duplicate subject code for this exam" });
@@ -77,11 +69,11 @@ exports.update = async (req, res) => {
 
   } catch (err) {
 
-    console.error("Update error:", err);
+    logger.error("Error updating subject:", err);
 
     res.json({
       success: false,
-      message: err.message
+      message: "Server error"
     });
 
   }
@@ -103,11 +95,11 @@ exports.delete = async (req, res) => {
 
   } catch (err) {
 
-    console.error("Delete error:", err);
+    logger.error("Error deleting subject:", err);
 
     res.json({
       success: false,
-      message: err.message
+      message: "Server error"
     });
   }
 };

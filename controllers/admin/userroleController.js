@@ -1,12 +1,7 @@
 const User = require("../../models/User");
 const Role = require("../../models/Role");
-const Subject = require("../../models/Subject");
-const Unit = require("../../models/Unit");
-const Topic = require("../../models/Topic");
-const Question = require("../../models/Question");
-const Exam = require("../../models/Exam");
-const Payment = require("../../models/Payment"); // if exists
-const getDevice = require("../../utils/getDevice"); // if you use device-based views
+const getDevice = require("../../utils/getDevice"); 
+const logger = require("../../utils/logger");
 
 // GETS USERS ROLE MANAGEMENT ON DASHBOARD
 exports.usersRoles = async (req, res) => {
@@ -14,30 +9,6 @@ exports.usersRoles = async (req, res) => {
     const databaseRoles = await Role.find().sort({ role: 1 });
     res.render(`pages/${getDevice(req)}/admin/userroles`, { users,databaseRoles });
 };
-
-
-
-exports.addRole1 = async (req, res) => {
-    const { userId, role } = req.body;
-    await User.updateOne(
-        { _id: userId },
-        { $addToSet: { roles: role } }
-    );
-    res.redirect(`/admin/userroles`);
-
-};
-
-exports.removeRole1 = async (req, res) => {
-    const { userId, role } = req.body;
-    await User.updateOne(
-        { _id: userId },
-        { $pull: { roles: role } }
-    );
-     res.redirect(`/admin/userroles`);
-};
-
-// controllers/userroleController.js
-
 
 exports.addRole = async (req, res) => {
   try {
@@ -71,11 +42,10 @@ exports.addRole = async (req, res) => {
     return res.json({ success: true, msg: `Role '${role.role}' added successfully` });
 
   } catch (err) {
-    console.error("Add Role Error:", err);
+    logger.error("Add Role Error:", err);
     return res.json({ success: false, msg: "Server error while adding role" });
   }
 };
-
 
 exports.removeRole = async (req, res) => {
   try {
@@ -115,38 +85,7 @@ exports.removeRole = async (req, res) => {
     return res.json({ success: true, msg: `Role '${role.role}' removed successfully` });
 
   } catch (err) {
-    console.error("Remove Role Error:", err);
+    logger.error("Remove Role Error:", err);
     return res.json({ success: false, msg: "Server error while removing role" });
   }
-};
-
-exports.removeRole2 = async (req, res) => {
-    try {
-        const { userId, role } = req.body;
-
-        // 1️⃣ Fetch user
-        const user = await User.findById(userId).populate("roles");
-
-        if (!user) {
-            return res.json({ success: false, msg: "User not found" });
-        }
-
-        // 2️⃣ Prevent removing "admin" role from the main admin user
-        const adminRole = user.roles.find(r => r.role === "admin");
-        if (user.username === "admin" && adminRole && adminRole._id.toString() === role) {
-            return res.json({ success: false, msg: "Cannot remove 'admin' role from main admin user" });
-        }
-
-        // 3️⃣ Remove the role
-        await User.updateOne(
-            { _id: userId },
-            { $pull: { roles: role } }
-        );
-        //res.redirect(`/admin/userroles`);
-        return res.json({ success: true, msg: "Role removed successfully" });
-
-    } catch (err) {
-        console.error(err);
-        return res.json({ success: false, msg: "Server error" });
-    }
 };

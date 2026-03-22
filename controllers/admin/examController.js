@@ -1,24 +1,16 @@
-const User = require("../../models/User");
-const Subject = require("../../models/Subject");
-const Unit = require("../../models/Unit");
-const Topic = require("../../models/Topic");
-const Question = require("../../models/Question");
-const Payment = require("../../models/Payment"); // if exists
 const Exam = require("../../models/Exam");
 const getDevice = require("../../utils/getDevice"); // if you use device-based views
+const logger = require("../../utils/logger");
 
 // controllers/admin/examController.js
 exports.list = async (req, res) => {
   try {
     const exams = await Exam.find().sort({ examname: 1 });
-
-    res.render(`pages/${getDevice(req)}/admin/exams/exam`, {
-      exams
-    });
+    res.render(`pages/${getDevice(req)}/admin/exams/exam`, { exams });
 
   } catch (err) {
-    console.error("Error fetching exams:", err);
-    res.status(500).send("Unable to fetch exams");
+    logger.error("Error fetching/listing exams:", err);
+    res.status(500).send("Unable to fetch/list exams");
   }
 };
 
@@ -27,11 +19,11 @@ exports.update = async (req, res) => {
     await Exam.findByIdAndUpdate(req.params.id, {
       examname: req.body.examname
     });
-    res.json({ success: true });
+    res.json({ success: true,message: "exam updated successfully" });
 
   } catch (err) {
-    console.error(err);
-    res.json({ success: false });
+    logger.error("Error updating exam:", err);
+    res.json({ success: false, message: "Error updating exam" });
   }
 };
 
@@ -40,7 +32,7 @@ exports.delete = async (req, res) => {
     const exam = await Exam.findById(req.params.id);
 
     if (!exam) {
-      return res.json({ success: false, message: "Exam not found" });
+      return res.json({ success: false, message: "Exam not found for deletion" });
     }
 
     // Delete using examcode so middleware gets it
@@ -49,12 +41,10 @@ exports.delete = async (req, res) => {
     res.json({ success: true });
 
   } catch (err) {
-    console.error(err);
-    res.json({ success: false });
+    logger.error("Error deleting exam:", err);
+    res.json({ success: false , message: "Error deleting exam"});
   }
 };
-
-// controllers/admin/examController.js
 
 exports.create = async (req, res) => {
   try {
@@ -64,7 +54,7 @@ exports.create = async (req, res) => {
     if (!examname || !examcode) {
       return res.json({
         success: false,
-        message: "Exam name and exam code are required"
+        message: "Exam name & exam code are required"
       });
     }
 
@@ -94,8 +84,7 @@ exports.create = async (req, res) => {
     });
 
   } catch (err) {
-    console.error("Error creating exam:", err);
-
+    logger.error("Failed to create exam:", err);
     return res.json({
       success: false,
       message: "Failed to create exam"

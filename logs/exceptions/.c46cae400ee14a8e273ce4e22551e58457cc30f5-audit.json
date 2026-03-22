@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "D:\\Projects\\BioBrainMdb\\logs\\exceptions\\.c46cae400ee14a8e273ce4e22551e58457cc30f5-audit.json",
+    "files": [
+        {
+            "date": 1774156872287,
+            "name": "D:\\Projects\\BioBrainMdb\\logs\\exceptions\\exception-22-03-2026.log",
+            "hash": "05d1a50dd65dd3f0b48de4e8a6d1360f5f3ce0c464dd288cb6ee11171d6744fe"
+        }
+    ],
+    "hashType": "sha256"
+}

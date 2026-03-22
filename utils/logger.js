@@ -2,7 +2,7 @@ const path = require("path");
 const winston = require("winston");
 require("winston-daily-rotate-file");
 
-const LiveTransport = require("./liveTransport");   // live logs transport
+//const LiveTransport = require("./liveTransport");   // live logs transport
 
 
 const logFormat = winston.format.printf((info) => {
@@ -14,7 +14,6 @@ const logFormat = winston.format.printf((info) => {
         : "";
 
     return `${timestamp} [${level.toUpperCase()}]: ${stack || message} ${metaString}`;
-
 });
 
 
@@ -63,14 +62,31 @@ const logger = winston.createLogger({
                 winston.format.colorize(),
                 winston.format.simple()
             )
-        }),
+        })
+    ],
 
-        // LIVE DASHBOARD LOGS
-        new LiveTransport()
+    // 🚀 NEW: Handle Uncaught Exceptions (e.g., calling a function that doesn't exist)
+    exceptionHandlers: [
+        new winston.transports.DailyRotateFile({
+            filename: path.join(__dirname, "../logs/exceptions/exception-%DATE%.log"),
+            datePattern: "DD-MM-YYYY",
+            maxSize: "20m",
+            maxFiles: "14d"
+        })
+    ],
 
-    ]
+    // 🚀 NEW: Handle Unhandled Rejections (e.g., a MongoDB query fails without a .catch)
+    rejectionHandlers: [
+        new winston.transports.DailyRotateFile({
+            filename: path.join(__dirname, "../logs/rejections/rejection-%DATE%.log"),
+            datePattern: "DD-MM-YYYY",
+            maxSize: "20m",
+            maxFiles: "14d"
+        })
+    ],
 
+    // This ensures that even if an exception is caught, the app doesn't just exit silently
+    exitOnError: false
 });
-
 
 module.exports = logger;

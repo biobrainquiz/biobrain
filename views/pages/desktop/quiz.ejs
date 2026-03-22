@@ -361,8 +361,7 @@
           document.close();
 
         } catch (err) {
-          console.error(err);
-          alert("Submission failed.");
+          alert(err || "submit Quiz Failed.");
         }
       }
 

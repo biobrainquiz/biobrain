@@ -1,5 +1,6 @@
 const Unit = require("../models/Unit");
 const escapeHtml = require("../utils/escapeHtml"); // adjust path if needed
+const logger = require("../utils/logger");
 
 exports.getUnitsByExamAndSubject = async (req, res) => {
   try {
@@ -18,7 +19,7 @@ exports.getUnitsByExamAndSubject = async (req, res) => {
     return res.json(units);
 
   } catch (err) {
-    console.error("Error fetching units:", err);
+    logger.error("Error fetching units:", err);
     return res.status(500).json([]);
   }
 };

@@ -126,7 +126,7 @@ exports.createOrder = async (req, res) => {
     return examSessionObj;
 
   } catch (err) {
-    console.error("Create Order Error:", err);
+    logger.err("Create Order Error:", err);
     return null;
   }
 };
@@ -231,7 +231,7 @@ exports.submit = async (req, res) => {
     return examSessionObj;
 
   } catch (err) {
-    console.error("Quiz Submit Error:", err);
+    logger.error("Quiz Submit Error:", err);
     return null;
   }
 };

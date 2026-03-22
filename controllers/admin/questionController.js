@@ -1,14 +1,12 @@
-const User = require("../../models/User");
 const Subject = require("../../models/Subject");
 const Unit = require("../../models/Unit");
 const Topic = require("../../models/Topic");
 const Question = require("../../models/Question");
 const Exam = require("../../models/Exam");
-const Payment = require("../../models/Payment"); // if exists
-const getDevice = require("../../utils/getDevice"); // if you use device-based views
+const getDevice = require("../../utils/getDevice"); 
+const logger = require("../../utils/logger");
 
 // ================= LIST =================
-
 exports.list = async (req, res) => {
 
   try {
@@ -41,17 +39,12 @@ exports.list = async (req, res) => {
     });
 
   } catch (err) {
-    console.error(err);
+    logger.error("Error Listing questions:", err);
     res.status(500).send("Server Error");
   }
 };
 
-
-
 // ================= CREATE =================
-
-
-// Create Question
 exports.create = async (req, res) => {
   try {
     const { examId, subId, unitId, topicId, examCode, subCode, unitCode, topicCode, qno, question, opt1, opt2, opt3, opt4, answer, difficulty, marks } = req.body;
@@ -84,13 +77,12 @@ exports.create = async (req, res) => {
 
     res.json({ success: true, question: newQuestion });
   } catch (err) {
-    console.error(err);
+    logger.error("Error creating question:", err);
     res.json({ success: false, message: "Server error" });
   }
 };
 
 // ================= UPDATE =================
-
 exports.update = async (req, res) => {
 
   try {
@@ -139,18 +131,13 @@ exports.update = async (req, res) => {
     });
 
   } catch (err) {
-
-    console.error("Update Question Error:", err);
-
+    logger.error("Error Updating Question:", err);
     res.status(500).json({
       success: false,
       message: "Server error"
     });
-
   }
-
 };
-
 
 // DELETE via POST
 exports.delete = async (req, res) => {
@@ -161,7 +148,7 @@ exports.delete = async (req, res) => {
     await Question.findByIdAndDelete(qid);
     res.json({ success: true });
   } catch (err) {
-    console.error(err);
+    logger.error("Error deleting question:", err);
     res.json({ success: false, message: "Server error" });
   }
 };

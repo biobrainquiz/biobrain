@@ -190,7 +190,6 @@ app.use("/admin", require("./routes/admin"));
 app.use("/", require("./routes/user"));
 app.use("/", require("./routes/unit"));
 app.use("/", require("./routes/topic"));
-//app.use("/", require("./routes/quiz"));
 app.use("/", require("./routes/authentication"));
 app.use("/", require("./routes/mocktest"));
 
@@ -207,8 +206,6 @@ app.get("/keep-session-alive", (req, res) => {
 });
 
 
-
-
 /* =========================================
    404 HANDLER
 ========================================= */
@@ -220,57 +217,31 @@ app.use((req, res) => {
    ERROR HANDLING
 ========================================= */
 
+// At the very end of your app.js (after all routes)
 // Global error handler
 app.use((err, req, res, next) => {
-  //console.error("GLOBAL ERROR:", err);
-  logger.error({
-      message: "GLOBAL ERROR",
-      error: err.message,
-
-      stack: err.stack
-    });
-  res.status(500).send("Something broke!");
-});
-
-/*const liveLogs = require("./utils/liveLogs");
-
-const http = require("http");
-const WebSocket = require("ws");
-
-const server = http.createServer(app);
-
-// Setup WebSocket server
-const wss = new WebSocket.Server({ server, path: "/logs" });
-
-server.listen(3000, () => {
-  logger.info("Server running on http://localhost:3000");
-});
-
-// Broadcast helper
-wss.broadcast = (data) => {
-  wss.clients.forEach(client => {
-    if (client.readyState === WebSocket.OPEN) {
-      client.send(JSON.stringify(data));
-    }
+  // 1. Log with Request Context
+  logger.error(`${req.method} ${req.url} - GLOBAL ERROR: ${err.message}`, {
+    stack: err.stack,
+    user: req.session?.username || "Guest", // Tells you who was affected
+    ip: req.ip,                             // Helps identify bot attacks
+    body: req.method === 'POST' ? req.body : undefined // See what data caused the crash
   });
-};
 
-const ws = new WebSocket("ws://localhost:3000/logs");
-app.get("/admin/logs/live", (req, res) => {
-  res.render("pages/admin/liveLogs"); // your EJS page
+  // 2. Environment Check
+  // Don't show the full error stack to real users in production (security risk)
+  const errorMessage = process.env.PRODUCTION === 'true' 
+    ? "Something went wrong on our end. Please try again later." 
+    : err.message;
+
+  res.status(500).render("error", { message: errorMessage }); 
 });
-
-// Example: send a log every 5 seconds
-setInterval(() => {
-  const log = { time: new Date().toLocaleTimeString(), message: "Test log entry" };
-  wss.broadcast(log);
-}, 5000);*/
 
 /* =========================================
    START SERVER
 ========================================= */
-const PORT = process.env.PORT || 3000;
 
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   logger.info(`🚀 Server running on port ${PORT}`);
 });

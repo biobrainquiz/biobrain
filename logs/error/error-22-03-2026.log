@@ -6,3 +6,10 @@
     at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:294:17) {"error":"querySrv ECONNREFUSED _mongodb._tcp.biobrainmdbcluster.vxuyat6.mongodb.net"}
 2026-03-22 09:00:44 [ERROR]: Error: querySrv ECONNREFUSED _mongodb._tcp.biobrainmdbcluster.vxuyat6.mongodb.net
     at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:294:17) {"error":"querySrv ECONNREFUSED _mongodb._tcp.biobrainmdbcluster.vxuyat6.mongodb.net"}
+2026-03-22 11:10:03 [ERROR]: Error: ENOENT: no such file or directory, open 'D:\Projects\BioBrainMdb\datafeed\factory\questiontable1.json'
+    at Object.openSync (node:fs:559:18)
+    at Object.readFileSync (node:fs:443:35)
+    at autoSeedExamDb (D:\Projects\BioBrainMdb\utils\autoSeeder.js:122:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async autoSeed (D:\Projects\BioBrainMdb\utils\autoSeeder.js:34:7)
+    at async D:\Projects\BioBrainMdb\server.js:74:5 {"errno":-4058,"code":"ENOENT","syscall":"open","path":"D:\\Projects\\BioBrainMdb\\datafeed\\factory\\questiontable1.json"}

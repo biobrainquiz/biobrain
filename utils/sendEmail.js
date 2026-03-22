@@ -3,7 +3,7 @@ const { Resend } = require("resend");
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const sendResetEmail = async (email, username, token) => {
-  const resetLink = `${process.env.BASE_URL}/reset-password/${token}`;
+  const resetLink = `${process.env.BASE_URI}/reset-password/${token}`;
 
   await resend.emails.send({
     from: process.env.EMAIL_FROM,

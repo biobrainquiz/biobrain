@@ -56,12 +56,10 @@ class ExamSession {
     }
 
     updateIsUserPremiumFlag(user) {
-        console.log(user);
         // Check if any role in the array matches the premium role ID
         this.isuserpremium = Array.isArray(user.roles)
-            && user.roles.some(r => r._id === "650f1a2b3c4d5e6f7a8b9014");
-
-            this.userroles=user.roles;
+            && user.roles.some(r => r._id === "650f1a2b3c4d5e6f7a8b9014" || r.role === "premium_student");
+        this.userroles=user.roles;
 
         /*this.isuserpremium = Array.isArray(user.roles) 
         && user.roles.some(r => r.role === "premium_student");*/

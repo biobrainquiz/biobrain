@@ -1,5 +1,6 @@
 const Topic = require("../models/Topic");
 const escapeHtml = require("../utils/escapeHtml"); // adjust if needed
+const logger = require("../utils/logger");
 
 exports.getTopicsByExamAndSubjectAndUnit = async (req, res) => {
   try {
@@ -17,7 +18,7 @@ exports.getTopicsByExamAndSubjectAndUnit = async (req, res) => {
     return res.json(topics);
 
   } catch (err) {
-    console.error("Error fetching topics:", err);
+    logger.error("Error fetching topics by exam+subject+unit:", err);
     return res.status(500).json([]);
   }
 };

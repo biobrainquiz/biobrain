@@ -7,6 +7,8 @@ const QRCode = require('qrcode');
 const PDFDocument = require("pdfkit");
 const Result = require("../models/Result");
 
+const logger = require("../utils/logger");
+
 // programatically generate pdf
 exports.downloadResultPdf = async (req, res) => {
     try {
@@ -18,7 +20,7 @@ exports.downloadResultPdf = async (req, res) => {
         }
 
         //Generate QR Code(do this before or during PDF creation)
-        const qrCodeDataUri = await QRCode.toDataURL(process.env.BASE_URL, {
+        const qrCodeDataUri = await QRCode.toDataURL(process.env.BASE_URI, {
             margin: 1,
             width: 100,
             color: {
@@ -394,13 +396,13 @@ exports.downloadResultPdf = async (req, res) => {
                     continued: true
                 }
             )
-            .font('Mont-Bold').fillColor("#2f80ed").text(`${process.env.BASE_URL}.`);
+            .font('Mont-Bold').fillColor("#2f80ed").text(`${process.env.BASE_URI}.`);
         doc.restore();
 
         doc.end();
 
     } catch (err) {
-        console.error("PDF Error:", err);
+        logger.error("Error generating PDF programatically:", err);
         if (!res.headersSent) res.status(500).send("Failed to generate PDF Report");
     }
 };
@@ -471,8 +473,7 @@ exports.downloadResultPdf1 = async (req, res) => {
         return res.send(pdfBuffer);
 
     } catch (err) {
-        console.error("❌ PDF Error:", err);
-
+        logger.error("Error generating PDF using puppeteer:", err);
         if (!res.headersSent) {
             res.status(500).send("PDF generation failed");
         }

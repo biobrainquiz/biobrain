@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { validateExistence, cascadeDelete } = require("../utils/dbHelpers");
+const logger = require("../utils/logger");
 
 const topicSchema = new mongoose.Schema(
   {
@@ -51,7 +52,7 @@ topicSchema.pre("save", async function () {
       `Unit ${this.unitcode} does not exist in Subject ${this.subjectcode}`
     );
   } catch (err) {
-    console.error("Topic pre-save validation failed:", err.message);
+    logger.error("Topic pre-save validation failed:", err.message);
     throw err;
   }
 });
@@ -75,7 +76,7 @@ topicSchema.pre("findOneAndDelete", async function () {
       });
     }
   } catch (err) {
-    console.error("Error in cascade delete for topic:", err);
+    logger.error("Error in cascade delete for topic:", err);
   }
 });
 

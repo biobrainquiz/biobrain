@@ -7,18 +7,14 @@ const Topic = require("../models/Topic");
 const Question = require("../models/Question");
 const Payment = require("../models/Payment");
 const User = require("../models/User");
-const Role = require("../models/Role"); // correct path to your Role model
+const Role = require("../models/Role"); 
 const logger = require("./logger");
 
 function isForcedSeedingExamDbInEnv() {
   try {
     return process.env.FORCED_SEEDING_EXAMDB === "true";
   } catch (err) {
-    logger.error({
-      message: "envirnonment variable process.env.FORCED_SEEDING_EXAMDB Missing",
-      error: err.message,
-      stack: err.stack
-    });
+    logger.error("envirnonment variable process.env.FORCED_SEEDING_EXAMDB Missing", err);
     return false;
   }
 }
@@ -27,11 +23,7 @@ function isForcedSeedingUserRolesDbInEnv() {
   try {
     return process.env.FORCED_SEEDING_USER_ROLES_DB === "true";
   } catch (err) {
-    logger.error({
-      message: "envirnonment variable process.env.FORCED_SEEDING_USER_ROLES_DB Missing",
-      error: err.message,
-      stack: err.stack
-    });
+    logger.error("envirnonment variable process.env.FORCED_SEEDING_USER_ROLES_DB Missing", err);
     return false;
   }
 }
@@ -42,15 +34,11 @@ async function autoSeed(requestFromDashboard, source) {
       await autoSeedExamDb(source, isForcedSeedingExamDbInEnv());
       await autoSeedUserRolesDb(isForcedSeedingUserRolesDbInEnv());
     } else { //order from dashboard to seed Exam databse to factory or recent bkup point irrespective of process.env flags
-      await autoSeedExamDb(source,true);
+      await autoSeedExamDb(source, true);
     }
   }
   catch (err) {
-    logger.error({
-      message: "❌ Auto seeding failed",
-      error: err.message,
-      stack: err.stack
-    });
+    logger.error("Auto seeding failed", err);
   }
 }
 
@@ -90,15 +78,11 @@ async function autoSeedUserRolesDb(forcedSeedingUserRolesDbInEnv) {
 
   }
   catch (err) {
-    logger.error({
-      message: "❌ Auto seeding failed",
-      error: err.message,
-      stack: err.stack
-    });
+    logger.error("Auto seeding of User,Roles failed", err);
   }
 }
 
-async function autoSeedExamDb(source,forcedSeedingExamDbInEnv) {
+async function autoSeedExamDb(source, forcedSeedingExamDbInEnv) {
   try {
     if (!forcedSeedingExamDbInEnv) {
       logger.info("✅ Forced seeding of Exam Database disabled. Skipping...");
@@ -183,11 +167,7 @@ async function autoSeedExamDb(source,forcedSeedingExamDbInEnv) {
 
   }
   catch (err) {
-    logger.error({
-      message: "❌ Auto seeding failed",
-      error: err.message,
-      stack: err.stack
-    });
+    logger.error("Auto seeding of Exam data failed", err);
   }
 }
 module.exports = autoSeed;

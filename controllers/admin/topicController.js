@@ -1,22 +1,13 @@
-const User = require("../../models/User");
 const Subject = require("../../models/Subject");
 const Unit = require("../../models/Unit");
 const Topic = require("../../models/Topic");
-const Question = require("../../models/Question");
-const Payment = require("../../models/Payment"); // if exists
 const Exam = require("../../models/Exam");
-const getDevice = require("../../utils/getDevice"); // if you use device-based views
-
+const getDevice = require("../../utils/getDevice"); 
+const logger = require("../../utils/logger");
 
 // Render topic page
 exports.list = async (req, res) => {
   try {
-    /*const topics = await Topic.find()
-      .populate("exam")
-      .populate("subject")
-      .populate("unit")
-      .lean();*/
-
 
     const exams = await Exam.find().sort({ examname: 1 });
 
@@ -41,7 +32,7 @@ exports.list = async (req, res) => {
         topics
       });
   } catch (err) {
-    console.error(err);
+    logger.error("Error listing topics:", err);
     res.status(500).send("Server Error");
   }
 };
@@ -70,7 +61,7 @@ exports.create = async (req, res) => {
 
     res.json({ success: true, topic: newTopic });
   } catch (err) {
-    console.error(err);
+    logger.error("Error creating topic:", err);
     res.json({ success: false, message: "Server error" });
   }
 };
@@ -86,7 +77,7 @@ exports.update = async (req, res) => {
 
     res.json({ success: true });
   } catch (err) {
-    console.error(err);
+    logger.error("Error updating topic:", err);
     res.json({ success: false, message: "Server error" });
   }
 };
@@ -100,7 +91,7 @@ exports.delete = async (req, res) => {
     await Topic.findByIdAndDelete(id);
     res.json({ success: true });
   } catch (err) {
-    console.error(err);
+    logger.error("Error deleting topic:", err);
     res.json({ success: false, message: "Server error" });
   }
 };

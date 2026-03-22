@@ -604,10 +604,10 @@
 
             <script>
 
-                const exams = <%- JSON.stringify(exams) %>;
-const subjects = <%- JSON.stringify(subjects) %>;
-const units = <%- JSON.stringify(units) %>;
-const topics = <%- JSON.stringify(topics) %>;
+                const exams = <% - JSON.stringify(exams) %>;
+                const subjects = <% - JSON.stringify(subjects) %>;
+                const units = <% - JSON.stringify(units) %>;
+                const topics = <% - JSON.stringify(topics) %>;
                 let sortDirection = {};
 
                 function refreshRowNumbers() {
@@ -1144,8 +1144,7 @@ const topics = <%- JSON.stringify(topics) %>;
                             }
                         })
                         .catch(err => {
-                            console.error(err);
-                            alert("Error deleting question.");
+                            alert(err || "Error deleting question.");
                         });
                 }
 
@@ -1322,10 +1321,7 @@ const topics = <%- JSON.stringify(topics) %>;
                         row.querySelector(".cancel-btn").style.display = "none";
 
                     } catch (err) {
-
-                        console.error("Save Question Error:", err);
-                        alert("Server error while updating question");
-
+                             alert(err || "Save Question Error.");
                     }
 
                 }

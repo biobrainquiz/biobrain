@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 const password = process.argv[2];
 
 if (!password) {
-  console.error("Usage: node hashPasswordCli.js <password>");
+  console.log("Usage: node hashPasswordCli.js <password>");
   process.exit(1);
 }
 
