@@ -19,7 +19,7 @@ exports.getUnitsByExamAndSubject = async (req, res) => {
     return res.json(units);
 
   } catch (err) {
-    logger.error("Error fetching units:", err);
+    logger.error("Error fetching units by exam+subject:", err);
     return res.status(500).json([]);
   }
 };

@@ -5,7 +5,7 @@ const logger = require("../../utils/logger");
 
 /* Render logs page */
 exports.logsPage = (req, res) => {
-    const logTypes = ["info", "error", "combined","exceptions","rejections"];
+    const logTypes = ["info", "error", "combined","exception","rejection"];
     res.render("pages/desktop/admin/logs", {
         logTypes
     });

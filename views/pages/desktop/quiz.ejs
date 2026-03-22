@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <title>BioBrain - Examination Portal</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <style>
     body {
       margin: 0;
@@ -165,20 +163,17 @@
 </head>
 
 <body>
-
   <header>
-
-
     <div>
       Hello, <%= examSession.username %> 👋 | Examination Portal |
         <span class="breadcrumb-wrapper">
           <span class="breadcrumb">
             <%= examSession.examname %> &gt; <%= examSession.subjectname %> &gt;
-                <span class="truncate" title="<%= examSession.unitName %>">
+                <span class="truncate" title="<%= examSession.unitname %>">
                   <%= examSession.unitname.length> 15 ? examSession.unitname.slice(0, 15) + '...' : examSession.unitname
                     %>
                 </span> &gt;
-                <span class="truncate" title="<%= examSession.topicName %>">
+                <span class="truncate" title="<%= examSession.topicname %>">
                   <%= examSession.topicname.length> 20 ? examSession.topicname.slice(0, 20) + '...' :
                     examSession.topicname %>
                 </span>
@@ -187,9 +182,7 @@
         <%= examSession.questionscount %> Questions • <%= examSession.difficulty.charAt(0).toUpperCase() +
             examSession.difficulty.slice(1) %> Level
     </div>
-
     <div>Time Left: <span id="timer">00:00</span></div>
-
   </header>
 
   <div class="container">
@@ -212,11 +205,7 @@
 
   </div>
 
-<!--  <script id="questionsData" type="application/json">
-  <%- JSON.stringify(examSession.questions) %>
-</script>-->
-
-<script>
+  <script>
     const examSession = <%- JSON.stringify(examSession) %>;
     document.addEventListener("DOMContentLoaded", function () {
 
@@ -381,5 +370,4 @@
   <link rel="stylesheet" href="/css/desktopStyle.css" />
   <%- include('../../partials/desktop/footer') %>
 </body>
-
 </html>
