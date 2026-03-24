@@ -1,0 +1,6 @@
+2026-03-24 16:45:30 [ERROR]: Error: Unable to find the session to touch
+    at D:\Projects\BioBrainMdb\node_modules\connect-mongo\dist\index.cjs:385:194
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"user":"Guest","ip":"::1"}
+2026-03-24 16:45:30 [ERROR]: Error: Unable to find the session to touch
+    at D:\Projects\BioBrainMdb\node_modules\connect-mongo\dist\index.cjs:385:194
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"user":"Guest","ip":"::1"}

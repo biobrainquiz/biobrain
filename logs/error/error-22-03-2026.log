@@ -68,3 +68,6 @@
     at next (D:\Projects\BioBrainMdb\node_modules\router\index.js:291:5)
     at requireLogin (D:\Projects\BioBrainMdb\middleware\requireLogin.js:7:3)
     at Layer.handleRequest (D:\Projects\BioBrainMdb\node_modules\router\lib\layer.js:152:17) {"user":"Guest","ip":"::1"}
+2026-03-22 22:24:39 [ERROR]: ValidationError: Question validation failed: difficulty_level: `medium` is not a valid enum value for path `difficulty_level`.
+    at model.validate (D:\Projects\BioBrainMdb\node_modules\mongoose\lib\document.js:2864:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {"errors":{"difficulty_level":{"name":"ValidatorError","message":"`medium` is not a valid enum value for path `difficulty_level`.","properties":{"message":"`medium` is not a valid enum value for path `difficulty_level`.","type":"enum","enumValues":["easy","hard"],"path":"difficulty_level","value":"medium","length":6},"kind":"enum","path":"difficulty_level","value":"medium"}},"_message":"Question validation failed"}

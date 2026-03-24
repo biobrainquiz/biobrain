@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<title>403 - Access Denied</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+font-family:Segoe UI, Arial, sans-serif;
+}
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+background:linear-gradient(135deg,#4f8ef7,#7b61ff);
+color:#333;
+transition:background .3s,color .3s;
+}
+
+/* Dark Mode */
+
+@media (prefers-color-scheme: dark){
+
+body{
+background:linear-gradient(135deg,#141e30,#243b55);
+color:#eee;
+}
+
+.card{
+background:#1e1e1e;
+}
+
+.btn-back{
+border-color:#555;
+color:#ddd;
+}
+
+}
+
+/* Card */
+
+.card{
+background:white;
+padding:50px 60px;
+border-radius:14px;
+text-align:center;
+box-shadow:0 15px 40px rgba(0,0,0,0.2);
+max-width:450px;
+}
+
+/* Animated Lock */
+
+.lock{
+font-size:70px;
+display:inline-block;
+animation:shake 1.8s infinite;
+}
+
+@keyframes shake{
+
+0%{transform:rotate(0deg);}
+20%{transform:rotate(-8deg);}
+40%{transform:rotate(8deg);}
+60%{transform:rotate(-6deg);}
+80%{transform:rotate(6deg);}
+100%{transform:rotate(0deg);}
+
+}
+
+.code{
+font-size:64px;
+font-weight:700;
+color:#e74c3c;
+margin:10px 0;
+}
+
+.title{
+font-size:26px;
+font-weight:600;
+}
+
+.message{
+margin:15px 0 20px;
+color:#666;
+line-height:1.6;
+}
+
+.contact{
+font-size:14px;
+margin-bottom:25px;
+}
+
+.contact a{
+color:#4f8ef7;
+text-decoration:none;
+}
+
+.buttons{
+display:flex;
+gap:10px;
+justify-content:center;
+}
+
+/* Buttons */
+
+.btn{
+padding:11px 18px;
+border-radius:6px;
+text-decoration:none;
+font-size:15px;
+font-weight:500;
+}
+
+.btn-home{
+background:#4f8ef7;
+color:white;
+}
+
+.btn-home:hover{
+background:#3a72d8;
+}
+
+.btn-back{
+border:1px solid #ccc;
+color:#333;
+}
+
+.btn-back:hover{
+background:#f4f4f4;
+}
+
+/* Countdown */
+
+.timer{
+margin-top:20px;
+font-size:13px;
+color:#888;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="lock">🔒</div>
+
+<div class="code">403</div>
+
+<div class="title">Access Denied</div>
+
+<div class="message">
+You don't have permission to access this page.
+</div>
+
+<div class="contact">
+Contact administrator:
+<a href="mailto:admin@biobrain.com">admin@biobrain.com</a>
+</div>
+
+<div class="buttons">
+<a href="/" class="btn btn-home">Home</a>
+<a href="javascript:history.back()" class="btn btn-back">Go Back</a>
+</div>
+
+<div class="timer">
+Redirecting to home in <span id="count">5</span> seconds...
+</div>
+
+</div>
+
+<script>
+
+let count=8;
+
+const timer=setInterval(()=>{
+
+count--;
+document.getElementById("count").innerText=count;
+
+if(count===0){
+clearInterval(timer);
+window.location.href="/";
+}
+
+},1000);
+
+</script>
+
+</body>
+
+</html>

@@ -1,4 +1,42 @@
+const User = require("../models/User");
+
 function authorize(...allowedRoles) {
+    return async (req, res, next) => {
+
+        if (!req.session.user?._id) {
+            return res.redirect("/login");
+        }
+
+        try {
+            // 🔥 Always get latest data from DB
+            const user = await User.findById(req.session.user._id).populate("roles");
+
+            if (!user) {
+                return res.redirect("/login");
+            }
+
+            const userRoles = user.roles.map(r => r.role);
+            const hasRole = userRoles.some(role =>
+                allowedRoles.includes(role)
+            );
+
+            if (!hasRole) {
+                return res.status(403).render("errors/403");
+            }
+
+            // optional: attach fresh user
+            req.user = user;
+
+            next();
+
+        } catch (err) {
+            console.error(err);
+            return res.status(500).send("Server Error");
+        }
+    };
+}
+
+/*function authorize1(...allowedRoles) {
     return (req, res, next) => {
         
         const user = req.session.user;
@@ -14,5 +52,5 @@ function authorize(...allowedRoles) {
         next();
 
     };
-}
+}*/
 module.exports = authorize;
