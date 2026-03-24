@@ -68,7 +68,7 @@ const logger = winston.createLogger({
     // 🚀 NEW: Handle Uncaught Exceptions (e.g., calling a function that doesn't exist)
     exceptionHandlers: [
         new winston.transports.DailyRotateFile({
-            filename: path.join(__dirname, "../logs/exceptions/exception-%DATE%.log"),
+            filename: path.join(__dirname, "../logs/exception/exception-%DATE%.log"),
             datePattern: "DD-MM-YYYY",
             maxSize: "20m",
             maxFiles: "14d"
@@ -78,7 +78,7 @@ const logger = winston.createLogger({
     // 🚀 NEW: Handle Unhandled Rejections (e.g., a MongoDB query fails without a .catch)
     rejectionHandlers: [
         new winston.transports.DailyRotateFile({
-            filename: path.join(__dirname, "../logs/rejections/rejection-%DATE%.log"),
+            filename: path.join(__dirname, "../logs/rejection/rejection-%DATE%.log"),
             datePattern: "DD-MM-YYYY",
             maxSize: "20m",
             maxFiles: "14d"

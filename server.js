@@ -70,8 +70,8 @@ const mongoURI = isProduction
 mongoose.connect(mongoURI)
   .then(async () => {
     logger.info("✅ Connected to MongoDB");
-    const requestFromDashboard=false;
-    await autoSeed(requestFromDashboard,"factory");
+    const requestFromDashboard = false;
+    await autoSeed(requestFromDashboard, "factory");
   })
   .catch(err => {
     logger.error({
@@ -230,11 +230,16 @@ app.use((err, req, res, next) => {
 
   // 2. Environment Check
   // Don't show the full error stack to real users in production (security risk)
-  const errorMessage = process.env.PRODUCTION === 'true' 
-    ? "Something went wrong on our end. Please try again later." 
+  const errorMessage = process.env.PRODUCTION === 'true'
+    ? "Something went wrong on our end. Please try again later."
     : err.message;
 
-  res.status(500).render("error", { message: errorMessage }); 
+  //res.status(500).render("error", { message: errorMessage }); 
+  // ✅ RETURN JSON INSTEAD OF render()
+  res.status(500).json({
+    success: false,
+    message: errorMessage
+  });
 });
 
 /* =========================================
