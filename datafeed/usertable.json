@@ -12,7 +12,7 @@
     "password": "$2b$10$EoGU7BN5wfr4.YOuUtyo5eD9IxPOBpsUmy6jdWO9lUMPk8.D/jVui",
     "mobile": "1234567890",
     "email": "vamsi@biobrain.com",
-    "roles": ["650f1a2b3c4d5e6f7a8b9012"],
+    "roles": ["650f1a2b3c4d5e6f7a8b9012","650f1a2b3c4d5e6f7a8b9014"],
     "isActive": true
   }
 ]

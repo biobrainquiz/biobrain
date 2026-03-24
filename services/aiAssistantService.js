@@ -154,6 +154,7 @@ Instructions:
 
     // Get the explanation from the response
     const explanation = response.choices?.[0]?.message?.content;
+    
     return explanation || "No explanation available";
 
   } catch (err) {
