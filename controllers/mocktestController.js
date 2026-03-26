@@ -19,7 +19,6 @@ exports.createOrder = async (req, res) => {
     return res.render(`pages/${getDevice(req)}/quiz`, { examSession });
 }
 
-
 exports.submit = async (req, res) => {
     const device = getDevice(req);
     const examSession = await mocktestService.submit(req, res);

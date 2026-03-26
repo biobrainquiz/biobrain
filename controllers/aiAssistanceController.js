@@ -1,9 +1,7 @@
-
 const aiExplainAnswerService = require("../services/ai/aiExplainAnswerService");
 const aiSingleQuizSummaryService = require("../services/ai/aiSingleQuizSummaryService");
 const aiAllQuizSummaryService = require("../services/ai/aiAllQuizSummaryService");
 const Result = require("../models/Result");
-const User = require("../models/User");
 const logger = require("../utils/logger");
 
 exports.aiExplainAnswer = async (req, res) => {
@@ -38,10 +36,6 @@ exports.aiSingleQuizSummary = async (req, res) => {
     try {
         const { resultid } = req.body;
         const result = await Result.findById({_id: resultid}).populate("userid");
-       /* result = await Result.find({
-            _id: resultid
-        }).populate("userid");*/
-
         const explanation = await aiSingleQuizSummaryService.generateSingleQuizSummary(result);
         res.json({ explanation });
 
@@ -61,7 +55,6 @@ exports.aiAllQuizSummary = async (req, res) => {
         }).populate("userid");
         const explanation = await aiAllQuizSummaryService.generateAllQuizSummary(results);
         res.json({ explanation });
-
 
     } catch (err) {
         logger.error("AI Assistant All Quiz Summary Error:", err);

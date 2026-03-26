@@ -91,8 +91,6 @@ exports.login = async (req, res) => {
     }
 };
 
-
-
 // ==========================
 // REGISTER (WITH ROLE)
 // ==========================
