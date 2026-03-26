@@ -4,7 +4,7 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Debug BioBrainMdb",
+      "name": "Debug BioBrain",
       "program": "${workspaceFolder}/server.js",
       "restart": true,
       "envFile": "${workspaceFolder}/.env",
