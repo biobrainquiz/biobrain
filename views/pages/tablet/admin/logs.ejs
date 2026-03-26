@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Admin - Logs</title>
+
+<link rel="stylesheet" href="/css/adminStyle.css">
+
+<style>
+
+.logs-wrapper{
+background:#f4f6f9;
+padding:25px;
+border-radius:8px;
+}
+
+/* SECTION TABS */
+
+.log-tabs{
+display:flex;
+gap:10px;
+margin-bottom:15px;
+}
+
+.log-tabs button{
+padding:6px 12px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+background:#374151;
+color:white;
+font-size:13px;
+}
+
+.log-tabs button.active{
+background:#2563eb;
+}
+
+/* CONTROLS */
+
+.log-controls{
+display:flex;
+gap:15px;
+margin-bottom:10px;
+}
+
+select{
+padding:6px;
+}
+
+/* VIEWERS */
+
+.log-viewer{
+background:#0f172a;
+color:#e5e7eb;
+
+padding:15px;
+border-radius:8px;
+
+font-family:monospace;
+font-size:13px;
+
+height:420px;
+max-width:100%;
+
+overflow-y:auto;
+overflow-x:auto;
+
+white-space:pre;
+
+border:1px solid #1f2937;
+
+box-sizing:border-box;
+}
+
+/* LIVE LOGS LAYOUT */
+
+.live-container{
+display:flex;
+gap:15px;
+}
+
+.live-box{
+flex:1;
+display:flex;
+flex-direction:column;
+}
+
+.live-title{
+font-weight:600;
+margin-bottom:5px;
+}
+
+/* INFO COLOR */
+
+.info-box{
+color:#22c55e;
+}
+
+/* ERROR COLOR */
+
+.error-box{
+color:#ef4444;
+}
+
+/* DOWNLOAD BUTTON */
+
+.download-btn{
+padding:6px 10px;
+border:none;
+background:#16a34a;
+color:white;
+border-radius:5px;
+cursor:pointer;
+font-size:12px;
+}
+
+/* HIDE SECTIONS */
+
+.hidden{
+display:none;
+}
+
+.admin-container{
+display:flex;
+}
+
+.admin-content{
+flex:1;
+padding:25px;
+overflow:hidden;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<%- include('../../../partials/admin/header') %>
+
+<div class="admin-container">
+
+<%- include('../../../partials/admin/sidebar') %>
+
+<div class="admin-content">
+
+<div class="logs-wrapper">
+
+<h2>📄 System Logs</h2>
+
+<!-- TABS -->
+
+<div class="log-tabs">
+
+<button id="oldTab" class="active" onclick="showOld()">Old Logs</button>
+
+<button id="liveTab" onclick="showLive()">Live Logs</button>
+
+</div>
+
+<!-- OLD LOGS SECTION -->
+
+<div id="oldLogs">
+
+<div class="log-controls">
+
+<select id="logType" onchange="loadFiles()">
+
+<option value="">Select Log Type</option>
+
+<% logTypes.forEach(type=>{ %>
+<option value="<%= type %>"><%= type %></option>
+<% }) %>
+
+</select>
+
+
+<select id="logFile" onchange="viewLog()">
+
+<option value="">Select Log File</option>
+
+</select>
+
+<button class="download-btn" onclick="downloadLog()">Download</button>
+
+</div>
+
+<div id="logViewer" class="log-viewer">
+
+Select log type and file to view logs.
+
+</div>
+
+</div>
+
+
+<!-- LIVE LOGS SECTION -->
+
+<div id="liveLogs" class="hidden">
+
+<div class="live-container">
+
+<div class="live-box">
+
+<div class="live-title">INFO Live Feed</div>
+
+<div id="infoLive" class="log-viewer info-box"></div>
+
+</div>
+
+<div class="live-box">
+
+<div class="live-title">ERROR Live Feed</div>
+
+<div id="errorLive" class="log-viewer error-box"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<%- include('../../../partials/admin/footer') %>
+
+<script>
+
+/* TAB SWITCH */
+
+function showOld(){
+
+oldLogs.classList.remove("hidden");
+liveLogs.classList.add("hidden");
+
+oldTab.classList.add("active");
+liveTab.classList.remove("active");
+
+}
+
+function showLive(){
+
+oldLogs.classList.add("hidden");
+liveLogs.classList.remove("hidden");
+
+liveTab.classList.add("active");
+oldTab.classList.remove("active");
+
+}
+
+/* LOAD LOG FILES */
+
+function loadFiles(){
+
+const type=document.getElementById("logType").value;
+
+fetch(`/admin/logs/files?type=${type}`)
+.then(res=>res.json())
+.then(files=>{
+
+const dropdown=document.getElementById("logFile");
+
+dropdown.innerHTML='<option value="">Select Log File</option>';
+
+files.forEach(f=>{
+dropdown.innerHTML+=`<option value="${f}">${f}</option>`;
+});
+
+});
+
+}
+
+/* VIEW LOG */
+
+function viewLog(){
+
+const type=document.getElementById("logType").value;
+const file=document.getElementById("logFile").value;
+
+fetch(`/admin/logs/view?type=${type}&file=${file}`)
+.then(res=>res.text())
+.then(data=>{
+
+const viewer=document.getElementById("logViewer");
+
+viewer.textContent=data;
+
+viewer.scrollTop=viewer.scrollHeight;
+
+});
+
+}
+
+/* DOWNLOAD LOG */
+
+function downloadLog(){
+
+const type=document.getElementById("logType").value;
+const file=document.getElementById("logFile").value;
+
+if(!type || !file){
+
+alert("Select log file first");
+
+return;
+
+}
+
+window.location=`/admin/logs/download?type=${type}&file=${file}`;
+
+}
+
+/* LIVE LOG SOCKET */
+
+const socket=new WebSocket(`ws://${location.host}/logs`);
+
+socket.onmessage=function(event){
+
+const log=JSON.parse(event.data);
+
+if(log.level==="info"){
+
+const box=document.getElementById("infoLive");
+
+box.textContent+=log.message+"\n";
+
+box.scrollTop=box.scrollHeight;
+
+}
+
+if(log.level==="error"){
+
+const box=document.getElementById("errorLive");
+
+box.textContent+=log.message+"\n";
+
+box.scrollTop=box.scrollHeight;
+
+}
+
+};
+
+</script>
+
+</body>
+</html>

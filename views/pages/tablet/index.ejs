@@ -5,7 +5,174 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BioBrain - Home</title>
-    <link rel="stylesheet" href="/css/desktopStyles.css">
+    <link rel="stylesheet" href="/css/desktopStyle.css" />
+
+    <style>
+        /* ================================
+   LEADERBOARD SECTION
+================================ */
+        .leaderboard {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 30px;
+            background: linear-gradient(145deg, #0f172a, #1e293b);
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            color: #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* subtle glow effect */
+        .leaderboard::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.08), transparent 70%);
+            z-index: 0;
+        }
+
+        .leaderboard h3 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 25px;
+            color: #38bdf8;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ================================
+   TABLE
+================================ */
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 14px;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .leaderboard-table thead {
+            background: linear-gradient(135deg, #1e293b, #334155);
+        }
+
+        .leaderboard-table th {
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Rows */
+        .leaderboard-table td {
+            padding: 16px;
+            text-align: center;
+            font-size: 15px;
+            border-bottom: 1px solid #1e293b;
+            transition: all 0.2s ease;
+        }
+
+        /* Zebra rows */
+        .leaderboard-table tbody tr:nth-child(even) {
+            background: rgba(30, 41, 59, 0.6);
+        }
+
+        /* Hover effect */
+        .leaderboard-table tbody tr:hover {
+            background: #334155;
+            transform: scale(1.01);
+        }
+
+        /* ================================
+   CURRENT USER HIGHLIGHT
+================================ */
+        .current-user {
+            background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .current-user td {
+            border-bottom: none;
+        }
+
+        /* ================================
+   TOP 3 SPECIAL STYLING
+================================ */
+        .leaderboard-table tbody tr:nth-child(1) td:first-child {
+            font-size: 18px;
+            font-weight: bold;
+            color: gold;
+        }
+
+        .leaderboard-table tbody tr:nth-child(2) td:first-child {
+            font-size: 17px;
+            font-weight: bold;
+            color: silver;
+        }
+
+        .leaderboard-table tbody tr:nth-child(3) td:first-child {
+            font-size: 16px;
+            font-weight: bold;
+            color: #cd7f32;
+        }
+
+        /* ================================
+   EMPTY STATE
+================================ */
+        .leaderboard-table td[colspan="4"] {
+            padding: 25px;
+            text-align: center;
+            color: #94a3b8;
+            font-style: italic;
+        }
+
+        /* ================================
+   RESPONSIVE (MOBILE)
+================================ */
+        @media (max-width: 768px) {
+            .leaderboard {
+                padding: 20px;
+            }
+
+            .leaderboard-table th,
+            .leaderboard-table td {
+                padding: 10px;
+                font-size: 13px;
+            }
+
+            .leaderboard h3 {
+                font-size: 22px;
+            }
+        }
+
+        .leaderboard-table tbody tr:nth-child(1) td:nth-child(2)::after {
+            content: " 👑";
+        }
+
+        .leaderboard {
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -29,22 +196,22 @@
                 <div class="card">
                     <h4>NEET</h4>
                     <p>Zoology</p>
-                    <button>Start</button>
+                    <button onclick="mockTest('E1','S1')">Start</button>
                 </div>
                 <div class="card">
                     <h4>DL/JL/Asst. Prof.</h4>
                     <p>Zoology</p>
-                    <button>Start</button>
+                    <button onclick="mockTest('E2','S1')">Start</button>
                 </div>
                 <div class="card">
                     <h4>CSIR.NET/SLET/SET</h4>
                     <p>Life Sciences</p>
-                    <button>Start</button>
+                    <button onclick="mockTest('E3','S2')">Start</button>
                 </div>
                 <div class="card">
                     <h4>GATE</h4>
                     <p>Zoology</p>
-                    <button>Start</button>
+                    <button onclick="mockTest('E4','S1')">Start</button>
                 </div>
             </div>
         </section>
@@ -63,15 +230,56 @@
         <!-- Leaderboard Section -->
         <section class="leaderboard">
             <h3>🏆 Top Biology Minds</h3>
-            <ul>
-                <li>1️⃣ Ananya – 980 Points</li>
-                <li>2️⃣ Rahul – 920 Points</li>
-                <li>3️⃣ Sneha – 890 Points</li>
-                <li>4️⃣ Arjun – 850 Points</li>
-                <li>5️⃣ Meera – 830 Points</li>
-            </ul>
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Score</th>
+                        <th>Accuracy</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (leaderboard && leaderboard.length> 0) { %>
+
+                        <% leaderboard.forEach((user, index)=> { %>
+                            <tr
+                                class="<%= currentuser && currentuser._id.toString() === user._id.toString() ? 'current-user' : '' %>">
+                                <td>
+                                    <% if(index===0) { %> 🥇
+                                        <% } else if(index===1) { %> 🥈
+                                            <% } else if(index===2) { %> 🥉
+                                                <% } else { %>
+                                                    <%= index + 1 %>
+                                                        <% } %>
+                                </td>
+                                <td>
+                                    <%= user.username %>
+                                </td>
+                                <td>
+                                    <%= user.finalscore %>
+                                </td>
+                                <td>
+                                    <%= user.accuracy %>%
+                                </td>
+                            </tr>
+                            <% }) %>
+
+                                <% } else { %>
+                                    <tr>
+                                        <td colspan="4">No data available</td>
+                                    </tr>
+                                    <% } %>
+                </tbody>
+            </table>
         </section>
 
+        <script>
+            function mockTest(examcode, subjectcode) {
+                window.location.href = `/mocktest/init/${examcode}/${subjectcode}`;
+            }
+        </script>
+        </script>
         <%- include('../../partials/desktop/footer') %>
 </body>
 

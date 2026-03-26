@@ -1,30 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About BioBrain</title>
-  <link rel="stylesheet" href="/style.css">
-  <style>
-    
-  </style>
+    <meta charset="UTF-8">
+    <title>BioBrain | Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/desktopStyle.css">
+
+    <style>
+        body {
+            margin: 0;
+            background: #0f172a;
+            font-family: 'Poppins', sans-serif;
+            color: #ffffff;
+        }
+
+        .profile-wrapper {
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .profile-card {
+            background: #1e293b;
+            padding: 22px 28px;
+            border-radius: 18px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            margin-bottom: 28px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .profile-card h2 {
+            margin: 0;
+            font-size: 20px;
+            color: #38bdf8;
+        }
+
+        .profile-card p {
+            margin: 4px 0;
+            font-size: 13px;
+            color: #cbd5e1;
+        }
+
+        .badge {
+            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+            padding: 7px 15px;
+            border-radius: 25px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 16px;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+            padding: 15px;
+            border-radius: 14px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        .stat-box h4 {
+            margin: 0;
+            font-size: 12px;
+        }
+
+        .stat-box span {
+            font-size: 18px;
+            font-weight: bold;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .section {
+            background: #1e293b;
+            padding: 18px;
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+        }
+
+        .performance-row {
+            display: flex;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .half-card {
+            flex: 1;
+        }
+
+        .progress-container {
+            background: #334155;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 10px;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+        }
+
+        .chart-container {
+            position: relative;
+            height: 200px;
+        }
+
+        @media (max-width: 900px) {
+            .performance-row {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-  <!-- Header -->
-  <%- include('../../partials/desktop/header') %>
+<%- include('../../partials/desktop/header') %>
 
-  <!-- Hero / About Section -->
-  <section class="about-hero">
-    <h1>Profile</h1>
-    <p class="about-text">
-      PROFILE COMING !!!  PROFILE COMING !!!  PROFILE COMING !!!  PROFILE COMING !!!  PROFILE COMING !!!  PROFILE COMING !!!  
-      PROFILE COMING !!!  PROFILE COMING !!!  PROFILE COMING !!!  PROFILE COMING !!!  PROFILE COMING !!!  PROFILE COMING !!!  
-      PROFILE COMING !!!  PROFILE COMING !!!  PROFILE COMING !!!  PROFILE COMING !!!  PROFILE COMING !!!  PROFILE COMING !!!  
-    </p>
-  </section>
+<div class="profile-wrapper">
+<div class="container">
 
-  <!-- Footer -->
-  <%- include('../../partials/desktop/footer') %>
+    <!-- USER INFO -->
+    <div class="profile-card">
+        <div>
+            <h2><%= user.username %></h2>
+
+            <p><strong>Email:</strong> <%= user.email || 'N/A' %></p>
+
+            <p><strong>Member Since:</strong> 
+                <%= user.userCreatedOn ? new Date(user.userCreatedOn).toDateString() : 'N/A' %>
+            </p>
+
+            <p><strong>Roles:</strong> 
+                <%= user.roles.map(role => role.role || role).join(', ') %>
+            </p>
+        </div>
+
+        <div class="badge">BioBrain Explorer 🚀</div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-grid">
+        <div class="stat-box"><h4>Quizzes</h4><span><%= stats.totalQuizzes || 0 %></span></div>
+        <div class="stat-box"><h4>Total Score</h4><span><%= stats.totalScore || 0 %></span></div>
+        <div class="stat-box"><h4>Average</h4><span><%= stats.averageScore || 0 %></span></div>
+        <div class="stat-box"><h4>Highest</h4><span><%= stats.highestScore || 0 %></span></div>
+        <div class="stat-box"><h4>Lowest</h4><span><%= stats.lowestScore || 0 %></span></div>
+        <div class="stat-box"><h4>Accuracy</h4><span><%= stats.overallAccuracy || 0 %>%</span></div>
+    </div>
+
+    <!-- PERFORMANCE + CHART -->
+    <div class="performance-row">
+
+        <div class="section half-card">
+            <h3>Overall Performance (<%= stats.overallAccuracy || 0 %>%)</h3>
+
+            <div class="progress-container">
+                <div class="progress-bar" style="width:<%= Math.min(stats.overallAccuracy || 0, 100) %>%"></div>
+            </div>
+        </div>
+
+        <div class="section half-card">
+            <h3>Score Trend</h3>
+            <div class="chart-container">
+                <canvas id="scoreChart"></canvas>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+<%- include('../../partials/desktop/footer') %>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const quizData = <%- JSON.stringify(quizHistory ?? []) %>;
+
+    if (quizData.length) {
+        const labels = quizData.map(q => new Date(q.createdAt).toLocaleDateString());
+        const scores = quizData.map(q => q.finalscore || 0);
+
+        new Chart(document.getElementById('scoreChart'), {
+            type: 'line',
+            data: {
+                labels,
+                datasets: [{
+                    label: 'Score',
+                    data: scores,
+                    borderColor: '#38bdf8',
+                    backgroundColor: 'rgba(14,165,233,0.2)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            }
+        });
+    }
+</script>
+
 </body>
 </html>

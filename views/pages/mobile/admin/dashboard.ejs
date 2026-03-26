@@ -3,7 +3,8 @@
 
 <head>
   <title>Admin Dashboard</title>
-  <link rel="stylesheet" href="/css/admin.css">
+  <link rel="stylesheet" href="/css/adminStyle.css">
+  <script src="/js/admin.js"></script>
 </head>
 
 <body>
@@ -14,35 +15,399 @@
       <%- include('../../../partials/admin/sidebar') %>
 
         <main class="admin-content">
-          <h1>Dashboard</h1>
 
           <div class="cards">
+
             <div class="card">
               <h3>Total Exams</h3>
               <p>
-                <%= totalExams || 0 %>
+                <%= examCount || 0 %>
               </p>
             </div>
 
             <div class="card">
               <h3>Total Subjects</h3>
               <p>
-                <%= totalSubjects || 0 %>
+                <%= subjectCount || 0 %>
+              </p>
+            </div>
+
+            <div class="card">
+              <h3>Total Units</h3>
+              <p>
+                <%= unitCount || 0 %>
+              </p>
+            </div>
+
+            <div class="card">
+              <h3>Total Topics</h3>
+              <p>
+                <%= topicCount || 0 %>
               </p>
             </div>
 
             <div class="card">
               <h3>Total Questions</h3>
               <p>
-                <%= totalQuestions || 0 %>
+                <%= questionCount || 0 %>
               </p>
             </div>
+
           </div>
+
+          <div class="collapsible-card">
+            <div class="collapsible-card-header">
+              <span>📋 Metrics</span>
+              <span class="chevron">▶</span>
+            </div>
+            <div class="collapsible-card-body">
+
+              <!-- USER METRICS -->
+              <h4 class="metrics-section-title">👤 User Metrics</h4>
+              <div class="cards">
+                <div class="card gradient-card">
+                  <h3>Active Users (7 days)</h3>
+                  <p>245</p>
+                </div>
+                <div class="card gradient-card">
+                  <h3>New Signups (30 days)</h3>
+                  <p>112</p>
+                </div>
+                <div class="card gradient-card">
+                  <h3>Top Users</h3>
+                  <p>John Doe</p>
+                </div>
+              </div>
+
+              <!-- QUIZ METRICS -->
+              <h4 class="metrics-section-title">📚 Quiz Metrics</h4>
+              <div class="cards">
+                <div class="card gradient-card">
+                  <h3>Quizzes Taken (Week)</h3>
+                  <p>78</p>
+                </div>
+                <div class="card gradient-card">
+                  <h3>Average Quiz Score</h3>
+                  <p>82%</p>
+                </div>
+                <div class="card gradient-card">
+                  <h3>Pass / Fail Rate</h3>
+                  <p>65% / 35%</p>
+                </div>
+                <div class="card gradient-card">
+                  <h3>Most Attempted Quiz</h3>
+                  <p>Biology Basics</p>
+                </div>
+              </div>
+
+              <!-- PAYMENT / SUBSCRIPTION METRICS -->
+              <h4 class="metrics-section-title">💰 Payment Metrics</h4>
+              <div class="cards">
+                <div class="card gradient-card">
+                  <h3>Total Payments Received</h3>
+                  <p>₹42,500</p>
+                </div>
+                <div class="card gradient-card">
+                  <h3>Subscription Renewals</h3>
+                  <p>18</p>
+                </div>
+                <div class="card gradient-card">
+                  <h3>Failed Payments</h3>
+                  <p>3</p>
+                </div>
+              </div>
+
+              <!-- CONTENT METRICS -->
+              <h4 class="metrics-section-title">📄 Content Metrics</h4>
+              <div class="cards">
+                <div class="card gradient-card">
+                  <h3>Exams Added (30 days)</h3>
+                  <p>12</p>
+                </div>
+                <div class="card gradient-card">
+                  <h3>Questions Added (30 days)</h3>
+                  <p>245</p>
+                </div>
+                <div class="card gradient-card">
+                  <h3>Topics Updated</h3>
+                  <p>9</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="collapsible-card">
+            <div class="collapsible-card-header">
+              <span>📋 Recent Activity</span>
+              <span class="chevron">▶</span>
+            </div>
+            <div class="collapsible-card-body">
+
+              <div class="activity-grid">
+
+                <!-- Recent Users -->
+                <div class="activity-card">
+                  <h3>📘 Recent Users</h3>
+
+                  <% if (recentUsers && recentUsers.length> 0) { %>
+                    <table class="recent-exam-table">
+                      <thead>
+                        <tr>
+                          <th>User</th>
+                          <th>Email</th>
+                          <th>Created On</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% recentUsers.forEach((user)=> { %>
+                          <tr>
+                            <td>
+                              <%= user.username %>
+                            </td>
+                            <td>
+                              <%= user.email %>
+                            </td>
+                            <td>
+                              <%= new Date(user.createdAt).toLocaleDateString() %>
+                            </td>
+                          </tr>
+                          <% }) %>
+                      </tbody>
+                    </table>
+                    <% } else { %>
+                      <p class="no-data">No recent users found.</p>
+                      <% } %>
+                </div>
+
+                <!-- Recent Payments -->
+                <div class="activity-card">
+                  <h3>📘 Recent Payments</h3>
+
+                  <% if (recentPayments && recentPayments.length> 0) { %>
+                    <table class="recent-exam-table">
+                      <thead>
+                        <tr>
+                          <th>User</th>
+                          <th>Amount</th>
+                          <th>Paid At</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% recentPayments.forEach((payment)=> { %>
+                          <tr>
+                            <td>
+                              <%= payment.user ? payment.user.username : "User not found" %>
+                            </td>
+                            <td>
+                              ₹<%= payment.amount %>
+                            </td>
+                            <td>
+                              <%= new Date(payment.paidAt).toLocaleDateString() %>
+                            </td>
+                          </tr>
+                          <% }) %>
+                      </tbody>
+                    </table>
+                    <% } else { %>
+                      <p class="no-data">No recent users found.</p>
+                      <% } %>
+                </div>
+
+                <!-- Recent Exams -->
+                <div class="activity-card">
+                  <h3>📘 Recent Exams</h3>
+
+                  <% if (recentExams && recentExams.length> 0) { %>
+                    <table class="recent-exam-table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Code</th>
+                          <th>Created On</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% recentExams.forEach((exam)=> { %>
+                          <tr>
+                            <td>
+                              <%= exam.examname %>
+                            </td>
+                            <td>
+                              <%= exam.examcode %>
+                            </td>
+                            <td>
+                              <%= new Date(exam.createdAt).toLocaleDateString() %>
+                            </td>
+                          </tr>
+                          <% }) %>
+                      </tbody>
+                    </table>
+                    <% } else { %>
+                      <p class="no-data">No recent exams found.</p>
+                      <% } %>
+                </div>
+
+                <!-- Recent Subjects -->
+                <div class="activity-card">
+                  <h3>📚 Recent Subjects</h3>
+
+                  <% if (recentSubjects && recentSubjects.length> 0) { %>
+                    <table class="recent-exam-table">
+                      <thead>
+                        <tr>
+                          <th>Subject Name</th>
+                          <th>Code</th>
+                          <th>Created On</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% recentSubjects.forEach((subject)=> { %>
+                          <tr>
+                            <td>
+                              <%= subject.subjectname %>
+                            </td>
+                            <td>
+                              <%= subject.subjectcode %>
+                            </td>
+                            <td>
+                              <%= new Date(subject.createdAt).toLocaleDateString() %>
+                            </td>
+                          </tr>
+                          <% }) %>
+                      </tbody>
+                    </table>
+                    <% } else { %>
+                      <p class="no-data">No recent subjects found.</p>
+                      <% } %>
+                </div>
+
+                <!-- Recent Units -->
+                <div class="activity-card">
+                  <h3>📖 Recent Units</h3>
+
+                  <% if (recentUnits && recentUnits.length> 0) { %>
+                    <table class="recent-exam-table">
+                      <thead>
+                        <tr>
+                          <th>Unit Name</th>
+                          <th>Code</th>
+                          <th>Created On</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% recentUnits.forEach((unit)=> { %>
+                          <tr>
+                            <td>
+                              <%= unit.unitname %>
+                            </td>
+                            <td>
+                              <%= unit.unitcode %>
+                            </td>
+                            <td>
+                              <%= new Date(unit.createdAt).toLocaleDateString() %>
+                            </td>
+                          </tr>
+                          <% }) %>
+                      </tbody>
+                    </table>
+                    <% } else { %>
+                      <p class="no-data">No recent units found.</p>
+                      <% } %>
+                </div>
+
+                <!-- Recent Topics -->
+                <div class="activity-card">
+                  <h3>📝 Recent Topics</h3>
+
+                  <% if (recentTopics && recentTopics.length> 0) { %>
+                    <table class="recent-exam-table">
+                      <thead>
+                        <tr>
+                          <th>Topic Name</th>
+                          <th>Code</th>
+                          <th>Created On</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% recentTopics.forEach((topic)=> { %>
+                          <tr>
+                            <td>
+                              <%= topic.topicname %>
+                            </td>
+                            <td>
+                              <%= topic.topiccode %>
+                            </td>
+                            <td>
+                              <%= new Date(topic.createdAt).toLocaleDateString() %>
+                            </td>
+                          </tr>
+                          <% }) %>
+                      </tbody>
+                    </table>
+                    <% } else { %>
+                      <p class="no-data">No recent topics found.</p>
+                      <% } %>
+                </div>
+
+                <!-- Recent Questions -->
+                <div class="activity-card">
+                  <h3>❓ Recent Questions</h3>
+
+                  <% if (recentQuestions && recentQuestions.length> 0) { %>
+                    <table class="recent-exam-table">
+                      <thead>
+                        <tr>
+                          <th>Question</th>
+                          <th>Unit</th>
+                          <th>Topic</th>
+                          <th>Created On</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% recentQuestions.forEach((q)=> { %>
+                          <tr>
+                            <td>
+                              <%= q.question %>
+                            </td>
+                            <td>
+                              <%= q.unitcode %>
+                            </td>
+                            <td>
+                              <%= q.topiccode %>
+                            </td>
+                            <td>
+                              <%= new Date(q.createdAt).toLocaleDateString() %>
+                            </td>
+                          </tr>
+                          <% }) %>
+                      </tbody>
+                    </table>
+                    <% } else { %>
+                      <p class="no-data">No recent questions found.</p>
+                      <% } %>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
         </main>
     </div>
 
-    <%- include('../../../partials/admin/footer') %>
-
+    <script>
+      document.querySelectorAll('.collapsible-card-header').forEach(header => {
+        header.addEventListener('click', () => {
+          const body = header.nextElementSibling;
+          if (body.style.display === 'flex') {
+            body.style.display = 'none';
+          } else {
+            body.style.display = 'flex';
+          }
+          header.querySelector('.chevron').classList.toggle('open');
+        });
+      });
+    </script>
 </body>
-
+<%- include('../../../partials/admin/footer') %>
 </html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Results | BioBrain</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #1B5E20;
+      --secondary: #1976D2;
+      --bg: #f4f6f9;
+      --text: #333;
+      --border: #e0e0e0;
+    }
+
+    /* Reset */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
+      margin: 0;
+      color: var(--text);
+    }
+
+    /* HEADER */
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 14px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    /* Header Actions */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .header-actions a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: 0.2s ease;
+    }
+
+    .header-actions a:hover {
+      opacity: 0.85;
+    }
+
+    /* Home Button */
+    .home-btn {
+      padding: 6px 12px;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .home-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    /* CONTAINER */
+    .container {
+      max-width: 1000px;
+      margin: 25px auto;
+      padding: 0 10px;
+    }
+
+    /* GREETING */
+    .greeting {
+      font-size: 17px;
+      margin-bottom: 18px;
+    }
+
+    /* TABLE */
+    .stats-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .stats-table th {
+      background: var(--secondary);
+      color: white;
+      font-weight: 500;
+    }
+
+    .stats-table th,
+    .stats-table td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stats-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* QUESTION BOX */
+    .question-box {
+      background: white;
+      padding: 18px;
+      margin-bottom: 18px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .question-box p {
+      margin: 6px 0;
+      line-height: 1.5;
+    }
+
+    /* OPTIONS */
+    .question-options {
+      padding-left: 0;
+      margin: 10px 0;
+    }
+
+    .question-options li {
+      list-style: none;
+      padding: 6px 10px;
+      border-radius: 5px;
+      transition: 0.2s;
+    }
+
+    /* STATES */
+    .correct {
+      color: #2e7d32;
+      font-weight: 600;
+    }
+
+    .wrong {
+      color: #d32f2f;
+      font-weight: 600;
+    }
+
+    .unattempted {
+      color: #888;
+      font-style: italic;
+    }
+
+    /* AI BUTTON */
+    .ai-btn {
+      margin-top: 10px;
+      padding: 7px 14px;
+      background: var(--secondary);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: 0.2s;
+    }
+
+    .ai-btn:hover {
+      background: #125ea8;
+    }
+
+    .ai-btn:disabled {
+      background: #b0b0b0;
+      cursor: not-allowed;
+    }
+
+    /* AI RESPONSE */
+    .ai-response {
+      margin-top: 12px;
+      padding: 12px;
+      background: #eef2ff;
+      border-left: 4px solid var(--secondary);
+      border-radius: 6px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .ai-response:empty {
+      display: none;
+    }
+
+    /* AI Explanation */
+    .ai-explanation li.correct {
+      color: #2e7d32;
+      font-weight: 600;
+    }
+
+    .question-options li.correct {
+      background: #e8f5e9;
+    }
+
+    .question-options li.wrong {
+      background: #fdecea;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>BioBrain - Quiz Results</h1>
+
+    <div class="header-actions">
+      <a href="/" class="home-btn">🏠 Home</a>
+
+      <a href="/mocktest/result/pdf/<%= examSession.resultid %>" title="Get PDF of Your Result">
+        <i class="fa-solid fa-file-pdf"></i> PDF
+      </a>
+
+      <a href="/mocktest/result/email/<%= examSession.resultid %>" title="Send Result via Email">
+        <i class="fa-solid fa-envelope"></i> Email
+      </a>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <div class="greeting">
+      Hello, <strong>
+        <%= examSession.username ? examSession.username : 'Guest' %>
+      </strong>!
+    </div>
+
+    <table class="stats-table">
+      <tr>
+        <th>Total Questions</th>
+        <th>Attempted</th>
+        <th>Correct</th>
+        <th>Wrong</th>
+        <th>Score</th>
+      </tr>
+      <tr>
+        <td>
+          <%= examSession.questionscount %>
+        </td>
+        <td>
+          <%= examSession.attempted %>
+        </td>
+        <td class="correct">
+          <%= examSession.right %>
+        </td>
+        <td class="wrong">
+          <%= examSession.wrong %>
+        </td>
+        <td>
+          <%= examSession.finalscore %>
+        </td>
+      </tr>
+    </table>
+
+    <h2>Question Review</h2>
+
+    <% examSession.questions.forEach((q, idx)=> {
+      const userAns = examSession.answers[q._id]; %>
+      <div class="question-box">
+        <p><strong>Q<%= idx + 1 %>:</strong>
+          <%= q.question %>
+        </p>
+
+        <ul class="question-options">
+          <% ['opt1', 'opt2' , 'opt3' , 'opt4' ].forEach((optKey, i)=> {
+            const optionNum = i + 1;
+            let cls = '';
+            if (userAns) {
+            cls = (userAns == optionNum && optionNum == q.answer) ? 'correct'
+            : (userAns == optionNum && optionNum != q.answer) ? 'wrong' : '';
+            }
+            if (!userAns) cls = 'unattempted';
+            %>
+            <li class="<%= cls %>">
+              <strong>
+                <%= String.fromCharCode(65 + i) %>.
+              </strong>
+              <%= q[optKey] %>
+            </li>
+            <% }) %>
+        </ul>
+
+        <p>Correct Answer: <strong>
+            <%= ['A','B','C','D'][q.answer-1] %>
+          </strong></p>
+        <% if(!userAns){ %>
+          <p class="unattempted">You did not attempt this question.</p>
+          <% } %>
+
+            <!-- 🤖 AI BUTTON -->
+            <button class="ai-btn" onclick="<%= examSession.isuserpremium ? 'explainAnswer(this)' : 'return false;' %>"
+              <%- !examSession.isuserpremium ? 'disabled title="Premium Feature: Upgrade to access"' : '' %>
+              data-question="<%= q.question %>"
+                data-opt1="<%= q.opt1 %>"
+                  data-opt2="<%= q.opt2 %>"
+                    data-opt3="<%= q.opt3 %>"
+                      data-opt4="<%= q.opt4 %>"
+                        data-correct="<%= q.answer %>"
+                          data-user="<%= (userAns===undefined || userAns===null) ? -1 : userAns %>">
+                            🤖 Explain Answer
+            </button>
+
+            <div class="ai-response"></div>
+
+      </div>
+      <% }) %>
+
+  </div>
+
+  <script>
+    async function explainAnswer(btn) {
+      const box = btn.nextElementSibling;
+      box.style.display = "block"; // show AI response
+      box.innerHTML = "⏳ Thinking...";
+
+      const payload = {
+        question: btn.dataset.question,
+        options: [
+          btn.dataset.opt1,
+          btn.dataset.opt2,
+          btn.dataset.opt3,
+          btn.dataset.opt4
+        ],
+        correctanswer: btn.dataset.correct,
+        useranswer: btn.dataset.user
+      };
+
+      try {
+        const res = await fetch("/aiassistant/explainanswer", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+        box.innerHTML = data.explanation;
+
+      } catch (err) {
+        box.innerHTML = "❌ Failed to load explanation";
+      }
+    }
+  </script>
+</body>
+
+</html>

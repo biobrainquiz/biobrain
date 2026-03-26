@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BioBrain - Home</title>
+    <link rel="stylesheet" href="/css/desktopStyle.css" />
+
+    <style>
+    /* =========================
+   LEADERBOARD (BIOBRAIN STYLE)
+========================= */
+.leaderboard {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 25px;
+}
+
+/* Title */
+.leaderboard h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #e2e8f0;
+}
+
+/* Wrapper (card feel like your .card) */
+.leaderboard-wrapper {
+    background: #1e293b;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+/* Table */
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Header */
+.leaderboard-table thead {
+    background: #0f172a;
+}
+
+.leaderboard-table th {
+    padding: 14px;
+    font-size: 13px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Cells */
+.leaderboard-table td {
+    padding: 14px;
+    text-align: center;
+    border-bottom: 1px solid #0f172a;
+    font-size: 14px;
+}
+
+/* Name column left align */
+.name-cell {
+    text-align: left;
+    padding-left: 20px;
+    font-weight: 500;
+}
+
+/* Rank */
+.rank-cell {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Score highlight */
+.score-cell {
+    color: #22c55e;
+    font-weight: 600;
+}
+
+/* Accuracy */
+.accuracy-cell {
+    color: #38bdf8;
+}
+
+/* Hover */
+.leaderboard-table tbody tr:hover {
+    background: #334155;
+    transition: 0.2s ease;
+}
+
+/* Zebra rows */
+.leaderboard-table tbody tr:nth-child(even) {
+    background: rgba(255,255,255,0.02);
+}
+
+/* =========================
+   TOP 3 SUBTLE HIGHLIGHT
+========================= */
+.leaderboard-table tbody tr:nth-child(1) {
+    background: rgba(255, 215, 0, 0.05);
+}
+
+.leaderboard-table tbody tr:nth-child(2) {
+    background: rgba(192, 192, 192, 0.05);
+}
+
+.leaderboard-table tbody tr:nth-child(3) {
+    background: rgba(205, 127, 50, 0.05);
+}
+
+/* =========================
+   CURRENT USER
+========================= */
+.current-user {
+    background: rgba(34, 197, 94, 0.12);
+    border-left: 4px solid #22c55e;
+}
+
+.current-user td {
+    font-weight: 600;
+}
+
+/* =========================
+   EMPTY STATE
+========================= */
+.empty {
+    padding: 20px;
+    color: #94a3b8;
+    font-style: italic;
+}
+
+/* =========================
+   ANIMATION (SMOOTH ENTRY)
+========================= */
+.leaderboard-wrapper {
+    animation: fadeUp 0.5s ease;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 768px) {
+    .leaderboard-table th,
+    .leaderboard-table td {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .name-cell {
+        padding-left: 10px;
+    }
+}
+    </style>
+</head>
+
+<body>
+    <%- include('../../partials/desktop/header') %>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-overlay"></div>
+            <h2>Master Life Sciences with Smart Quizzes</h2>
+            <p>Challenge yourself with quizzes in Zoology, Botany, Genetics, Ecology & More.</p>
+            <div>
+                <button class="btn-primary">Start Quiz</button>
+                <button class="btn-secondary">View Leaderboard</button>
+            </div>
+        </section>
+
+        <!-- Quiz Categories -->
+        <section class="section">
+            <h3>Quiz Categories</h3>
+            <div class="card-container">
+                <div class="card">
+                    <h4>NEET</h4>
+                    <p>Zoology</p>
+                    <button onclick="mockTest('E1','S1')">Start</button>
+                </div>
+                <div class="card">
+                    <h4>DL/JL/Asst. Prof.</h4>
+                    <p>Zoology</p>
+                    <button onclick="mockTest('E2','S1')">Start</button>
+                </div>
+                <div class="card">
+                    <h4>CSIR.NET/SLET/SET</h4>
+                    <p>Life Sciences</p>
+                    <button onclick="mockTest('E3','S2')">Start</button>
+                </div>
+                <div class="card">
+                    <h4>GATE</h4>
+                    <p>Zoology</p>
+                    <button onclick="mockTest('E4','S1')">Start</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section">
+            <h3>Why Choose BioBrain?</h3>
+            <div class="features">
+                <div class="feature-box">✔ 1000+ MCQs across topics</div>
+                <div class="feature-box">✔ Instant Results & Explanations</div>
+                <div class="feature-box">✔ Track Your Progress</div>
+                <div class="feature-box">✔ Compete on Leaderboard</div>
+            </div>
+        </section>
+
+        <!-- Leaderboard Section -->
+<section class="leaderboard">
+    <h3>🏆 Top Biology Minds</h3>
+
+    <div class="leaderboard-wrapper">
+        <table class="leaderboard-table">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Score</th>
+                    <th>Accuracy</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (leaderboard && leaderboard.length > 0) { %>
+
+                    <% leaderboard.forEach((user, index)=> { %>
+                        <tr class="<%= currentuser && currentuser._id.toString() === user._id.toString() ? 'current-user' : '' %>">
+
+                            <!-- Rank with medals -->
+                            <td class="rank-cell">
+                                <% if(index === 0) { %> 🥇
+                                <% } else if(index === 1) { %> 🥈
+                                <% } else if(index === 2) { %> 🥉
+                                <% } else { %> <%= index + 1 %>
+                                <% } %>
+                            </td>
+
+                            <td class="name-cell"><%= user.username %></td>
+                            <td class="score-cell"><%= user.finalscore %></td>
+                            <td class="accuracy-cell"><%= user.accuracy %>%</td>
+                        </tr>
+                    <% }) %>
+
+                <% } else { %>
+                    <tr>
+                        <td colspan="4" class="empty">No data available</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+        <script>
+            function mockTest(examcode, subjectcode) {
+                window.location.href = `/mocktest/init/${examcode}/${subjectcode}`;
+            }
+        </script>
+        </script>
+        <%- include('../../partials/desktop/footer') %>
+</body>
+
+</html>
