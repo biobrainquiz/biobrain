@@ -71,7 +71,7 @@ const app = express();
    🟥 RED = Critical: Must connect before using DB (autoSeed, models)
 ========================================= */
 
-const mongoURI =  process.env.MONGO_URI;
+const mongoURI = process.env.MONGO_URI;
 mongoose.connect(mongoURI)
   .then(async () => {
     logger.info("✅ Connected to MongoDB");
@@ -161,13 +161,16 @@ app.use((req, res, next) => {
    PUBLIC PAGE ROUTES 🟥
    🟥 RED = Critical: Must come after middleware
 ========================================= */
-const publicPages = [ "about", "login", "register", "forgot"];
+const publicPages = ["login", "register", "forgot"];
 publicPages.forEach(page => {
   app.get(`/authentication/${page === "index" ? "" : page}`, (req, res) => {
     res.render(`pages/${getDevice(req)}/${page}`);
   });
 });
 
+app.get("/about", (req, res) => {
+  res.render(`pages/${getDevice(req)}/about`);
+});
 
 /* =========================================
    FOOTER PAGE ROUTES 🟥
