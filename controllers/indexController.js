@@ -7,8 +7,6 @@ const getDevice = require("../utils/getDevice");
 // ==============================
 exports.getHomePage = async (req, res) => {
     
-    console.log("Controller hit");
-
     const device = getDevice(req);
     try {
         
@@ -25,24 +23,9 @@ exports.getHomePage = async (req, res) => {
             { $sort: { finalscore: -1 } },
             { $limit: 5 }
         ]);
-
-        //console.log(leaderboard);
-        console.log("Controller leaderboard:", leaderboard.length);
-        console.log("Device:", device);
-        res.render(`pages/${device}/index`, { leaderboard: [] , currentuser: req.user || null});
-        /*res.render("desktop/home/index", {
-            leaderboard,
-            currentuser: req.user || null
-        });*/
-
+        res.render(`pages/${device}/index`, { leaderboard, currentuser: req.user || null});
     } catch (error) {
         logger.error("Error loading homepage:", error);
-
         res.render(`pages/${device}/index`, { leaderboard: [], currentuser: req.user || null });
-
-        /*res.render("desktop/home/index", {
-                    leaderboard: [],
-                    currentUser: req.user || null
-                });*/
     }
 };

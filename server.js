@@ -163,7 +163,7 @@ app.use((req, res, next) => {
 ========================================= */
 const publicPages = [ "about", "login", "register", "forgot"];
 publicPages.forEach(page => {
-  app.get(`/${page === "index" ? "" : page}`, (req, res) => {
+  app.get(`/authentication/${page === "index" ? "" : page}`, (req, res) => {
     res.render(`pages/${getDevice(req)}/${page}`);
   });
 });
