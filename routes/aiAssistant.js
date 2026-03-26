@@ -6,17 +6,17 @@ const aiAssistanceController = require("../controllers/aiAssistanceController");
 
 // Download PDF
 router.post(
-    "/aiassistant/explainanswer",
+    "/explainanswer",
     requireLogin,
     aiAssistanceController.aiExplainAnswer);
 
 router.post(
-    "/aiassistant/singlequizsummary",
+    "/singlequizsummary",
     requireLogin,
     aiAssistanceController.aiSingleQuizSummary);
 
 router.post(
-    "/aiassistant/allquizsummary",
+    "/allquizsummary",
     requireLogin,
     aiAssistanceController.aiAllQuizSummary);
 

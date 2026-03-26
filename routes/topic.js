@@ -5,7 +5,7 @@ const topicController = require("../controllers/topicController");
 
 // GET /topics/:examcode/:subjectcode/:unitcode
 router.get(
-  "/topics/:examcode/:subjectcode/:unitcode",
+  "/:examcode/:subjectcode/:unitcode",
   requireLogin,
   topicController.getTopicsByExamAndSubjectAndUnit
 );

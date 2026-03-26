@@ -28,8 +28,8 @@
       <button id="loginBtn">Login</button>
 
       <div class="links">
-        <a href="/forgot">Forgot Password</a>
-        <a href="/register">Register</a>
+        <a href="/authentication/forgot">Forgot Password</a>
+        <a href="/authentication/register">Register</a>
       </div>
 
       <div class="error" id="errorMsg"></div>
@@ -73,7 +73,7 @@
         }
         // Send login request to backend
         try {
-          const res = await fetch("/login", {
+          const res = await fetch("/authentication/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ identifier, password })

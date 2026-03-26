@@ -5,7 +5,7 @@ const unitController = require("../controllers/unitController");
 
 // GET /units/:examcode/:subjectcode
 router.get(
-  "/units/:examcode/:subjectcode",
+  "/:examcode/:subjectcode",
   requireLogin,
   unitController.getUnitsByExamAndSubject
 );

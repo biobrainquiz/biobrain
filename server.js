@@ -161,7 +161,7 @@ app.use((req, res, next) => {
    PUBLIC PAGE ROUTES 🟥
    🟥 RED = Critical: Must come after middleware
 ========================================= */
-const publicPages = ["index", "about", "login", "register", "forgot"];
+const publicPages = [ "about", "login", "register", "forgot"];
 publicPages.forEach(page => {
   app.get(`/${page === "index" ? "" : page}`, (req, res) => {
     res.render(`pages/${getDevice(req)}/${page}`);
@@ -194,14 +194,14 @@ app.get("/leaderboard", requireLogin, (req, res) => {
    APPLICATION ROUTES 🟥
    🟥 RED = Critical: Must come after middleware
 ========================================= */
+app.use("/", require("./routes/index"));
 app.use("/admin", require("./routes/admin"));
-app.use("/", require("./routes/user"));
-app.use("/", require("./routes/unit"));
-app.use("/", require("./routes/topic"));
-app.use("/", require("./routes/authentication"));
-app.use("/", require("./routes/mocktest"));
-app.use("/", require("./routes/aiAssistant"));
-
+app.use("/user", require("./routes/user"));
+app.use("/units", require("./routes/unit"));
+app.use("/topics", require("./routes/topic"));
+app.use("/mocktest", require("./routes/mocktest"));
+app.use("/aiassistant", require("./routes/aiAssistant"));
+app.use("/authentication", require("./routes/authentication"));
 
 /* =========================================
    SESSION KEEP-ALIVE ENDPOINT 🟥

@@ -18,7 +18,7 @@
             <h2>Master Life Sciences with Smart Quizzes</h2>
             <p>Challenge yourself with quizzes in Zoology, Botany, Genetics, Ecology & More.</p>
             <div>
-                <button class="btn-primary" >Start Quiz</button>
+                <button class="btn-primary">Start Quiz</button>
                 <button class="btn-secondary">View Leaderboard</button>
             </div>
         </section>
@@ -64,14 +64,48 @@
         <!-- Leaderboard Section -->
         <section class="leaderboard">
             <h3>🏆 Top Biology Minds</h3>
-            <ul>
-                <li>1️⃣ Ananya – 980 Points</li>
-                <li>2️⃣ Rahul – 920 Points</li>
-                <li>3️⃣ Sneha – 890 Points</li>
-                <li>4️⃣ Arjun – 850 Points</li>
-                <li>5️⃣ Meera – 830 Points</li>
-            </ul>
+
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Score</th>
+                        <th>Accuracy</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% console.log("EJS leaderboard:", leaderboard); %>
+                    <% console.log("EJS leaderboard:", leaderboard.length); %>
+                    <% if (leaderboard && leaderboard.length> 0) { %>
+
+                        <% leaderboard.forEach((user, index)=> { %>
+                            <tr
+                                class="<%= currentuser && currentuser._id.toString() === user._id.toString() ? 'current-user' : '' %>">
+                                <td>
+                                    <%= index + 1 %>
+                                </td>
+                                <td>
+                                    <%= user.username %>
+                                </td>
+                                <td>
+                                    <%= user.finalscore %>
+                                </td>
+                                <td>
+                                    <%= user.accuracy %>%
+                                </td>
+                            </tr>
+                            <% }) %>
+
+                                <% } else { %>
+                                    <tr>
+                                        <td colspan="4">No data available</td>
+                                    </tr>
+                                    <% } %>
+                </tbody>
+            </table>
         </section>
+
         <script>
             function mockTest(examcode, subjectcode) {
                 window.location.href = `/mocktest/init/${examcode}/${subjectcode}`;

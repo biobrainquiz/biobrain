@@ -7,21 +7,21 @@ const resultController = require("../controllers/resultController");
 
 // initalize mocktest 
 router.get(
-  "/mocktest/init/:examcode/:subjectcode",
+  "/init/:examcode/:subjectcode",
   requireLogin,
   mocktestController.init
 );
 
 // Create mocktest Order and Start mocktest
 router.post(
-  "/mocktest/createorder",
+  "/createorder",
   requireLogin,
   mocktestController.createOrder
 );
 
 // Submit mocktest
 router.post(
-  "/mocktest/submit",
+  "/submit",
   requireLogin,
   refreshUser,
   mocktestController.submit
@@ -29,7 +29,7 @@ router.post(
 
 // Download PDF
 router.get(
-  "/mocktest/result/pdf/:mocktestid",
+  "/result/pdf/:mocktestid",
   resultController.downloadResultPdf);
 
 

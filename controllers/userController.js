@@ -84,6 +84,6 @@ exports.getProfile = async (req, res) => {
 
     } catch (err) {
         logger.error("get Profile Error:", err);
-        res.redirect("/login");
+        res.redirect("/authentication/login");
     }
 };

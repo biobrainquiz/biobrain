@@ -4,7 +4,7 @@ function authorize(...allowedRoles) {
     return async (req, res, next) => {
 
         if (!req.session.user?._id) {
-            return res.redirect("/login");
+            return res.redirect("/authentication/login");
         }
 
         try {
@@ -12,7 +12,7 @@ function authorize(...allowedRoles) {
             const user = await User.findById(req.session.user._id).populate("roles");
 
             if (!user) {
-                return res.redirect("/login");
+                return res.redirect("/authentication/login");
             }
 
             const userRoles = user.roles.map(r => r.role);
@@ -41,7 +41,7 @@ function authorize(...allowedRoles) {
         
         const user = req.session.user;
         if (!user)
-            return res.redirect("/login");
+            return res.redirect("/authentication/login");
         const userRoles = user.roles.map(r => r.role);
          const hasRole = userRoles.some(role =>
             allowedRoles.includes(role)
