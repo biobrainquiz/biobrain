@@ -189,7 +189,7 @@ exports.logout = (req, res) => {
 // FORGOT PASSWORD
 // ==========================
 
-exports.forgotPassword = async (req, res) => {
+exports.forgotPassword1 = async (req, res) => {
     try {
 
         const { email } = req.body;
@@ -228,6 +228,7 @@ exports.forgotPassword = async (req, res) => {
         const resetURL = `${process.env.BASE_URI}/reset/${token}`;
 
         sendForgotPasswordEmail(user, resetURL);
+        
         return res.json({
             success: true,
             message: "Reset link sent to email!"
@@ -248,7 +249,69 @@ exports.forgotPassword = async (req, res) => {
     }
 };
 
+exports.forgotPassword = async (req, res) => {
+    try {
+        const { email } = req.body;
 
+        const user = await User.findOne({ email });
+
+        // 🔒 Prevent email enumeration
+        if (!user) {
+            return res.json({
+                success: true,
+                message: "If this email exists, a reset link has been sent."
+            });
+        }
+
+        // 1️⃣ Generate token
+        const token = crypto.randomBytes(32).toString("hex");
+
+        // 2️⃣ Hash token
+        const hashedToken = crypto
+            .createHash("sha256")
+            .update(token)
+            .digest("hex");
+
+        // 3️⃣ Save token + expiry
+        const expiryMinutes = Number(process.env.EMAIL_EXPIRY_IN_MIN) || 10;
+
+        user.resetPasswordToken = hashedToken;
+        user.resetPasswordExpires =
+            Date.now() + expiryMinutes * 60 * 1000;
+
+        await user.save();
+
+        // 4️⃣ Create reset URL
+        const resetURL = `${process.env.BASE_URI}/authentication/showresetpage/${token}`;
+
+        // 5️⃣ Send email (safe handling)
+        try {
+            await sendForgotPasswordEmail(user, resetURL);
+        } catch (emailError) {
+            // ❗ Do NOT expose error to user
+            logger.error("Email failed:", emailError.message);
+        }
+
+        // ✅ Always return success (security)
+        return res.json({
+            success: true,
+            message: "If this email exists, a reset link has been sent."
+        });
+
+    } catch (err) {
+
+        logger.error({
+            message: "Forgot Password Error:",
+            error: err.message,
+            stack: err.stack
+        });
+
+        return res.status(500).json({
+            success: false,
+            message: "Something went wrong"
+        });
+    }
+};
 
 // ==========================
 // SHOW RESET PASSWORD PAGE
@@ -309,14 +372,12 @@ exports.resetPassword = async (req, res) => {
             });
         }
 
-        // 5️⃣ Hash new password before saving
-        const hashedPassword = await bcrypt.hash(newPassword, 10);
-        user.password = hashedPassword;
-
         // 6️⃣ Clear reset token fields
         user.resetPasswordToken = undefined;
         user.resetPasswordExpires = undefined;
 
+        user.password = newPassword;
+        
         await user.save();
 
         return res.json({

@@ -51,10 +51,10 @@
         }
 
         try {
-          const res = await fetch(`/reset/${token}`, {
+          const res = await fetch(`/authentication/reset/${token}`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ newPassword })
+            body: JSON.stringify({ newPassword,confirmPassword })
           });
 
           const data = await res.json();
