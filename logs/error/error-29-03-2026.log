@@ -1,0 +1,30 @@
+2026-03-29 00:46:10 [ERROR]: Error: Resend Error: {"statusCode":401,"name":"validation_error","message":"API key is invalid"}
+    at Mailer.send (D:\Projects\BioBrain\services\Mailer.js:28:29)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async exports.emailResultPdf (D:\Projects\BioBrain\services\pdfResultService.js:454:26)
+    at async exports.emailResultPdf (D:\Projects\BioBrain\controllers\pdfResultController.js:12:4) 
+2026-03-29 00:46:10 [ERROR]: ReferenceError: error is not defined
+    at Mailer.send (D:\Projects\BioBrain\services\Mailer.js:30:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async exports.emailResultPdf (D:\Projects\BioBrain\services\pdfResultService.js:454:26)
+    at async exports.emailResultPdf (D:\Projects\BioBrain\controllers\pdfResultController.js:12:4) 
+2026-03-29 00:46:10 [ERROR]: ReferenceError: error is not defined
+    at Mailer.send (D:\Projects\BioBrain\services\Mailer.js:30:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async exports.emailResultPdf (D:\Projects\BioBrain\services\pdfResultService.js:454:26)
+    at async exports.emailResultPdf (D:\Projects\BioBrain\controllers\pdfResultController.js:12:4) 
+2026-03-29 00:46:25 [ERROR]: Error: Resend Error: {"statusCode":401,"name":"validation_error","message":"API key is invalid"}
+    at Mailer.send (D:\Projects\BioBrain\services\Mailer.js:28:29)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async exports.emailResultPdf (D:\Projects\BioBrain\services\pdfResultService.js:454:26)
+    at async exports.emailResultPdf (D:\Projects\BioBrain\controllers\pdfResultController.js:12:4) 
+2026-03-29 00:46:25 [ERROR]: ReferenceError: error is not defined
+    at Mailer.send (D:\Projects\BioBrain\services\Mailer.js:30:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async exports.emailResultPdf (D:\Projects\BioBrain\services\pdfResultService.js:454:26)
+    at async exports.emailResultPdf (D:\Projects\BioBrain\controllers\pdfResultController.js:12:4) 
+2026-03-29 00:46:25 [ERROR]: ReferenceError: error is not defined
+    at Mailer.send (D:\Projects\BioBrain\services\Mailer.js:30:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async exports.emailResultPdf (D:\Projects\BioBrain\services\pdfResultService.js:454:26)
+    at async exports.emailResultPdf (D:\Projects\BioBrain\controllers\pdfResultController.js:12:4) 

@@ -331,3 +331,292 @@ Require stack:
 2026-03-29 00:14:32 [INFO]: GET /units/E4/S1 127.0.0.1 
 2026-03-29 00:14:38 [INFO]: GET /mocktest/result/pdf/69c80e03778718ecdb84df68 127.0.0.1 
 2026-03-29 00:14:47 [INFO]: GET /mocktest/result/email/69c80e03778718ecdb84df68 127.0.0.1 
+2026-03-29 00:45:02 [INFO]: 🚀 Server running on port 3000 
+2026-03-29 00:45:02 [INFO]: ✅ Connected to MongoDB 
+2026-03-29 00:45:02 [INFO]: 🔥  Forced seeding of Exam Database enabled. 
+2026-03-29 00:45:02 [INFO]: ⚠ Clearing old Questions... 
+2026-03-29 00:45:02 [INFO]: ⚠ Clearing old Topics... 
+2026-03-29 00:45:04 [INFO]: ⚠ Clearing old Units... 
+2026-03-29 00:45:04 [INFO]: ⚠ Clearing old Subjects... 
+2026-03-29 00:45:04 [INFO]: ⚠ Clearing old Exams... 
+2026-03-29 00:45:04 [INFO]: ⚠ Clearing old Payments... 
+2026-03-29 00:45:04 [INFO]: ⚡ Seeding Exam database... 
+2026-03-29 00:45:04 [INFO]: 🔥 Exam seeded: 4 successfully! 
+2026-03-29 00:45:04 [INFO]: 🔥 Subject seeded: 4 successfully! 
+2026-03-29 00:45:04 [INFO]: 🔥 Unit seeded: 11 successfully! 
+2026-03-29 00:45:04 [INFO]: 🔥 Topics seeded: 49 successfully! 
+2026-03-29 00:45:04 [INFO]: 📂 Seeding Questions From questiontable_E1_S1_U1.json... 
+2026-03-29 00:45:05 [INFO]: ✅ Inserted 460 from questiontable_E1_S1_U1.json 
+2026-03-29 00:45:05 [INFO]: 📂 Seeding Questions From questiontable_E1_S1_U2.json... 
+2026-03-29 00:45:05 [INFO]: ✅ Inserted 40 from questiontable_E1_S1_U2.json 
+2026-03-29 00:45:05 [INFO]: 🔥 Total Questions seeded: 500 
+2026-03-29 00:45:05 [INFO]: ✅ All Exam database seeded successfully! 
+2026-03-29 00:45:05 [INFO]: 🔥  Forced seeding of UserRoles Database enabled. 
+2026-03-29 00:45:05 [INFO]: ⚠ Clearing old Users... 
+2026-03-29 00:45:05 [INFO]: ⚠ Clearing old Roles... 
+2026-03-29 00:45:05 [INFO]: ⚡ Seeding UserRoles Database ... 
+2026-03-29 00:45:05 [INFO]: 🔥 Roles seeded: 5 successfully! 
+2026-03-29 00:45:05 [INFO]: 🔥 Users seeded: 2 successfully! 
+2026-03-29 00:45:05 [INFO]: ✅ All UserRole Database seeded successfully! 
+2026-03-29 00:45:06 [INFO]: GET / 127.0.0.1 
+2026-03-29 00:45:06 [INFO]: GET /css/desktopStyle.css 127.0.0.1 
+2026-03-29 00:45:06 [INFO]: GET /images/biobrain-logo.png 127.0.0.1 
+2026-03-29 00:45:06 [INFO]: GET /images/dna-pattern.png 127.0.0.1 
+2026-03-29 00:45:06 [INFO]: GET /images/molucule-structure.png 127.0.0.1 
+2026-03-29 00:45:08 [INFO]: GET /mocktest/init/E4/S1 127.0.0.1 
+2026-03-29 00:45:08 [INFO]: GET /css/desktopStyle.css 127.0.0.1 
+2026-03-29 00:45:08 [INFO]: GET /images/biobrain-logo.png 127.0.0.1 
+2026-03-29 00:45:08 [INFO]: GET /units/E4/S1 127.0.0.1 
+2026-03-29 00:45:11 [INFO]: GET /mocktest/result/email/69c80e03778718ecdb84df68 127.0.0.1 
+2026-03-29 00:45:18 [INFO]: GET /mocktest/result/email/69c80e03778718ecdb84df68 127.0.0.1 
+2026-03-29 00:45:25 [INFO]: GET /mocktest/result/pdf/69c80e03778718ecdb84df68 127.0.0.1 
+2026-03-29 00:46:03 [INFO]: 🚀 Server running on port 3000 
+2026-03-29 00:46:03 [INFO]: ✅ Connected to MongoDB 
+2026-03-29 00:46:03 [INFO]: 🔥  Forced seeding of Exam Database enabled. 
+2026-03-29 00:46:03 [INFO]: ⚠ Clearing old Questions... 
+2026-03-29 00:46:04 [INFO]: ⚠ Clearing old Topics... 
+2026-03-29 00:46:04 [INFO]: ⚠ Clearing old Units... 
+2026-03-29 00:46:04 [INFO]: ⚠ Clearing old Subjects... 
+2026-03-29 00:46:04 [INFO]: ⚠ Clearing old Exams... 
+2026-03-29 00:46:04 [INFO]: ⚠ Clearing old Payments... 
+2026-03-29 00:46:05 [INFO]: ⚡ Seeding Exam database... 
+2026-03-29 00:46:05 [INFO]: 🔥 Exam seeded: 4 successfully! 
+2026-03-29 00:46:05 [INFO]: 🔥 Subject seeded: 4 successfully! 
+2026-03-29 00:46:05 [INFO]: 🔥 Unit seeded: 11 successfully! 
+2026-03-29 00:46:05 [INFO]: 🔥 Topics seeded: 49 successfully! 
+2026-03-29 00:46:05 [INFO]: 📂 Seeding Questions From questiontable_E1_S1_U1.json... 
+2026-03-29 00:46:05 [INFO]: GET / 127.0.0.1 
+2026-03-29 00:46:06 [INFO]: ✅ Inserted 460 from questiontable_E1_S1_U1.json 
+2026-03-29 00:46:06 [INFO]: 📂 Seeding Questions From questiontable_E1_S1_U2.json... 
+2026-03-29 00:46:06 [INFO]: GET /css/desktopStyle.css 127.0.0.1 
+2026-03-29 00:46:06 [INFO]: GET /images/biobrain-logo.png 127.0.0.1 
+2026-03-29 00:46:06 [INFO]: ✅ Inserted 40 from questiontable_E1_S1_U2.json 
+2026-03-29 00:46:06 [INFO]: 🔥 Total Questions seeded: 500 
+2026-03-29 00:46:06 [INFO]: ✅ All Exam database seeded successfully! 
+2026-03-29 00:46:06 [INFO]: 🔥  Forced seeding of UserRoles Database enabled. 
+2026-03-29 00:46:06 [INFO]: ⚠ Clearing old Users... 
+2026-03-29 00:46:06 [INFO]: ⚠ Clearing old Roles... 
+2026-03-29 00:46:06 [INFO]: ⚡ Seeding UserRoles Database ... 
+2026-03-29 00:46:06 [INFO]: 🔥 Roles seeded: 5 successfully! 
+2026-03-29 00:46:06 [INFO]: 🔥 Users seeded: 2 successfully! 
+2026-03-29 00:46:06 [INFO]: ✅ All UserRole Database seeded successfully! 
+2026-03-29 00:46:07 [INFO]: GET /mocktest/init/E4/S1 127.0.0.1 
+2026-03-29 00:46:08 [INFO]: GET /css/desktopStyle.css 127.0.0.1 
+2026-03-29 00:46:08 [INFO]: GET /images/biobrain-logo.png 127.0.0.1 
+2026-03-29 00:46:08 [INFO]: GET /units/E4/S1 127.0.0.1 
+2026-03-29 00:46:09 [INFO]: GET /mocktest/result/email/69c80e03778718ecdb84df68 127.0.0.1 
+2026-03-29 00:46:10 [ERROR]: Error: Resend Error: {"statusCode":401,"name":"validation_error","message":"API key is invalid"}
+    at Mailer.send (D:\Projects\BioBrain\services\Mailer.js:28:29)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async exports.emailResultPdf (D:\Projects\BioBrain\services\pdfResultService.js:454:26)
+    at async exports.emailResultPdf (D:\Projects\BioBrain\controllers\pdfResultController.js:12:4) 
+2026-03-29 00:46:10 [ERROR]: ReferenceError: error is not defined
+    at Mailer.send (D:\Projects\BioBrain\services\Mailer.js:30:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async exports.emailResultPdf (D:\Projects\BioBrain\services\pdfResultService.js:454:26)
+    at async exports.emailResultPdf (D:\Projects\BioBrain\controllers\pdfResultController.js:12:4) 
+2026-03-29 00:46:10 [ERROR]: ReferenceError: error is not defined
+    at Mailer.send (D:\Projects\BioBrain\services\Mailer.js:30:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async exports.emailResultPdf (D:\Projects\BioBrain\services\pdfResultService.js:454:26)
+    at async exports.emailResultPdf (D:\Projects\BioBrain\controllers\pdfResultController.js:12:4) 
+2026-03-29 00:46:24 [INFO]: GET /mocktest/result/email/69c80e03778718ecdb84df68 127.0.0.1 
+2026-03-29 00:46:25 [ERROR]: Error: Resend Error: {"statusCode":401,"name":"validation_error","message":"API key is invalid"}
+    at Mailer.send (D:\Projects\BioBrain\services\Mailer.js:28:29)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async exports.emailResultPdf (D:\Projects\BioBrain\services\pdfResultService.js:454:26)
+    at async exports.emailResultPdf (D:\Projects\BioBrain\controllers\pdfResultController.js:12:4) 
+2026-03-29 00:46:25 [ERROR]: ReferenceError: error is not defined
+    at Mailer.send (D:\Projects\BioBrain\services\Mailer.js:30:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async exports.emailResultPdf (D:\Projects\BioBrain\services\pdfResultService.js:454:26)
+    at async exports.emailResultPdf (D:\Projects\BioBrain\controllers\pdfResultController.js:12:4) 
+2026-03-29 00:46:25 [ERROR]: ReferenceError: error is not defined
+    at Mailer.send (D:\Projects\BioBrain\services\Mailer.js:30:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async exports.emailResultPdf (D:\Projects\BioBrain\services\pdfResultService.js:454:26)
+    at async exports.emailResultPdf (D:\Projects\BioBrain\controllers\pdfResultController.js:12:4) 
+2026-03-29 00:51:08 [INFO]: GET /keep-session-alive 127.0.0.1 
+2026-03-29 00:56:08 [INFO]: GET /keep-session-alive 127.0.0.1 
+2026-03-29 00:57:03 [INFO]: 🚀 Server running on port 3000 
+2026-03-29 00:57:04 [INFO]: ✅ Connected to MongoDB 
+2026-03-29 00:57:04 [INFO]: 🔥  Forced seeding of Exam Database enabled. 
+2026-03-29 00:57:04 [INFO]: ⚠ Clearing old Questions... 
+2026-03-29 00:57:04 [INFO]: ⚠ Clearing old Topics... 
+2026-03-29 00:57:04 [INFO]: ⚠ Clearing old Units... 
+2026-03-29 00:57:04 [INFO]: ⚠ Clearing old Subjects... 
+2026-03-29 00:57:05 [INFO]: ⚠ Clearing old Exams... 
+2026-03-29 00:57:05 [INFO]: ⚠ Clearing old Payments... 
+2026-03-29 00:57:06 [INFO]: ⚡ Seeding Exam database... 
+2026-03-29 00:57:06 [INFO]: 🔥 Exam seeded: 4 successfully! 
+2026-03-29 00:57:06 [INFO]: 🔥 Subject seeded: 4 successfully! 
+2026-03-29 00:57:06 [INFO]: 🔥 Unit seeded: 11 successfully! 
+2026-03-29 00:57:06 [INFO]: 🔥 Topics seeded: 49 successfully! 
+2026-03-29 00:57:06 [INFO]: 📂 Seeding Questions From questiontable_E1_S1_U1.json... 
+2026-03-29 00:57:06 [INFO]: ✅ Inserted 460 from questiontable_E1_S1_U1.json 
+2026-03-29 00:57:06 [INFO]: 📂 Seeding Questions From questiontable_E1_S1_U2.json... 
+2026-03-29 00:57:06 [INFO]: ✅ Inserted 40 from questiontable_E1_S1_U2.json 
+2026-03-29 00:57:06 [INFO]: 🔥 Total Questions seeded: 500 
+2026-03-29 00:57:06 [INFO]: ✅ All Exam database seeded successfully! 
+2026-03-29 00:57:06 [INFO]: 🔥  Forced seeding of UserRoles Database enabled. 
+2026-03-29 00:57:06 [INFO]: ⚠ Clearing old Users... 
+2026-03-29 00:57:06 [INFO]: ⚠ Clearing old Roles... 
+2026-03-29 00:57:06 [INFO]: ⚡ Seeding UserRoles Database ... 
+2026-03-29 00:57:06 [INFO]: 🔥 Roles seeded: 5 successfully! 
+2026-03-29 00:57:06 [INFO]: 🔥 Users seeded: 2 successfully! 
+2026-03-29 00:57:06 [INFO]: ✅ All UserRole Database seeded successfully! 
+2026-03-29 00:57:09 [INFO]: GET / 127.0.0.1 
+2026-03-29 00:57:09 [INFO]: GET /css/desktopStyle.css 127.0.0.1 
+2026-03-29 00:57:09 [INFO]: GET /images/biobrain-logo.png 127.0.0.1 
+2026-03-29 00:57:16 [INFO]: GET /mocktest/init/E4/S1 127.0.0.1 
+2026-03-29 00:57:16 [INFO]: GET /css/desktopStyle.css 127.0.0.1 
+2026-03-29 00:57:16 [INFO]: GET /images/biobrain-logo.png 127.0.0.1 
+2026-03-29 00:57:16 [INFO]: GET /units/E4/S1 127.0.0.1 
+2026-03-29 00:57:22 [INFO]: GET /mocktest/result/email/69c80e03778718ecdb84df68 127.0.0.1 
+2026-03-29 00:58:22 [INFO]: GET / 127.0.0.1 
+2026-03-29 00:58:22 [INFO]: GET /css/desktopStyle.css 127.0.0.1 
+2026-03-29 00:58:22 [INFO]: GET /images/biobrain-logo.png 127.0.0.1 
+2026-03-29 00:58:28 [INFO]: GET / 127.0.0.1 
+2026-03-29 00:58:28 [INFO]: GET /css/desktopStyle.css 127.0.0.1 
+2026-03-29 00:58:28 [INFO]: GET /images/biobrain-logo.png 127.0.0.1 
+2026-03-29 01:00:10 [INFO]: GET /mocktest/init/E4/S1 127.0.0.1 
+2026-03-29 01:00:10 [INFO]: GET /css/desktopStyle.css 127.0.0.1 
+2026-03-29 01:00:10 [INFO]: GET /images/biobrain-logo.png 127.0.0.1 
+2026-03-29 01:00:10 [INFO]: GET /images/molucule-structure.png 127.0.0.1 
+2026-03-29 01:00:10 [INFO]: GET /units/E4/S1 127.0.0.1 
+2026-03-29 01:00:12 [INFO]: GET /mocktest/result/email/69c80e03778718ecdb84df68 127.0.0.1 
+2026-03-29 01:01:22 [INFO]: GET /mocktest/result/pdf/69c80e03778718ecdb84df68 127.0.0.1 
+2026-03-29 01:05:11 [INFO]: GET /keep-session-alive 127.0.0.1 
+2026-03-29 01:10:11 [INFO]: GET /keep-session-alive 127.0.0.1 
+2026-03-29 01:14:28 [INFO]: 🚀 Server running on port 3000 
+2026-03-29 01:14:29 [INFO]: ✅ Connected to MongoDB 
+2026-03-29 01:14:29 [INFO]: 🔥  Forced seeding of Exam Database enabled. 
+2026-03-29 01:14:29 [INFO]: ⚠ Clearing old Questions... 
+2026-03-29 01:14:29 [INFO]: ⚠ Clearing old Topics... 
+2026-03-29 01:14:30 [INFO]: ⚠ Clearing old Units... 
+2026-03-29 01:14:30 [INFO]: ⚠ Clearing old Subjects... 
+2026-03-29 01:14:31 [INFO]: ⚠ Clearing old Exams... 
+2026-03-29 01:14:31 [INFO]: ⚠ Clearing old Payments... 
+2026-03-29 01:14:31 [INFO]: ⚡ Seeding Exam database... 
+2026-03-29 01:14:31 [INFO]: 🔥 Exam seeded: 4 successfully! 
+2026-03-29 01:14:31 [INFO]: 🔥 Subject seeded: 4 successfully! 
+2026-03-29 01:14:31 [INFO]: 🔥 Unit seeded: 11 successfully! 
+2026-03-29 01:14:31 [INFO]: 🔥 Topics seeded: 49 successfully! 
+2026-03-29 01:14:31 [INFO]: 📂 Seeding Questions From questiontable_E1_S1_U1.json... 
+2026-03-29 01:14:31 [INFO]: ✅ Inserted 460 from questiontable_E1_S1_U1.json 
+2026-03-29 01:14:31 [INFO]: 📂 Seeding Questions From questiontable_E1_S1_U2.json... 
+2026-03-29 01:14:31 [INFO]: ✅ Inserted 40 from questiontable_E1_S1_U2.json 
+2026-03-29 01:14:31 [INFO]: 🔥 Total Questions seeded: 500 
+2026-03-29 01:14:31 [INFO]: ✅ All Exam database seeded successfully! 
+2026-03-29 01:14:31 [INFO]: 🔥  Forced seeding of UserRoles Database enabled. 
+2026-03-29 01:14:31 [INFO]: ⚠ Clearing old Users... 
+2026-03-29 01:14:31 [INFO]: ⚠ Clearing old Roles... 
+2026-03-29 01:14:31 [INFO]: ⚡ Seeding UserRoles Database ... 
+2026-03-29 01:14:32 [INFO]: 🔥 Roles seeded: 5 successfully! 
+2026-03-29 01:14:32 [INFO]: 🔥 Users seeded: 2 successfully! 
+2026-03-29 01:14:32 [INFO]: ✅ All UserRole Database seeded successfully! 
+2026-03-29 01:14:34 [INFO]: GET /mocktest/init/E4/S1 127.0.0.1 
+2026-03-29 01:14:34 [INFO]: GET /authentication/login 127.0.0.1 
+2026-03-29 01:14:37 [INFO]: GET / 127.0.0.1 
+2026-03-29 01:14:37 [INFO]: GET /css/desktopStyle.css 127.0.0.1 
+2026-03-29 01:14:37 [INFO]: GET /images/biobrain-logo.png 127.0.0.1 
+2026-03-29 01:14:37 [INFO]: GET /images/molucule-structure.png 127.0.0.1 
+2026-03-29 01:14:37 [INFO]: GET /images/dna-pattern.png 127.0.0.1 
+2026-03-29 01:14:39 [INFO]: GET /authentication/login 127.0.0.1 
+2026-03-29 01:14:39 [INFO]: GET /css/desktopStyle.css 127.0.0.1 
+2026-03-29 01:14:39 [INFO]: GET /images/biobrain-logo.png 127.0.0.1 
+2026-03-29 01:14:56 [INFO]: POST /authentication/login 127.0.0.1 
+2026-03-29 01:14:57 [INFO]: GET /mocktest/init/E4/S1 127.0.0.1 
+2026-03-29 01:14:57 [INFO]: GET /css/desktopStyle.css 127.0.0.1 
+2026-03-29 01:14:57 [INFO]: GET /images/biobrain-logo.png 127.0.0.1 
+2026-03-29 01:14:57 [INFO]: GET /units/E4/S1 127.0.0.1 
+2026-03-29 01:15:10 [INFO]: GET /mocktest/init/E4/S1 127.0.0.1 
+2026-03-29 01:15:11 [INFO]: GET /css/desktopStyle.css 127.0.0.1 
+2026-03-29 01:15:11 [INFO]: GET /images/biobrain-logo.png 127.0.0.1 
+2026-03-29 01:15:11 [INFO]: GET /units/E4/S1 127.0.0.1 
+2026-03-29 01:15:19 [INFO]: GET / 127.0.0.1 
+2026-03-29 01:15:19 [INFO]: GET /css/desktopStyle.css 127.0.0.1 
+2026-03-29 01:15:19 [INFO]: GET /images/biobrain-logo.png 127.0.0.1 
+2026-03-29 01:15:23 [INFO]: GET / 127.0.0.1 
+2026-03-29 01:15:23 [INFO]: GET /css/desktopStyle.css 127.0.0.1 
+2026-03-29 01:15:23 [INFO]: GET /images/biobrain-logo.png 127.0.0.1 
+2026-03-29 01:15:27 [INFO]: GET / 127.0.0.1 
+2026-03-29 01:15:27 [INFO]: GET /css/desktopStyle.css 127.0.0.1 
+2026-03-29 01:15:27 [INFO]: GET /images/biobrain-logo.png 127.0.0.1 
+2026-03-29 01:15:27 [INFO]: GET /images/dna-pattern.png 127.0.0.1 
+2026-03-29 01:15:27 [INFO]: GET /images/molucule-structure.png 127.0.0.1 
+2026-03-29 01:15:30 [INFO]: GET /mocktest/init/E4/S1 127.0.0.1 
+2026-03-29 01:15:30 [INFO]: GET /css/desktopStyle.css 127.0.0.1 
+2026-03-29 01:15:30 [INFO]: GET /images/biobrain-logo.png 127.0.0.1 
+2026-03-29 01:15:31 [INFO]: GET /units/E4/S1 127.0.0.1 
+2026-03-29 01:15:34 [INFO]: GET /mocktest/result/pdf/69c80e03778718ecdb84df68 127.0.0.1 
+2026-03-29 01:15:39 [INFO]: GET /mocktest/result/email/69c80e03778718ecdb84df68 127.0.0.1 
+2026-03-29 01:15:47 [INFO]: GET /authentication/logout 127.0.0.1 
+2026-03-29 01:15:48 [INFO]: GET / 127.0.0.1 
+2026-03-29 01:15:48 [INFO]: GET /css/desktopStyle.css 127.0.0.1 
+2026-03-29 01:15:48 [INFO]: GET /images/biobrain-logo.png 127.0.0.1 
+2026-03-29 01:15:50 [INFO]: GET /authentication/login 127.0.0.1 
+2026-03-29 01:15:50 [INFO]: GET /css/desktopStyle.css 127.0.0.1 
+2026-03-29 01:15:50 [INFO]: GET /images/biobrain-logo.png 127.0.0.1 
+2026-03-29 01:15:55 [INFO]: GET /authentication/forgot 127.0.0.1 
+2026-03-29 01:15:55 [INFO]: GET /css/desktopStyle.css 127.0.0.1 
+2026-03-29 01:15:55 [INFO]: GET /images/biobrain-logo.png 127.0.0.1 
+2026-03-29 01:16:13 [INFO]: POST /authentication/forgot 127.0.0.1 
+2026-03-29 01:18:45 [INFO]: 🚀 Server running on port 3000 
+2026-03-29 01:18:45 [INFO]: ✅ Connected to MongoDB 
+2026-03-29 01:18:45 [INFO]: 🔥  Forced seeding of Exam Database enabled. 
+2026-03-29 01:18:45 [INFO]: ⚠ Clearing old Questions... 
+2026-03-29 01:18:45 [INFO]: ⚠ Clearing old Topics... 
+2026-03-29 01:18:46 [INFO]: ⚠ Clearing old Units... 
+2026-03-29 01:18:46 [INFO]: ⚠ Clearing old Subjects... 
+2026-03-29 01:18:46 [INFO]: ⚠ Clearing old Exams... 
+2026-03-29 01:18:46 [INFO]: ⚠ Clearing old Payments... 
+2026-03-29 01:18:47 [INFO]: ⚡ Seeding Exam database... 
+2026-03-29 01:18:47 [INFO]: 🔥 Exam seeded: 4 successfully! 
+2026-03-29 01:18:47 [INFO]: 🔥 Subject seeded: 4 successfully! 
+2026-03-29 01:18:47 [INFO]: 🔥 Unit seeded: 11 successfully! 
+2026-03-29 01:18:47 [INFO]: 🔥 Topics seeded: 49 successfully! 
+2026-03-29 01:18:47 [INFO]: 📂 Seeding Questions From questiontable_E1_S1_U1.json... 
+2026-03-29 01:18:47 [INFO]: ✅ Inserted 460 from questiontable_E1_S1_U1.json 
+2026-03-29 01:18:47 [INFO]: 📂 Seeding Questions From questiontable_E1_S1_U2.json... 
+2026-03-29 01:18:47 [INFO]: ✅ Inserted 40 from questiontable_E1_S1_U2.json 
+2026-03-29 01:18:47 [INFO]: 🔥 Total Questions seeded: 500 
+2026-03-29 01:18:47 [INFO]: ✅ All Exam database seeded successfully! 
+2026-03-29 01:18:47 [INFO]: 🔥  Forced seeding of UserRoles Database enabled. 
+2026-03-29 01:18:47 [INFO]: ⚠ Clearing old Users... 
+2026-03-29 01:18:47 [INFO]: ⚠ Clearing old Roles... 
+2026-03-29 01:18:48 [INFO]: ⚡ Seeding UserRoles Database ... 
+2026-03-29 01:18:48 [INFO]: 🔥 Roles seeded: 5 successfully! 
+2026-03-29 01:18:48 [INFO]: 🔥 Users seeded: 2 successfully! 
+2026-03-29 01:18:48 [INFO]: ✅ All UserRole Database seeded successfully! 
+2026-03-29 01:18:49 [INFO]: POST /authentication/forgot 127.0.0.1 
+2026-03-29 01:20:17 [INFO]: 🚀 Server running on port 3000 
+2026-03-29 01:20:18 [INFO]: ✅ Connected to MongoDB 
+2026-03-29 01:20:18 [INFO]: 🔥  Forced seeding of Exam Database enabled. 
+2026-03-29 01:20:18 [INFO]: ⚠ Clearing old Questions... 
+2026-03-29 01:20:18 [INFO]: ⚠ Clearing old Topics... 
+2026-03-29 01:20:18 [INFO]: ⚠ Clearing old Units... 
+2026-03-29 01:20:19 [INFO]: ⚠ Clearing old Subjects... 
+2026-03-29 01:20:20 [INFO]: ⚠ Clearing old Exams... 
+2026-03-29 01:20:20 [INFO]: ⚠ Clearing old Payments... 
+2026-03-29 01:20:20 [INFO]: ⚡ Seeding Exam database... 
+2026-03-29 01:20:20 [INFO]: 🔥 Exam seeded: 4 successfully! 
+2026-03-29 01:20:20 [INFO]: 🔥 Subject seeded: 4 successfully! 
+2026-03-29 01:20:20 [INFO]: 🔥 Unit seeded: 11 successfully! 
+2026-03-29 01:20:20 [INFO]: 🔥 Topics seeded: 49 successfully! 
+2026-03-29 01:20:20 [INFO]: 📂 Seeding Questions From questiontable_E1_S1_U1.json... 
+2026-03-29 01:20:20 [INFO]: ✅ Inserted 460 from questiontable_E1_S1_U1.json 
+2026-03-29 01:20:20 [INFO]: 📂 Seeding Questions From questiontable_E1_S1_U2.json... 
+2026-03-29 01:20:20 [INFO]: ✅ Inserted 40 from questiontable_E1_S1_U2.json 
+2026-03-29 01:20:20 [INFO]: 🔥 Total Questions seeded: 500 
+2026-03-29 01:20:20 [INFO]: ✅ All Exam database seeded successfully! 
+2026-03-29 01:20:20 [INFO]: 🔥  Forced seeding of UserRoles Database enabled. 
+2026-03-29 01:20:20 [INFO]: ⚠ Clearing old Users... 
+2026-03-29 01:20:21 [INFO]: ⚠ Clearing old Roles... 
+2026-03-29 01:20:21 [INFO]: ⚡ Seeding UserRoles Database ... 
+2026-03-29 01:20:21 [INFO]: 🔥 Roles seeded: 5 successfully! 
+2026-03-29 01:20:21 [INFO]: 🔥 Users seeded: 2 successfully! 
+2026-03-29 01:20:21 [INFO]: ✅ All UserRole Database seeded successfully! 
+2026-03-29 01:20:26 [INFO]: POST /authentication/forgot 127.0.0.1 
+2026-03-29 01:20:55 [INFO]: GET /keep-session-alive 127.0.0.1 
+2026-03-29 01:25:55 [INFO]: GET /keep-session-alive 127.0.0.1 

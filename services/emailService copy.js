@@ -1,28 +1,31 @@
+const { Resend } = require("resend");
+const fs = require("fs");
 const logger = require("../utils/logger");
 const { getNormalDomain, getCleanDomain } = require("../utils/url.util");
-const Mailer = require("./Mailer"); // Import the shared Mailer instance
+
 
 async function sendForgotPasswordEmail(user, resetURL) {
-    try {
-        const cleanDomain = getCleanDomain();
-        const normalDomain = getNormalDomain();
-        const expiryMin = process.env.EMAIL_EXPIRY_IN_MIN || 15;
+  try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    const cleanDomain = getCleanDomain();
+    const normalDomain = getNormalDomain();
 
-        // 1. Prepare dynamic links
-        const supportSubject = encodeURIComponent(`Security Alert: ${user.username}`);
-        const supportBody = encodeURIComponent(
-            `Hello BioBrain Support,\n\nI received a password reset email for my account (${user.email}) that I did not request.\n\nUsername: ${user.username}`
-        );
-        const mailtoLink = `mailto:support@${cleanDomain}?subject=${supportSubject}&body=${supportBody}`;
+    // ✅ Extract expiry from env and provide a fallback
+    const expiryMin = process.env.EMAIL_EXPIRY_IN_MIN || 15;
 
-        // 2. Build the email properties
-        const mailOptions = {
-            from: `BioBrain <no-reply@${cleanDomain}>`,
-            to: [user.email],
-            replyTo: process.env.EMAIL_FROM || "biobrainquiz@gmail.com",
-            subject: "Action Required: Reset Your BioBrain Password",
-            text: `Reset your password here: ${resetURL}. This link expires in ${expiryMin} minutes.`,
-            html: `
+    const supportSubject = encodeURIComponent(`Security Alert: ${user.username}`);
+    const supportBody = encodeURIComponent(
+      `Hello BioBrain Support,\n\nI received a password reset email for my account (${user.email}) that I did not request.\n\nUsername: ${user.username}`
+    );
+    const mailtoLink = `mailto:support@${cleanDomain}?subject=${supportSubject}&body=${supportBody}`;
+
+    const response = await resend.emails.send({
+      from: `BioBrain <no-reply@${cleanDomain}>`,
+      to: user.email,
+      replyTo: process.env.EMAIL_FROM || "biobrainquiz@gmail.com",
+      subject: "Action Required: Reset Your BioBrain Password",
+      text: `Reset your password here: ${resetURL}. This link expires in ${expiryMin} minutes.`,
+      html: `
       <div style="background-color: #f1f5f9; padding: 50px 20px; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
         <div style="max-width: 560px; margin: 0 auto; background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04);">
           
@@ -65,17 +68,21 @@ async function sendForgotPasswordEmail(user, resetURL) {
               </div>
             </div>
           </div>
-          </div>
-          <p style="text-align: center; color: #94a3b8; font-size: 11px; margin-top: 24px; letter-spacing: 0.02em;">Designed for Excellence &bull; BioBrain Learning Platform</p></div>`
-        };
+        </div>
+        <p style="text-align: center; color: #94a3b8; font-size: 11px; margin-top: 24px; letter-spacing: 0.02em;">
+          Designed for Excellence &bull; BioBrain Learning Platform
+        </p>
+      </div>`
+    });
 
-        // 3. Use the decoupled Mailer to send
-        return await Mailer.send(mailOptions);
+    console.log(response);
+    if (response.error) throw new Error(response.error.message);
+    return response.data;
 
-    } catch (error) {
-        logger.error("Forgot Password Email Service Error:", error);
-        throw error;
-    }
+  } catch (error) {
+    logger.error("Email Service Error:", error);
+    throw error;
+  }
 }
 
 module.exports = sendForgotPasswordEmail;

@@ -409,7 +409,11 @@
                                                 <i class="fa-solid fa-file-pdf"></i>
                                             </a>
 
-                                            <a href="/mocktest/result/email/<%= r._id %>" title="Send Email">
+                                            <!--<a href="/mocktest/result/email/<%= r._id %>" title="Send Email">
+                                                <i class="fa-solid fa-envelope"></i>
+                                            </a>-->
+
+                                            <a href="javascript:void(0)" onclick="sendEmailReport('<%= r._id %>')" title="Send Email">
                                                 <i class="fa-solid fa-envelope"></i>
                                             </a>
 
@@ -527,6 +531,44 @@
             </div>
         </section>
         <%- include('../../partials/desktop/footer') %>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+async function sendEmailReport(mocktestid) {
+    // 1. Show "Sending..." state
+    Swal.fire({
+        title: 'Sending Performance Report',
+        text: 'Please wait while we generate and mail your PDF...',
+        allowOutsideClick: false,
+        didOpen: () => { Swal.showLoading() }
+    });
+
+    try {
+        // 2. Call your existing route
+        const response = await fetch(`/mocktest/result/email/${mocktestid}`);
+        const data = await response.json();
+
+        if (data.success) {
+            // 3. Show Success
+            Swal.fire({
+                icon: 'success',
+                title: 'Sent!',
+                text: 'The email has been sent to your registered address.',
+                timer: 3000
+            });
+        } else {
+            throw new Error(data.message);
+        }
+    } catch (err) {
+        // 4. Show Error
+        Swal.fire({
+            icon: 'error',
+            title: 'Failed',
+            text: 'Could not send the email. Please try again later.'
+        });
+    }
+}
+</script>
+
             <script>
                 // Script for validating unit,topic,count,difficulty before submit
                 const form = document.querySelector("form");

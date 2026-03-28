@@ -1,4 +1,5 @@
 const { Resend } = require('resend');
+const logger = require('../utils/logger');
 
 class Mailer {
     constructor() {
@@ -14,26 +15,31 @@ class Mailer {
      * @param {Array} [options.attachments]
      */
     async send(options) {
-        try {
-            const response = await this.client.emails.send({
-                from: options.from ,
-                to: options.to,
-                subject: options.subject,
-                html: options.html,
-                attachments: options.attachments || [],
-            });
+    try {
+        const response = await this.client.emails.send({
+            from: options.from,
+            to: options.to,
+            subject: options.subject,
+            html: options.html,
+            // Add these two lines:
+            text: options.text || "", 
+            replyTo: options.replyTo || "",
+            attachments: options.attachments || [],
+        });
 
-            if (response.error) {
-                throw new Error(`Resend Error: ${JSON.stringify(response.error)}`);
-            }
-
-            return response.data;
-        } catch (error) {
-            // Log it here and re-throw for the controller
-            console.error("Mailer Service Error:", error);
-            throw error;
+        if (response.error) {
+            // Fix: ensure the error variable name matches
+            const mailError = new Error(`Resend Error: ${JSON.stringify(response.error)}`);
+            logger.error("Mailer Service Error:", mailError); 
+            throw mailError;
         }
+
+        return response.data;
+    } catch (error) {
+        logger.error("Mailer Service Error:", error);
+        throw error;
     }
+}
 }
 
 module.exports = new Mailer();

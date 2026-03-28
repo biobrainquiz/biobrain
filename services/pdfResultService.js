@@ -9,7 +9,6 @@ const Result = require("../models/Result");
 const logger = require("../utils/logger");
 const { getNormalDomain, getCleanDomain } = require("../utils/url.util");
 const { Resend } = require('resend');
-//const emailService = require("../services/emailService");
 const Mailer = require('./Mailer');
 
 
@@ -460,7 +459,7 @@ exports.emailResultPdf = async (req, res) => {
         });
 
     } catch (err) {
-        logger.error("Email Controller Error:", err);
+        logger.error("Pdf Result Service Error:", err);
         res.status(500).json({ success: false, message: "Failed to process email dispatch" });
     }
 };
