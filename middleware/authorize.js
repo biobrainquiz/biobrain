@@ -1,4 +1,5 @@
 const User = require("../models/User");
+logger = require("../utils/logger");
 
 function authorize(...allowedRoles) {
     return async (req, res, next) => {
@@ -30,7 +31,7 @@ function authorize(...allowedRoles) {
             next();
 
         } catch (err) {
-            console.error(err);
+            logger.error("Error authorizing user:", err);
             return res.status(500).send("Server Error");
         }
     };

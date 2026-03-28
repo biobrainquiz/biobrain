@@ -129,7 +129,7 @@ async function sendForgotPasswordEmail(user, resetURL) {
     return response.data;
 
   } catch (error) {
-    console.error("Email Service Error:", error.message);
+    logger.error("Email Service Error:", error);
     throw error;
   }
 }

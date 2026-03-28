@@ -175,8 +175,7 @@ async function autoSeedExamDb(source, forcedSeedingExamDbInEnv) {
             topic: topic._id
           };
         } catch (err) {
-          console.error(`❌ Error in file ${file}`);
-          console.error("Bad question:", q);
+          logger.error(`❌ Error in file ${file} question ${q}`);
           throw err; // fail-fast
         }
       });
