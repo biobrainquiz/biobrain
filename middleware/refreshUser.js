@@ -1,5 +1,6 @@
 // middleware/refreshUser.js
 const User = require("../models/User");
+logger = require("../utils/logger");
 
 async function refreshUser(req, res, next) {
   try {
@@ -14,7 +15,7 @@ async function refreshUser(req, res, next) {
     req.session.user =user;
     next();
   } catch (err) {
-    console.error("Error refreshing user:", err);
+    logger.error("Error refreshing user:", err);
     res.status(500).send("Server Error");
   }
 }

@@ -27,10 +27,9 @@ router.post(
   mocktestController.submit
 );
 
-// Download PDF
+// Download result PDF
 router.get(
   "/result/pdf/:mocktestid",
   resultController.downloadResultPdf);
-
 
 module.exports = router;

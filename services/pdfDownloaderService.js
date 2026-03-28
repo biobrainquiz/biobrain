@@ -6,8 +6,8 @@ const ejs = require("ejs");
 const QRCode = require('qrcode');
 const PDFDocument = require("pdfkit");
 const Result = require("../models/Result");
-
 const logger = require("../utils/logger");
+
 
 // programatically generate pdf
 exports.downloadResultPdf = async (req, res) => {
