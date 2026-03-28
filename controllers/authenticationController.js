@@ -14,8 +14,6 @@ const crypto = require("crypto");
 // Library used to hash and compare passwords securely
 const bcrypt = require("bcryptjs");
 
-
-
 // Utility that detects device type (mobile / desktop) to render correct view
 const getDevice = require("../utils/getDevice");
 
