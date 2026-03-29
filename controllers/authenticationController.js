@@ -275,7 +275,11 @@ exports.verifyEmail = async (req, res) => {
 
         // 7️⃣ Success Response
         // Redirect to login with a 'verified' flag so your UI can show a success toast
-        return res.redirect("/authentication/login?verified=true");
+        //return res.redirect("/authentication/login?verified=true");
+        // Inside your verify-email route handler
+        
+        // 7️⃣ Success Response
+        return res.render('authentication/verify-success');
 
     } catch (err) {
         // Log verification errors
