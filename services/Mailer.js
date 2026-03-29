@@ -30,7 +30,7 @@ class Mailer {
         if (response.error) {
             // Fix: ensure the error variable name matches
             const mailError = new Error(`Resend Error: ${JSON.stringify(response.error)}`);
-            logger.error("Mailer Service Error:", mailError); 
+            logger.error("Mailer API  Error:", mailError); 
             throw mailError;
         }
 

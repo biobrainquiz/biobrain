@@ -3,12 +3,13 @@ const chromium = require("@sparticuz/chromium");
 const path = require("path");
 const ejs = require("ejs");
 
+const { Resend } = require('resend');
 const QRCode = require('qrcode');
 const PDFDocument = require("pdfkit");
+
 const Result = require("../models/Result");
 const logger = require("../utils/logger");
 const { getNormalDomain, getCleanDomain } = require("../utils/url.util");
-const { Resend } = require('resend');
 const Mailer = require('./Mailer');
 
 
@@ -407,7 +408,6 @@ exports.downloadResultPdf = async (req, res) => {
     }
 };
 
-
 exports.emailResultPdf = async (req, res) => {
     try {
 
@@ -463,60 +463,3 @@ exports.emailResultPdf = async (req, res) => {
         res.status(500).json({ success: false, message: "Failed to process email dispatch" });
     }
 };
-
-
-/*exports.emailResultPdf = async (req, res) => {
-    try {
-        const { mocktestid } = req.params;
-        const result = await Result.findById(mocktestid).lean();
-
-        // 1. Generate the PDF Document (Stream)
-        const doc = await generatePdfContent(result);
-
-        // 2. Convert PDF Stream to Buffer
-        const chunks = [];
-        doc.on('data', (chunk) => chunks.push(chunk));
-
-        doc.on('end', async () => {
-            try {
-                const pdfBuffer = Buffer.concat(chunks);
-
-                const resend = new Resend(process.env.RESEND_API_KEY);
-                // 3. Send via Resend
-                const response = await resend.emails.send({
-                    from: 'BioBrain <reports@biobrain.in>', // Must be a verified domain in Resend
-                    to: [result.useremail],
-                    subject: `Performance Report: ${result.examname} - ${result.topicname}`,
-                    html: `
-                        <p>Hello <strong>${result.username}</strong>,</p>
-                        <p>Your performance analytics report for the test <strong>${result.testcode}</strong> is ready.</p>
-                        <p>Please find the attached PDF for a detailed question-wise analysis.</p>
-                        <br/>
-                        <p>Best regards,<br/>Team BioBrain</p>
-                    `,
-                    attachments: [
-                        {
-                            filename: `BioBrain_Report_${result._id}.pdf`,
-                            content: pdfBuffer,
-                        },
-                    ],
-                });
-
-                if (response.error) {
-                    logger.error("Resend API Error:", error);
-                    return res.status(400).json({ success: false, error });
-                }
-
-                return res.status(200).json({ success: true, message: "Email sent successfully", id: response.data.id });
-
-            } catch (err) {
-                logger.error("Error during email dispatch:", err);
-                res.status(500).json({ success: false, message: "Failed to process email" });
-            }
-        });
-
-    } catch (err) {
-        logger.error("Email Controller Error:", err);
-        res.status(500).json({ success: false, message: "Internal Server Error" });
-    }
-};*/

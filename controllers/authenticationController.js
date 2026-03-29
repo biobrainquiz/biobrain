@@ -20,7 +20,8 @@ const getDevice = require("../utils/getDevice");
 // Custom logger utility for structured error logging
 const logger = require("../utils/logger");
 
-const  sendForgotPasswordEmail = require("../services/emailService");
+
+const  authenticationEmailService = require("../services/authenticationEmailService");
 
 // ==========================
 // LOGIN
@@ -184,66 +185,6 @@ exports.logout = (req, res) => {
 // FORGOT PASSWORD
 // ==========================
 
-exports.forgotPassword1 = async (req, res) => {
-    try {
-
-        const { email } = req.body;
-
-        // Check if user exists with provided email
-        const user = await User.findOne({ email });
-
-        // To prevent email enumeration, always return success message
-        if (!user) {
-            return res.json({
-                success: true,
-                message: "If this email exists, a reset link has been sent."
-            });
-        }
-
-        // 1️⃣ Generate secure random reset token
-        const token = crypto.randomBytes(32).toString("hex");
-
-        // 2️⃣ Hash token before storing in database
-        const hashedToken = crypto
-            .createHash("sha256")
-            .update(token)
-            .digest("hex");
-
-        // 3️⃣ Store hashed token and expiration time
-        user.resetPasswordToken = hashedToken;
-
-        const expiryMinutes = Number(process.env.EMAIL_EXPIRY_IN_MIN) || 10;
-
-        user.resetPasswordExpires =
-            Date.now() + expiryMinutes * 60 * 1000;
-
-        await user.save();
-
-        // 4️⃣ Create password reset URL
-        const resetURL = `${process.env.BASE_URI}/reset/${token}`;
-
-        sendForgotPasswordEmail(user, resetURL);
-        
-        return res.json({
-            success: true,
-            message: "Reset link sent to email!"
-        });
-
-    } catch (err) {
-
-        logger.error({
-            message: "Forgot Password Error:",
-            error: err.message,
-            stack: err.stack
-        });
-
-        return res.status(500).json({
-            success: false,
-            message:  err.message
-        });
-    }
-};
-
 exports.forgotPassword = async (req, res) => {
     try {
         const { email } = req.body;
@@ -281,7 +222,7 @@ exports.forgotPassword = async (req, res) => {
 
         // 5️⃣ Send email (safe handling)
         try {
-            await sendForgotPasswordEmail(user, resetURL);
+            await authenticationEmailService.sendForgotPasswordEmail(user, resetURL);
         } catch (emailError) {
             // ❗ Do NOT expose error to user
             logger.error("Email failed:", emailError.message);
